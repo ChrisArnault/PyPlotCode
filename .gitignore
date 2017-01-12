@@ -1,0 +1,33 @@
+# Python 
+*.py[cod]
+__pycache__
+
+# Logging output
+*.log
+
+# Sphinx documentation
+doc/build/
+
+# stuff from Hieroglyph
+*.pickle
+_build/
+*.js
+*.svg
+
+# Local docs
+doc/*.pdf
+doc/**/slides/*-bak
+doc/build/
+doc/source_tmp/
+
+# PyCharm stuff
+.idea/
+
+# Distribution / packaging
+venv*
+
+~*
+
+.sonar/
+
+*.out
