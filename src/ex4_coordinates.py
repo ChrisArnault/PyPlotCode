@@ -99,7 +99,7 @@ def main():
     # coordinates
     centroid = (g_reg.clusters[0]['r'], g_reg.clusters[0]['c'])
     g_wcs = lwcs.get_wcs(file_name)
-    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[0], centroid[1])
+    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
     logging.info('right ascension: %.3f, declination: %.3f', g_ra, g_dec)
 
     # graphics

@@ -152,7 +152,7 @@ def main():
     logging.debug('nb clusters: %s, greatest integral: %s',len(reg.clusters), max_integral)
 
     for nc, ic in enumerate(reg.clusters):
-        print('cluster', nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius'])
+        logging.debug('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
 
     # globals, for graphics
     global g_wcs, g_text, g_fig
@@ -160,12 +160,12 @@ def main():
     # coordinates
     centroid = (reg.clusters[0]['r'], reg.clusters[0]['c'])
     g_wcs = lwcs.get_wcs(file_name)
-    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[0], centroid[1])
+    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
     logging.debug('highest cluster')
     logging.debug('right ascension: %.3f, declination: %.3f',g_ra, g_dec)
 
     # celestial objects
-    cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[0], centroid[1], g_wcs, CONE)
+    cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[1], centroid[0], g_wcs, CONE)
     for cobj in list(cobjects.items()):
         if  cobj[1]!='Unknown':
           logging.info('celestial object: %s', cobj[0])

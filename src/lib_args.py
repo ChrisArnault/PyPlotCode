@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'Custom logging'
-
 import os
 import os.path
 import sys
@@ -28,8 +26,6 @@ def get_args(title):
         if args.b or len(args.file) == 0:
             args.file = DATAFILE
         args.file = DATAPATH + args.file + '.fits'
-    else:
-        args.file = DATAPATH + args.file + '.fits'
 
     # read image
     header = lib_read_file.read_header(args.file)
@@ -42,11 +38,6 @@ def get_args(title):
 
 def tests():
     'Unit tests'
-    logging.debug('Debug message')
-    logging.info('Info message')
-    logging.warning('Warning message')
-    logging.error('Error message')
-    logging.critical('Critical message')
     return 0
 
 if __name__ == '__main__':

@@ -361,7 +361,7 @@ class Region(object):
 
         myregion = self
 
-        print('Region> threshold', threshold)
+        logging.debug('Region> threshold {}'.format(threshold))
 
         self.threshold = threshold            # above which pixel values are considered
         self.region = region                  # storing the region
@@ -592,8 +592,6 @@ class Region(object):
                 cp_image[r0, c0] = product
 
         logging.debug('========= end of convolution. Start get peaks')
-        print('========= end of convolution. Start get peaks')
-
 
         # make the CP threshold above the background fluctuations
         cp_threshold *= 1.3
@@ -631,7 +629,6 @@ class Region(object):
                             self.cluster_dict[integral] = {'r':r0, 'c':c0, 'integral':integral, 'top':self.region[r0, c0], 'radius':radius, 'cp':cp_image[r0, c0]}
 
         logging.debug('========= end of get peaks. Store clusters')
-        print('========= end of get peaks. Store clusters')
 
         self.clusters = []
         for key in sorted(self.cluster_dict.keys(), reverse=True):
