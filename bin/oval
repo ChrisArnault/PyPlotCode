@@ -168,7 +168,7 @@ elif subcommand == 'crypt':
                     for fmatch in [fexp.match(line) for fexp in fexps]:
                         if fmatch:
                             for grp in fmatch.groups():
-                                md5_content.write(hashlib.md5(grp).hexdigest()+'\n')
+                                md5_content.write(hashlib.md5(grp.encode('utf-8')).hexdigest()+'\n')
 elif subcommand == 'diff':
     for target_name in target_names:
         target = all_targets[target_name]
@@ -196,7 +196,7 @@ elif subcommand == 'diff':
                 if fmatch:
                     for grp in fmatch.groups():
                         out_log_matches.append(grp)
-                        out_md5_matches.append(hashlib.md5(grp).hexdigest())
+                        out_md5_matches.append(hashlib.md5(grp.encode('utf-8')).hexdigest())
         proc2 = subprocess.run("cat {} 2>&1".format(ref_file_name),
             shell=True, stdout=subprocess.PIPE, universal_newlines=True)
         out_ref_matches = []
