@@ -28,8 +28,6 @@ def get_args(title):
         if args.b or len(args.file) == 0:
             args.file = DATAFILE
         args.file = DATAPATH + args.file + '.fits'
-    else:
-        args.file = DATAPATH + args.file + '.fits'
 
     # read image
     header = lib_read_file.read_header(args.file)
