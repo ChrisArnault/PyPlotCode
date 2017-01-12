@@ -152,7 +152,7 @@ def main():
     logging.debug('nb clusters: %s, greatest integral: %s',len(reg.clusters), max_integral)
 
     for nc, ic in enumerate(reg.clusters):
-        print('cluster', nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius'])
+        logging.debug('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
 
     # globals, for graphics
     global g_wcs, g_text, g_fig
