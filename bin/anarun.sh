@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+# This script run a Docker container for anaconda 2 or 3,
+# and start the command you ask for.
+
+# The current directory is mounted in the container
+# as /work, and you are placed in that directory.
+
+# Invocation : "anarun.sh 2|3 <my command>"
+# for example, if I want to start a shell
+# within anaconda 3 image : "anarun.sh 3 bash"
+
+# The DISPLAY export require you to predefine MYIP
+# and is tested only for MacOSX. Having something which
+# works also with linux and windows still TO BE DONE.
+
 if [ "$#" == "0" ]; then
   echo "lacking version and command" ; exit 1 ;
 fi
