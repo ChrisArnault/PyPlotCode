@@ -32,7 +32,7 @@ targets = [
 exercices = (
     "ex1_read_image",
     "ex2_background",
-    "ex3_clusters",
+    "ex3_new_clusters",
     "ex4_coordinates",
     "ex5_find_stars",
 )
@@ -48,7 +48,7 @@ for exercice in exercices:
 
 # Filters
 
-run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct).*$", "apply": "ex(4|5)%"}, ]
+run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "ex(4|5)%"}, ]
 
 diff_filters_in = [
     {"name": "pylint1", "re": "%rated at%", "apply": "(analyze%)|(oval%)"},
