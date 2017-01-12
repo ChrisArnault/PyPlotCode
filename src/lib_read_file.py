@@ -35,7 +35,6 @@ def read_header(fitsfile):
 
     Return a HDUList()
     """
-    print('read_header')
 
     header = None
     try:
