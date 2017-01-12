@@ -51,7 +51,7 @@ def main():
     left = 0
     right = 1
 
-    logging.info('t=%d b=%d l=%d r=%d h=%d w=%d',
+    logging.debug('t=%d b=%d l=%d r=%d h=%d w=%d',
                  top, bottom,
                  left, right,
                  pixels.shape[0] - bottom - top, pixels.shape[1] - right - left)
