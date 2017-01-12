@@ -30,9 +30,67 @@ import subprocess
 import sys
 import hashlib
 
-from lib_logging import logging
+# ==========================================
+# Custom logging
 
+import os
+import os.path
+import sys
+import logging
+
+class VarFormatter(logging.Formatter):
+
+    'Customized formatting for console'
+
+    default_formatter = logging.Formatter('%(levelname)s in %(name)s: %(message)s')
+
+    def __init__(self, formats):
+        """ formats is a dict { loglevel : logformat } """
+        super(VarFormatter, self).__init__()
+        self.formatters = {}
+        for loglevel in formats:
+            self.formatters[loglevel] = logging.Formatter(formats[loglevel])
+
+    def format(self, record):
+        formatter = self.formatters.get(record.levelno, self.default_formatter)
+        return formatter.format(record)
+
+
+class InfoOnlyFilter(logging.Filter):
+
+    def filter(self, record):
+        return record.levelno == logging.INFO
+
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(VarFormatter({
+    logging.DEBUG: '(%(message)s)',
+    logging.INFO: '%(message)s',
+    logging.WARNING: 'warning: %(message)s',
+    logging.ERROR: 'ERROR: %(message)s',
+    logging.CRITICAL: 'CRITICAL ERROR: %(message)s',
+}))
+console_handler.setLevel(logging.INFO)
+
+script_name = os.path.basename(sys.argv[0])
+if script_name.endswith('.py'):
+    script_name = script_name[:-3]
+
+log_file_name = script_name+".log"
+log_file_handler = logging.FileHandler(log_file_name, mode="w", encoding="utf-8")
+log_file_handler.setFormatter( \
+    logging.Formatter("%(asctime)s :: %(name)s :: %(levelname)-8s :: %(message)s"))
+log_file_handler.setLevel(logging.DEBUG)
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(console_handler)
+logger.addHandler(log_file_handler)
+
+
+# ==========================================
 # process command-line options
+
 parser = argparse.ArgumentParser(description='Automatic running and diffing of executables')
 #parser.add_argument('-c', action="store_true", default=False, \
 #                    help='crypt the reference output')
@@ -134,7 +192,6 @@ elif subcommand == 'run':
         sh_command = "({}) 2>&1 | tee {}.out".format(target["command"],target_name)
         out_file_name = "{}.out".format(target_name)
         proc = subprocess.run(sh_command, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
-        out_value, err_value = proc.communicate()
         with open(out_file_name,'w') as out_content:
             runexps = [re.compile('^'+f.replace('%', '.*')+'$') for f in target['run_filters_out']]
             diffexps = [re.compile('^'+f.replace('%', '.*')+'$') for f in target['diff_filters_in']]
