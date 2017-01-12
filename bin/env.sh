@@ -1,14 +1,15 @@
 
 # establish NPAC_ROOT and add bin to the current PATH
 
-NEW_DIR=`dirname $_`
+FILE_NAME=$_
+FILE_DIR=`dirname ${FILE_NAME}`
 OLD_DIR=$PWD
 
-cd $NEW_DIR
+cd $FILE_DIR
 
-NEW_DIR=`pwd`
+FILE_DIR=`pwd`
 
-export PATH="${NEW_DIR}:${PATH}"
+export PATH="${FILE_DIR}:${PATH}"
 
 export NPAC_ROOT=`pwd`
 export NPAC_ROOT=`dirname $NPAC_ROOT`
