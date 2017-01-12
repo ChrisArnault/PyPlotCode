@@ -21,3 +21,4 @@ cd $OLD_DIR
 
 alias oval=oval.py
 alias anarun=anarun.sh
+alias cpstud=copy_to_student.sh
