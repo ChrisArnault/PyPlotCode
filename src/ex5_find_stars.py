@@ -10,10 +10,10 @@ Test program to
 """
 
 import sys
-import logging
+from lib_logging import logging
 from lib_args import get_args
 import matplotlib.pyplot as plt
-from lib_logging import logging
+
 import lib_read_file
 import lib_cluster
 import lib_background

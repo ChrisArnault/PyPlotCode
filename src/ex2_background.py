@@ -10,7 +10,7 @@ Test program to
 """
 
 import sys
-import logging
+from lib_logging import logging
 from lib_args import get_args
 import matplotlib.pyplot as plt
 import lib_background

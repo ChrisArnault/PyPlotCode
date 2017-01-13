@@ -1,24 +1,35 @@
 
-# establish NPAC_ROOT and add bin to the current PATH
+# move to the script directory
 
-FILE_NAME=$_
-FILE_DIR=`dirname ${FILE_NAME}`
-OLD_DIR=$PWD
+SCRIPT_NAME=${BASH_SOURCE[0]}
+SCRIPT_DIR=`dirname ${SCRIPT_NAME}`
+ORIGINAL_DIR=${PWD}
 
-cd $FILE_DIR
+cd $SCRIPT_DIR
 
-FILE_DIR=`pwd`
+# add current dir to the PATH
 
-export PATH="${FILE_DIR}:${PATH}"
+SCRIPT_DIR=`pwd`
 
-export NPAC_ROOT=`pwd`
-export NPAC_ROOT=`dirname $NPAC_ROOT`
-export NPAC_ROOT=`dirname $NPAC_ROOT`
+export PATH="${SCRIPT_DIR}:${PATH}"
 
-cd $OLD_DIR
+# establish NPAC_ROOT
+
+NPAC_ROOT=`dirname $SCRIPT_DIR`
+NPAC_ROOT=`dirname $NPAC_ROOT`
+
+export NPAC_ROOT="${NPAC_ROOT}"
 
 # aliases
 
 alias oval=oval.py
 alias anarun=anarun.sh
 alias cpstud=copy_to_student.sh
+
+# prepare font cache
+
+python3 -c "import matplotlib.pyplot"
+
+# back to the original directory
+
+cd $ORIGINAL_DIR

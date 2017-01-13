@@ -9,7 +9,7 @@ Test program to
 """
 
 import sys
-import logging
+from lib_logging import logging
 from lib_args import get_args
 import matplotlib.pyplot as plt
 import lib_read_file
@@ -47,16 +47,16 @@ def main():
     right = 22 # 47
 
     top = 0
-    bottom = 1
+    bottom = pixels.shape[0]
     left = 0
-    right = 1
+    right = pixels.shape[1]
 
     logging.debug('t=%d b=%d l=%d r=%d h=%d w=%d',
                  top, bottom,
                  left, right,
                  pixels.shape[0] - bottom - top, pixels.shape[1] - right - left)
 
-    reg = lib_cluster.Region(pixels[top:-bottom, left:-right], background + threshold*dispersion)
+    reg = lib_cluster.Region(pixels[top:bottom, left:right], background + threshold*dispersion)
     pattern, s, _ = reg.run_convolution()
     max_integral = reg.clusters[0]['integral']
     logging.info('number of clusters: %2d, greatest integral: %7d, centroid x: %4.1f, centroid y: %4.1f',
