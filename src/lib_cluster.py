@@ -166,6 +166,9 @@ class TCluster(object):
 
         self.pixels.append((row, column, value))
 
+        # FIXME: THIS COMPUTING OF THE CENTROID IS NOT USED ANY MORE IN
+        # THE NEW IMPLEMENTATION
+
         self.min_max('row', row)
         self.min_max('column', column)
 
@@ -186,7 +189,11 @@ class TCluster(object):
         self.integral += value
 
 
+    # FIXME: THIS COMPUTING OF THE CENTROID IS NOT USED ANY MORE IN
+    # THE NEW IMPLEMENTATION
+
     def get_centroid(self):
+
         pixels = len(self.pixels)
         if pixels == 0:
             return None, None
@@ -367,7 +374,7 @@ class Region(object):
         self.region = region                  # storing the region
 
         self.done = np.zeros_like(region, float) # a temp array to mark pixels already accessed
-        self.below = region < threshold       # a mask of pixels blow threshold
+        self.below = region < threshold       # a mask of pixels below threshold
         self.shape = region.shape             # save the original region shape
         self.image = region                   # construct the image showing all identified clusters
         self.max = np.max(region)             # initialize the maximum pixel value
@@ -444,17 +451,19 @@ class Region(object):
 
     def build_pattern(self, size):
         """
-        start by creating a 2D grid of pixels to form a PSF to ba applied onto the
+        start by creating a 2D grid of pixels to form a PSF to be applied onto the
         image to detect objects
         this pattern has a form of a 2D centered normalized gaussian
         """
+        if size/2 == 0:
+          logging.critical('Even pattern size')
 
         x = np.arange(0, size, 1, float)
         y = np.arange(0, size, 1, float)
         # transpose y
         y = y[:, np.newaxis]
 
-        y0 = x0 = size / 2
+        y0 = x0 = size // 2
 
         # create a 2D gaussian distribution inside this grid.
         sigma = size / 4.0
