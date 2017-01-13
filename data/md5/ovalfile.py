@@ -12,7 +12,7 @@ targets = []
 exercices = (
     "ex1_read_image",
     "ex2_background",
-    "ex3_new_clusters",
+    "ex3_clusters",
     "ex4_coordinates",
     "ex5_find_stars",
 )

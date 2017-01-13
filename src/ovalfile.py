@@ -10,7 +10,7 @@ targets = [
     {"name": "analyze_ex0", "command": "pylint ex0_hello_loops.py"},
     {"name": "analyze_ex1", "command": "pylint ex1_read_image.py"},
     {"name": "analyze_ex2", "command": "pylint ex2_background.py"},
-    {"name": "analyze_ex3", "command": "pylint ex3_new_clusters.py"},
+    {"name": "analyze_ex3", "command": "pylint ex3_clusters.py"},
     {"name": "analyze_ex4", "command": "pylint ex4_coordinates.py"},
     {"name": "analyze_ex5", "command": "pylint ex5_find_stars.py"},
 
@@ -32,7 +32,7 @@ targets = [
 exercices = (
     "ex1_read_image",
     "ex2_background",
-    "ex3_new_clusters",
+    "ex3_clusters",
     "ex4_coordinates",
     "ex5_find_stars",
 )
