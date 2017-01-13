@@ -467,7 +467,7 @@ class Region(object):
 
         # create a 2D gaussian distribution inside this grid.
         sigma = size / 4.0
-        pattern = 100.0 * np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
+        pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
 
         return pattern
 
@@ -504,16 +504,19 @@ class Region(object):
         cp = cp_image[r, c]
         # print('get_peak> peak at [%d %d] %f cp=%f' % (r, c, self.region[r, c], cp))
         top = self.region[r, c]
-        for radius in range(1, 20):
+        radius = 1
+        # for radius in range(1, 200):
+        while True:
             integral = np.sum(self.region[r - radius:r + radius + 1, c - radius:c + radius + 1])
             pixels = 8 * radius
-            around = (integral - top) / pixels
-            if around < self.threshold:
-                # print('   pixels=%d top=%f around=%f int=%f radius=%d' % (pixels, top, around, integral, radius))
-                break
+            mean = (integral - top) / pixels
+            if mean < self.threshold:
+                # print('   pixels=%d top=%f around=%f int=%f radius=%d' % (pixels, top, mean, integral, radius))
+                return integral, radius
+
+            radius += 1
             top = integral
 
-        return integral, radius
 
     def run_convolution(self):
         """
@@ -567,23 +570,29 @@ class Region(object):
         max_region = np.max(region)
 
         # we keep a guard for pattern in the original image
-        for rnum, row in enumerate(region[half:-half, half:-half]):
-            # print('1) rnum=', rnum)
-            for cnum, col in enumerate(row):
+        for r, row in enumerate(region[half:-half, half:-half]):
+            for c, col in enumerate(row):
 
-                r0 = rnum + half
-                c0 = cnum + half
+                rnum = r + half
+                cnum = c + half
 
-                if region[r0, c0] < self.threshold:
-                    cp_image[r0, c0] = 0
+                if region[rnum, cnum] < self.threshold:
+                    cp_image[rnum, cnum] = 0
                     continue
 
                 """
-                r0, c0 is the center of the convolution zone
+                rnum, cnum is the center of the convolution zone
                 """
 
+                cmin = cnum - half
+                cmax = cnum + half + 1
+                rmin = rnum - half
+                rmax = rnum + half + 1
+
+                sub_region = region[rmin:rmax, cmin:cmax]
+
                 # convolution product
-                product = np.sum(region[rnum:rnum+pattern_width, cnum:cnum+pattern_width] * pattern / max_region)
+                product = np.sum(sub_region * pattern / max_region)
 
                 if cp_threshold is None or product < cp_threshold:
                     # get the lower value of the CP
@@ -591,16 +600,18 @@ class Region(object):
 
                 """
                 logging.debug('r=%d c=%d [%d:%d, %d:%d] %f',
-                              r0, c0,
+                              rnum, cnum,
                               rnum, rnum + pattern_width,
                               cnum, cnum + pattern_width,
                               product)
                 """
 
                 # store the convolution product
-                cp_image[r0, c0] = product
+                cp_image[rnum, cnum] = product
 
         logging.debug('========= end of convolution. Start get peaks')
+
+        peaks = region
 
         # make the CP threshold above the background fluctuations
         cp_threshold *= 1.3
@@ -612,30 +623,35 @@ class Region(object):
         #
         # scan the convolution image to detect peaks and get all clusters
         #
-        for rnum, row in enumerate(cp_image[half:-half, half:-half]):
+        for r, row in enumerate(cp_image[half:-half, half:-half]):
             # print('2) rnum=', rnum)
-            for cnum, col in enumerate(row):
+            for c, col in enumerate(row):
 
-                r0 = rnum + half
-                c0 = cnum + half
+                rnum = r + half
+                cnum = c + half
 
-                if cp_image[r0, c0] > cp_threshold:
+                if cp_image[rnum, cnum] > cp_threshold:
                     """
-                    r0, c0 is the center of the convolution zone
+                    rnum, cnum is the center of the convolution zone
 
                     check if we have a peak centered at this position:
                     - the CP at the center of the zone must be higher then any CP immediately around the center
                     """
-                    peak = self.has_peak(cp_image, r0, c0)
+                    peak = self.has_peak(cp_image, rnum, cnum)
                     if peak:
                         #
                         # if a peak is detected, we get the cluster
                         #
-                        # print('peak at [%d %d]' % (r0, c0))
-                        integral, radius = self.get_peak(cp_image, r0, c0)
+                        # print('peak at [%d %d]' % (rnum, cnum))
+                        x = 3
+
+                        peaks[rnum - x:rnum + x + 1, cnum] = region[rnum, cnum]
+                        peaks[rnum, cnum - x:cnum + x + 1] = region[rnum, cnum]
+
+                        integral, radius = self.get_peak(cp_image, rnum, cnum)
                         if radius > 1:
-                            # print('peak at [%d %d] %f' % (r0, c0, integral, ))
-                            self.cluster_dict[integral] = {'r':r0, 'c':c0, 'integral':integral, 'top':self.region[r0, c0], 'radius':radius, 'cp':cp_image[r0, c0]}
+                            # print('peak at [%d %d] %f' % (rnum, cnum, integral, ))
+                            self.cluster_dict[integral] = {'r':rnum, 'c':cnum, 'integral':integral, 'top':self.region[rnum, cnum], 'radius':radius, 'cp':cp_image[rnum, cnum]}
 
         logging.debug('========= end of get peaks. Store clusters')
 
@@ -645,12 +661,12 @@ class Region(object):
             self.clusters.append(c)
 
             # print(repr(c))
-            r0 = c['r']
-            c0 = c['c']
+            rnum = c['r']
+            cnum = c['c']
             radius = c['radius']
-            cp_image[r0-radius:r0+radius+1, c0-radius:c0+radius+1] = 12.
+            cp_image[rnum-radius:rnum+radius+1, cnum-radius:cnum+radius+1] = 12.
 
-        return pattern, cp_image, None
+        return pattern, cp_image, peaks
 
     def run_recursive(self, threshold=None):
         """ 

@@ -22,6 +22,11 @@ import lib_wcs as lwcs
 CONE = 0.001
 THREAD = False
 
+DX = 0
+LX = 0
+DY = 0
+LY = 0
+
 """
 if THREAD:
     import threading
@@ -104,10 +109,10 @@ def move(event):
     if event.xdata is None or event.ydata is None:
         return
 
-    x = int(event.xdata)
-    y = int(event.ydata)
+    x = int(event.xdata) + DX
+    y = int(event.ydata) + DY
 
-    print(x, y)
+    print(x - DX, y - DY, x, y)
 
     cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(x, y, g_wcs, CONE)
 
@@ -145,8 +150,17 @@ def main():
 
     # search for clusters in a sub-region of the image
     threshold = 6.0
-    reg = lib_cluster.Region(pixels, background + threshold*dispersion)
-    reg.run_convolution()
+
+    lx = LX
+    if lx == 0:
+        lx = pixels.shape[0]
+
+    ly = LY
+    if ly == 0:
+        ly = pixels.shape[1]
+
+    reg = lib_cluster.Region(pixels[DY:ly, DX:lx], background + threshold*dispersion)
+    pattern, cp_image, peaks = reg.run_convolution()
     max_integral = reg.clusters[0]['integral']
 
     logging.debug('nb clusters: %s, greatest integral: %s',len(reg.clusters), max_integral)
@@ -158,7 +172,7 @@ def main():
     global g_wcs, g_text, g_fig
 
     # coordinates
-    centroid = (reg.clusters[0]['r'], reg.clusters[0]['c'])
+    centroid = (DY + reg.clusters[0]['r'], DX + reg.clusters[0]['c'])
     g_wcs = lwcs.get_wcs(file_name)
     g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
     logging.debug('highest cluster')
@@ -175,7 +189,7 @@ def main():
         g_text = None
         g_fig, main_ax = plt.subplots()
         stars(reg, g_wcs, g_fig)
-        main_ax.imshow(pixels)
+        main_ax.imshow(peaks, interpolation='none')
         g_fig.canvas.mpl_connect('motion_notify_event', move)
         plt.show()
 
