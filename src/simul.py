@@ -20,10 +20,10 @@ def build_pattern(size):
     # transpose y
     y = y[:, np.newaxis]
 
-    y0 = x0 = size / 2
+    y0 = x0 = size // 2
 
     # create a 2D gaussian distribution inside this grid.
-    sigma = size / 5.0
+    sigma = size / 4.0
     pattern = 100.0 * np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
 
     return pattern
@@ -31,7 +31,7 @@ def build_pattern(size):
 
 def has_peak(cp_image, r, c):
     """
-    Check if a peak exists at the (r0, c0) position of the convolution product matrix cp_image
+    Check if a peak exists at the (r0, cnum) position of the convolution product matrix cp_image
     To check if a peak exists:
        - we consider the CP et the specified position
        - we verify that ALL CP at positions immediately around the specified position are lower
@@ -100,7 +100,7 @@ def check(pixels):
     print('background: %s, dispersion: %s' % (int(background), int(dispersion)))
 
     # search for clusters in a sub-region of the image
-    threshold = 5.0
+    threshold = 6.0
     reg = lib_cluster.Region(pixels, background + threshold*dispersion)
     reg.run_convolution()
     max_integral = reg.clusters[0]['integral']
@@ -149,7 +149,7 @@ if __name__ == '__main__':
     check(image)
 
     # we try the clustering algo
-    cp_image = np.zeros_like(image, np.float)
+    cp_image = np.ones_like(image, np.float) * 1000.
 
     """
     we start by building a PSF with a given width
@@ -168,8 +168,11 @@ if __name__ == '__main__':
 
     # print(image.shape, pattern.shape)
 
-    for rnum, row in enumerate(image):
-        for cnum, col in enumerate(row):
+    for r, row in enumerate(image[half:-half, half:-half]):
+        for c, col in enumerate(row):
+            
+            rnum = r + half
+            cnum = c + half
 
             if image[rnum, cnum] < threshold:
                 cp_image[rnum, cnum] = 0
@@ -181,33 +184,14 @@ if __name__ == '__main__':
 
             # convolution product
             cmin = cnum - half
-            pcmin = 0
-            if cmin < 0:
-                pcmin = -cmin
-                cmin = 0
-
-            cmax = cnum + half
-            pcmax = pattern_width - 1
-            if cmax > image.shape[1]:
-                pcmax = pattern_width - 1 - (cmax - image.shape[1])
-                cmax = image.shape[1]
-
+            cmax = cnum + half + 1
             rmin = rnum - half
-            prmin = 0
-            if rmin < 0:
-                prmin = -rmin
-                rmin = 0
+            rmax = rnum + half + 1
 
-            rmax = rnum + half
-            prmax = pattern_width - 1
-            if rmax > image.shape[0]:
-                prmax = pattern_width - 1 - (rmax - image.shape[0])
-                rmax = image.shape[0]
-
-            region = image[rmin:rmax, cmin:cmax]
+            sub_region = image[rmin:rmax, cmin:cmax]
 
             # print("rnum, cnum, rmin, rmax, cmin, cmax, prmin, prmax, pcmin, pcmax", rnum, cnum, rmin, rmax, cmin, cmax, prmin, prmax, pcmin, pcmax)
-            product = np.sum(region * pattern[prmin:prmax, pcmin:pcmax] / max_region)
+            product = np.sum(sub_region * pattern / max_region)
 
             if cp_threshold is None or product < cp_threshold:
                 # get the lower value of the CP
@@ -222,32 +206,31 @@ if __name__ == '__main__':
 
     peaks = np.zeros_like(image, np.float)
 
-    for rnum, row in enumerate(cp_image):
-        for cnum, col in enumerate(row):
+    for r, row in enumerate(cp_image[half:-half, half:-half]):
+        for c, col in enumerate(row):
+            rnum = r + half
+            cnum = c + half
 
-            r0 = rnum
-            c0 = cnum
-
-            if cp_image[r0, c0] > cp_threshold:
+            if cp_image[rnum, cnum] > cp_threshold:
                 """
-                r0, c0 is the center of the convolution zone
+                rnum, cnum is the center of the convolution zone
 
                 check if we have a peak centered at this position:
                 - the CP at the center of the zone must be higher then any CP immediately around the center
                 """
-                peak = has_peak(cp_image, r0, c0)
-                if peak and image[r0, c0] > threshold:
+                peak = has_peak(cp_image, rnum, cnum)
+                if peak and image[rnum, cnum] > threshold:
                     #
                     # if a peak is detected, we get the cluster
                     #
 
-                    # print('peak at [%d %d] %f' % (r0, c0, image[r0, c0]))
+                    # print('peak at [%d %d] %f' % (rnum, cnum, image[rnum, cnum]))
                     x = 3
-                    peaks[r0-x:r0+x+1, c0] = image[r0, c0]
-                    peaks[r0, c0-x:c0+x+1] = image[r0, c0]
+                    peaks[rnum-x:rnum+x+1, cnum] = image[rnum, cnum]
+                    peaks[rnum, cnum-x:cnum+x+1] = image[rnum, cnum]
 
-                    integral, radius, peaks = get_peak(image, cp_image, r0, c0, threshold, peaks)
-                    print('peak at [%d %d] top=%f radius=%d integral=%f' % (r0, c0, image[r0, c0], radius, integral))
+                    integral, radius, peaks = get_peak(image, cp_image, rnum, cnum, threshold, peaks)
+                    print('peak at [%d %d] top=%f radius=%d integral=%f' % (rnum, cnum, image[rnum, cnum], radius, integral))
 
                     # if radius > 3 and integral > 0.0:
 
