@@ -1,38 +1,59 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import library
+# read image
+
 from astropy.io import fits
 
-if __name__ == '__main__':
+def read_image( file_name ):
+    with fits.open(file_name) as data_fits:
+        data_fits.verify('silentfix')
+        header = data_fits[0].header
+        pixels = data_fits[0].data
+    return header, pixels
 
-    # test_Simbad
-    objects = library.get_objects(1.0, 1.0, 0.1)
-    for object in objects:
-        print '%s (%s)' % (object, objects[object])
-    if len(objects) != 14:
-        print 'error'
+# compute background
 
-    # test_WCS
+import numpy as np
+from scipy.optimize import curve_fit
 
-    header = None
-    try:
-        with fits.open('../data/dss.19.59.54.3+09.59.20.9 10x10.fits') as data_fits:
-            try:
-                data_fits.verify('silentfix')
-                header = data_fits[0].header
-            except ValueError as err:
-                logging.error('Error: %s', err)
-    except EnvironmentError as err:
-        logging.error('Cannot open the data fits file. - %s', err)
+def gaussian_model(x, maxvalue, meanvalue, sigma):
+    """
+    Compute a gaussian function
+    """
+    return maxvalue * np.exp(-(x - meanvalue)**2 / (2 * sigma**2))
 
-    w = library.WCS(header)
-    ra, dec = w.convert_to_radec(0, 0)
+def compute_background(pixels):
+    'Compute the noise'
 
-    print ra, dec
+    # Reshape the pixels array as a flat list
+    flat = np.asarray(pixels).ravel()
 
-    if abs(ra - 300.060983768) > 1e-5:
-        print 'error'
+    # sampling size to analyze the background
+    sampling_size = 200
 
-    if abs(dec - 9.90624639801) > 1e5:
-        print 'error'
+    # build the pixel distribution to extract the background
+    y, x = np.histogram(flat, sampling_size)
+
+    # normalize the distribution for the gaussian fit
+    my = np.float(np.max(y))
+    y = y/my
+    mx = np.float(np.max(x))
+    x = x[:-1]/mx
+
+    # compute the gaussian fit for the background
+    fit, _ = curve_fit(gaussian_model, x, y)
+
+    '''
+      maxvalue = fit[0] * my
+    '''
+    background = fit[1] * mx
+    dispersion = abs(fit[2]) * mx
+
+    x *= mx
+    y *= my
+
+    mx = np.float(np.max(x))
+
+    return background, dispersion, mx
+
