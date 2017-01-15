@@ -4,11 +4,12 @@
 import sys
 import matplotlib.pyplot as plt
 from astropy.io import fits
-from library import get_args
+import library
+import mylib
 
 def main():
 
-    file_name, batch = get_args()
+    file_name, batch = library.get_args()
 
     # read image
     with fits.open(file_name) as data_fits:
@@ -18,6 +19,7 @@ def main():
     if header is None:
         return 1
 
+    # console output
     print('cd1_1: {CD1_1:.10f}, cd1_2: {CD1_2:.10f}, cd2_1: {CD2_1:.10f}, cd2_2: {CD2_2:.10f}'.format(**header))
 
     # graphic output
