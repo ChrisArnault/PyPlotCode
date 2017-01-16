@@ -194,8 +194,12 @@ def get_celestial_objects(ra, dec, radius):
             continue
 
         data = line.split('\t')
+        obj_name = data[3].strip()
+        obj_type = data[2].strip()
 
-        objects[data[3].strip()] = data[2].strip()
+        # we filter out the objects of type unknown or hii
+        if  obj_type!='Unknown' and obj_type!='HII':
+            objects[obj_name] = obj_type
 
     return objects, out, req
 
