@@ -5,19 +5,14 @@
 Provided utilities for the exercices
 '''
 
-import urllib2
+import sys, argparse, time
+import urllib.request, urllib.error, urllib.parse
 import numpy as np
-from astropy import wcs
-import time
-
+import astropy.wcs
 
 def dms(angle):
-    """
-    Convert a floating point angle into textual
-    representation Degree:Minute:Second (-> DEC coordinate)
-    :param angle: floating point value
-    :return: Degree:Minute:Second
-    """
+    """ Convert a floating point angle into textual representation
+        Degree:Minute:Second (-> DEC coordinate) """
     degree = int(angle)
     minute = (angle - degree) * 60.0
     second = (minute - int(minute)) * 60.0
@@ -25,56 +20,57 @@ def dms(angle):
 
 
 def hms(angle):
-    """
-    Convert a floating point angle into textual representation Hour:Minute:Second (-> RA coordinate)
-    :param angle: floating point value
-    :return: Hour:Minute:Second
-    """
-    hour1 = angle*24.0/360.0
-    hour2 = int(hour1)
-    minutes = (hour1 - hour2) * 60.0
-    seconds = (minutes - int(minutes)) * 60.0
-    return '[%d:%d:%f]' % (int(hour2), int(minutes), seconds)
+    """ Convert a floating point angle into textual representation
+        Hour:Minute:Second (-> RA coordinate) """
+    hour = angle*24.0/360.0
+    hour2 = int(hour)
+    minute = (hour - hour2) * 60.0
+    second = (minute - int(minute)) * 60.0
+    return '[%d:%d:%f]' % (int(hour2), int(minute), second)
 
 
 def radec(coord):
-    """
-    Convert a floating point array of coordinates into textual
-    representation Hour:Minute:Second (-> RA/DEC coordinates)
-    :param coord: array of coordinates [RA, DEC]
-    :return: text
-    """
+    """ Convert a floating point coordinates into textual representation
+        Hour:Minute:Second (-> RA/DEC coordinates) """
     return 'RA=%s DEC=%s' % (hms(coord[0]), dms(coord[1]))
 
-# pylint: disable=too-few-public-methods
-class WCS(object):
+
+def get_wcs(header):
+    """ Parse the WCS keywords from the primary HDU of an FITS image """
+
+    #header = lib_read_file.read_header(image)
+    wcs_ = astropy.wcs.WCS(header)
+
+    return wcs_
+
+def convert_to_radec(wcs, x, y):
     '''
-    Object able to convert coordinates
+    :param wcs:
+    :param x:
+    :param y:
+    :return:
     '''
-    def __init__(self, header):
-        """ Parse the WCS keywords from the primary HDU of an FITS image """
+    pixel = np.array([[x, y],], np.float_)
+    sky = wcs.wcs_pix2world(pixel, 0)
+    ra, dec = sky[0]
+    return ra, dec
 
-        # header = read_header(image)
-        self.wcs = wcs.WCS(header)
+def convert_to_xy(wcs, ra, dec):
+    '''
+    :param wcs:
+    :param x:
+    :param y:
+    :return:
+    '''
+    coord = np.array([[ra, dec],], np.float_)
+    result = wcs.wcs_world2pix(coord, 0)
+    x, y = result[0]
+    return x, y
 
-    def convert_to_radec(self, x, y):
-        '''convert to ascension/declination'''
-        pixel = np.array([[x, y],], np.float_)
-        sky = self.wcs.wcs_pix2world(pixel, 0)
-        ra, dec = sky[0]
-        return ra, dec
-
-
-def get_objects(ra, dec, radius):
-    """
-    Request from the Simbad server a list of astro objects at the
-    RA DEC position, within the specified acceptance cone
-    :param ra: the RA floating point coordinate
-    :param dec: the DEC floating point coordinate
-    :param radius: the acceptance angle in degree
-    :return: a dictionary of identified objects {objectname: objecttype}
-    """
-
+def get_celestial_objects(ra, dec, radius):
+    '''
+    :return:
+    '''
     def make_req(ra, dec, radius):
         """
         Build a request tu the Simbad server
@@ -83,17 +79,16 @@ def get_objects(ra, dec, radius):
         :param radius: floting value of the acceptance radius (degrees)
         :return: request text
         """
-        def crep(txt, char):
-            ''' substitute characters in a string
-            :param txt:
-            :param char:
+        def crep(text, char):
+            '''
+            :param text: string which must be modified
+            :param char: character to be replaced
             :return:
             '''
-            txt = txt.replace(char, '%%%02X' % ord(char))
-            return txt
+            text = text.replace(char, '%%%02X' % ord(char))
+            return text
 
         host_simbad = 'simbad.u-strasbg.fr'
-        #port = 80
 
         # WGET with the "request" string built as below :
 
@@ -133,33 +128,36 @@ def get_objects(ra, dec, radius):
         return request
 
     def wget(req):
-        '''get information from some http server'''
+        """
+        :param req:
+        :return:
+        """
+
         def send(url):
             '''
-            send utility
             :param url:
             :return:
             '''
             retry = 0
             while retry < 10:
+                # pylint: disable=broad-except
                 try:
-                    req = urllib2.urlopen(url)
-                    # pylint: disable=broad-except
+                    req = urllib.request.urlopen(url)
+
                     try:
-                        # resp = opener.open(req)
-                        txt = req.read()
-                        lines = txt.split('<BR>\n')
+                        text = req.read()
+                        text = text.decode("utf-8")
+                        lines = text.split('<BR>\n')
                         return lines[0]
                     except Exception:
                         print('cannot read')
                     except:
                         raise
 
-                except urllib2.HTTPError:
+                except urllib.error.HTTPError:
+
                     retry += 1
                     time.sleep(0.2)
-                    # print 'url=[%s]' % url
-                    # print e.fp.read()
                 except:
                     raise
             print(retry)
@@ -169,8 +167,13 @@ def get_objects(ra, dec, radius):
         return out
 
     req = make_req(ra, dec, radius)
+
     out = wget(req)
+    if out is None:
+        return '', out, req
+
     out = out.split('\n')
+
     in_data = False
 
     objects = dict()
@@ -180,7 +183,7 @@ def get_objects(ra, dec, radius):
         if line == '':
             continue
         if not in_data:
-            if line == '::data'+':'*74:
+            if line == '::data::'+'::'*36:
                 in_data = True
             continue
 
@@ -188,5 +191,21 @@ def get_objects(ra, dec, radius):
 
         objects[data[3].strip()] = data[2].strip()
 
-    return objects
+    return objects, out, req
+
+def get_celestial_objects_from_pixels(x, y, wcs, angle):
+    '''
+    :param x:
+    :param y:
+    :param wcs:
+    :param angle:
+    :return:
+    '''
+    pixel = np.array([[x, y],], np.float_)
+    sky = wcs.wcs_pix2world(pixel, 0)
+    ra, dec = sky[0]
+    objs, out, req = get_celestial_objects(ra, dec, angle)
+
+    return objs, out, req
+
 

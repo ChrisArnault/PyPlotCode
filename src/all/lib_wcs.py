@@ -11,7 +11,7 @@ The web site to get images from the public ESO database:
 import sys
 import urllib.request, urllib.error, urllib.parse
 import numpy as np
-from time import sleep
+import time
 import astropy.wcs
 
 import lib_read_file
@@ -41,10 +41,10 @@ def radec(coord):
     return 'RA=%s DEC=%s' % (hms(coord[0]), dms(coord[1]))
 
 
-def get_wcs(image):
+def get_wcs(header):
     """ Parse the WCS keywords from the primary HDU of an FITS image """
 
-    header = lib_read_file.read_header(image)
+    #header = lib_read_file.read_header(image)
     wcs_ = astropy.wcs.WCS(header)
 
     return wcs_
@@ -163,7 +163,7 @@ def get_celestial_objects(ra, dec, radius):
                 except urllib.error.HTTPError:
 
                     retry += 1
-                    sleep(0.2)
+                    time.sleep(0.2)
                 except:
                     raise
             print(retry)
