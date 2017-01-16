@@ -33,11 +33,12 @@ else
   cmd="$*"
 fi
 
-export DISPLAY=${MYIP}:0
-xhost + ${MYIP}
+#export DISPLAY=${MYIP}:0
+#xhost + ${MYIP}
 
 echo
-docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -it --rm -v ${PWD}:/work -w /work ${img} ${cmd}
+#docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -it --rm -v ${PWD}:/work -w /work ${img} ${cmd}
+docker run -it --rm -v ${PWD}:/work -w /work ${img} ${cmd}
 echo
 
 
