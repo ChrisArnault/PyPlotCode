@@ -269,3 +269,21 @@ class Region(object):
 
         return pattern, cp_image, peaks
 
+    def find_clusters(self, x0, y0, radius):
+        '''
+        :param x0:
+        :param y0:
+        :param radius:
+        :return:
+        '''
+        results = []
+        for x in range(radius*2):
+            for y in range(radius*2):
+                # coord = '%f %f', x + x0 - radius, y + y0 - radius
+                coord = "[%f %f]" % (x + x0 - radius, y + y0 - radius)
+                if coord in self.cluster_dict:
+                    cluster = self.cluster_dict[coord]
+                    results.append(cluster)
+
+        return results
+

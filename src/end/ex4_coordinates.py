@@ -7,43 +7,48 @@ import numpy as np
 import library
 import mylib
 
-g_text = None
-g_wcs = None
-g_reg = None
-g_fig = None
+class Mover():
 
-def move(event):
+    def __init__(self, the_region, the_wcs, the_fig):
+        self.region = the_region
+        self.wcs = the_wcs
+        self.fig = the_fig
+        self.text = None
 
-    global g_text
+    def __call__(self, event):
 
-    if event.xdata is None or event.ydata is None:
-        return
+        if event.xdata is None or event.ydata is None:
+            return
+        
+        x = int(event.xdata)
+        y = int(event.ydata)
 
-    x = int(event.xdata)
-    y = int(event.ydata)
+        ra, dec = library.convert_to_radec(self.wcs, x, y)
 
-    ra, dec = library.convert_to_radec(g_wcs, x, y)
+        results = self.region.find_clusters(x, y, 5)
+        print('region:',self.region.cluster_dict)
 
-    results = g_reg.find_clusters(x, y, 5)
+        ids = ['%s' % cl.cluster_id for cl in results]
+        print(x,y,':',ids)
 
-    ids = ['%s' % cl.cluster_id for cl in results]
+        if self.text is not None:
+            self.text.remove()
+            self.text = None
 
-    if g_text is not None:
-        g_text.remove()
-        g_text = None
+        if len(results) > 0:
 
-    if len(results) > 0:
+            print('COUCOU 3')
 
-        g_text = plt.text(x, y, '\n'.join(ids), fontsize=14, color='white')
-        g_fig.canvas.draw()
+            self.text = plt.text(x, y, '\n'.join(ids), fontsize=14, color='white')
+            self.fig.canvas.draw()
 
-        for cluster in results:
-            centroid = cluster.centroid
-            x = centroid.c
-            y = centroid.r
-            logging.info('x, y: %f, %f', x, y)
-    else:
-        g_fig.canvas.draw()
+            for cluster in results:
+                centroid = cluster.centroid
+                x = centroid.c
+                y = centroid.r
+                logging.info('x, y: %f, %f', x, y)
+        else:
+            self.fig.canvas.draw()
 
 def main():
 
@@ -56,23 +61,23 @@ def main():
 
     # search for clusters in a sub-region of the image
     threshold = 6.0
-    g_reg = mylib.Region(pixels, background + threshold*dispersion)
-    g_reg.run_convolution()
+    region = mylib.Region(pixels, background + threshold*dispersion)
+    region.run_convolution()
 
     # coordinates ra dec
-    max_cluster = g_reg.clusters[0]
-    g_wcs = library.get_wcs(header)
-    ra, dec = library.convert_to_radec(g_wcs, max_cluster['c'], max_cluster['r'])
+    max_cluster = region.clusters[0]
+    wcs = library.get_wcs(header)
+    ra, dec = library.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
 
     # console output
     print('right ascension: {:.3f}, declination: {:.3f}'.format(ra, dec))
 
     # graphic output
     if not batch:
-        g_text = None
-        g_fig, main_ax = plt.subplots()
-        main_ax.imshow(g_reg.image)
-        g_fig.canvas.mpl_connect('motion_notify_event', move)
+        fig, main_ax = plt.subplots()
+        main_ax.imshow(region.image)
+        fig.canvas.mpl_connect('motion_notify_event',
+          Mover(the_region=region,the_wcs=wcs,the_fig=fig))
         plt.show()
 
     return 0
