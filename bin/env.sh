@@ -24,6 +24,7 @@ export NPAC_ROOT="${NPAC_ROOT}"
 
 alias oval=oval.py
 alias anarun=anarun.sh
+alias anarunx=anarunx.sh
 alias cpstud=copy_to_student.sh
 
 # prepare font cache

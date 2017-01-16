@@ -10,7 +10,7 @@ import argparse
 from lib_logging import logging
 import lib_read_file
 
-DATAPATH = '../data/fits/'
+DATAPATH = '../../data/fits/'
 DATAFILE = 'NPAC'
 
 def get_args(title):

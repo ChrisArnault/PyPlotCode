@@ -25,28 +25,15 @@ targets = [
     {"name": "ovalfile", "command": "pylint ovalfile"},
 
     {"name": "lib_logging", "command": "python lib_logging.py"},
+
+    { "name" : "ex1_read_image" , "command" : "python ex1_read_image.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "ex2_background" , "command" : "python ex2_background.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "ex3_clusters"   , "command" : "python ex3_clusters.py -b ../../data/fits/NPAC.fits"    },
+    { "name" : "ex4_coordinates", "command" : "python ex4_coordinates.py -b ../../data/fits/NPAC.fits" },
+    { "name" : "ex5_find_stars" , "command" : "python ex5_find_stars.py -b ../../data/fits/NPAC.fits"  },
 ]
 
-# generated targets
-
-exercices = (
-    "ex1_read_image",
-    "ex2_background",
-    "ex3_clusters",
-    "ex4_coordinates",
-    "ex5_find_stars",
-)
-
-import os
-for exercice in exercices:
-    for index, img in enumerate(os.listdir('data')):
-        token = "data{}".format(index)
-        target = "{}.{}".format(exercice,token)
-        command = "./{}.py -b data/{}".\
-            format(exercice,img,exercice,exercice,token)
-        targets.append({"name": target, "command": command})
-
-# Filters
+# filters
 
 run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "ex(4|5)%"}, ]
 

@@ -173,7 +173,7 @@ def main():
 
     # coordinates
     centroid = (DY + reg.clusters[0]['r'], DX + reg.clusters[0]['c'])
-    g_wcs = lwcs.get_wcs(file_name)
+    g_wcs = lwcs.get_wcs(header)
     g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
     logging.debug('highest cluster')
     logging.debug('right ascension: %.3f, declination: %.3f',g_ra, g_dec)

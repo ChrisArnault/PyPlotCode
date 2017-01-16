@@ -24,7 +24,7 @@ class Display(threading.Thread):
         self.header_m81 = lib_read_file.read_header(self.m81)
         self.pixels_m81 = lib_read_file.read_pixels(self.m81)
 
-        self.wcs_m81 = lwcs.get_wcs(self.m81)
+        self.wcs_m81 = lwcs.get_wcs(self.header_m81)
 
         self.fig, self.main_ax = plt.subplots()
 
@@ -49,7 +49,7 @@ class Display(threading.Thread):
             header_nn = lib_read_file.read_header(npacnn)
             pixels_nn = lib_read_file.read_pixels(npacnn)
 
-            wcs_npacnn = lwcs.get_wcs(npacnn)
+            wcs_npacnn = lwcs.get_wcs(header_nn)
             ra0, dec0 = lwcs.convert_to_radec(wcs_npacnn, 0, 0)
             ra1, dec1 = lwcs.convert_to_radec(wcs_npacnn, pixels_nn.shape[0], pixels_nn.shape[1])
 
