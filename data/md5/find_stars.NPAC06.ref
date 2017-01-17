@@ -1,0 +1,8 @@
+name of image: ../fits/NPAC06.fits
+cd1_1: -0.00047036569901843, cd1_2: -4.5899500151465e-05, cd2_1: -4.4886742681018e-05, cd2_2: 0.00047047771686703
+height: 106, width: 106
+background: 2797, dispersion: 151
+number of clusters:  1, greatest integral:  547134, centroid x: 50.0, centroid y: 57.0
+cluster 0 57 50 547134 13422 4
+right ascension: 149.392, declination: 69.230
+0> celestial object: GPM 149.391696+69.229356 Star

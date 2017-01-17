@@ -1,0 +1,13 @@
+name of image: ../fits/NPAC13.fits
+cd1_1: -0.0004695350811091, cd1_2: -5.3113859711489e-05, cd2_1: -5.2140590844558e-05, cd2_2: 0.00046965013516216
+height: 106, width: 106
+background: 2671, dispersion: 151
+number of clusters:  4, greatest integral:  452261, centroid x: 52.0, centroid y:  5.0
+cluster 0 5 52 452261 13284 4
+cluster 1 90 86 389134 12570 4
+cluster 2 20 94 345805 10013 4
+cluster 3 34 15 340804 10173 4
+right ascension: 148.457, declination: 69.027
+0> celestial object: GPM 148.454129+69.027204 Star
+1> celestial object: 2MASS J09533548+6903542 IR
+2> celestial object: 2MASS J09533555+6901553 IR
