@@ -99,6 +99,39 @@ g_text = None
 g_wcs = None
 g_fig = None
 
+def move_ex4(event):
+    'TO BE DONE: What is it for ?'
+
+    global g_text
+
+    if event.xdata is None or event.ydata is None:
+        return
+
+    x = int(event.xdata)
+    y = int(event.ydata)
+
+    ra, dec = lwcs.convert_to_radec(g_wcs, x, y)
+
+    results = g_reg.find_clusters(x, y, 5)
+
+    if g_text is not None:
+        g_text.remove()
+        g_text = None
+
+    if len(results) > 0:
+
+        # logging.info('----------------x=%f y=%f RA=%f DEC=%f', x, y, ra - g_ra0, dec - g_dec0)
+
+        # g_text = plt.text(x, y, '', fontsize=14, color='white')
+        # g_fig.canvas.draw()
+
+        for cluster in results:
+            x = cluster['c']
+            y = cluster['r']
+            logging.info('x, y: %f, %f', x, y)
+    else:
+        g_fig.canvas.draw()
+
 def move(event):
 
     'connect to the mouse motion event to try if a known star is around'
@@ -175,8 +208,7 @@ def main():
     centroid = (DY + reg.clusters[0]['r'], DX + reg.clusters[0]['c'])
     g_wcs = lwcs.get_wcs(header)
     g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
-    logging.debug('highest cluster')
-    logging.debug('right ascension: %.3f, declination: %.3f',g_ra, g_dec)
+    logging.info('right ascension: %.3f, declination: %.3f',g_ra, g_dec)
 
     # celestial objects
     #for nic, ic in enumerate(reg.clusters):
