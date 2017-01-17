@@ -1,1 +1,5 @@
+name of image: ../../data/fits/NPAC.fits
+cd1_1: -0.00047034064052636, cd1_2: -4.6243379555104e-05, cd2_1: -4.5225684880599e-05, cd2_2: 0.00047045251481443
+height: 106, width: 106
+background: 2816, dispersion: 151
 celestial object: TYC 4383-1121-1

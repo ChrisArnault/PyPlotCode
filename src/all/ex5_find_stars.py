@@ -11,9 +11,8 @@ Test program to
 
 import sys
 from lib_logging import logging
-from lib_args import get_args
 import matplotlib.pyplot as plt
-
+import lib_args
 import lib_read_file
 import lib_cluster
 import lib_background
@@ -134,19 +133,19 @@ def main():
     Main function of the program
     '''
 
-    file_name, header, pixels, batch = get_args('Exercise 5')
+    # step 1 : read file
+    file_name, batch = lib_args.interpret_args()
+    header, pixels = lib_read_file.read_first_image(file_name)
     if header is None:
         return 1
+    logging.info('name of image: %s', file_name)
+    logging.info('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
+        header['CD1_1'], header['CD1_2'], header['CD2_1'], header['CD2_2'])
+    logging.info('height: %s, width: %s', pixels.shape[0], pixels.shape[1])
 
-    logging.debug('name of image: %s', file_name)
-    logging.debug('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
-                 header['CD1_1'], header['CD1_2'], header['CD2_1'], header['CD2_2'])
-    logging.debug('height: %s, width: %s',
-                  pixels.shape[0], pixels.shape[1])
-
-    # compute background
+    # step 2 : compute background
     background, dispersion, _ = lib_background.compute_background(pixels)
-    logging.debug('background: %s, dispersion: %s', int(background), int(dispersion))
+    logging.info('background: %s, dispersion: %s', int(background), int(dispersion))
 
     # search for clusters in a sub-region of the image
     threshold = 6.0
