@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import matplotlib.pyplot as plt
+import sys, logging
 import numpy as np
-import library
-import mylib
-import logging
+import matplotlib.pyplot as plt
+import lib_args, lib_fits, lib_background, lib_cluster
+import lib_wcs
 
 class Mover():
 
@@ -24,7 +23,7 @@ class Mover():
         x = int(event.xdata)
         y = int(event.ydata)
 
-        #ra, dec = library.convert_to_radec(self.wcs, x, y)
+        #ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
 
         results = self.region.find_clusters(x, y, 5)
         # print('region:',self.region.cluster_coords)
@@ -50,19 +49,19 @@ class Mover():
 
 def main():
 
-    file_name, batch = library.get_args()
-    header, pixels = mylib.read_image(file_name)
-    background, dispersion, _ = mylib.compute_background(pixels)
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
+    background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters in a sub-region of the image
     threshold = 6.0
-    region = mylib.Region(pixels, background + threshold*dispersion)
+    region = lib_cluster.Region(pixels, background + threshold*dispersion)
     region.run_convolution()
 
     # coordinates ra dec
     max_cluster = region.clusters[0]
-    wcs = library.get_wcs(header)
-    ra, dec = library.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
+    wcs = lib_wcs.get_wcs(header)
+    ra, dec = lib_wcs.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
 
     # console output
     print('right ascension: {:.3f}, declination: {:.3f}'.format(ra, dec))

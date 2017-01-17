@@ -4,8 +4,8 @@
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
-import library
-import mylib
+import lib_args, lib_fits, lib_background, lib_cluster
+import lib_wcs, lib_stars
 
 CONE = 0.001
 
@@ -16,7 +16,7 @@ def stars(region, wcs, fig):
 
     for cluster in region.clusters:
 
-        cobjects, _, _ = library.get_celestial_objects_from_pixels(cluster['c'], cluster['r'], wcs, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(cluster['c'], cluster['r'], wcs, CONE)
 
         for cobj in cobjects:
             if cobj not in g_all_stars:
@@ -41,7 +41,7 @@ class Mover():
         x = int(event.xdata)
         y = int(event.ydata)
 
-        cobjects, _, _ = library.get_celestial_objects_from_pixels(x, y, self.wcs, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(x, y, self.wcs, CONE)
 
         if self.text is not None:
             self.text.remove()
@@ -56,22 +56,22 @@ class Mover():
 
 def main():
 
-    file_name, batch = library.get_args()
-    header, pixels = mylib.read_image(file_name)
-    background, dispersion, _ = mylib.compute_background(pixels)
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
+    background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters in a sub-region of the image
     threshold = 6.0
-    region = mylib.Region(pixels, background + threshold*dispersion)
+    region = lib_cluster.Region(pixels, background + threshold*dispersion)
     pattern, cp_image, peaks = region.run_convolution()
 
     # coordinates ra dec
     max_cluster = region.clusters[0]
-    wcs = library.get_wcs(header)
-    ra, dec = library.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
+    wcs = lib_wcs.get_wcs(header)
+    ra, dec = lib_wcs.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
 
     # celestial objects
-    cobjects, _, _ = library.get_celestial_objects_from_pixels(max_cluster['c'], max_cluster['r'], wcs, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(max_cluster['c'], max_cluster['r'], wcs, CONE)
 
     # console output
     for cobj in cobjects.keys():

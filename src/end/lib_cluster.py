@@ -1,101 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# interpret args
 
-import argparse
-
-def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-b', action="store_true", default=False, \
-                        help='batch mode, with no graphics and no interaction')
-    parser.add_argument('file', nargs='?',
-                        help='fits input file')
-    args = parser.parse_args()
-    if not args.file:
-        if not args.b:
-            args.file = input('file name [%s]? ' % DATAFILE)
-        if args.b or len(args.file) == 0:
-            args.file = DATAFILE
-        args.file = DATAPATH + args.file + '.fits'
-
-    return args.file, args.b
+'''
+Search clusters in images.
+'''
 
 
-# read image
-
-from astropy.io import fits
-
-def read_image( file_name ):
-    with fits.open(file_name) as data_fits:
-        data_fits.verify('silentfix')
-        header = data_fits[0].header
-        pixels = data_fits[0].data
-    return header, pixels
-
-# compute background
-
+import sys
 import numpy as np
-from scipy.optimize import curve_fit
 
-def gaussian_model(x, maxvalue, meanvalue, sigma):
-    """
-    Compute a gaussian function
-    """
-    return maxvalue * np.exp(-(x - meanvalue)**2 / (2 * sigma**2))
 
-def compute_background(pixels):
-    'Compute the noise'
-
-    # Reshape the pixels array as a flat list
-    flat = np.asarray(pixels).ravel()
-
-    # sampling size to analyze the background
-    sampling_size = 200
-
-    # build the pixel distribution to extract the background
-    y, x = np.histogram(flat, sampling_size)
-
-    # normalize the distribution for the gaussian fit
-    my = np.float(np.max(y))
-    y = y/my
-    mx = np.float(np.max(x))
-    x = x[:-1]/mx
-
-    # compute the gaussian fit for the background
-    fit, _ = curve_fit(gaussian_model, x, y)
-
-    '''
-      maxvalue = fit[0] * my
-    '''
-    background = fit[1] * mx
-    dispersion = abs(fit[2]) * mx
-
-    x *= mx
-    y *= my
-
-    mx = np.float(np.max(x))
-
-    return background, dispersion, mx
-
-# clustering
-
-class Region(object):
+class Region():
 
     '''
     Setup a sub-region of the full image
     and initialize the local arrays needed to search all clusters
     '''
 
-    # pylint: disable=too-many-instance-attributes
-
     def __init__(self, region, threshold):
-
-        '''
-        :param region:
-        :param threshold:
-        :return:
-        '''
 
         global myregion
 
@@ -122,6 +45,8 @@ class Region(object):
         image to detect objects
         this pattern has a form of a 2D centered normalized gaussian
         """
+
+        if size/2 == 0: raise ValueError
 
         x = np.arange(0, size, 1, float)
         y = np.arange(0, size, 1, float)
@@ -185,15 +110,48 @@ class Region(object):
 
     def run_convolution(self):
 
-        #
+        """
+        procedure to construct all clusters
+        using a convolution based algorithm
+        """
+
         # define a convolution image that stores the convolution products at each pixel position
-        #
         cp_image = np.zeros_like(self.region, np.float)
 
+        """
+        we start by building a PSF with a given width
+        TODO we should study the impact of the size of this pattern
+        """
         pattern_width = 9
         pattern = self.build_pattern(pattern_width)
+        #print('max2={} shape={} pattern={}'.format(np.max(self.region), repr(self.region.shape), pattern.shape[0]))
+
+        """
+        principle:
+        - we scan the complete region (rows/columns)
+        - at every position:
+            - we apply a fix pattern made of one 2D normalized gaussian distribution
+                - width = 9
+                - magnitude = 1.0
+            - we extract one zone of the original image map with same shape as the pattern
+            - this zone is normalized against the greatest magnitude of the image
+            - this zone is convoluted with the pattern (convolution product - CP)
+            - if the CP is greater than a threshold, the CP is stored at the row/column
+                position in a convolution image (CI)
+        - we then start a scan of the convolution image (CI):
+            - at every position we detect if there is a peak:
+                - we extract a 3x3 region of the CI centered at the current position
+                - a peak is detected when ALL pixels around the center of this little region are below the center.
+            - when a peak is detected, we get the cluster (the group of pixels around a peak):
+                - accumulate pixels circularly around the peak until the sum of pixels at a given distance
+                    is loxer then the threshold
+                - we compute the integral of pixel values of the cluster
+        - this list of clusters is returned.
+        """
 
         half = int(pattern_width/2)
+
+        #print('half {}'.format(half))
 
         cp_threshold = None
 
@@ -228,6 +186,14 @@ class Region(object):
                 if cp_threshold is None or product < cp_threshold:
                     # get the lower value of the CP
                     cp_threshold = product
+
+                """
+                logging.debug('r=%d c=%d [%d:%d, %d:%d] %f',
+                              rnum, cnum,
+                              rnum, rnum + pattern_width,
+                              cnum, cnum + pattern_width,
+                              product)
+                """
 
                 # store the convolution product
                 cp_image[rnum, cnum] = product
@@ -302,20 +268,28 @@ class Region(object):
         return pattern, cp_image, peaks
 
     def find_clusters(self, x0, y0, radius):
-        '''
-        :param x0:
-        :param y0:
-        :param radius:
-        :return:
-        '''
+
         results = []
+
         for x in range(radius*2):
             for y in range(radius*2):
-                coord = '%f %f', x + x0 - radius, y + y0 - radius
+                # coord = '%f %f', x + x0 - radius, y + y0 - radius
                 coord = "[%f %f]" % (x + x0 - radius, y + y0 - radius)
                 if coord in self.cluster_coords:
                     cluster = self.cluster_coords[coord]
                     results.append(cluster)
 
         return results
+
+
+def tests():
+
+    ''' Unit tests '''
+    
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(tests())
+
 

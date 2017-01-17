@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 """
 Test program to
 - open a fits files
@@ -11,14 +12,11 @@ Test program to
 pylint --extension-pkg-whitelist=numpy step2_background.py
 """
 
+
+import logging
 from matplotlib.widgets import Slider
 import matplotlib.pyplot as plt
-
-import lib_read_file
-import lib_background
-
-
-DATAFILES = 'data/student/NPAC.fits'
+import lib_args, lib_fits, lib_background
 
 pixels = None
 imgplot = None
@@ -26,6 +24,7 @@ fig = None
 
 
 def update_slider(val):
+
     global pixels
     global imgplot
     global fig
@@ -53,6 +52,7 @@ def update_slider(val):
 
 
 def main():
+
     """The real main function"""
     global s_thresh
     global pixels
@@ -61,20 +61,25 @@ def main():
 
     logging.basicConfig(level=logging.DEBUG)
 
-    header, pixels = lib_read_file.read_first_image(DATAFILES)
-    background, dispersion, max_x = lib.background.compute_background(pixels)
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
+    background, dispersion, max_x = lib_background.compute_background(pixels)
 
-    # pylint: disable=unused-variable
-    fig, main_ax = plt.subplots()
-    imgplot = main_ax.imshow(pixels)
+    if not batch:
+        
+        fig, main_ax = plt.subplots()
+        imgplot = main_ax.imshow(pixels)
 
-    ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03])
-    s_thresh = Slider(ax_thresh, 'Threshold', 0.0, max_x, valinit=background)
+        ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03])
+        s_thresh = Slider(ax_thresh, 'Threshold', 0.0, max_x, valinit=background)
 
-    s_thresh.on_changed(update_slider)
-    update_slider(background)
+        s_thresh.on_changed(update_slider)
+        update_slider(background)
 
-    plt.show()
+        plt.show()
+
 
 if __name__ == '__main__':
     main()
+
+

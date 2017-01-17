@@ -7,7 +7,7 @@ import argparse
 import matplotlib.pyplot as plt
 
 from lib_logging import logging
-import lib_read_file
+import lib_fits
 import lib_wcs as lwcs
 import numpy as np
 import time
@@ -21,7 +21,7 @@ class Display(threading.Thread):
         threading.Thread.__init__(self)
 
         self.m81 = DATAPATH + 'misc/M81' + '.fits'
-        self.header_m81, self.pixels_m81 = lib_read_file.read_first_image(self.m81)
+        self.header_m81, self.pixels_m81 = lib_fits.read_first_image(self.m81)
         self.wcs_m81 = lwcs.get_wcs(self.header_m81)
 
         self.fig, self.main_ax = plt.subplots()
@@ -44,7 +44,7 @@ class Display(threading.Thread):
             npacnn = DATAPATH + 'student/NPAC%02d' % i + '.fits'
             print(npacnn)
 
-            header_nn, pixels_nn = lib_read_file.read_first_image(npacnn)
+            header_nn, pixels_nn = lib_fits.read_first_image(npacnn)
 
             wcs_npacnn = lwcs.get_wcs(header_nn)
             ra0, dec0 = lwcs.convert_to_radec(wcs_npacnn, 0, 0)

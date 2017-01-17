@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: ISO-8859-1 -*-
 
+
+import os
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RadioButtons
-import os
+import lib_args
 
 
 def file_selector(where, select='', callback=None):
@@ -50,6 +52,8 @@ def set_fs(label):
 
 
 if __name__ == '__main__':
-    fig, axis = plt.subplots()
-    fs_widget = file_selector('data/student', select='.fits', callback=set_fs)
-    plt.show()
+    file_name, batch = lib_args.get_args()
+    if not batch:
+        fig, axis = plt.subplots()
+        fs_widget = file_selector('../../data/fits', select='.fits', callback=set_fs)
+        plt.show()

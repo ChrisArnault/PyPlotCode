@@ -8,7 +8,7 @@ import subprocess
 
 import matplotlib.pyplot as plt
 
-import lib_read_file
+import lib_fits
 import lib_wcs as lwcs
 import numpy as np
 import time
@@ -30,7 +30,7 @@ class Display(object):
     def __init__(self):
 
         self.image_file_name = get_fits_file(1)
-        self.header_image, self.pixels_image = lib_read_file.read_first_image(self.image_file_name)
+        self.header_image, self.pixels_image = lib_fits.read_first_image(self.image_file_name)
 
         self.fig, self.main_ax = plt.subplots()
 

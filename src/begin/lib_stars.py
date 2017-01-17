@@ -2,53 +2,19 @@
 # -*- coding: utf-8 -*-
 
 '''
-Provided utilities for the exercices
+Utilities for SIMBAD access
 '''
 
-import sys, argparse, time
+import sys, time
 import urllib.request, urllib.error, urllib.parse
 import numpy as np
 import astropy.wcs
 
-ddef get_wcs(header):
-    """ Parse the WCS keywords from the primary HDU of an FITS image """
-
-    #header = lib_read_file.read_header(image)
-    wcs_ = astropy.wcs.WCS(header)
-
-    return wcs_
-
-def convert_to_radec(wcs, x, y):
-    '''
-    :param wcs:
-    :param x:
-    :param y:
-    :return:
-    '''
-    pixel = np.array([[x, y],], np.float_)
-    sky = wcs.wcs_pix2world(pixel, 0)
-    ra, dec = sky[0]
-    return ra, dec
-
-def convert_to_xy(wcs, ra, dec):
-    '''
-    :param wcs:
-    :param x:
-    :param y:
-    :return:
-    '''
-    coord = np.array([[ra, dec],], np.float_)
-    result = wcs.wcs_world2pix(coord, 0)
-    x, y = result[0]
-    return x, y
-
 def get_celestial_objects(ra, dec, radius):
-    '''
-    :return:
-    '''
+
     def make_req(ra, dec, radius):
         """
-        Build a request tu the Simbad server
+        Build a request to the Simbad server
         :param ra: floating point value of the RA coordinate
         :param dec: floating point value of the DEC coordinate
         :param radius: floting value of the acceptance radius (degrees)
@@ -163,19 +129,15 @@ def get_celestial_objects(ra, dec, radius):
             continue
 
         data = line.split('\t')
-
-        objects[data[3].strip()] = data[2].strip()
+        obj_name = data[3].strip()
+        obj_type = data[2].strip()
+        if  obj_type!='Unknown' and obj_type!='HII':
+            objects[obj_name] = obj_type
 
     return objects, out, req
 
 def get_celestial_objects_from_pixels(x, y, wcs, angle):
-    '''
-    :param x:
-    :param y:
-    :param wcs:
-    :param angle:
-    :return:
-    '''
+
     pixel = np.array([[x, y],], np.float_)
     sky = wcs.wcs_pix2world(pixel, 0)
     ra, dec = sky[0]
@@ -185,33 +147,10 @@ def get_celestial_objects_from_pixels(x, y, wcs, angle):
 
 if __name__ == '__main__':
 
-    # test_Simbad
-    objects = library.get_objects(1.0, 1.0, 0.1)
-    for object in objects:
+    ''' Unit tests '''
+
+    for object in get_celestial_objects(1.0, 1.0, 0.1): 
         print('{} ({})'.format(object, objects[object]))
-    if len(objects) != 14:
-        print('error')
+    if len(objects) != 14: print('error')
 
-    # test_WCS
-    header = None
-    try:
-        with fits.open('../data/dss.19.59.54.3+09.59.20.9 10x10.fits') as data_fits:
-            try:
-                data_fits.verify('silentfix')
-                header = data_fits[0].header
-            except ValueError as err:
-                logging.error('Error: %s', err)
-    except EnvironmentError as err:
-        logging.error('Cannot open the data fits file. - %s', err)
-
-    w = library.WCS(header)
-    ra, dec = w.convert_to_radec(0, 0)
-
-    print(ra, dec)
-
-    if abs(ra - 300.060983768) > 1e-5:
-        print('error')
-
-    if abs(dec - 9.90624639801) > 1e5:
-        print('error')
 

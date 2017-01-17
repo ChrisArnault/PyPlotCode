@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 """
 Test program to
 - open a fits files
@@ -9,14 +10,12 @@ Test program to
 - display the image
 """
 
+
 import sys
 from lib_logging import logging
 import matplotlib.pyplot as plt
-import lib_args
-import lib_read_file
-import lib_cluster
-import lib_background
-import lib_wcs as lwcs
+import lib_args, lib_fits, lib_background, lib_cluster
+import lib_wcs, lib_stars
 
 CONE = 0.001
 THREAD = False
@@ -25,6 +24,7 @@ DX = 0
 LX = 0
 DY = 0
 LY = 0
+
 
 """
 if THREAD:
@@ -167,8 +167,8 @@ def main():
     '''
 
     # step 1 : read file
-    file_name, batch = lib_args.interpret_args()
-    header, pixels = lib_read_file.read_first_image(file_name)
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
     if header is None:
         return 1
     logging.info('name of image: %s', file_name)
@@ -206,8 +206,8 @@ def main():
 
     # coordinates
     centroid = (DY + reg.clusters[0]['r'], DX + reg.clusters[0]['c'])
-    g_wcs = lwcs.get_wcs(header)
-    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
+    g_wcs = lib_wcs.get_wcs(header)
+    g_ra, g_dec = lib_wcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
     logging.info('right ascension: %.3f, declination: %.3f',g_ra, g_dec)
 
     # celestial objects
@@ -216,7 +216,7 @@ def main():
         r = DY + ic['r']
         c = DX + ic['c']
         # cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[1], centroid[0], g_wcs, CONE)
-        cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(c, r, g_wcs, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(c, r, g_wcs, CONE)
         for cobj in list(cobjects.items()):
             logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 

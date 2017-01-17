@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from matplotlib.widgets import Slider
-
-from lib_read_file import *
-from lib_cluster import *
-from lib_background import *
 
 """
 Test program to
@@ -15,47 +10,56 @@ Test program to
 - display the image
 """
 
-DATAFILES = 'data/student/NPAC.fits'
+
+import logging
+from matplotlib.widgets import Slider
+import lib_args, lib_fits, lib_background, lib_cluster 
+
 
 def main():
+
     logging.basicConfig(level=logging.DEBUG)
 
-    header, pixels = lib_read_file.read_first_image(DATAFILES)
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
 
     # shape:
     #   first element=#rows (-> image height)
     #   second element=#columns (-> image width)
 
-    background, dispersion, max_x = compute_background(pixels)
+    background, dispersion, max_x = lib_background.compute_background(pixels)
 
     # search for clusters in a sub-region of the image
     # we set a threshold
 
     threshold = 6.0
-    r = Region(pixels, background + threshold*dispersion)
-    r.run()
+    region = lib_cluster.Region(pixels, background + threshold*dispersion)
+    region.run_convolution()
 
-    logging.info('%d clusters', len(r.clusters))
+    logging.info('%d clusters', len(region.clusters))
 
-    fig, main_ax = plt.subplots()
-    imgplot = main_ax.imshow(r.image)
+    if not batch:
+        
+        fig, main_ax = plt.subplots()
+        imgplot = main_ax.imshow(region.image)
 
-    axcolor = 'lightgoldenrodyellow'
-    ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03], axisbg=axcolor)
-    s_thresh = Slider(ax_thresh, 'Threshold', 0.0, 30.0, valinit=threshold)
+        axcolor = 'lightgoldenrodyellow'
+        ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03], axisbg=axcolor)
+        s_thresh = Slider(ax_thresh, 'Threshold', 0.0, 30.0, valinit=threshold)
 
-    def update(val):
-        threshold = s_thresh.val
-        print(background, threshold, dispersion, background + threshold*dispersion)
-        r.run(background + threshold*dispersion)
-        logging.info('%d clusters', len(r.clusters))
+        def update(val):
 
-        imgplot.set_data(r.image)
-        fig.canvas.draw_idle()
+            threshold = s_thresh.val
+            print(background, threshold, dispersion, background + threshold*dispersion)
+            region.run(background + threshold*dispersion)
+            logging.info('%d clusters', len(region.clusters))
 
-    s_thresh.on_changed(update)
+            imgplot.set_data(region.image)
+            fig.canvas.draw_idle()
 
-    plt.show()
+        s_thresh.on_changed(update)
+
+        plt.show()
 
 
 if __name__ == '__main__':
