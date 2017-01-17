@@ -161,11 +161,12 @@ def main():
     reg = lib_cluster.Region(pixels[DY:ly, DX:lx], background + threshold*dispersion)
     pattern, cp_image, peaks = reg.run_convolution()
     max_integral = reg.clusters[0]['integral']
-
-    logging.debug('nb clusters: %s, greatest integral: %s',len(reg.clusters), max_integral)
+    
+    logging.info('number of clusters: %2d, greatest integral: %7d, centroid x: %4.1f, centroid y: %4.1f',
+                 len(reg.clusters), max_integral, reg.clusters[0]['c'], reg.clusters[0]['r'])
 
     for nc, ic in enumerate(reg.clusters):
-        logging.debug('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
+        logging.info('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
 
     # globals, for graphics
     global g_wcs, g_text, g_fig
