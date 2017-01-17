@@ -57,7 +57,8 @@ class StarScan(object):
         y, x = self.cluster['r'], self.cluster['c']
 
         #g_io_lock.acquire()
-        cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(x, y, self.wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -146,8 +147,8 @@ def move(event):
 
     print(x - DX, y - DY, x, y)
 
-    cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(x, y, g_wcs, CONE)
-
+    ra, dec = lib_wcs.convert_to_radec(g_wcs,x,y)
+    cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
     if g_text is not None:
         g_text.remove()
         g_text = None
@@ -215,8 +216,8 @@ def main():
         #ic = reg.clusters[0]
         r = DY + ic['r']
         c = DX + ic['c']
-        # cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[1], centroid[0], g_wcs, CONE)
-        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(c, r, g_wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(g_wcs,c,r)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
         for cobj in list(cobjects.items()):
             logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 

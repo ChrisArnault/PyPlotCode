@@ -11,14 +11,12 @@ Test program to
 """
 
 
-import logging
+from lib_logging import logging
 from matplotlib.widgets import Slider
 import lib_args, lib_fits, lib_background, lib_cluster 
 
 
 def main():
-
-    logging.basicConfig(level=logging.DEBUG)
 
     file_name, batch = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)

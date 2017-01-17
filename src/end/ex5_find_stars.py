@@ -16,7 +16,8 @@ def stars(region, wcs, fig):
 
     for cluster in region.clusters:
 
-        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(cluster['c'], cluster['r'], wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(wcs,cluster['c'], cluster['r'])
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
 
         for cobj in cobjects:
             if cobj not in g_all_stars:
@@ -41,7 +42,8 @@ class Mover():
         x = int(event.xdata)
         y = int(event.ydata)
 
-        cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(x, y, self.wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
 
         if self.text is not None:
             self.text.remove()
@@ -71,7 +73,7 @@ def main():
     ra, dec = lib_wcs.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
 
     # celestial objects
-    cobjects, _, _ = lib_stars.get_celestial_objects_from_pixels(max_cluster['c'], max_cluster['r'], wcs, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
 
     # console output
     for cobj in cobjects.keys():

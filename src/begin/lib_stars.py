@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 '''
 Utilities for SIMBAD access
 '''
 
+
 import sys, time
 import urllib.request, urllib.error, urllib.parse
 import numpy as np
-import astropy.wcs
+
 
 def get_celestial_objects(ra, dec, radius):
 
@@ -136,14 +138,6 @@ def get_celestial_objects(ra, dec, radius):
 
     return objects, out, req
 
-def get_celestial_objects_from_pixels(x, y, wcs, angle):
-
-    pixel = np.array([[x, y],], np.float_)
-    sky = wcs.wcs_pix2world(pixel, 0)
-    ra, dec = sky[0]
-    objs, out, req = get_celestial_objects(ra, dec, angle)
-
-    return objs, out, req
 
 if __name__ == '__main__':
 
