@@ -20,7 +20,7 @@ DATAFILES = 'data/student/NPAC.fits'
 def main():
     logging.basicConfig(level=logging.DEBUG)
 
-    pixels = read_pixels(DATAFILES)
+    header, pixels = lib_read_file.read_first_image(DATAFILES)
 
     # shape:
     #   first element=#rows (-> image height)

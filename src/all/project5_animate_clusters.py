@@ -59,8 +59,7 @@ def main():
 
     # args.file = 'data/misc/dss.19.59.54.3+09.59.20.9_40x20.fits'
     # read image
-    header = lib_read_file.read_header(args.file)
-    pixels = lib_read_file.read_pixels(args.file)
+    header,pixels = lib_read_file.read_first_image(args.file)
     if pixels is None:
         return 1
     logging.debug('name of image: %s', args.file)

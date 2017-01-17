@@ -29,9 +29,8 @@ class Display(object):
 
     def __init__(self):
 
-        self.image = get_fits_file(1)
-        self.header_image = lib_read_file.read_header(self.image)
-        self.pixels_image = lib_read_file.read_pixels(self.image)
+        self.image_file_name = get_fits_file(1)
+        self.header_image, self.pixels_image = lib_read_file.read_first_image(self.image_file_name)
 
         self.fig, self.main_ax = plt.subplots()
 

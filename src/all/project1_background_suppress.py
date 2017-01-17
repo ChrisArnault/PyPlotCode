@@ -14,8 +14,8 @@ pylint --extension-pkg-whitelist=numpy step2_background.py
 from matplotlib.widgets import Slider
 import matplotlib.pyplot as plt
 
-from lib_read_file import *
-from lib_background import *
+import lib_read_file
+import lib_background
 
 
 DATAFILES = 'data/student/NPAC.fits'
@@ -61,9 +61,8 @@ def main():
 
     logging.basicConfig(level=logging.DEBUG)
 
-    pixels = read_pixels(DATAFILES)
-
-    background, dispersion, max_x = compute_background(pixels)
+    header, pixels = lib_read_file.read_first_image(DATAFILES)
+    background, dispersion, max_x = lib.background.compute_background(pixels)
 
     # pylint: disable=unused-variable
     fig, main_ax = plt.subplots()
