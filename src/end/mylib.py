@@ -262,7 +262,7 @@ class Region(object):
                                        'cp':cp_image[rnum, cnum]}
                             self.cluster_dict[integral] = cluster
                             coord = "[%f %f]" % (cnum, rnum)
-                            print('coord key=', coord)
+                            # print('coord key=', coord)
                             self.cluster_coords[coord] = cluster
 
         # ========= end of get peaks. store clusters

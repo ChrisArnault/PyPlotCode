@@ -7,7 +7,7 @@ Configuration file for the tool oval.
 
 targets = []
 
-# generated targets
+# exercices targets
 
 exercices = (
     "ex1_read_image",
@@ -23,20 +23,20 @@ for exercice in exercices:
     for filename in os.listdir('../fits'):
         if exp.match(filename):
             token = filename[:-5]
-            target = "end.{}.{}".format(exercice,token)
-            command = "../../src/end/{}.py -b ../fits/{}.fits".\
-                format(exercice,token,exercice,target)
+            target = "{}.{}".format(exercice,token)
+            command = "../../src/end/{}.py -b ../fits/{}".format(exercice,filename)
             targets.append({"name": target, "command": command})
-for exercice in exercices:
-    for filename in os.listdir('../fits'):
-        if exp.match(filename):
-            token = filename[:-5]
-            target = "all.{}.{}".format(exercice,token)
-            command = "../../src/all/{}.py -b ../fits/{}.fits".\
-                format(exercice,token,exercice,target)
-            targets.append({"name": target, "command": command})
+
+# find_stars target
+
+for filename in os.listdir('../fits'):
+    if exp.match(filename):
+        token = filename[:-5]
+        target = "find_stars.{}".format(token)
+        command = "../../src/all/find_stars.py -b ../fits/{}".format(filename)
+        targets.append({"name": target, "command": command})
 
 # filters
 
-run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "(begin|end|all).ex(4|5)%"}, ]
-diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "(begin|end|all).ex%"} ]
+run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "%"}, ]
+diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "%"} ]
