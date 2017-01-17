@@ -90,6 +90,7 @@ class Region(object):
         self.max = np.max(region)             # initialize the maximum pixel value
         self.clusters = []                    # initialize the cluster list
         self.cluster_dict = dict()            # initialize the cluster dictionary
+        self.cluster_coords = dict()          # initialize the cluster dictionary keyed with the coordinates
         self.last_cluster_id = None
 
         self.trace = np.zeros_like(region)     # a temp array to mark pixels already accessed
@@ -220,6 +221,7 @@ class Region(object):
         # print("cp_threshold", cp_threshold)
 
         self.cluster_dict = dict()
+        self.cluster_coords = dict()
 
         #
         # scan the convolution image to detect peaks and get all clusters
@@ -252,7 +254,16 @@ class Region(object):
                         integral, radius = self.get_peak(cp_image, rnum, cnum)
                         if radius > 1:
                             # print('peak at [%d %d] %f' % (rnum, cnum, integral, ))
-                            self.cluster_dict[integral] = {'r':rnum, 'c':cnum, 'integral':integral, 'top':self.region[rnum, cnum], 'radius':radius, 'cp':cp_image[rnum, cnum]}
+                            cluster = {'r':rnum,
+                                       'c':cnum,
+                                       'integral':integral,
+                                       'top':self.region[rnum, cnum],
+                                       'radius':radius,
+                                       'cp':cp_image[rnum, cnum]}
+                            self.cluster_dict[integral] = cluster
+                            coord = "[%f %f]" % (cnum, rnum)
+                            print('coord key=', coord)
+                            self.cluster_coords[coord] = cluster
 
         # ========= end of get peaks. store clusters
 
@@ -279,10 +290,10 @@ class Region(object):
         results = []
         for x in range(radius*2):
             for y in range(radius*2):
-                # coord = '%f %f', x + x0 - radius, y + y0 - radius
+                coord = '%f %f', x + x0 - radius, y + y0 - radius
                 coord = "[%f %f]" % (x + x0 - radius, y + y0 - radius)
-                if coord in self.cluster_dict:
-                    cluster = self.cluster_dict[coord]
+                if coord in self.cluster_coords:
+                    cluster = self.cluster_coords[coord]
                     results.append(cluster)
 
         return results

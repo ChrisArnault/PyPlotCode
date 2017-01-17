@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import library
 import mylib
+import logging
 
 class Mover():
 
@@ -26,10 +27,10 @@ class Mover():
         ra, dec = library.convert_to_radec(self.wcs, x, y)
 
         results = self.region.find_clusters(x, y, 5)
-        print('region:',self.region.cluster_dict)
+        # print('region:',self.region.cluster_coords)
 
-        ids = ['%s' % cl.cluster_id for cl in results]
-        print(x,y,':',ids)
+        # ids = ['%s' % cl.cluster_id for cl in results]
+        # print(x,y,':',ids)
 
         if self.text is not None:
             self.text.remove()
@@ -37,16 +38,13 @@ class Mover():
 
         if len(results) > 0:
 
-            print('COUCOU 3')
-
-            self.text = plt.text(x, y, '\n'.join(ids), fontsize=14, color='white')
-            self.fig.canvas.draw()
+            # self.text = plt.text(x, y, '', fontsize=14, color='white')
+            # self.fig.canvas.draw()
 
             for cluster in results:
-                centroid = cluster.centroid
-                x = centroid.c
-                y = centroid.r
-                logging.info('x, y: %f, %f', x, y)
+                x = cluster['c']
+                y = cluster['r']
+                print('found: x, y:', x, y)
         else:
             self.fig.canvas.draw()
 
