@@ -23,11 +23,11 @@ targets = [
 
     { "name" : "find_stars" , "command" : "python find_stars.py -b ../../data/fits/NPAC.fits"  },
 
-    { "name" : "pj1_background_suppress" , "command" : "python project1_background_suppress.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj2_cluster_slider" , "command" : "python project2_cluster_slider.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj3_file_selector" , "command" : "python project3_file_selector.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj4_threaded_clusters" , "command" : "python project4_threaded_clusters.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj5_animate_clusters" , "command" : "python project5_animate_clusters.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "pj1_background_suppress" , "command" : "python pj1_background_suppress.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "pj2_cluster_slider" , "command" : "python pj2_cluster_slider.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "pj3_file_selector" , "command" : "python pj3_file_selector.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "pj4_threaded_clusters" , "command" : "python pj4_threaded_clusters.py -b ../../data/fits/NPAC.fits"  },
+    { "name" : "pj5_animate_clusters" , "command" : "python pj5_animate_clusters.py -b ../../data/fits/NPAC.fits"  },
 ]
 
 # filters
