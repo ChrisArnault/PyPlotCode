@@ -38,5 +38,5 @@ for filename in os.listdir('../fits'):
 
 # filters
 
-run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "ex(4|5)%"}, ]
+run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "%"}, ]
 diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "%"} ]
