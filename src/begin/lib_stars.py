@@ -1,57 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+'''
+Provided utilities for the exercices
+'''
+
 import sys, argparse, time
 import urllib.request, urllib.error, urllib.parse
 import numpy as np
 import astropy.wcs
 
-DATAPATH = '../../data/fits/'
-DATAFILE = 'NPAC'
-
-def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-b', action="store_true", default=False, \
-                        help='batch mode, with no graphics and no interaction')
-    parser.add_argument('file', nargs='?',
-                        help='fits input file')
-    args = parser.parse_args()
-    if not args.file:
-        if not args.b:
-            args.file = input('file name [%s]? ' % DATAFILE)
-        if args.b or len(args.file) == 0:
-            args.file = DATAFILE
-        args.file = DATAPATH + args.file + '.fits'
-
-    return args.file, args.b
-
-
-def dms(angle):
-    """ Convert a floating point angle into textual representation
-        Degree:Minute:Second (-> DEC coordinate) """
-    degree = int(angle)
-    minute = (angle - degree) * 60.0
-    second = (minute - int(minute)) * 60.0
-    return '[%d:%d:%f]' % (int(degree), int(minute), second)
-
-
-def hms(angle):
-    """ Convert a floating point angle into textual representation
-        Hour:Minute:Second (-> RA coordinate) """
-    hour = angle*24.0/360.0
-    hour2 = int(hour)
-    minute = (hour - hour2) * 60.0
-    second = (minute - int(minute)) * 60.0
-    return '[%d:%d:%f]' % (int(hour2), int(minute), second)
-
-
-def radec(coord):
-    """ Convert a floating point coordinates into textual representation
-        Hour:Minute:Second (-> RA/DEC coordinates) """
-    return 'RA=%s DEC=%s' % (hms(coord[0]), dms(coord[1]))
-
-
-def get_wcs(header):
+ddef get_wcs(header):
     """ Parse the WCS keywords from the primary HDU of an FITS image """
 
     #header = lib_read_file.read_header(image)
@@ -204,15 +163,19 @@ def get_celestial_objects(ra, dec, radius):
             continue
 
         data = line.split('\t')
-        obj_name = data[3].strip()
-        obj_type = data[2].strip()
-        if  obj_type!='Unknown' and obj_type!='HII':
-            objects[obj_name] = obj_type
+
+        objects[data[3].strip()] = data[2].strip()
 
     return objects, out, req
 
 def get_celestial_objects_from_pixels(x, y, wcs, angle):
-
+    '''
+    :param x:
+    :param y:
+    :param wcs:
+    :param angle:
+    :return:
+    '''
     pixel = np.array([[x, y],], np.float_)
     sky = wcs.wcs_pix2world(pixel, 0)
     ra, dec = sky[0]
@@ -220,24 +183,16 @@ def get_celestial_objects_from_pixels(x, y, wcs, angle):
 
     return objs, out, req
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
 
     # test_Simbad
-    objects = get_objects(1.0, 1.0, 0.1)
+    objects = library.get_objects(1.0, 1.0, 0.1)
     for object in objects:
         print('{} ({})'.format(object, objects[object]))
     if len(objects) != 14:
         print('error')
 
     # test_WCS
-
     header = None
     try:
         with fits.open('../data/dss.19.59.54.3+09.59.20.9 10x10.fits') as data_fits:
@@ -249,7 +204,7 @@ if __name__ == '__main__':
     except EnvironmentError as err:
         logging.error('Cannot open the data fits file. - %s', err)
 
-    w = WCS(header)
+    w = library.WCS(header)
     ra, dec = w.convert_to_radec(0, 0)
 
     print(ra, dec)
@@ -259,3 +214,4 @@ if __name__ == '__main__':
 
     if abs(dec - 9.90624639801) > 1e5:
         print('error')
+
