@@ -41,10 +41,6 @@ def move(event):
 
     results = g_reg.find_clusters(x, y, 5)
 
-    ids = ['%s' % cl.cluster_id for cl in results]
-
-    # logging.info('ids=%s', repr(ids))
-
     if g_text is not None:
         g_text.remove()
         g_text = None
@@ -53,13 +49,12 @@ def move(event):
 
         # logging.info('----------------x=%f y=%f RA=%f DEC=%f', x, y, ra - g_ra0, dec - g_dec0)
 
-        g_text = plt.text(x, y, '\n'.join(ids), fontsize=14, color='white')
-        g_fig.canvas.draw()
+        # g_text = plt.text(x, y, '', fontsize=14, color='white')
+        # g_fig.canvas.draw()
 
         for cluster in results:
-            centroid = cluster.centroid
-            x = centroid.c
-            y = centroid.r
+            x = cluster['c']
+            y = cluster['r']
             logging.info('x, y: %f, %f', x, y)
     else:
         g_fig.canvas.draw()
