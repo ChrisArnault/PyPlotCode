@@ -24,7 +24,7 @@ class Mover():
         x = int(event.xdata)
         y = int(event.ydata)
 
-        ra, dec = library.convert_to_radec(self.wcs, x, y)
+        #ra, dec = library.convert_to_radec(self.wcs, x, y)
 
         results = self.region.find_clusters(x, y, 5)
         # print('region:',self.region.cluster_coords)
@@ -53,9 +53,6 @@ def main():
     file_name, batch = library.get_args()
     header, pixels = mylib.read_image(file_name)
     background, dispersion, _ = mylib.compute_background(pixels)
-
-    # globals, for graphics
-    global g_wcs, g_reg, g_text, g_fig
 
     # search for clusters in a sub-region of the image
     threshold = 6.0

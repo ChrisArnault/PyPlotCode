@@ -204,19 +204,15 @@ def get_celestial_objects(ra, dec, radius):
             continue
 
         data = line.split('\t')
-
-        objects[data[3].strip()] = data[2].strip()
+        obj_name = data[3].strip()
+        obj_type = data[2].strip()
+        if  obj_type!='Unknown' and obj_type!='HII':
+            objects[obj_name] = obj_type
 
     return objects, out, req
 
 def get_celestial_objects_from_pixels(x, y, wcs, angle):
-    '''
-    :param x:
-    :param y:
-    :param wcs:
-    :param angle:
-    :return:
-    '''
+
     pixel = np.array([[x, y],], np.float_)
     sky = wcs.wcs_pix2world(pixel, 0)
     ra, dec = sky[0]

@@ -186,9 +186,8 @@ def main():
     # cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[1], centroid[0], g_wcs, CONE)
     cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(c, r, g_wcs, CONE)
     for cobj in list(cobjects.items()):
-        if  cobj[1]!='Unknown' and cobj[1]!='HII':
-            #logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
-            logging.info('celestial object: %s', cobj[0])
+        logging.info('celestial object: %s', cobj[0])
+        #logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 
     # graphics
     if not batch:
