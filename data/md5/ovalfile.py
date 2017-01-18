@@ -24,7 +24,7 @@ for exercice in exercices:
         if exp.match(filename):
             token = filename[:-5]
             target = "{}.{}".format(exercice,token)
-            command = "../../src/end/{}.py -b ../fits/{}".format(exercice,filename)
+            command = "../../src/solutions/{}.py -b ../fits/{}".format(exercice,filename)
             targets.append({"name": target, "command": command})
 
 # find_stars target
@@ -33,7 +33,7 @@ for filename in os.listdir('../fits'):
     if exp.match(filename):
         token = filename[:-5]
         target = "find_stars.{}".format(token)
-        command = "../../src/all/find_stars.py -b ../fits/{}".format(filename)
+        command = "../../src/sandbox/find_stars.py -b ../fits/{}".format(filename)
         targets.append({"name": target, "command": command})
 
 # filters

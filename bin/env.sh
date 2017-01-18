@@ -32,8 +32,8 @@ python3 -c "import matplotlib.pyplot"
 
 # python paths
 
-export PYTHONPATH=${PYPLOTCODE_DIR}/src/begin:${PYTHONPATH}
-export PYTHONPATH=${PYPLOTCODE_DIR}/src/end:${PYTHONPATH}
+export PYTHONPATH=${PYPLOTCODE_DIR}/src/skeletons:${PYTHONPATH}
+export PYTHONPATH=${PYPLOTCODE_DIR}/src/solutions:${PYTHONPATH}
 
 # back to the original directory
 
