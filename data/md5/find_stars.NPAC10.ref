@@ -2,14 +2,14 @@ name of image: ../fits/NPAC10.fits
 cd1_1: -0.00046997771373351, cd1_2: -4.9586466480057e-05, cd2_1: -4.8580870589929e-05, cd2_2: 0.00047009016856834
 height: 106, width: 106
 background: 2711, dispersion: 144
-number of clusters:  5, greatest integral:  332812, centroid x: 37.0, centroid y: 52.0
-cluster 0 52 37 332812 9116 4
-cluster 1 19 61 309100 7775 4
-cluster 2 95 98 300090 7611 4
-cluster 3 82 48 295389 6904 4
-cluster 4 23 4 209214 5872 3
-right ascension: 148.934, declination: 69.283
-0> celestial object: 2MASS J09554382+6916574 IR
-2> celestial object: 2MASS J09552319+6917597 IR
-3> celestial object: 2MASS J09553914+6917474 Star
-4> celestial object: 2MASS J09555565+6916142 IR
+number of clusters:  5, greatest integral:  196235, centroid x:  4.0, centroid y: 23.0
+cluster 0 23 4 196235 5872 3
+cluster 1 52 37 110305 9116 2
+cluster 2 19 61 103409 7775 2
+cluster 3 95 98 102948 7611 2
+cluster 4 82 48 99806 6904 2
+right ascension: 148.982, declination: 69.271
+0> celestial object: 2MASS J09555565+6916142 IR
+1> celestial object: 2MASS J09554382+6916574 IR
+3> celestial object: 2MASS J09552319+6917597 IR
+4> celestial object: 2MASS J09553914+6917474 Star

@@ -2,12 +2,12 @@ name of image: ../fits/NPAC18.fits
 cd1_1: -0.00046969276202116, cd1_2: -5.1458654354439e-05, cd2_1: -5.0500839131205e-05, cd2_2: 0.00046980820010753
 height: 106, width: 106
 background: 2491, dispersion: 135
-number of clusters:  5, greatest integral:  342982, centroid x: 28.0, centroid y: 84.0
-cluster 0 84 28 342982 10613 4
-cluster 1 75 73 342410 11042 4
-cluster 2 81 63 322244 9440 4
-cluster 3 98 19 187146 6290 3
-cluster 4 47 42 177402 5955 3
+number of clusters:  5, greatest integral:  188300, centroid x: 28.0, centroid y: 84.0
+cluster 0 84 28 188300 10613 3
+cluster 1 75 73 185524 11042 3
+cluster 2 81 63 181432 9440 3
+cluster 3 98 19 89032 6290 2
+cluster 4 47 42 83622 5955 2
 right ascension: 148.684, declination: 68.831
 0> celestial object: 2MASS J09544393+6849490 IR
 1> celestial object: 2MASS J09543000+6849258 IR

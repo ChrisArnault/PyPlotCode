@@ -2,11 +2,11 @@ name of image: ../fits/NPAC04.fits
 cd1_1: -0.00047028996310895, cd1_2: -4.6352540501961e-05, cd2_1: -4.5357070943985e-05, cd2_2: 0.00047040247671923
 height: 106, width: 106
 background: 2692, dispersion: 163
-number of clusters:  4, greatest integral:  544796, centroid x:  9.0, centroid y: 44.0
-cluster 0 44 9 544796 13374 4
-cluster 1 54 52 478926 13484 4
-cluster 2 16 49 397107 7900 4
-cluster 3 67 72 353134 10548 4
+number of clusters:  4, greatest integral:  509452, centroid x:  9.0, centroid y: 44.0
+cluster 0 44 9 509452 13374 4
+cluster 1 54 52 418305 13484 4
+cluster 2 16 49 379039 7900 4
+cluster 3 67 72 196447 10548 3
 right ascension: 149.384, declination: 69.025
 0> celestial object: GSC 04383-01028 Star
 1> celestial object: 2MASS J09571791+6901366 Star
