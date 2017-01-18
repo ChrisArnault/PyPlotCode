@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 """
 Test program to
 - open a fits files
@@ -9,14 +10,12 @@ Test program to
 - display the image
 """
 
+
 import sys
 from lib_logging import logging
 import matplotlib.pyplot as plt
-import lib_args
-import lib_read_file
-import lib_cluster
-import lib_background
-import lib_wcs as lwcs
+import lib_args, lib_fits, lib_background, lib_cluster
+import lib_wcs, lib_stars
 
 CONE = 0.001
 THREAD = False
@@ -25,6 +24,7 @@ DX = 0
 LX = 0
 DY = 0
 LY = 0
+
 
 """
 if THREAD:
@@ -39,25 +39,23 @@ g_plt_lock = None
 g_all_stars = dict()
 
 # class StarScan(threading.Thread):
-class StarScan(object):
-
-    'TODO : whatis it ?'
+class StarScan():
 
     def __init__(self, cluster, wcs, fig):
-        'TODO : whatis it ?'
+
         #threading.Thread.__init__(self)
         self.cluster = cluster
         self.wcs = wcs
         self.fig = fig
 
     def run(self):
-        'TODO : whatis it ?'
 
         # FIXME: update when using the new centroid definition
         y, x = self.cluster['r'], self.cluster['c']
 
         #g_io_lock.acquire()
-        cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(x, y, self.wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -95,69 +93,37 @@ def stars(region, wcs, fig):
         break
 
 
-g_text = None
-g_wcs = None
-g_fig = None
+class ShowCelestialObjects():
 
-def move_ex4(event):
-    'TO BE DONE: What is it for ?'
+    def __init__(self, the_region, the_wcs, the_fig):
 
-    global g_text
+        self.region = the_region
+        self.wcs = the_wcs
+        self.fig = the_fig
+        self.text = None
 
-    if event.xdata is None or event.ydata is None:
-        return
+    def __call__(self, event):
 
-    x = int(event.xdata)
-    y = int(event.ydata)
+        if event.xdata is None or event.ydata is None: return
 
-    ra, dec = lwcs.convert_to_radec(g_wcs, x, y)
+        if self.text is not None:
+            self.text.remove()
+            self.text = None
 
-    results = g_reg.find_clusters(x, y, 5)
+        x, y = int(event.xdata), int(event.ydata)
+        results = self.region.find_clusters(x, y, 5)
 
-    if g_text is not None:
-        g_text.remove()
-        g_text = None
+        print(x - DX, y - DY, x, y)
 
-    if len(results) > 0:
+        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
 
-        # logging.info('----------------x=%f y=%f RA=%f DEC=%f', x, y, ra - g_ra0, dec - g_dec0)
+        for cobj in cobjects:
+            print(('--------->', cobj))
+            self.text = plt.text(x, y, '%s [%s, %s]' % (cobj, x, y), fontsize=14, color='red')
+            print(('---------<', cobj))
 
-        # g_text = plt.text(x, y, '', fontsize=14, color='white')
-        # g_fig.canvas.draw()
-
-        for cluster in results:
-            x = cluster['c']
-            y = cluster['r']
-            logging.info('x, y: %f, %f', x, y)
-    else:
-        g_fig.canvas.draw()
-
-def move(event):
-
-    'connect to the mouse motion event to try if a known star is around'
-
-    global g_text
-
-    if event.xdata is None or event.ydata is None:
-        return
-
-    x = int(event.xdata) + DX
-    y = int(event.ydata) + DY
-
-    print(x - DX, y - DY, x, y)
-
-    cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(x, y, g_wcs, CONE)
-
-    if g_text is not None:
-        g_text.remove()
-        g_text = None
-
-    for cobj in cobjects:
-        print(('--------->', cobj))
-        g_text = plt.text(x, y, '%s [%s, %s]' % (cobj, x, y), fontsize=14, color='red')
-        print(('---------<', cobj))
-
-    g_fig.canvas.draw()
+        self.fig.canvas.draw()
 
 
 def main():
@@ -167,10 +133,8 @@ def main():
     '''
 
     # step 1 : read file
-    file_name, batch = lib_args.interpret_args()
-    header, pixels = lib_read_file.read_first_image(file_name)
-    if header is None:
-        return 1
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
     logging.info('name of image: %s', file_name)
     logging.info('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
         header['CD1_1'], header['CD1_2'], header['CD2_1'], header['CD2_2'])
@@ -191,42 +155,39 @@ def main():
     if ly == 0:
         ly = pixels.shape[1]
 
-    reg = lib_cluster.Region(pixels[DY:ly, DX:lx], background + threshold*dispersion)
-    pattern, cp_image, peaks = reg.run_convolution()
-    max_integral = reg.clusters[0]['integral']
+    region = lib_cluster.Region(pixels[DY:ly, DX:lx], background + threshold*dispersion)
+    pattern, cp_image, peaks = region.run_convolution()
+    max_integral = region.clusters[0]['integral']
     
     logging.info('number of clusters: %2d, greatest integral: %7d, centroid x: %4.1f, centroid y: %4.1f',
-                 len(reg.clusters), max_integral, reg.clusters[0]['c'], reg.clusters[0]['r'])
+        len(region.clusters), max_integral, region.clusters[0]['c'], region.clusters[0]['r'])
 
-    for nc, ic in enumerate(reg.clusters):
+    for nc, ic in enumerate(region.clusters):
         logging.info('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
 
-    # globals, for graphics
-    global g_wcs, g_text, g_fig
-
     # coordinates
-    centroid = (DY + reg.clusters[0]['r'], DX + reg.clusters[0]['c'])
-    g_wcs = lwcs.get_wcs(header)
-    g_ra, g_dec = lwcs.convert_to_radec(g_wcs, centroid[1], centroid[0])
-    logging.info('right ascension: %.3f, declination: %.3f',g_ra, g_dec)
+    peak = (DY + region.clusters[0]['r'], DX + region.clusters[0]['c'])
+    wcs = lib_wcs.get_wcs(header)
+    ra, dec = lib_wcs.convert_to_radec(wcs, peak[1], peak[0])
+    logging.info('right ascension: %.3f, declination: %.3f',ra,dec)
 
     # celestial objects
-    for nic, ic in enumerate(reg.clusters):
-        #ic = reg.clusters[0]
+    for nic, ic in enumerate(region.clusters):
+        #ic = region.clusters[0]
         r = DY + ic['r']
         c = DX + ic['c']
-        # cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(centroid[1], centroid[0], g_wcs, CONE)
-        cobjects, _, _ = lwcs.get_celestial_objects_from_pixels(c, r, g_wcs, CONE)
+        ra, dec = lib_wcs.convert_to_radec(wcs,c,r)
+        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
         for cobj in list(cobjects.items()):
             logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 
     # graphics
     if not batch:
-        g_text = None
-        g_fig, main_ax = plt.subplots()
-        stars(reg, g_wcs, g_fig)
+        fig, main_ax = plt.subplots()
+        stars(region, wcs, fig)
         main_ax.imshow(peaks, interpolation='none')
-        g_fig.canvas.mpl_connect('motion_notify_event', move)
+        g_fig.canvas.mpl_connect('motion_notify_event',
+            ShowCelestialObjects(the_region=region,the_wcs=wcs,the_fig=fig))
         plt.show()
 
     return 0

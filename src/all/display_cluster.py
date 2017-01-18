@@ -1,36 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import os
-import argparse
-import subprocess
 
-import matplotlib.pyplot as plt
-
-import lib_read_file
-import lib_wcs as lwcs
+import sys, os, argparse, subprocess, threading
+import time, re, random
 import numpy as np
-import time
-import re
-import random
-
-import threading
+import matplotlib.pyplot as plt
+import lib_fits
 
 DATAPATH = 'data/'
 
+
 def get_fits_file(number=0):
+
     if number == 0:
         return DATAPATH + 'misc/M81' + '.fits'
     else:
         return DATAPATH + 'student/NPAC%02d' % number + '.fits'
 
-class Display(object):
+class Display():
 
     def __init__(self):
 
         self.image_file_name = get_fits_file(1)
-        self.header_image, self.pixels_image = lib_read_file.read_first_image(self.image_file_name)
+        self.header_image, self.pixels_image = lib_fits.read_first_image(self.image_file_name)
 
         self.fig, self.main_ax = plt.subplots()
 
@@ -66,16 +59,20 @@ class Display(object):
 class MtDisplay(threading.Thread, Display):
 
     def __init__(self):
+
         threading.Thread.__init__(self)
         Display.__init__(self)
         self.plt_lock = threading.Lock()
 
     def run(self):
+
         while True:
+
             self.plt_lock.acquire()
             self.doit()
             self.plt_lock.release()
             time.sleep(1.0)
+
 
 if __name__ == '__main__':
 

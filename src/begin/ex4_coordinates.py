@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import library
-import mylib
+import lib_wcs
 
 def main():
 

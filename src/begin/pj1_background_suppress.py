@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import library
-import mylib
 
 def main():
     return 0

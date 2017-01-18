@@ -15,10 +15,9 @@ export PATH="${SCRIPT_DIR}:${PATH}"
 
 # establish NPAC_ROOT
 
-NPAC_ROOT=`dirname $SCRIPT_DIR`
-NPAC_ROOT=`dirname $NPAC_ROOT`
+PYPLOTCODE_DIR=`dirname $SCRIPT_DIR`
 
-export NPAC_ROOT="${NPAC_ROOT}"
+export NPAC_ROOT=`dirname $PYPLOTCODE_DIR`
 
 # aliases
 
@@ -30,6 +29,11 @@ alias cpstud=copy_to_student.sh
 # prepare font cache
 
 python3 -c "import matplotlib.pyplot"
+
+# python paths
+
+export PYTHONPATH=${PYPLOTCODE_DIR}/src/begin:${PYTHONPATH}
+export PYTHONPATH=${PYPLOTCODE_DIR}/src/end:${PYTHONPATH}
 
 # back to the original directory
 

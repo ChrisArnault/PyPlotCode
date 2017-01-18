@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
-
 import lib_cluster
 
 
 def build_pattern(size):
+
     """
     start by creating a 2D grid of pixels to form a PSF to ba applied onto the
     image to detect objects
@@ -30,6 +31,7 @@ def build_pattern(size):
 
 
 def has_peak(cp_image, r, c):
+
     """
     Check if a peak exists at the (r0, cnum) position of the convolution product matrix cp_image
     To check if a peak exists:
@@ -63,6 +65,7 @@ def has_peak(cp_image, r, c):
 
 
 def get_peak(image, cp_image, r, c, threshold, peaks):
+
     """
     Knowing that a peak exists at the specified position, we capture the cluster around it:
     - loop on the distance from center:
@@ -92,6 +95,7 @@ def get_peak(image, cp_image, r, c, threshold, peaks):
 
 
 def check(pixels):
+
     import lib_background
     import lib_cluster
 
@@ -112,8 +116,8 @@ def check(pixels):
     print("-----------------------------------")
 
 
-
 if __name__ == '__main__':
+
     size = 40
     objects = 3
     max_height = 10000
@@ -124,7 +128,9 @@ if __name__ == '__main__':
     # we add some random noise onto it
 
     image = np.zeros((size, size))
+
     for o in range(objects):
+        
         sigma = np.random.randint(1, 7)
         height = np.random.randint(5, max_height)
 
