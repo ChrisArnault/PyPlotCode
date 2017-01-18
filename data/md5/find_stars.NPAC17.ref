@@ -2,9 +2,9 @@ name of image: ../fits/NPAC17.fits
 cd1_1: -0.0004703862836757, cd1_2: -4.5153779453253e-05, cd2_1: -4.4167583637919e-05, cd2_2: 0.00047049875902763
 height: 106, width: 106
 background: 2675, dispersion: 140
-number of clusters:  2, greatest integral:  661039, centroid x: 25.0, centroid y: 45.0
-cluster 0 45 25 661039 13463 5
-cluster 1 47 12 449673 13034 4
+number of clusters:  2, greatest integral:  614874, centroid x: 25.0, centroid y: 45.0
+cluster 0 45 25 614874 13463 5
+cluster 1 47 12 388665 13034 4
 right ascension: 149.513, declination: 68.845
 0> celestial object: 2MASS J09580325+6850428 Star
 1> celestial object: 2MASS J09580701+6850467 Star
