@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 """
 Test program to
 - open a fits files
@@ -8,16 +9,12 @@ Test program to
 - search for clusters
 """
 
-import sys
-import argparse
 
+import sys, argparse
 import matplotlib.pyplot as plt
-
-from lib_logging import logging
-import lib_fits
-import lib_cluster
-import lib_background
 import numpy as np
+from lib_logging import logging
+import lib_fits, lib_background, lib_cluster
 
 DATAPATH = 'data/student/'
 DATAFILE = 'NPAC'

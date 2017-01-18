@@ -1,28 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import argparse
 
-import matplotlib.pyplot as plt
-
-from lib_logging import logging
-import lib_fits
-import lib_wcs as lwcs
+import sys, argparse, time, threading
 import numpy as np
-import time
-import threading
+import matplotlib.pyplot as plt
+from lib_logging import logging
+import lib_fits, lib_wcs
 
 DATAPATH = 'data/'
 DATAFILE = 'M81'
 
+
 class Display(threading.Thread):
+
     def __init__(self):
+
         threading.Thread.__init__(self)
 
         self.m81 = DATAPATH + 'misc/M81' + '.fits'
         self.header_m81, self.pixels_m81 = lib_fits.read_first_image(self.m81)
-        self.wcs_m81 = lwcs.get_wcs(self.header_m81)
+        self.wcs_m81 = lib_wcs.get_wcs(self.header_m81)
 
         self.fig, self.main_ax = plt.subplots()
 
@@ -46,11 +44,11 @@ class Display(threading.Thread):
 
             header_nn, pixels_nn = lib_fits.read_first_image(npacnn)
 
-            wcs_npacnn = lwcs.get_wcs(header_nn)
-            ra0, dec0 = lwcs.convert_to_radec(wcs_npacnn, 0, 0)
-            ra1, dec1 = lwcs.convert_to_radec(wcs_npacnn, pixels_nn.shape[0], pixels_nn.shape[1])
+            wcs_npacnn = lib_wcs.get_wcs(header_nn)
+            ra0, dec0 = lib_wcs.convert_to_radec(wcs_npacnn, 0, 0)
+            ra1, dec1 = lib_wcs.convert_to_radec(wcs_npacnn, pixels_nn.shape[0], pixels_nn.shape[1])
 
-            x0, y0 = lwcs.convert_to_xy(self.wcs_m81, ra0, dec0)
+            x0, y0 = lib_wcs.convert_to_xy(self.wcs_m81, ra0, dec0)
             x0, y0 = int(x0), int(y0)
             x1, y1 = x0 + pixels_nn.shape[0], y0 + pixels_nn.shape[1]
 
@@ -90,6 +88,7 @@ class Display(threading.Thread):
         self.imgplot = self.main_ax.imshow(self.pixels_m81)
 
     def draw_text(self, i, text):
+
         x0 = self.x0[i]
         x1 = self.x1[i]
         y0 = self.y0[i]
@@ -99,6 +98,7 @@ class Display(threading.Thread):
         self.text2[i] = plt.text(x0+self.shadow, int((y0+y1)/2) + (self.font_size/2) + self.shadow, text, fontsize=self.font_size, color='white')
 
     def doit(self):
+
         self.counter += 1
 
         for i in range(1, 21):
@@ -126,7 +126,9 @@ class Display(threading.Thread):
         self.fig.canvas.draw_idle()
 
     def run(self):
+
         while True:
+
             print('ok')
             plt_lock.acquire()
             self.doit()
@@ -139,9 +141,6 @@ class Display(threading.Thread):
 if __name__ == '__main__':
 
     plt_lock = threading.Lock()
-
     disp = Display()
-
     disp.start()
-
     plt.show()

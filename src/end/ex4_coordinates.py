@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import sys, logging
 import numpy as np
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs
 
-class Mover():
+
+class ShowRaDec():
 
     def __init__(self, the_region, the_wcs, the_fig):
+
         self.region = the_region
         self.wcs = the_wcs
         self.fig = the_fig
@@ -17,35 +20,26 @@ class Mover():
 
     def __call__(self, event):
 
-        if event.xdata is None or event.ydata is None:
-            return
-        
-        x = int(event.xdata)
-        y = int(event.ydata)
-
-        #ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
-
-        results = self.region.find_clusters(x, y, 5)
-        # print('region:',self.region.cluster_coords)
-
-        # ids = ['%s' % cl.cluster_id for cl in results]
-        # print(x,y,':',ids)
+        if event.xdata is None or event.ydata is None: return
 
         if self.text is not None:
             self.text.remove()
             self.text = None
 
+        x, y = int(event.xdata), int(event.ydata)
+        results = self.region.find_clusters(x, y, 5)
+
         if len(results) > 0:
 
-            # self.text = plt.text(x, y, '', fontsize=14, color='white')
-            # self.fig.canvas.draw()
-
+            tokens = []
             for cluster in results:
-                x = cluster['c']
-                y = cluster['r']
-                print('found: x, y:', x, y)
-        else:
-            self.fig.canvas.draw()
+                x, y = cluster['c'], cluster['r']
+                ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
+                tokens.append("{:.3f}/{:.3f}".format(ra,dec))
+
+            self.text = plt.text(x, y, ' '.join(tokens), fontsize=14, color='white')
+
+        self.fig.canvas.draw()
 
 def main():
 
@@ -71,7 +65,7 @@ def main():
         fig, main_ax = plt.subplots()
         main_ax.imshow(region.image)
         fig.canvas.mpl_connect('motion_notify_event',
-          Mover(the_region=region,the_wcs=wcs,the_fig=fig))
+          ShowRaDec(the_region=region,the_wcs=wcs,the_fig=fig))
         plt.show()
 
     return 0

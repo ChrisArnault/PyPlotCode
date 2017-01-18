@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,52 +10,43 @@ import lib_wcs, lib_stars
 
 CONE = 0.001
 
-def stars(region, wcs, fig):
 
-    global g_all_stars
-    g_all_stars = dict()
+class ShowCelestialObjects():
 
-    for cluster in region.clusters:
+    def __init__(self, the_region, the_wcs, the_fig):
 
-        ra, dec = lib_wcs.convert_to_radec(wcs,cluster['c'], cluster['r'])
-        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
-
-        for cobj in cobjects:
-            if cobj not in g_all_stars:
-                g_all_stars[cobj] = True
-                print('STARS: ',cobj)
-                plt.text(cluster['c'], cluster['r'], cobj, color='white')
-       
-        fig.canvas.draw()
-
-class Mover():
-
-    def __init__(self, the_wcs, the_fig):
+        self.region = the_region
         self.wcs = the_wcs
         self.fig = the_fig
         self.text = None
 
     def __call__(self, event):
 
-        if event.xdata is None or event.ydata is None:
-            return
-        
-        x = int(event.xdata)
-        y = int(event.ydata)
-
-        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
-        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+        if event.xdata is None or event.ydata is None: return
 
         if self.text is not None:
             self.text.remove()
             self.text = None
 
-        for cobj in cobjects:
-            print(('--------->', cobj))
-            self.text = plt.text(x, y, '%s [%s, %s]' % (cobj, x, y), fontsize=14, color='red')
-            print(('---------<', cobj))
+        x, y = int(event.xdata), int(event.ydata)
+        results = self.region.find_clusters(x, y, 5)
+
+        if len(results) > 0:
+
+            tokens = []
+
+            for cluster in results:
+
+                x, y = cluster['c'], cluster['r']
+                ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
+
+                cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+                tokens.extend(cobjects)
+
+            self.text = plt.text(x, y, ' '.join(tokens), fontsize=14, color='white')
 
         self.fig.canvas.draw()
+
 
 def main():
 
@@ -82,10 +74,9 @@ def main():
     # graphic output
     if not batch:
         fig, main_ax = plt.subplots()
-        stars(region, wcs, fig)
         main_ax.imshow(peaks, interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
-          Mover(the_wcs=wcs,the_fig=fig))
+          ShowCelestialObjects(the_region=region,the_wcs=wcs,the_fig=fig))
         plt.show()
 
     return 0
