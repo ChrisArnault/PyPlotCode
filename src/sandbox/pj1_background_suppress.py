@@ -12,11 +12,14 @@ Test program to
 pylint --extension-pkg-whitelist=numpy step2_background.py
 """
 
+import sys
+sys.path.append('../solutions')
 
 import logging
 from matplotlib.widgets import Slider
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background
+import numpy as np
 
 pixels = None
 imgplot = None

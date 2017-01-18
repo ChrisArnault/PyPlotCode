@@ -14,7 +14,7 @@ import sys, argparse
 import matplotlib.pyplot as plt
 import numpy as np
 from lib_logging import logging
-import lib_fits, lib_background, lib_cluster
+import lib_fits, lib_background, lib_cluster, lib_args
 
 from matplotlib.widgets import RadioButtons
 from matplotlib.widgets import Slider
@@ -42,25 +42,9 @@ def main():
 
 
     # process command-line options
-    parser = argparse.ArgumentParser(description='Exercise 3')
-    parser.add_argument('-b', action="store_true", default=False, \
-        help='batch mode, with no graphics and no interaction')
-    parser.add_argument('file', nargs='?',
-                        help='fits input file')
-    args = parser.parse_args()
-    if not args.file:
-        if not args.b:
-            args.file = eval(input('file name [%s]? ' % DATAFILE))
-        if args.b or len(args.file) == 0:
-            args.file = DATAFILE
-        args.file = DATAPATH + args.file + '.fits'
+    file_name, batch = lib_args.get_args()
+    header, pixels = lib_fits.read_first_image(file_name)
 
-    # args.file = 'data/misc/dss.19.59.54.3+09.59.20.9_40x20.fits'
-    # read image
-    header,pixels = lib_fits.read_first_image(args.file)
-    if pixels is None:
-        return 1
-    logging.debug('name of image: %s', args.file)
     logging.debug('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
                  header['CD1_1'], header['CD1_2'], header['CD2_1'], header['CD2_2'])
     logging.debug('height: %s, width: %s',
@@ -75,7 +59,7 @@ def main():
     threshold = 6.0
 
     # graphic output
-    if not args.b:
+    if not batch:
 
         # cluster central
         image = pixels[45:70, 40:65]

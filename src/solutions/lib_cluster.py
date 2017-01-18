@@ -27,8 +27,6 @@ class Region():
         self.threshold = threshold            # above which pixel values are considered
         self.region = region                  # storing the region
 
-        self.done = np.zeros_like(region, float) # a temp array to mark pixels already accessed
-        self.below = region < threshold       # a mask of pixels below threshold
         self.shape = region.shape             # save the original region shape
         self.image = region                   # construct the image showing all identified clusters
         self.max = np.max(region)             # initialize the maximum pixel value
@@ -36,8 +34,6 @@ class Region():
         self.cluster_dict = dict()            # initialize the cluster dictionary
         self.cluster_coords = dict()          # initialize the cluster dictionary keyed with the coordinates
         self.last_cluster_id = None
-
-        self.trace = np.zeros_like(region)     # a temp array to mark pixels already accessed
 
     def build_pattern(self, size):
         """
@@ -200,7 +196,7 @@ class Region():
 
         #========= end of convolution. now get peaks
 
-        peaks = region
+        peaks = np.copy(region)
 
         # make the CP threshold above the background fluctuations
         cp_threshold *= 1.3
