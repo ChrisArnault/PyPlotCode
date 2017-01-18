@@ -1,8 +1,8 @@
-Solutions des exercices.
+Zone de développement.
 
 La première étape ci-dessous est nécessaire (`source...`),
 parce qu'elle définit `PYTHONPATH` afin de réutiliser
-les bibliothèques de `/src/begin`.
+les bibliothèques de `/src/skeletons` et `/src/solutions`.
 
 Pour vérifier l'état du code :
 * `source ../../bin/env.sh``
