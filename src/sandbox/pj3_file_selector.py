@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: ISO-8859-1 -*-
 
+import sys
+sys.path.append('../solutions')
 
 import os
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RadioButtons
-import lib_args
+import lib_args, lib_fits
 
 
 def file_selector(where, select='', callback=None):
@@ -45,15 +47,35 @@ def file_selector(where, select='', callback=None):
     # eg: we may collect this widget into some global database
     return fs_widget
 
+fig = None
+main_ax = None
 
 def set_fs(label):
+    global fig
+    global main_ax
+
     # dummy action upon file selection
     print(label)
 
+    try:
+        header, pixels = lib_fits.read_first_image(label)
+    except:
+        print('error read_first_image')
+
+    try:
+        imgplot = main_ax.imshow(pixels)
+        imgplot.set_data(pixels)
+        fig.canvas.draw_idle()
+    except:
+        print('imshow')
 
 if __name__ == '__main__':
+    global fig
+    global main_ax
+
     file_name, batch = lib_args.get_args()
     if not batch:
-        fig, axis = plt.subplots()
+
+        fig, main_ax = plt.subplots()
         fs_widget = file_selector('../../data/fits', select='.fits', callback=set_fs)
         plt.show()

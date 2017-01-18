@@ -10,7 +10,10 @@ Test program to
 - display the image
 """
 
+import sys
+sys.path.append('../solutions')
 
+import matplotlib.pyplot as plt
 from lib_logging import logging
 from matplotlib.widgets import Slider
 import lib_args, lib_fits, lib_background, lib_cluster 
@@ -43,16 +46,20 @@ def main():
 
         axcolor = 'lightgoldenrodyellow'
         ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03], axisbg=axcolor)
-        s_thresh = Slider(ax_thresh, 'Threshold', 0.0, 30.0, valinit=threshold)
+
+        x = background + threshold*dispersion
+        s_thresh = Slider(ax_thresh, 'Threshold', 0.0, 5 * x, valinit=x)
 
         def update(val):
 
-            threshold = s_thresh.val
-            print(background, threshold, dispersion, background + threshold*dispersion)
-            region.run(background + threshold*dispersion)
+            x = s_thresh.val
+            print(background, threshold, dispersion, x)
+            region = lib_cluster.Region(pixels, x)
+            pattern, cp_image, peaks = region.run_convolution()
+            # region.run(background + threshold*dispersion)
             logging.info('%d clusters', len(region.clusters))
 
-            imgplot.set_data(region.image)
+            imgplot.set_data(peaks)
             fig.canvas.draw_idle()
 
         s_thresh.on_changed(update)
