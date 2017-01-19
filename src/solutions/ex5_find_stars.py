@@ -37,10 +37,10 @@ class ShowCelestialObjects():
 
             for cluster in results:
 
-                x, y = cluster['c'], cluster['r']
-                ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
+                xy = { 'x' : cluster['c'], 'y' : cluster['r'] }
+                radec = lib_wcs.xy_to_radec(self.wcs, xy)
 
-                cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+                cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
                 tokens.extend(cobjects)
 
             self.text = plt.text(x, y, ' '.join(tokens), fontsize=14, color='white')
@@ -62,10 +62,11 @@ def main():
     # coordinates ra dec
     max_cluster = region.clusters[0]
     wcs = lib_wcs.get_wcs(header)
-    ra, dec = lib_wcs.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
+    xy = { 'x' : max_cluster['c'], 'y' : max_cluster['r'] }
+    radec = lib_wcs.xy_to_radec(wcs,xy)
 
     # celestial objects
-    cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
 
     # console output
     for cobj in cobjects.keys():

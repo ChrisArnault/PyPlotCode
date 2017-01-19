@@ -34,12 +34,6 @@ def compute_background(pixels):
     # maxvalue = fit[0] * my
     background = fit[1] * mx
     dispersion = abs(fit[2]) * mx
-
-    x *= mx
-    y *= my
-
-    mx = np.float(np.max(x))
-
     return background, dispersion, mx
 
 

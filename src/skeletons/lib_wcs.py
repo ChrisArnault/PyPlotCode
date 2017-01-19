@@ -15,31 +15,37 @@ def get_wcs(fits_header):
     return astropy.wcs.WCS(fits_header)
 
 
-def convert_to_radec(wcs, x, y):
+def xy_to_radec(wcs, xy):
 
+    x, y = xy['x'], xy['y']
     pixel = np.array([[x, y],], np.float_)
     sky = wcs.wcs_pix2world(pixel, 0)
     ra, dec = sky[0]
-    return ra, dec
+    return { 'ra' : ra, 'dec' : dec }
 
 
-def convert_to_xy(wcs, ra, dec):
+def radec_to_xy(wcs, radec):
 
+    ra, dec = radec['ra'], radec['dec']
     coord = np.array([[ra, dec],], np.float_)
     result = wcs.wcs_world2pix(coord, 0)
     x, y = result[0]
-    return x, y
+    return { 'x' : round(x), 'y' : round(y) }
 
 
 if __name__ == '__main__':
     
     ''' Unit tests '''
 
-    import lib_reader
-    filename = '../data/dss.19.59.54.3+09.59.20.9 10x10.fits'
-    header, _ = lib_reader.read_first_image(filename)
-    wcs = library.WCS(header)
-    ra, dec = w.convert_to_radec(0, 0)
-    if abs(ra - 300.060983768) > 1e-5: print('error')
-    if abs(dec - 9.90624639801) > 1e5: print('error')
+    class FakeWcs():
+        def wcs_pix2world(self, xy, fake):
+            return ((xy[0][1],xy[0][0]),)
+        def wcs_world2pix(self, radec, fake):
+            return ((radec[0][1],radec[0][0]),)
+
+    wcs = FakeWcs()
+    pix = { 'x' : 1, 'y' : 2 }
+    world = { 'ra' : 2, 'dec' : 1 }
+    print(xy_to_radec(wcs,pix)==world)
+    print(radec_to_xy(wcs,world)==pix)
 

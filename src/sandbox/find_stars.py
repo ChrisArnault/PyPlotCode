@@ -51,11 +51,11 @@ class StarScan():
     def run(self):
 
         # FIXME: update when using the new centroid definition
-        y, x = self.cluster['r'], self.cluster['c']
+        xy = { 'x' : self.cluster['c'], 'y' : self.cluster['r'] }
 
         #g_io_lock.acquire()
-        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
-        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+        radec = lib_wcs.xy_to_radec(self.wcs,xy)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -66,7 +66,7 @@ class StarScan():
                 g_all_stars[cobj] = True
 
                 #g_plt_lock.acquire()
-                plt.text(x, y, cobj, color='white')
+                plt.text(xy['x'], xy['y'], cobj, color='white')
                 self.fig.canvas.draw()
                 #g_plt_lock.release()
 
@@ -110,17 +110,17 @@ class ShowCelestialObjects():
             self.text.remove()
             self.text = None
 
-        x, y = int(event.xdata), int(event.ydata)
-        results = self.region.find_clusters(x, y, 5)
+        xy = { 'x' : round(event.xdata), 'y' : round(event.ydata) }
+        results = self.region.find_clusters(xy['x'], xy['y'], 5)
 
-        print(x - DX, y - DY, x, y)
+        print(xy['x'] - DX, xy['y'] - DY, xy['x'], xy['y'])
 
-        ra, dec = lib_wcs.convert_to_radec(self.wcs,x,y)
-        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+        radec = lib_wcs.xy_to_radec(self.wcs,xy)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
 
         for cobj in cobjects:
             print(('--------->', cobj))
-            self.text = plt.text(x, y, '%s [%s, %s]' % (cobj, x, y), fontsize=14, color='red')
+            self.text = plt.text(xy['x'], xy['y'], '%s [%s, %s]' % (cobj, xy['x'], xy['y']), fontsize=14, color='red')
             print(('---------<', cobj))
 
         self.fig.canvas.draw()
@@ -168,16 +168,18 @@ def main():
     # coordinates
     peak = (DY + region.clusters[0]['r'], DX + region.clusters[0]['c'])
     wcs = lib_wcs.get_wcs(header)
-    ra, dec = lib_wcs.convert_to_radec(wcs, peak[1], peak[0])
-    logging.info('right ascension: %.3f, declination: %.3f',ra,dec)
+    xy = { 'x' : peak[1], 'y' : peak[0] }
+    radec = lib_wcs.xy_to_radec(wcs, xy)
+    logging.info('right ascension: %.3f, declination: %.3f',radec)
 
     # celestial objects
     for nic, ic in enumerate(region.clusters):
         #ic = region.clusters[0]
         r = DY + ic['r']
         c = DX + ic['c']
-        ra, dec = lib_wcs.convert_to_radec(wcs,c,r)
-        cobjects, _, _ = lib_stars.get_celestial_objects(ra, dec, CONE)
+        xy = { 'x' : c, 'y' : r }
+        radec = lib_wcs.xy_to_radec(wcs,xy)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
         for cobj in list(cobjects.items()):
             logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 

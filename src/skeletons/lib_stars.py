@@ -12,9 +12,9 @@ import urllib.request, urllib.error, urllib.parse
 import numpy as np
 
 
-def get_celestial_objects(ra, dec, radius):
+def get_celestial_objects(radec, radius):
 
-    def make_req(ra, dec, radius):
+    def make_req(radec, radius):
         """
         Build a request to the Simbad server
         :param ra: floating point value of the RA coordinate
@@ -30,6 +30,8 @@ def get_celestial_objects(ra, dec, radius):
             '''
             text = text.replace(char, '%%%02X' % ord(char))
             return text
+
+        ra, dec = radec['ra'], radec['dec']
 
         host_simbad = 'simbad.u-strasbg.fr'
 
@@ -109,7 +111,7 @@ def get_celestial_objects(ra, dec, radius):
 
         return out
 
-    req = make_req(ra, dec, radius)
+    req = make_req(radec, radius)
 
     out = wget(req)
     if out is None:
@@ -143,8 +145,10 @@ if __name__ == '__main__':
 
     ''' Unit tests '''
 
-    for object in get_celestial_objects(1.0, 1.0, 0.1): 
-        print('{} ({})'.format(object, objects[object]))
-    if len(objects) != 14: print('error')
+    radec = { 'ra' : 1.0, 'dec' : 1.0 }
+    cobjects, _, _ = get_celestial_objects(radec, 0.1)
+    for cobj_name in sorted(cobjects.keys()):
+      print(cobj_name) 
+
 
 
