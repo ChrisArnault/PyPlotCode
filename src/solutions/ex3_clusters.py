@@ -15,8 +15,7 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters
-    threshold = 6.0
-    region = lib_cluster.Region(pixels, background + threshold*dispersion)
+    region = lib_cluster.Region(pixels, background + 6.0*dispersion)
     pattern, s, _ = region.run_convolution()
     max_cluster = region.clusters[0]
     max_integral = max_cluster['integral']

@@ -26,18 +26,18 @@ class ShowRaDec():
             self.text.remove()
             self.text = None
 
-        x, y = int(event.xdata), int(event.ydata)
+        x, y = round(event.xdata), round(event.ydata)
         results = self.region.find_clusters(x, y, 5)
 
         if len(results) > 0:
 
             tokens = []
             for cluster in results:
-                x, y = cluster['c'], cluster['r']
-                ra, dec = lib_wcs.convert_to_radec(self.wcs, x, y)
-                tokens.append("{:.3f}/{:.3f}".format(ra,dec))
+                pxy = lib_wcs.PixelXY(cluster['c'], cluster['r'])
+                radec = lib_wcs.xy_to_radec(self.wcs, pxy)
+                tokens.append("{:.3f}/{d:.3f}".format(radec.ra, radec.dec))
 
-            self.text = plt.text(x, y, ' '.join(tokens), fontsize=14, color='white')
+            self.text = plt.text(pxy.x, pxy.y, ' '.join(tokens), fontsize=14, color='white')
 
         self.fig.canvas.draw()
 
@@ -55,10 +55,11 @@ def main():
     # coordinates ra dec
     max_cluster = region.clusters[0]
     wcs = lib_wcs.get_wcs(header)
-    ra, dec = lib_wcs.convert_to_radec(wcs, max_cluster['c'], max_cluster['r'])
+    pxy = lib_wcs.PixelXY(max_cluster['c'], max_cluster['r'])
+    radec = lib_wcs.xy_to_radec(wcs, pxy)
 
     # console output
-    print('right ascension: {:.3f}, declination: {:.3f}'.format(ra, dec))
+    print('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra,radec.dec))
 
     # graphic output
     if not batch:

@@ -12,9 +12,9 @@ import urllib.request, urllib.error, urllib.parse
 import numpy as np
 
 
-def get_celestial_objects(ra, dec, radius):
+def get_celestial_objects(radec, radius):
 
-    def make_req(ra, dec, radius):
+    def make_req(radec, radius):
         """
         Build a request to the Simbad server
         :param ra: floating point value of the RA coordinate
@@ -45,9 +45,9 @@ def get_celestial_objects(ra, dec, radius):
         script += '"\n'
 
         script += 'query coo '
-        script += '%f' % ra           # append "a_ra" (decimal degree)
+        script += '%f' % radec.ra           # append "a_ra" (decimal degree)
         script += ' '
-        script += '%f' % dec          # append "a_dec" (decimal degree)
+        script += '%f' % radec.dec          # append "a_dec" (decimal degree)
         script += ' radius='
         script += '%f' % radius       # append "a_radius" (decimal degree)
         script += 'd'                  # d,m,s
@@ -109,7 +109,7 @@ def get_celestial_objects(ra, dec, radius):
 
         return out
 
-    req = make_req(ra, dec, radius)
+    req = make_req(radec, radius)
 
     out = wget(req)
     if out is None:
@@ -143,8 +143,12 @@ if __name__ == '__main__':
 
     ''' Unit tests '''
 
-    for object in get_celestial_objects(1.0, 1.0, 0.1): 
-        print('{} ({})'.format(object, objects[object]))
-    if len(objects) != 14: print('error')
+    class RaDec: pass
+    radec = RaDec()
+    radec.ra, radec.dec = 1.0, 1.0
+    cobjects, _, _ = get_celestial_objects(radec, 0.1)
+    for cobj_name in sorted(cobjects.keys()):
+      print(cobj_name) 
+
 
 

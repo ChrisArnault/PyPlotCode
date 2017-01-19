@@ -70,8 +70,6 @@ def set_fs(label):
         print('imshow')
 
 if __name__ == '__main__':
-    global fig
-    global main_ax
 
     file_name, batch = lib_args.get_args()
     if not batch:
