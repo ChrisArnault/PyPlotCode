@@ -44,12 +44,7 @@ class Display(threading.Thread):
 
             header_nn, pixels_nn = lib_fits.read_first_image(npacnn)
 
-            wcs_npacnn = lib_wcs.get_wcs(header_nn)
-            radec0 = lib_wcs.xy_to_radec(wcs_npacnn, { 'x' : 0, 'y' : 0 } )
-            radec1 = lib_wcs.xy_to_radec(wcs_npacnn, { 'x' : pixels_nn.shape[0], 'y' : pixels_nn.shape[1] } )
-
-            xy0 = lib_wcs.radec_to_xy(self.wcs_m81, radec0)
-            x0, y0 = xy0['x'], xy0['y']
+            x0, y0 = 0 , 0
             x1, y1 = x0 + pixels_nn.shape[0], y0 + pixels_nn.shape[1]
 
             if x0 - self.border < 0:

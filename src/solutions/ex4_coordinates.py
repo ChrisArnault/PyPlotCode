@@ -33,11 +33,11 @@ class ShowRaDec():
 
             tokens = []
             for cluster in results:
-                xy = { 'x' : cluster['c'], 'y' : cluster['r'] }
-                radec = lib_wcs.xy_to_radec(self.wcs, xy)
-                tokens.append("{ra:.3f}/{dec:.3f}".format(**radec))
+                pxy = lib_wcs.PixelXY(cluster['c'], cluster['r'])
+                radec = lib_wcs.xy_to_radec(self.wcs, pxy)
+                tokens.append("{:.3f}/{d:.3f}".format(radec.ra, radec.dec))
 
-            self.text = plt.text(x, y, ' '.join(tokens), fontsize=14, color='white')
+            self.text = plt.text(pxy.x, pxy.y, ' '.join(tokens), fontsize=14, color='white')
 
         self.fig.canvas.draw()
 
@@ -55,11 +55,11 @@ def main():
     # coordinates ra dec
     max_cluster = region.clusters[0]
     wcs = lib_wcs.get_wcs(header)
-    xy = { 'x' : max_cluster['c'], 'y' : max_cluster['r'] }
-    radec = lib_wcs.xy_to_radec(wcs, xy)
+    pxy = lib_wcs.PixelXY(max_cluster['c'], max_cluster['r'])
+    radec = lib_wcs.xy_to_radec(wcs, pxy)
 
     # console output
-    print('right ascension: {ra:.3f}, declination: {dec:.3f}'.format(**radec))
+    print('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra,radec.dec))
 
     # graphic output
     if not batch:

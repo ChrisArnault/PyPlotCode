@@ -51,11 +51,11 @@ class StarScan():
     def run(self):
 
         # FIXME: update when using the new centroid definition
-        xy = { 'x' : self.cluster['c'], 'y' : self.cluster['r'] }
+        pxy = lib_wcs.PixelXY(self.cluster['c'], self.cluster['r'])
 
         #g_io_lock.acquire()
-        radec = lib_wcs.xy_to_radec(self.wcs,xy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        radec = lib_wcs.xy_to_radec(self.wcs,pxy)
+        cobjects, _, _ = lib_stars.get_celestial_bodies(radec, CONE)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -66,7 +66,7 @@ class StarScan():
                 g_all_stars[cobj] = True
 
                 #g_plt_lock.acquire()
-                plt.text(xy['x'], xy['y'], cobj, color='white')
+                plt.text(pxy.x, pxy.y, cobj, color='white')
                 self.fig.canvas.draw()
                 #g_plt_lock.release()
 
@@ -110,17 +110,17 @@ class ShowCelestialObjects():
             self.text.remove()
             self.text = None
 
-        xy = { 'x' : round(event.xdata), 'y' : round(event.ydata) }
-        results = self.region.find_clusters(xy['x'], xy['y'], 5)
+        pxy = lib_wcs.PixelXY(round(event.xdata),round(event.ydata))
+        results = self.region.find_clusters(pxy.x, pxy.y, 5)
 
-        print(xy['x'] - DX, xy['y'] - DY, xy['x'], xy['y'])
+        print(pxy.x - DX, pxy.y - DY, pxy.x, pxy.y)
 
         radec = lib_wcs.xy_to_radec(self.wcs,xy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_bodies(radec, CONE)
 
         for cobj in cobjects:
             print(('--------->', cobj))
-            self.text = plt.text(xy['x'], xy['y'], '%s [%s, %s]' % (cobj, xy['x'], xy['y']), fontsize=14, color='red')
+            self.text = plt.text(pxy.x, pxy.y, '%s [%s, %s]' % (cobj, pxy.x, pxy.y), fontsize=14, color='red')
             print(('---------<', cobj))
 
         self.fig.canvas.draw()
@@ -166,20 +166,17 @@ def main():
         logging.info('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
 
     # coordinates
-    peak = (DY + region.clusters[0]['r'], DX + region.clusters[0]['c'])
     wcs = lib_wcs.get_wcs(header)
-    xy = { 'x' : peak[1], 'y' : peak[0] }
-    radec = lib_wcs.xy_to_radec(wcs, xy)
-    logging.info('right ascension: {ra:.3f}, declination: {dec:.3f}'.format(**radec))
+    pxy = lib_wcs.PixelXY(DX + region.clusters[0]['c'], DY + region.clusters[0]['r'])
+    radec = lib_wcs.xy_to_radec(wcs, pxy)
+    logging.info('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra, radec.dec))
 
     # celestial objects
     for nic, ic in enumerate(region.clusters):
         #ic = region.clusters[0]
-        r = DY + ic['r']
-        c = DX + ic['c']
-        xy = { 'x' : c, 'y' : r }
-        radec = lib_wcs.xy_to_radec(wcs,xy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        pxy = lib_wcs.PixelXY(DX + ic['c'], DY + ic['r'])
+        radec = lib_wcs.xy_to_radec(wcs,pxy)
+        cobjects, _, _ = lib_stars.get_celestial_bodies(radec, CONE)
         for cobj in list(cobjects.items()):
             logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
 

@@ -26,8 +26,8 @@ def tests():
     filename = '../../data/fits/dss.19.59.54.3+09.59.20.9 10x10.fits'
     header, _ = lib_fits.read_first_image(filename)
     wcs = lib_wcs.get_cws(header)
-    xy = { 'x' : 0, 'y' : 0 }
-    radec = w.xy_to_radec(wcs,xy)
+    pxy = lib_wcs.PixelXY(0, 0)
+    radec = w.xy_to_radec(wcs, pxy)
     if abs(ra - 300.060983768) > 1e-5: print('error')
     if abs(dec - 9.90624639801) > 1e5: print('error')
 
