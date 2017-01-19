@@ -12,7 +12,7 @@ import urllib.request, urllib.error, urllib.parse
 import numpy as np
 
 
-def get_celestial_bodies(radec, radius):
+def get_celestial_objects(radec, radius):
 
     def make_req(radec, radius):
         """
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     class RaDec: pass
     radec = RaDec()
     radec.ra, radec.dec = 1.0, 1.0
-    cobjects, _, _ = get_celestial_bodies(radec, 0.1)
+    cobjects, _, _ = get_celestial_objects(radec, 0.1)
     for cobj_name in sorted(cobjects.keys()):
       print(cobj_name) 
 

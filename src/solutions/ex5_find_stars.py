@@ -40,7 +40,7 @@ class ShowCelestialObjects():
                 pxy = lib_wcs.PixelXY(cluster['c'], cluster['r'])
                 radec = lib_wcs.xy_to_radec(self.wcs, pxy)
 
-                cobjects, _, _ = lib_stars.get_celestial_bodies(radec, CONE)
+                cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
                 tokens.extend(cobjects)
 
             self.text = plt.text(pxy.x, pxy.y, ' '.join(tokens), fontsize=14, color='white')
@@ -66,7 +66,7 @@ def main():
     radec = lib_wcs.xy_to_radec(wcs, pxy)
 
     # celestial objects
-    cobjects, _, _ = lib_stars.get_celestial_bodies(radec, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
 
     # console output
     for cobj in cobjects.keys():
