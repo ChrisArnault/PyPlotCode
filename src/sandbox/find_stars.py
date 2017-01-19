@@ -170,7 +170,7 @@ def main():
     wcs = lib_wcs.get_wcs(header)
     xy = { 'x' : peak[1], 'y' : peak[0] }
     radec = lib_wcs.xy_to_radec(wcs, xy)
-    logging.info('right ascension: %.3f, declination: %.3f',radec)
+    logging.info('right ascension: {ra:.3f}, declination: {dec:.3f}'.format(**radec))
 
     # celestial objects
     for nic, ic in enumerate(region.clusters):
