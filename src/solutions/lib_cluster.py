@@ -11,6 +11,52 @@ import sys
 import numpy as np
 
 
+class Cluster():
+
+    '''
+    A cluster is a set of adjacent pixels
+    '''
+
+    def __init__(self):
+
+        self.pixels = []
+
+    def add(self, row, column, value):
+
+        self.pixels.append((row, column, value))
+
+    def get_integral(self):
+        
+        return sum([pixel[2] for pixel in self.pixels])
+
+    def get_bounding_box_center(self):
+
+        rows, cols, values = zip(self.pixels)
+        row_center = (min(rows)+max(rows))/2.0
+        col_center = (min(cols)+max(cols))/2.0
+        return row_center, col_center
+
+    def get_centroid(self):
+
+        nbpixels = len(self.pixels)
+        if nbpixels == 0: return None, None
+        row_mean = sum(rows) / nbpixels
+        col_mean = sum(cols) / nbpixels
+        return row_mean, col_mean
+
+    def get_what_the_fuck(self):
+
+        integral = self.get_integral()
+        row_mean, col_mean = self.get_centroid()
+
+        row_weight = sum([pixel[2]*((pixel[0] - row_mean)**2) for pixel in self.pixels])
+        col_weight = sum([pixel[2]*((pixel[1] - row_mean)**2) for pixel in self.pixels])
+        row_weight = np.sqrt(row_weight)/integral + row_mean
+        col_weight = np.sqrt(col_weight)/integral + col_mean
+
+        return row_weight, col_weight
+
+
 class Region():
 
     '''
@@ -280,7 +326,6 @@ class Region():
 
 def tests():
 
-    ''' Unit tests '''
     
     return 0
 
