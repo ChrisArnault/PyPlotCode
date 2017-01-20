@@ -11,6 +11,14 @@ import lib_wcs, lib_stars
 CONE = 0.001
 
 
+def get_celestial_objects( wcs, cluster ):
+
+    pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
+    radec = lib_wcs.xy_to_radec(wcs, pxy)
+    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+    return cobjects
+
+
 class ShowCelestialObjects():
 
     def __init__(self, the_region, the_wcs, the_fig):
@@ -36,10 +44,7 @@ class ShowCelestialObjects():
 
             for cluster in results:
 
-                pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
-                radec = lib_wcs.xy_to_radec(self.wcs, pxy)
-
-                cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+                cobjects = get_celestial_objects(self.wcs,cluster)
                 tokens.extend(cobjects)
 
             self.text = plt.text(pxy.x, pxy.y, ' '.join(tokens), fontsize=14, color='white')
@@ -53,17 +58,10 @@ def main():
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
-    # search for clusters
+    # celestial objects for the biggest cluster
     clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
-    max_cluster = clusters[0]
-
-    # coordinates ra dec
     wcs = lib_wcs.get_wcs(header)
-    pxy = lib_wcs.PixelXY(max_cluster.column, max_cluster.row)
-    radec = lib_wcs.xy_to_radec(wcs, pxy)
-
-    # celestial objects
-    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+    cobjects = get_celestial_objects(wcs, clusters[0])
 
     # console output
     for cobj in cobjects.keys():
