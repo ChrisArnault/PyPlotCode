@@ -155,7 +155,7 @@ def main():
     if ly == 0:
         ly = pixels.shape[1]
 
-    clusters, _ = lib_cluster.convolution_clustering(pixels[DY:ly, DX:lx], background + threshold*dispersion)
+    clusters = lib_cluster.convolution_clustering(pixels[DY:ly, DX:lx], background + threshold*dispersion)
     cluster0 = clusters[0]
     max_integral = cluster0.integral
     

@@ -105,18 +105,27 @@ def _spread_peak(image, threshold, r, c):
       - increase the distance until the sum falls down below some threshold
     """
 
-    top = image[r, c]
+    previous_integral = image[r, c]
     radius = 1
-    # for radius in range(1, 200):
+    rmin = r - radius
+    rmax = r + radius + 1
+    cmin = c - radius
+    cmax = c + radius + 1
+
     while True:
-        integral = np.sum(image[r - radius:r + radius + 1, c - radius:c + radius + 1])
+
+        integral = np.sum(image[rmin:rmax,cmin:cmax])
         pixels = 8 * radius
-        mean = (integral - top) / pixels
+        mean = (integral - previous_integral) / pixels
         if mean < threshold:
             return integral, radius
 
         radius += 1
-        top = integral
+        if rmin>0: rmin = rmin -1
+        if rmax<image.shape[0]: rmax = rmax + 1
+        if cmin>0: cmin = cmin -1
+        if cmax<image.shape[1]: cmax = cmax + 1
+        previous_integral = integral
 
 
 def convolution_clustering(image, threshold):

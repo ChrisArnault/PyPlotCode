@@ -36,7 +36,7 @@ class ShowCelestialObjects():
 
             for cluster in results:
 
-                pxy = lib_wcs.PixelXY(cluster['c'], cluster['r'])
+                pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
                 radec = lib_wcs.xy_to_radec(self.wcs, pxy)
 
                 cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
