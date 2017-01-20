@@ -47,7 +47,7 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters
-    clusters, _ = lib_cluster.convolution_clustering(pixels, background + 6.0*dispersion)
+    clusters = lib_cluster.convolution_clustering(pixels, background + 6.0*dispersion)
     max_cluster = clusters[0]
 
     # coordinates ra dec

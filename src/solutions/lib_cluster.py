@@ -96,7 +96,7 @@ def _has_peak(image, r, c):
     return True
 
 
-def _spread_peak(region, threshold, cp_image, r, c):
+def _spread_peak(image, threshold, r, c):
 
     """
     Knowing that a peak exists at the specified position, we capture the cluster around it:
@@ -105,12 +105,11 @@ def _spread_peak(region, threshold, cp_image, r, c):
       - increase the distance until the sum falls down below some threshold
     """
 
-    cp = cp_image[r, c]
-    top = region[r, c]
+    top = image[r, c]
     radius = 1
     # for radius in range(1, 200):
     while True:
-        integral = np.sum(region[r - radius:r + radius + 1, c - radius:c + radius + 1])
+        integral = np.sum(image[r - radius:r + radius + 1, c - radius:c + radius + 1])
         pixels = 8 * radius
         mean = (integral - top) / pixels
         if mean < threshold:
@@ -120,23 +119,18 @@ def _spread_peak(region, threshold, cp_image, r, c):
         top = integral
 
 
-def convolution_clustering(region, threshold):
+def convolution_clustering(image, threshold):
 
     # define a convolution image that stores the convolution products at each pixel position
-    cp_image = np.zeros_like(region, np.float)
+    cp_image = np.zeros_like(image, np.float)
 
-    """
-    we start by building a PSF with a given width
-    TODO we should study the impact of the size of this pattern
-    """
-
+    # we start by building a PSF with a given width
     pattern_width = 9
     pattern = _build_pattern(pattern_width)
 
     """
     principle:
-    - we scan the complete region (rows/columns)
-    - at every position:
+    - at every position of the input image:
         - we apply a fix pattern made of one 2D normalized gaussian distribution
             - width = 9
             - magnitude = 1.0
@@ -151,88 +145,54 @@ def convolution_clustering(region, threshold):
             - a peak is detected when ALL pixels around the center of this little region are below the center.
         - when a peak is detected, we get the cluster (the group of pixels around a peak):
             - accumulate pixels circularly around the peak until the sum of pixels at a given distance
-                is loxer then the threshold
+                is lower than the threshold
             - we compute the integral of pixel values of the cluster
     - this list of clusters is returned.
     """
 
-    half = int(pattern_width/2)
-
+    half = pattern_width // 2
     cp_threshold = None
+    max_image = np.max(image)
 
-    max_region = np.max(region)
-
-    # we keep a guard for pattern in the original image
-    for r, row in enumerate(region[half:-half, half:-half]):
-        for c, col in enumerate(row):
-
-            rnum = r + half
-            cnum = c + half
-
-            if region[rnum, cnum] < threshold:
-                cp_image[rnum, cnum] = 0
-                continue
+    # loop on all pixels except a "half" border
+    for rnum in range(half,image.shape[0]-half):
+        for cnum in range(half,image.shape[1]-half):
 
             """
             rnum, cnum is the center of the convolution zone
             """
 
-            cmin = cnum - half
-            cmax = cnum + half + 1
+            if image[rnum, cnum] < threshold:
+                cp_image[rnum, cnum] = 0
+                continue
+
             rmin = rnum - half
             rmax = rnum + half + 1
+            cmin = cnum - half
+            cmax = cnum + half + 1
 
-            sub_region = region[rmin:rmax, cmin:cmax]
+            sub_image = image[rmin:rmax, cmin:cmax]
 
             # convolution product
-            product = np.sum(sub_region * pattern / max_region)
+            product = np.sum(sub_image * pattern / max_image)
 
             if cp_threshold is None or product < cp_threshold:
                 # get the lower value of the CP
                 cp_threshold = product
 
-            # store the convolution product
             cp_image[rnum, cnum] = product
-
-    #========= end of convolution. now get peaks
-
-    peaks = np.copy(region)
 
     # make the CP threshold above the background fluctuations
     cp_threshold *= 1.3
 
-    #
-    # scan the convolution image to detect peaks and get all clusters
-    #
-
+    # scan the convolution image to detect peaks and build clusters
     clusters = []
-
-    for r, row in enumerate(cp_image[half:-half, half:-half]):
-        # print('2) rnum=', rnum)
-        for c, col in enumerate(row):
-
-            rnum = r + half
-            cnum = c + half
-
+    for rnum in range(half,image.shape[0]-half):
+        for cnum in range(half,image.shape[1]-half):
             if cp_image[rnum, cnum] > cp_threshold:
-                """
-                rnum, cnum is the center of the convolution zone
-
-                check if we have a peak centered at this position:
-                - the CP at the center of the zone must be higher then any CP immediately around the center
-                """
                 peak = _has_peak(cp_image, rnum, cnum)
                 if peak:
-                    #
-                    # if a peak is detected, we get the cluster
-                    #
-                    # print('peak at [%d %d]' % (rnum, cnum))
-                    x = 3
-
-                    peaks[rnum - x:rnum + x + 1, cnum] = region[rnum, cnum]
-                    peaks[rnum, cnum - x:cnum + x + 1] = region[rnum, cnum]
-
-                    integral, radius = _spread_peak(region, threshold, cp_image, rnum, cnum)
+                    integral, radius = _spread_peak(image, threshold, rnum, cnum)
                     if radius > 1:
                         clusters.append(Cluster(rnum,cnum,integral))
 
@@ -240,7 +200,18 @@ def convolution_clustering(region, threshold):
     clusters.sort(key=lambda cl: cl.integral, reverse=True)
 
     # results
-    return clusters, peaks
+    return clusters
+
+
+def add_crosses(image, clusters):
+
+    x = 3
+    peaks = np.copy(image)
+    for cl in clusters:
+        rnum, cnum = cl.row, cl.column
+        peaks[rnum - x:rnum + x + 1, cnum] = image[rnum, cnum]
+        peaks[rnum, cnum - x:cnum + x + 1] = image[rnum, cnum]
+    return peaks
 
 
 # =====
@@ -277,5 +248,5 @@ if __name__ == '__main__':
 
     print(_has_peak(image,2,2))
     print(_has_peak(image,1,3))
-    print(_spread_peak(image,1,image,2,2))
+    print(_spread_peak(image,1,2,2))
 
