@@ -28,8 +28,7 @@ class ShowCelestialObjects():
             self.text.remove()
             self.text = None
 
-        x, y = int(event.xdata), int(event.ydata)
-        results = self.region.find_clusters(x, y, 5)
+        results = find_clusters(self.region.clusters,event.xdata,event.ydata, 5)
 
         if len(results) > 0:
 
@@ -54,15 +53,13 @@ def main():
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
-    # search for clusters in a sub-region of the image
-    threshold = 6.0
-    region = lib_cluster.Region(pixels, background + threshold*dispersion)
-    pattern, cp_image, peaks = region.run_convolution()
+    # search for clusters
+    clusters, _ = lib_cluster.convolution_clustering(pixels, background + 6.0*dispersion)
+    max_cluster = clusters[0]
 
     # coordinates ra dec
-    max_cluster = region.clusters[0]
     wcs = lib_wcs.get_wcs(header)
-    pxy = lib_wcs.PixelXY(max_cluster['c'], max_cluster['r'])
+    pxy = lib_wcs.PixelXY(max_cluster.column, max_cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
 
     # celestial objects

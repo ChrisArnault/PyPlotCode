@@ -139,9 +139,11 @@ def get_celestial_objects(radec, radius):
     return objects, out, req
 
 
-if __name__ == '__main__':
+# =====
+# Unit tests
+#=====
 
-    ''' Unit tests '''
+if __name__ == '__main__':
 
     class RaDec: pass
     radec = RaDec()

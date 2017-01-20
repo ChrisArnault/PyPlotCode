@@ -10,6 +10,7 @@ One can execute several ones sequentially: 'oval r <name1> <name2>...'
 Typing 'oval fo <name>' show the filtered part of '<name>.out'.
 Typing 'oval v <name>' copy the log file '<name>.out' into the ref file '<name>.ref'.
 Typing 'oval d <name>' compare the log file '<name>.out' with the ref file '<name>.ref'.
+Typing 'oval fo <name>' show the filtered part of '<name>.out'.
 Typing 'oval fr <name>' show the filtered part of '<name>.ref'.
 Typing 'oval c <name>' crypt '<name>.ref' into '<name>.md5'.
 
@@ -321,7 +322,6 @@ elif subcommand == 'filter-ref':
         fexps = [re.compile('^'+f.replace('%', '.*')+'$') for f in target['diff_filters_in']]
         proc1 = subprocess.run("cat {}.ref 2>&1".format(target_name),
             shell=True, stdout=subprocess.PIPE, universal_newlines=True)
-        out_ref, _ = proc1.communicate()
         out_ref_matches = []
         for line in proc1.stdout.split('\n'):
             for fmatch in [fexp.match(line) for fexp in fexps]:

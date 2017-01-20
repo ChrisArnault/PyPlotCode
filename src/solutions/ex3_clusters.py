@@ -15,14 +15,12 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters
-    region = lib_cluster.Region(pixels, background + 6.0*dispersion)
-    pattern, s, _ = region.run_convolution()
-    max_cluster = region.clusters[0]
-    max_integral = max_cluster['integral']
+    clusters, _ = lib_cluster.convolution_clustering(pixels, background + 6.0*dispersion)
+    max_cluster = clusters[0]
 
     # console output
-    print('number of clusters: {:2d}, greatest integral: {:7d}, centroid x: {:4.1f}, centroid y: {:4.1f}'.format(
-        len(region.clusters), max_integral, max_cluster['c'], max_cluster['r']))
+    print('number of clusters: {:2d}, greatest integral: {:7d}, x: {:4.1f}, y: {:4.1f}'.format(
+        len(clusters), max_cluster.integral, max_cluster.column, max_cluster.row))
 
     # graphic output
     if not batch:

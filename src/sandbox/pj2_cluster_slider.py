@@ -10,6 +10,7 @@ Test program to
 - display the image
 """
 
+
 import sys
 sys.path.append('../solutions')
 
@@ -32,17 +33,14 @@ def main():
 
     # search for clusters in a sub-region of the image
     # we set a threshold
-
     threshold = 6.0
-    region = lib_cluster.Region(pixels, background + threshold*dispersion)
-    region.run_convolution()
-
-    logging.info('%d clusters', len(region.clusters))
+    clusters, peaks = lib_cluster.convolution_clustering(pixels, background + threshold*dispersion)
+    logging.info('%d clusters', len(clusters))
 
     if not batch:
         
         fig, main_ax = plt.subplots()
-        imgplot = main_ax.imshow(region.image)
+        imgplot = main_ax.imshow(pixels)
 
         axcolor = 'lightgoldenrodyellow'
         ax_thresh = plt.axes([0.25, 0.92, 0.65, 0.03], axisbg=axcolor)
@@ -54,10 +52,8 @@ def main():
 
             x = s_thresh.val
             print(background, threshold, dispersion, x)
-            region = lib_cluster.Region(pixels, x)
-            pattern, cp_image, peaks = region.run_convolution()
-            # region.run(background + threshold*dispersion)
-            logging.info('%d clusters', len(region.clusters))
+            clusters, peaks = lib_cluster.convolution_clustering(pixels, x)
+            logging.info('%d clusters', len(clusters))
 
             imgplot.set_data(peaks)
             fig.canvas.draw_idle()

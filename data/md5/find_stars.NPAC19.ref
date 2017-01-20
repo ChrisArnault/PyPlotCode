@@ -2,12 +2,12 @@ name of image: ../fits/NPAC19.fits
 cd1_1: -0.00046987575771404, cd1_2: -4.9919623119722e-05, cd2_1: -4.8952113442505e-05, cd2_2: 0.00046999014282
 height: 106, width: 106
 background: 2604, dispersion: 139
-number of clusters:  5, greatest integral: 1283683, centroid x: 51.0, centroid y: 55.0
-cluster 0 55 51 1283683 13260 7
-cluster 1 38 86 480845 13515 4
-cluster 2 47 4 224389 11360 3
-cluster 3 5 46 182575 9748 3
-cluster 4 84 69 92424 6054 2
+number of clusters:  5, greatest integral: 1283683, x: 51.0, y: 55.0
+cluster 0: 1283683 at 55.0, 51.0
+cluster 1: 480845 at 38.0, 86.0
+cluster 2: 224389 at 47.0, 4.0
+cluster 3: 182575 at 5.0, 46.0
+cluster 4: 92424 at 84.0, 69.0
 right ascension: 148.860, declination: 68.856
 0> celestial object: TYC 4383-1031-1 Star
 1> celestial object: GSC 04383-01037 PM*
