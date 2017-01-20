@@ -13,6 +13,12 @@ import numpy as np
 
 class Cluster():
 
+    """
+    General description of a cluster:
+    - its position, with a row and column
+    - its integrated value
+    """
+
     def __init__(self, row, column, integral):
 
         self.row = row
@@ -26,6 +32,11 @@ class Cluster():
 
 def find_clusters(clusters, row, column, radius):
 
+    """
+    From a collection of clusters, return the ones whose distance
+    to a given row/column is at most a given radius
+    """
+
     results = []
 
     for cl in clusters:
@@ -38,12 +49,12 @@ def find_clusters(clusters, row, column, radius):
     return results
 
 
-def build_pattern(size):
+def _build_pattern(size):
         
     """
-    Start by creating a 2D grid of pixels to form a PSF to be applied onto the
-    image to detect objects. This pattern has a form of a 2D centered normalized gaussian.
-    The size must be odd.
+    Create a 2D grid of pixels to form a PSF to be applied onto the
+    image to detect objects. This pattern has a form of a 2D centered
+    normalized gaussian. The size must be odd.
      """
 
     if size/2 == 0: raise ValueError
@@ -61,55 +72,55 @@ def build_pattern(size):
 
     return pattern
 
+def _has_peak(image, r, c):
+
+    """
+    Check if a peak exists at the (r, c) position
+    To check if a peak exists:
+       - we consider the value at the specified position
+       - we verify all values immediately around the specified position are lower
+    """
+
+    zone = image[r - 1:r + 2, c - 1:c + 2]
+    top = zone[1, 1]
+    if top == 0.0 or \
+        zone[0, 0] > top or \
+        zone[0, 1] > top or \
+        zone[0, 2] > top or \
+        zone[1, 0] > top or \
+        zone[1, 2] > top or \
+        zone[2, 0] > top or \
+        zone[2, 1] > top or \
+        zone[2, 2] > top:
+        return False
+    return True
+
+
+def _spread_peak(region, threshold, cp_image, r, c):
+
+    """
+    Knowing that a peak exists at the specified position, we capture the cluster around it:
+    - loop on the distance from center:
+      - sum pixels at a given distance
+      - increase the distance until the sum falls down below some threshold
+    """
+
+    cp = cp_image[r, c]
+    top = region[r, c]
+    radius = 1
+    # for radius in range(1, 200):
+    while True:
+        integral = np.sum(region[r - radius:r + radius + 1, c - radius:c + radius + 1])
+        pixels = 8 * radius
+        mean = (integral - top) / pixels
+        if mean < threshold:
+            return integral, radius
+
+        radius += 1
+        top = integral
+
 
 def convolution_clustering(region, threshold):
-
-    def has_peak(cp_image, r, c):
-
-        """
-        Check if a peak exists at the (r0, c0) position of the convolution product matrix cp_image
-        To check if a peak exists:
-           - we consider the CP et the specified position
-           - we verify that ALL CP at positions immediately around the specified position are lower
-        """
-
-        zone = cp_image[r - 1:r + 2, c - 1:c + 2]
-        top = zone[1, 1]
-        if top == 0.0:
-            return False, 0.0
-        if zone[0, 0] > top or \
-            zone[0, 1] > top or \
-            zone[0, 2] > top or \
-            zone[1, 0] > top or \
-            zone[1, 2] > top or \
-            zone[2, 0] > top or \
-            zone[2, 1] > top or \
-            zone[2, 2] > top:
-            return False
-        return True
-
-    def get_peak(region,threshold,cp_image, r, c):
-
-        """
-        Knowing that a peak exists at the specified position, we capture the cluster around it:
-        - loop on the distance from center:
-          - sum pixels at a given distance
-          - increase the distance until the sum falls down below some threshold
-        """
-
-        cp = cp_image[r, c]
-        top = region[r, c]
-        radius = 1
-        # for radius in range(1, 200):
-        while True:
-            integral = np.sum(region[r - radius:r + radius + 1, c - radius:c + radius + 1])
-            pixels = 8 * radius
-            mean = (integral - top) / pixels
-            if mean < threshold:
-                return integral, radius
-
-            radius += 1
-            top = integral
 
     # define a convolution image that stores the convolution products at each pixel position
     cp_image = np.zeros_like(region, np.float)
@@ -120,7 +131,7 @@ def convolution_clustering(region, threshold):
     """
 
     pattern_width = 9
-    pattern = build_pattern(pattern_width)
+    pattern = _build_pattern(pattern_width)
 
     """
     principle:
@@ -210,7 +221,7 @@ def convolution_clustering(region, threshold):
                 check if we have a peak centered at this position:
                 - the CP at the center of the zone must be higher then any CP immediately around the center
                 """
-                peak = has_peak(cp_image, rnum, cnum)
+                peak = _has_peak(cp_image, rnum, cnum)
                 if peak:
                     #
                     # if a peak is detected, we get the cluster
@@ -221,7 +232,7 @@ def convolution_clustering(region, threshold):
                     peaks[rnum - x:rnum + x + 1, cnum] = region[rnum, cnum]
                     peaks[rnum, cnum - x:cnum + x + 1] = region[rnum, cnum]
 
-                    integral, radius = get_peak(region,threshold,cp_image, rnum, cnum)
+                    integral, radius = _spread_peak(region, threshold, cp_image, rnum, cnum)
                     if radius > 1:
                         clusters.append(Cluster(rnum,cnum,integral))
 
@@ -251,7 +262,20 @@ if __name__ == '__main__':
     
     # build_pattern
 
-    print(build_pattern(3))
+    print(_build_pattern(3))
 
+    # has_peak & spread_peak
 
+    image = np.array([
+        (0,0,0,0,0),
+        (0,1,3,2,0),
+        (0,1,3,3,0),
+        (0,1,1,1,0),
+        (1,0,0,0,0),
+    ])
+    print(image)
+
+    print(_has_peak(image,2,2))
+    print(_has_peak(image,1,3))
+    print(_spread_peak(image,1,image,2,2))
 
