@@ -34,7 +34,7 @@ def main():
     # search for clusters in a sub-region of the image
     # we set a threshold
     threshold = 6.0
-    clusters, peaks = lib_cluster.convolution_clustering(pixels, background + threshold*dispersion)
+    clusters = lib_cluster.convolution_clustering(pixels, background + threshold*dispersion)
     logging.info('%d clusters', len(clusters))
 
     if not batch:
@@ -52,7 +52,8 @@ def main():
 
             x = s_thresh.val
             print(background, threshold, dispersion, x)
-            clusters, peaks = lib_cluster.convolution_clustering(pixels, x)
+            clusters = lib_cluster.convolution_clustering(pixels, x)
+            peaks = add_crosses(pixels,clusters)
             logging.info('%d clusters', len(clusters))
 
             imgplot.set_data(peaks)

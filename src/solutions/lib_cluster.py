@@ -103,6 +103,7 @@ def _spread_peak(image, threshold, r, c):
     - loop on the distance from center:
       - sum pixels at a given distance
       - increase the distance until the sum falls down below some threshold
+    Returns integral, radius, geometric center
     """
 
     previous_integral = image[r, c]
@@ -118,7 +119,7 @@ def _spread_peak(image, threshold, r, c):
         pixels = 8 * radius
         mean = (integral - previous_integral) / pixels
         if mean < threshold:
-            return integral, radius
+            return previous_integral, radius-1
 
         radius += 1
         if rmin>0: rmin = rmin -1
@@ -129,13 +130,6 @@ def _spread_peak(image, threshold, r, c):
 
 
 def convolution_clustering(image, threshold):
-
-    # define a convolution image that stores the convolution products at each pixel position
-    cp_image = np.zeros_like(image, np.float)
-
-    # we start by building a PSF with a given width
-    pattern_width = 9
-    pattern = _build_pattern(pattern_width)
 
     """
     principle:
@@ -159,19 +153,33 @@ def convolution_clustering(image, threshold):
     - this list of clusters is returned.
     """
 
+    # we start by building a PSF with a given width
+    pattern_width = 9
+    pattern = _build_pattern(pattern_width)
     half = pattern_width // 2
-    cp_threshold = None
-    max_image = np.max(image)
 
-    # loop on all pixels except a "half" border
-    for rnum in range(half,image.shape[0]-half):
-        for cnum in range(half,image.shape[1]-half):
+    # make a copy with a border
+    ext_image = np.copy(image)
+    for n in range(half):
+        ext_image = np.insert(ext_image,0,threshold,axis=0)
+        ext_image = np.insert(ext_image,ext_image.shape[0],threshold,axis=0)
+        ext_image = np.insert(ext_image,0,threshold,axis=1)
+        ext_image = np.insert(ext_image,ext_image.shape[1],threshold,axis=1)
+
+    # define a convolution image that stores the convolution products at each pixel position
+    cp_image = np.zeros_like(ext_image, np.float)
+    cp_threshold = None
+
+    # loop on all pixels except the border
+    max_image = np.max(image)
+    for rnum in range(half,ext_image.shape[0]-half):
+        for cnum in range(half,ext_image.shape[1]-half):
 
             """
             rnum, cnum is the center of the convolution zone
             """
 
-            if image[rnum, cnum] < threshold:
+            if ext_image[rnum, cnum] < threshold:
                 cp_image[rnum, cnum] = 0
                 continue
 
@@ -180,7 +188,7 @@ def convolution_clustering(image, threshold):
             cmin = cnum - half
             cmax = cnum + half + 1
 
-            sub_image = image[rmin:rmax, cmin:cmax]
+            sub_image = ext_image[rmin:rmax, cmin:cmax]
 
             # convolution product
             product = np.sum(sub_image * pattern / max_image)
@@ -196,14 +204,14 @@ def convolution_clustering(image, threshold):
 
     # scan the convolution image to detect peaks and build clusters
     clusters = []
-    for rnum in range(half,image.shape[0]-half):
-        for cnum in range(half,image.shape[1]-half):
-            if cp_image[rnum, cnum] > cp_threshold:
-                peak = _has_peak(cp_image, rnum, cnum)
+    for rnum in range(image.shape[0]):
+        for cnum in range(image.shape[1]):
+            if cp_image[rnum+half, cnum+half] > cp_threshold:
+                peak = _has_peak(cp_image, rnum+half, cnum+half)
                 if peak:
                     integral, radius = _spread_peak(image, threshold, rnum, cnum)
-                    if radius > 1:
-                        clusters.append(Cluster(rnum,cnum,integral))
+                    if radius > 0:
+                        clusters.append(Cluster(rnum, cnum,integral))
 
     # sort by  integrals
     clusters.sort(key=lambda cl: cl.integral, reverse=True)
@@ -217,7 +225,7 @@ def add_crosses(image, clusters):
     x = 3
     peaks = np.copy(image)
     for cl in clusters:
-        rnum, cnum = cl.row, cl.column
+        rnum, cnum = round(cl.row), round(cl.column)
         peaks[rnum - x:rnum + x + 1, cnum] = image[rnum, cnum]
         peaks[rnum, cnum - x:cnum + x + 1] = image[rnum, cnum]
     return peaks
@@ -258,4 +266,6 @@ if __name__ == '__main__':
     print(_has_peak(image,2,2))
     print(_has_peak(image,1,3))
     print(_spread_peak(image,1,2,2))
+
+    # convolution
 
