@@ -84,14 +84,14 @@ def _has_peak(image, r, c):
     zone = image[r - 1:r + 2, c - 1:c + 2]
     top = zone[1, 1]
     if top == 0.0 or \
-        zone[0, 0] > top or \
-        zone[0, 1] > top or \
-        zone[0, 2] > top or \
-        zone[1, 0] > top or \
-        zone[1, 2] > top or \
-        zone[2, 0] > top or \
-        zone[2, 1] > top or \
-        zone[2, 2] > top:
+        zone[0, 0] >= top or \
+        zone[0, 1] >= top or \
+        zone[0, 2] >= top or \
+        zone[1, 0] >= top or \
+        zone[1, 2] >= top or \
+        zone[2, 0] >= top or \
+        zone[2, 1] >= top or \
+        zone[2, 2] >= top:
         return False
     return True
 
@@ -108,24 +108,18 @@ def _spread_peak(image, threshold, r, c):
 
     previous_integral = image[r, c]
     radius = 1
-    rmin = r - radius
-    rmax = r + radius + 1
-    cmin = c - radius
-    cmax = c + radius + 1
 
     while True:
 
-        integral = np.sum(image[rmin:rmax,cmin:cmax])
+        integral = np.sum(image[r - radius:r + radius + 1,c - radius:c + radius + 1])
         pixels = 8 * radius
         mean = (integral - previous_integral) / pixels
-        if mean < threshold:
+        if mean <= threshold:
             return previous_integral, radius-1
-
+        elif (r - radius)==0 or  (r + radius + 1)==image.shape[0] or \
+             (c - radius)==0 or  (c + radius + 1)==image.shape[1]:
+            return integral, radius
         radius += 1
-        if rmin>0: rmin = rmin -1
-        if rmax<image.shape[0]: rmax = rmax + 1
-        if cmin>0: cmin = cmin -1
-        if cmax<image.shape[1]: cmax = cmax + 1
         previous_integral = integral
 
 
@@ -161,10 +155,10 @@ def convolution_clustering(image, threshold):
     # make a copy with a border
     ext_image = np.copy(image)
     for n in range(half):
-        ext_image = np.insert(ext_image,0,threshold,axis=0)
-        ext_image = np.insert(ext_image,ext_image.shape[0],threshold,axis=0)
-        ext_image = np.insert(ext_image,0,threshold,axis=1)
-        ext_image = np.insert(ext_image,ext_image.shape[1],threshold,axis=1)
+        ext_image = np.insert(ext_image,0,threshold-1,axis=0)
+        ext_image = np.insert(ext_image,ext_image.shape[0],threshold-1,axis=0)
+        ext_image = np.insert(ext_image,0,threshold-1,axis=1)
+        ext_image = np.insert(ext_image,ext_image.shape[1],threshold-1,axis=1)
 
     # define a convolution image that stores the convolution products at each pixel position
     cp_image = np.zeros_like(ext_image, np.float)
@@ -256,8 +250,8 @@ if __name__ == '__main__':
 
     image = np.array([
         (0,0,0,0,0),
+        (0,1,2,2,0),
         (0,1,3,2,0),
-        (0,1,3,3,0),
         (0,1,1,1,0),
         (1,0,0,0,0),
     ])
