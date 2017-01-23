@@ -114,7 +114,7 @@ def _spread_peak(image, threshold, r, c):
         integral = np.sum(image[r - radius:r + radius + 1,c - radius:c + radius + 1])
         pixels = 8 * radius
         mean = (integral - previous_integral) / pixels
-        if mean <= threshold:
+        if mean < threshold:
             return previous_integral, radius-1
         elif (r - radius)==0 or  (r + radius + 1)==image.shape[0] or \
              (c - radius)==0 or  (c + radius + 1)==image.shape[1]:
@@ -123,7 +123,7 @@ def _spread_peak(image, threshold, r, c):
         previous_integral = integral
 
 
-def convolution_clustering(image, threshold):
+def convolution_clustering(image, threshold, background):
 
     """
     principle:
