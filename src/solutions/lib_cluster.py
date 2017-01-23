@@ -19,15 +19,16 @@ class Cluster():
     - its integrated value
     """
 
-    def __init__(self, row, column, integral):
+    def __init__(self, row, column, top, integral ):
 
         self.row = row
         self.column = column
+        self.top = top
         self.integral = integral
 
     def __str__(self):
 
-        return "{} at {:.1f}, {:.1f}".format(self.integral,self.row,self.column)
+        return "{}/{} at {:.1f}, {:.1f}".format(self.top,self.integral,self.row,self.column)
 
 
 def find_clusters(clusters, row, column, radius):
@@ -206,10 +207,11 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
                 if peak:
                     integral, radius = _spread_peak(image, threshold, rnum, cnum)
                     if radius > 0:
-                        clusters.append(Cluster(rnum, cnum,integral))
+                        clusters.append(Cluster(rnum, cnum,image[rnum,cnum],integral))
 
-    # sort by  integrals
-    clusters.sort(key=lambda cl: cl.integral, reverse=True)
+    # sort by integrals
+    max_top = max(clusters,key=lambda cl: cl.top).top
+    clusters.sort(key=lambda cl: cl.integral+cl.top/max_top, reverse=True)
 
     # results
     return clusters
@@ -234,7 +236,7 @@ if __name__ == '__main__':
 
     # Cluster
     
-    cl = Cluster(2.5,2.5,20)
+    cl = Cluster(2.5,2.5,10,20)
     print(cl)
 
     # find_clusters

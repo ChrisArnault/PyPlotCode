@@ -3,9 +3,9 @@ cd1_1: -0.00047034064052636, cd1_2: -4.6243379555104e-05, cd2_1: -4.522568488059
 height: 106, width: 106
 background: 2816, dispersion: 151
 number of clusters:  3, greatest integral: 1485901, x: 51.0, y: 56.0
-cluster 0: 1485901 at 56.0, 51.0
-cluster 1: 135755 at 56.0, 95.0
-cluster 2: 124386 at 35.0, 73.0
+cluster 0: 13102/1485901 at 56.0, 51.0
+cluster 1: 10876/135755 at 56.0, 95.0
+cluster 2: 10870/124386 at 35.0, 73.0
 right ascension: 149.349, declination: 69.306
 0> celestial object: TYC 4383-1121-1 Star
 1> celestial object: 2MASS J09570938+6918154 IR

@@ -3,10 +3,10 @@ cd1_1: -0.00047019290098539, cd1_2: -4.7348539359609e-05, cd2_1: -4.635232549896
 height: 106, width: 106
 background: 2779, dispersion: 216
 number of clusters:  4, greatest integral:  207397, x: 26.0, y: 62.0
-cluster 0: 207397 at 62.0, 26.0
-cluster 1: 192437 at 53.0, 52.0
-cluster 2: 171950 at 37.0, 85.0
-cluster 3: 150854 at 57.0, 46.0
+cluster 0: 13021/207397 at 62.0, 26.0
+cluster 1: 12592/192437 at 53.0, 52.0
+cluster 2: 12453/171950 at 37.0, 85.0
+cluster 3: 11440/150854 at 57.0, 46.0
 right ascension: 149.232, declination: 69.087
 0> celestial object: GSC 04383-00598 Star
 1> celestial object: 2MASS J09564738+6904533 Star

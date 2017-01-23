@@ -3,10 +3,10 @@ cd1_1: -0.00046969779012706, cd1_2: -5.2023048697517e-05, cd2_1: -5.102573217770
 height: 106, width: 106
 background: 2779, dispersion: 158
 number of clusters:  4, greatest integral:  173074, x: 44.0, y:  3.0
-cluster 0: 173074 at 3.0, 44.0
-cluster 1: 151791 at 38.0, 26.0
-cluster 2: 143350 at 12.0, 35.0
-cluster 3: 136497 at 80.0, 81.0
+cluster 0: 12413/173074 at 3.0, 44.0
+cluster 1: 11834/151791 at 38.0, 26.0
+cluster 2: 12065/143350 at 12.0, 35.0
+cluster 3: 10582/136497 at 80.0, 81.0
 right ascension: 148.616, declination: 69.250
 0> celestial object: 2MASS J09542751+6914580 IR
 1> celestial object: 2MASS J09543156+6916007 IR
