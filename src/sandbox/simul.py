@@ -112,7 +112,7 @@ def check(pixels):
     print('nb clusters: %s, greatest integral: %s' % (len(reg.clusters), max_integral))
 
     for nc, ic in enumerate(reg.clusters):
-        print('cluster', nc, ic['r'], ic['c'], ic['top'], ic['integral'], ic['radius'])
+        print('cluster {}: {}'.format(nc, ic))
     print("-----------------------------------")
 
 

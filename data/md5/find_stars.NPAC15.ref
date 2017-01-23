@@ -2,10 +2,12 @@ name of image: ../fits/NPAC15.fits
 cd1_1: -0.0004693405940823, cd1_2: -5.4551044142251e-05, cd2_1: -5.3594531039301e-05, cd2_2: 0.00046945736032427
 height: 106, width: 106
 background: 2498, dispersion: 146
-number of clusters:  3, greatest integral:  414040, centroid x: 52.0, centroid y: 53.0
-cluster 0 53 52 414040 13219 4
-cluster 1 17 82 191205 10821 3
-cluster 2 79 40 182408 10659 3
+number of clusters:  4, greatest integral:  315023, x: 52.0, y: 53.0
+cluster 0: 315023 at 53.0, 52.0
+cluster 1: 125177 at 17.0, 82.0
+cluster 2: 115654 at 79.0, 40.0
+cluster 3: 104624 at 104.0, 34.0
 right ascension: 148.259, declination: 68.927
 0> celestial object: 2MASS J09530174+6855389 Star
 2> celestial object: [GBT92] W  7 Star
+3> celestial object: GPM 148.272587+68.952326 Star

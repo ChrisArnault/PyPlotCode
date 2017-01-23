@@ -2,7 +2,7 @@ name of image: ../fits/NPAC07.fits
 cd1_1: -0.00047011226529497, cd1_2: -4.8281208859496e-05, cd2_1: -4.7276947934661e-05, cd2_2: 0.00047022468639987
 height: 106, width: 106
 background: 2693, dispersion: 135
-number of clusters:  1, greatest integral:  104988, centroid x: 52.0, centroid y: 53.0
-cluster 0 53 52 104988 8071 2
+number of clusters:  1, greatest integral:   50842, x: 52.0, y: 53.0
+cluster 0: 50842 at 53.0, 52.0
 right ascension: 149.081, declination: 69.218
 0> celestial object: 2MASS J09561918+6913053 Star

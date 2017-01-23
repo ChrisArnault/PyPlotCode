@@ -111,7 +111,7 @@ class ShowCelestialObjects():
             self.text = None
 
         pxy = lib_wcs.PixelXY(round(event.xdata),round(event.ydata))
-        results = self.region.find_clusters(pxy.x, pxy.y, 5)
+        results = find_clusters(self.region.clusters,pxy.x, pxy.y, 5)
 
         print(pxy.x - DX, pxy.y - DY, pxy.x, pxy.y)
 
@@ -145,7 +145,6 @@ def main():
     logging.info('background: %s, dispersion: %s', int(background), int(dispersion))
 
     # search for clusters in a sub-region of the image
-    threshold = 6.0
 
     lx = LX
     if lx == 0:
@@ -155,26 +154,26 @@ def main():
     if ly == 0:
         ly = pixels.shape[1]
 
-    region = lib_cluster.Region(pixels[DY:ly, DX:lx], background + threshold*dispersion)
-    pattern, cp_image, peaks = region.run_convolution()
-    max_integral = region.clusters[0]['integral']
+    clusters = lib_cluster.convolution_clustering(pixels[DY:ly, DX:lx], background, dispersion)
+    cluster0 = clusters[0]
+    max_integral = cluster0.integral
     
-    logging.info('number of clusters: %2d, greatest integral: %7d, centroid x: %4.1f, centroid y: %4.1f',
-        len(region.clusters), max_integral, region.clusters[0]['c'], region.clusters[0]['r'])
+    logging.info('number of clusters: %2d, greatest integral: %7d, x: %4.1f, y: %4.1f',
+        len(clusters), max_integral, cluster0.column, cluster0.row)
 
-    for nc, ic in enumerate(region.clusters):
-        logging.info('cluster {} {} {} {} {} {}'.format( nc, ic['r'], ic['c'], ic['integral'], ic['top'], ic['radius']))
+    for nc, ic in enumerate(clusters):
+        logging.info('cluster {}: {}'.format( nc, ic))
 
     # coordinates
     wcs = lib_wcs.get_wcs(header)
-    pxy = lib_wcs.PixelXY(DX + region.clusters[0]['c'], DY + region.clusters[0]['r'])
+    pxy = lib_wcs.PixelXY(DX + cluster0.column, DY + cluster0.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
     logging.info('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra, radec.dec))
 
     # celestial objects
-    for nic, ic in enumerate(region.clusters):
+    for nic, ic in enumerate(clusters):
         #ic = region.clusters[0]
-        pxy = lib_wcs.PixelXY(DX + ic['c'], DY + ic['r'])
+        pxy = lib_wcs.PixelXY(DX + ic.column, DY + ic.row)
         radec = lib_wcs.xy_to_radec(wcs,pxy)
         cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
         for cobj in list(cobjects.items()):

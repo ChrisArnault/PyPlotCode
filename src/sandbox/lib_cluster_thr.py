@@ -13,6 +13,73 @@ from lib_logging import logging
 from lib_cluster import *
 
 
+class PixelsSet():
+
+    def __init__(self):
+
+        self.pixels = []
+
+    def __str__(self):
+
+        return "{} at {}, {}".format(self.get_integral(),*self.get_peak())
+
+    def add(self, row, column, value):
+
+        self.pixels.append((row, column, value))
+
+    def get_integral(self):
+        
+        return sum([pixel[2] for pixel in self.pixels])
+
+    def get_center(self):
+
+        # bounding box center
+        rows, cols, values = zip(*self.pixels)
+        row_center = (min(rows)+max(rows))/2.0
+        col_center = (min(cols)+max(cols))/2.0
+        return row_center, col_center
+
+    def get_centroid(self):
+
+        # average row and col
+        nbpixels = len(self.pixels)
+        if nbpixels == 0: return None, None
+        rows, cols, _ = zip(*self.pixels)
+        row_mean = sum(rows) / nbpixels
+        col_mean = sum(cols) / nbpixels
+        return row_mean, col_mean
+
+    def get_weighted(self):
+
+        integral = self.get_integral()
+        row_mean, col_mean = self.get_centroid()
+
+        row_weighted = sum([pixel[2]*((pixel[0] - row_mean)**2) for pixel in self.pixels])
+        col_weighted = sum([pixel[2]*((pixel[1] - row_mean)**2) for pixel in self.pixels])
+        row_weighted = math.sqrt(row_weighted)/integral + row_mean
+        col_weighted = math.sqrt(col_weighted)/integral + col_mean
+
+        return row_weighted, col_weighted
+
+    def get_peak(self):
+
+        # centroid of the pixels which have the max value
+        max = 0
+        max_pixels = []
+        for pixel in self.pixels:
+            if pixel[2]>max:
+                max = pixel[2]
+                max_pixels = [pixel]
+            elif pixel[2]==max:
+                max_pixels.append(pixel)
+        rows, cols, _ = zip(*max_pixels)
+        nbpixels = len(max_pixels)
+        row_mean = sum(rows) / nbpixels
+        col_mean = sum(cols) / nbpixels
+        return row_mean, col_mean
+
+
+
 total_pixels = 0
 sleep_in_cluster = 0.4
 sleep_in_scanning = 0.001
@@ -30,6 +97,85 @@ mycolormap = 'seismic'
 myregion = None
 
 plt_id = 0
+
+class ClusterThr(Cluster):
+
+    def __init__(self, cluster_id, trace=None):
+
+        Cluster.__init__(self)
+
+        self.id = cluster_id
+        self.integral = 0
+        self.centroid = None
+        self.min_row = None
+        self.max_row = None
+        self.min_column = None
+        self.max_column = None
+        self.centroid = None
+        self.neighbours = dict()
+
+        self.trace = trace
+
+    def min(self, attr, value):
+        '''
+        :param attr:
+        :param value:
+        :return:
+        '''
+        if hasattr(self, attr):
+            if (getattr(self, attr) is None) or (value < getattr(self, attr)):
+                setattr(self, attr, value)
+        else:
+            setattr(self, attr, value)
+
+    def max(self, attr, value):
+        '''
+        :param attr:
+        :param value:
+        :return:
+        '''
+        if hasattr(self, attr):
+            if (getattr(self, attr) is None) or (value > getattr(self, attr)):
+                setattr(self, attr, value)
+        else:
+            setattr(self, attr, value)
+
+    def min_max(self, attr, value):
+        '''
+        :param attr:
+        :param value:
+        :return:
+        '''
+        self.min('min_' + attr, value)
+        self.max('max_' + attr, value)
+
+    def add(self, row, column, value):
+
+        global total_pixels
+        global drawer
+
+        # Do not penalize non-threaded version
+        if drawer is not None and threading.active_count() > 1:
+            total_pixels += 1
+
+            drawer.redraw(column, row, 1500 * self.id)
+
+            time.sleep(sleep_in_cluster)
+
+        Cluster.add(self,row,column,value)
+
+        # FIXME: THIS COMPUTING OF THE CENTROID IS NOT USED ANY MORE IN
+        # THE NEW IMPLEMENTATION
+
+        self.min_max('row', row)
+        self.min_max('column', column)
+
+        centroid_row = (self.min_row+self.max_row)/2.0
+        centroid_column = (self.min_column+self.max_column)/2.0
+        self.centroid = (centroid_row, centroid_column)
+
+        self.integral += value
+
 
 class PLT():
     def __init__(self):
@@ -86,127 +232,6 @@ class PLT():
 
 drawer = None
 
-class TCluster(object):
-
-    '''
-    A cluster is a...
-    '''
-
-    # pylint: disable=too-many-instance-attributes
-
-    def __init__(self, cluster_id, trace=None):
-        '''
-        :param cluster_id:
-        :return:
-        '''
-        self.id = cluster_id
-        self.integral = 0
-        self.pixels = []
-        self.centroid = None
-        self.min_row = None
-        self.max_row = None
-        self.min_column = None
-        self.max_column = None
-        self.neighbours = dict()
-
-        self.trace = trace
-
-
-    def min(self, attr, value):
-        '''
-        :param attr:
-        :param value:
-        :return:
-        '''
-        if hasattr(self, attr):
-            if (getattr(self, attr) is None) or (value < getattr(self, attr)):
-                setattr(self, attr, value)
-        else:
-            setattr(self, attr, value)
-
-    def max(self, attr, value):
-        '''
-        :param attr:
-        :param value:
-        :return:
-        '''
-        if hasattr(self, attr):
-            if (getattr(self, attr) is None) or (value > getattr(self, attr)):
-                setattr(self, attr, value)
-        else:
-            setattr(self, attr, value)
-
-    def min_max(self, attr, value):
-        '''
-        :param attr:
-        :param value:
-        :return:
-        '''
-        self.min('min_' + attr, value)
-        self.max('max_' + attr, value)
-
-    def add(self, row, column, value):
-        '''
-        :param row:
-        :param column:
-        :param value:
-        :return:
-        '''
-        global total_pixels
-        global drawer
-
-        # Do not penalize non-threaded version
-        if drawer is not None and threading.active_count() > 1:
-            total_pixels += 1
-
-            drawer.redraw(column, row, 1500 * self.id)
-
-            time.sleep(sleep_in_cluster)
-
-        self.pixels.append((row, column, value))
-
-        # FIXME: THIS COMPUTING OF THE CENTROID IS NOT USED ANY MORE IN
-        # THE NEW IMPLEMENTATION
-
-        self.min_max('row', row)
-        self.min_max('column', column)
-
-        centroid_row = (self.min_row+self.max_row)/2.0
-        centroid_column = (self.min_column+self.max_column)/2.0
-        self.centroid = (centroid_row, centroid_column)
-
-        # FIXME: Weighted centroid implementation. Remove previous lines and uncomment
-        # to activate.
-        #if self.centroid is not None:
-        #    if value > self.centroid[2]:
-        #        # print 'centroid %d row=%d col=%d' % (self.id, row, column)
-        #        self.centroid = (row, column, value)
-        #else:
-        #    # print 'centroid %d row=%d col=%d' % (self.id, row, column)
-        #    self.centroid = (row, column, value)
-
-        self.integral += value
-
-
-    # FIXME: THIS COMPUTING OF THE CENTROID IS NOT USED ANY MORE IN
-    # THE NEW IMPLEMENTATION
-
-    def get_centroid(self):
-
-        pixels = len(self.pixels)
-        if pixels == 0:
-            return None, None
-
-        row_mean = sum([pixel[0] for pixel in self.pixels]) / pixels
-        col_mean = sum([pixel[1] for pixel in self.pixels]) / pixels
-
-        row_weight = sum([pixel[2]*((pixel[0] - row_mean)**2) for pixel in self.pixels])
-        col_weight = sum([pixel[2]*((pixel[1] - row_mean)**2) for pixel in self.pixels])
-        row_weight = np.sqrt(row_weight)/self.integral + row_mean
-        col_weight = np.sqrt(col_weight)/self.integral + col_mean
-
-        return row_weight, col_weight
-
 class LockContext(object):
     def __init__(self, lock):
         self.lock = threading.Lock()
@@ -216,7 +241,7 @@ class LockContext(object):
     def __exit__(self, type, value, traceback):
         self.lock.release()
 
-class TClusterFactory(threading.Thread):
+class ClusterFactory(threading.Thread):
     def __init__(self, region, row, column, cluster_id, trace=None):
         threading.Thread.__init__(self)
 
@@ -227,7 +252,7 @@ class TClusterFactory(threading.Thread):
         self.shape = region.shape
         self.row = row
         self.column = column
-        self.cluster = TCluster(cluster_id, trace)
+        self.cluster = ClusterThr(cluster_id, trace)
         # with LockContext(self.region.region_lock):
         self.region.clusters.append(self.cluster)
         self.cluster_id = cluster_id
@@ -345,14 +370,24 @@ class RegionRunner(threading.Thread):
                     self.region.one_pixel(cnum, rnum, cluster_id)
                     cluster_id += 1
 
-class RegionThr(Region):
+class Region():
 
     # pylint: disable=too-many-instance-attributes
 
     def __init__(self, region, threshold):
 
-        logging.debug('Region> threshold {}'.format(threshold))
-        Region.__init__(self, region, threshold)
+        global myregion
+        myregion = self
+
+        self.region = region                  # storing the region
+        self.threshold = threshold            # above which pixel values are considered
+        self.clusters = []                    # initialize the cluster list
+        self.cluster_dict = dict()            # initialize the cluster dictionary
+        self.shape = region.shape             # save the original region shape
+        self.image = region                   # construct the image showing all identified clusters
+        self.max = np.max(region)             # initialize the maximum pixel value
+        self.last_cluster_id = None
+
 
     def animate(self, in_cluster=None, in_scanning=None, strategy=None):
         global drawer
@@ -439,7 +474,7 @@ class RegionThr(Region):
         for rnum, row in enumerate(self.region):
             for cnum, _ in enumerate(row):
 
-                cluster = TCluster(cluster_id)
+                cluster = ClusterThr(cluster_id)
                 try:
                     self.recursive_build_cluster(rnum, cnum, obj=cluster)
                 except RuntimeError as ex:
@@ -471,9 +506,9 @@ class RegionThr(Region):
 
         # this pixel has to be considered
         try:
-            # we create a TClusterFactory
+            # we create a ClusterFactory
             # even if in the meantime, it has become useless because this pixel was already used
-            factory = TClusterFactory(self, rnum, cnum, cluster_id, self.trace)
+            factory = ClusterFactory(self, rnum, cnum, cluster_id, self.trace)
             # an empty cluster has been created => lets's store it
             self.cluster_dict[cluster_id] = factory.cluster
             # run the clustering from this pixel
@@ -512,10 +547,45 @@ class RegionThr(Region):
 
         return
 
-def tests():
-    'Unit tests'
-    return 0
+
+# =====
+# Unit tests
+#=====
 
 if __name__ == '__main__':
-    sys.exit(tests())
+
+    # PixelsSet
+    
+    ps = PixelsSet()
+
+    ## x,y
+    # 1,3  2,3  3,3
+    # 1,2  2,2  3,2
+    #      2,1  3,1
+
+    ## val
+    # 10   20   20
+    # 10   20   20
+    #      10   10
+
+    ps.add(2,1,10)
+    ps.add(3,1,10)
+    ps.add(1,2,10)
+    ps.add(2,2,20)
+    ps.add(3,2,20)
+    ps.add(1,3,10)
+    ps.add(2,3,20)
+    ps.add(3,3,20)
+
+    print("center: {:.2f} {:.2f}".format(*ps.get_center()))
+    print("centroid: {:.2f} {:.2f}".format(*ps.get_centroid()))
+    print("weighted: {:.2f} {:.2f}".format(*ps.get_weighted()))
+    print("peak: {:.2f} {:.2f}".format(*ps.get_peak()))
+
+    # find_clusters
+
+    cls = [ Cluster(*ps.get_peak(),ps.get_integral()) ]
+    print("find around 1, 1: ",len(find_clusters(cls,1,1,1)))
+    print("find around 2, 2: ",len(find_clusters(cls,2,2,1)))
+    
 
