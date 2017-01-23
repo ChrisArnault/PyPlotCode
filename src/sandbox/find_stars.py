@@ -145,7 +145,6 @@ def main():
     logging.info('background: %s, dispersion: %s', int(background), int(dispersion))
 
     # search for clusters in a sub-region of the image
-    threshold = 6.0
 
     lx = LX
     if lx == 0:
@@ -155,7 +154,7 @@ def main():
     if ly == 0:
         ly = pixels.shape[1]
 
-    clusters = lib_cluster.convolution_clustering(pixels[DY:ly, DX:lx], background + threshold*dispersion)
+    clusters = lib_cluster.convolution_clustering(pixels[DY:ly, DX:lx], background, dispersion)
     cluster0 = clusters[0]
     max_integral = cluster0.integral
     

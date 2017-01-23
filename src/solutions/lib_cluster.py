@@ -123,7 +123,7 @@ def _spread_peak(image, threshold, r, c):
         previous_integral = integral
 
 
-def convolution_clustering(image, threshold, background):
+def convolution_clustering(image, background, dispersion, factor=6.0):
 
     """
     principle:
@@ -155,12 +155,13 @@ def convolution_clustering(image, threshold, background):
     # make a copy with a border
     ext_image = np.copy(image)
     for n in range(half):
-        ext_image = np.insert(ext_image,0,threshold-1,axis=0)
-        ext_image = np.insert(ext_image,ext_image.shape[0],threshold-1,axis=0)
-        ext_image = np.insert(ext_image,0,threshold-1,axis=1)
-        ext_image = np.insert(ext_image,ext_image.shape[1],threshold-1,axis=1)
+        ext_image = np.insert(ext_image,0,background,axis=0)
+        ext_image = np.insert(ext_image,ext_image.shape[0],background,axis=0)
+        ext_image = np.insert(ext_image,0,background,axis=1)
+        ext_image = np.insert(ext_image,ext_image.shape[1],background,axis=1)
 
     # define a convolution image that stores the convolution products at each pixel position
+    threshold = background+factor*dispersion
     cp_image = np.zeros_like(ext_image, np.float)
     cp_threshold = None
 
