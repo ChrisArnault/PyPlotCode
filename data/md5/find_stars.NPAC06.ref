@@ -3,9 +3,9 @@ cd1_1: -0.00047036569901843, cd1_2: -4.5899500151465e-05, cd2_1: -4.488674268101
 height: 106, width: 106
 background: 2797, dispersion: 151
 number of clusters:  3, greatest integral:  394966, x: 50.0, y: 57.0
-cluster 0: 394966 at 57.0, 50.0
-cluster 1: 83328 at 33.0, 1.0
-cluster 2: 81295 at 104.0, 30.0
+cluster 0: 13422/394966 at 57.0, 50.0
+cluster 1: 11183/83328 at 33.0, 1.0
+cluster 2: 10075/81295 at 104.0, 30.0
 right ascension: 149.392, declination: 69.230
 0> celestial object: GPM 149.391696+69.229356 Star
 1> celestial object: 2MASS J09575075+6913140 Star
