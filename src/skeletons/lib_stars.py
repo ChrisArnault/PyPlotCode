@@ -145,12 +145,13 @@ def get_celestial_objects(radec, radius):
 
 if __name__ == '__main__':
 
-    class RaDec: pass
+    class RaDec:
+        pass
     radec = RaDec()
     radec.ra, radec.dec = 1.0, 1.0
     cobjects, _, _ = get_celestial_objects(radec, 0.1)
     for cobj_name in sorted(cobjects.keys()):
-      print(cobj_name) 
+        print(cobj_name)
 
 
 
