@@ -35,6 +35,10 @@ python3 -c "import matplotlib.pyplot"
 export PYTHONPATH=${PYPLOTCODE_DIR}/src/skeletons:${PYTHONPATH}
 export PYTHONPATH=${PYPLOTCODE_DIR}/src/solutions:${PYTHONPATH}
 
+# data path
+
+export DATAPATH=${PYPLOTCODE_DIR}/data/fits
+
 # back to the original directory
 
 cd $ORIGINAL_DIR
