@@ -1,3 +1,4 @@
+#@IgnoreInspection BashAddShebang
 
 # move to the script directory
 
@@ -24,7 +25,10 @@ export NPAC_ROOT=`dirname $PYPLOTCODE_DIR`
 alias oval=oval.py
 alias anarun=anarun.sh
 alias anarunx=anarunx.sh
+
 alias cpstud=copy_to_student.sh
+alias cpskel=skeletons_to_student_ens.sh
+alias cpsol=solutions_to_student_ens.sh
 
 # prepare font cache
 

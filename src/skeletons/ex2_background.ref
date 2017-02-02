@@ -1,1 +1,1 @@
-variable: value
+file: ../../data/fits/NPAC.fits, batch: True

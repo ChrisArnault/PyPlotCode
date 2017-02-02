@@ -12,13 +12,15 @@ def main():
     file_name, batch = lib_args.get_args()
 
     # main tasks
-    pass
+    # ...
 
-    # console output
-    print('variable: value')
+    # example of console output
+    # ...
+    print('file: {}, batch: {}'.format(file_name, batch))
 
     # graphic output
     if not batch:
+        # ...
         pass
 
     # end
