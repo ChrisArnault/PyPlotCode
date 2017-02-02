@@ -9,4 +9,4 @@
 
 Particularités :
 * NPAC19.fits : le plus gros cluster est dans la bande extérieure de 4 pixels, plus un cluster assez visible très prêt de l'origine.
-* NPAC18.fits : les deux plus gros clusters sont très semblables, et possèdent exactement la même intégrale dans certaines implémentations.
+* NPAC20.fits : les deux plus gros clusters sont très semblables, et possèdent exactement la même intégrale dans certaines implémentations.
