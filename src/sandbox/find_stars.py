@@ -176,8 +176,8 @@ def main():
         pxy = lib_wcs.PixelXY(DX + ic.column, DY + ic.row)
         radec = lib_wcs.xy_to_radec(wcs,pxy)
         cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
-        for cobj in list(cobjects.items()):
-            logging.info('%d> celestial object: %s %s', nic, cobj[0], cobj[1])
+        for cobj in sorted(list(cobjects.keys())):
+            logging.info('%d> celestial object: %s %s', nic, cobj, cobjects[cobj])
 
     # graphics
     if not batch:
