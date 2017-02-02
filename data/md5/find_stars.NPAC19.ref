@@ -1,15 +1,17 @@
 name of image: ../fits/NPAC19.fits
-cd1_1: -0.00046987575771404, cd1_2: -4.9919623119722e-05, cd2_1: -4.8952113442505e-05, cd2_2: 0.00046999014282
+cd1_1: -0.00047053896901055, cd1_2: -4.381525940595e-05, cd2_1: -4.2814618243038e-05, cd2_2: 0.00047065105032287
 height: 106, width: 106
-background: 2604, dispersion: 139
-number of clusters:  5, greatest integral: 1101292, x: 51.0, y: 55.0
-cluster 0: 13260/1101292 at 55.0, 51.0
-cluster 1: 13515/375692 at 38.0, 86.0
-cluster 2: 11360/149614 at 47.0, 4.0
-cluster 3: 9748/115855 at 5.0, 46.0
-cluster 4: 6054/41484 at 84.0, 69.0
-right ascension: 148.860, declination: 68.856
-0> celestial object: TYC 4383-1031-1 Star
-1> celestial object: GSC 04383-01037 PM*
-2> celestial object: 2MASS J09554113+6851143 IR
-3> celestial object: 2MASS J09552920+6849559 IR
+background: 2745, dispersion: 139
+number of clusters:  6, greatest integral:  288383, x: 11.0, y: 21.0
+cluster 0: 12952/288383 at 21.0, 11.0
+cluster 1: 13262/246651 at 7.0, 2.0
+cluster 2: 12845/193231 at 53.0, 52.0
+cluster 3: 11551/151932 at 53.0, 24.0
+cluster 4: 8327/52448 at 91.0, 95.0
+cluster 5: 7010/45769 at 37.0, 87.0
+right ascension: 149.711, declination: 68.956
+0> celestial object: 2MASS J09585024+6857199 Star
+1> celestial object: GPM 149.724604+68.949356 PM*
+2> celestial object: 2MASS J09583641+6858078 Star
+3> celestial object: 2MASS J09584551+6858130 IR
+4> celestial object: 2MASS J09582193+6859052 Star
