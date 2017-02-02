@@ -31,7 +31,6 @@ def compute_background(pixels):
     # compute the gaussian fit for the background
     fit, _ = curve_fit(lib_model.gaussian_model, x, y)
 
-    # maxvalue = fit[0] * my
     background = fit[1] * mx
     dispersion = abs(fit[2]) * mx
     return background, dispersion, mx

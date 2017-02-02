@@ -58,7 +58,8 @@ def _build_pattern(size):
     normalized gaussian. The size must be odd.
      """
 
-    if size/2 == 0: raise ValueError
+    if size/2 == 0:
+        raise ValueError
 
     x = np.arange(0, size, 1, float)
     y = np.arange(0, size, 1, float)
@@ -202,12 +203,13 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
     clusters = []
     for rnum in range(image.shape[0]):
         for cnum in range(image.shape[1]):
-            if cp_image[rnum+half, cnum+half] > cp_threshold:
-                peak = _has_peak(cp_image, rnum+half, cnum+half)
-                if peak:
-                    integral, radius = _spread_peak(image, threshold, rnum, cnum)
-                    if radius > 0:
-                        clusters.append(Cluster(rnum, cnum,image[rnum,cnum],integral))
+            if cp_image[rnum+half, cnum+half] <= cp_threshold:
+              continue
+            if not _has_peak(cp_image, rnum+half, cnum+half):
+              continue
+            integral, radius = _spread_peak(image, threshold, rnum, cnum)
+            if radius > 0:
+                clusters.append(Cluster(rnum, cnum,image[rnum,cnum],integral))
 
     # sort by integrals
     max_top = max(clusters,key=lambda cl: cl.top).top
@@ -230,7 +232,7 @@ def add_crosses(image, clusters):
 
 # =====
 # Unit tests
-#=====
+# =====
 
 if __name__ == '__main__':
 

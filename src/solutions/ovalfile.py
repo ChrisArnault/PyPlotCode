@@ -10,7 +10,8 @@ targets = [
     { "name" : "ex5_find_stars" , "command" : "python ex5_find_stars.py -b ../../data/fits/NPAC.fits"  },
     
     { "name" : "lib_cluster" , "command" : "python lib_cluster.py"  },
-    
+    { "name" : "lib_fits", "command" : "python lib_fits.py" },
+
 ]
 
 # filters

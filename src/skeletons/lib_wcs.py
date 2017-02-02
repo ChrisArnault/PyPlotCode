@@ -80,10 +80,12 @@ def radec_to_xy(wcs, rd):
 if __name__ == '__main__':
     
     class FakeWcs():
+        def __init__(self):
+            self.fake_coef = 1.0
         def wcs_pix2world(self, xy, fake):
-            return ((xy[0][1],xy[0][0]),)
+            return (xy[0][1]*self.fake_coef,xy[0][0]*self.fake_coef),
         def wcs_world2pix(self, radec, fake):
-            return ((radec[0][1],radec[0][0]),)
+            return (radec[0][1]*self.fake_coef,radec[0][0]*self.fake_coef),
 
     wcs = FakeWcs()
     pxy = PixelXY(1,2)

@@ -15,7 +15,7 @@ import sys
 from lib_logging import logging
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
-import lib_wcs, lib_stars
+import lib_wcs, lib_stars, lib_graphics
 
 CONE = 0.001
 THREAD = False
@@ -95,35 +95,19 @@ def stars(region, wcs, fig):
 
 class ShowCelestialObjects():
 
-    def __init__(self, the_region, the_wcs, the_fig):
+    def __init__(self, wcs):
 
-        self.region = the_region
-        self.wcs = the_wcs
-        self.fig = the_fig
-        self.text = None
+        self.wcs = wcs
 
-    def __call__(self, event):
+    def __call__(self, cluster):
 
-        if event.xdata is None or event.ydata is None: return
-
-        if self.text is not None:
-            self.text.remove()
-            self.text = None
-
-        pxy = lib_wcs.PixelXY(round(event.xdata),round(event.ydata))
-        results = find_clusters(self.region.clusters,pxy.x, pxy.y, 5)
-
-        print(pxy.x - DX, pxy.y - DY, pxy.x, pxy.y)
-
-        radec = lib_wcs.xy_to_radec(self.wcs,xy)
+        pxy = lib_wcs.PixelXY(cluster.column,cluster.row)
+        radec = lib_wcs.xy_to_radec(self.wcs,pxy)
         cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
-
+        result = []
         for cobj in cobjects:
-            print(('--------->', cobj))
-            self.text = plt.text(pxy.x, pxy.y, '%s [%s, %s]' % (cobj, pxy.x, pxy.y), fontsize=14, color='red')
-            print(('---------<', cobj))
-
-        self.fig.canvas.draw()
+            result.append('{} [{}, {}]'.format(cobj, pxy.x, pxy.y))
+        return result
 
 
 def main():
@@ -182,10 +166,10 @@ def main():
     # graphics
     if not batch:
         fig, main_ax = plt.subplots()
-        stars(region, wcs, fig)
-        main_ax.imshow(peaks, interpolation='none')
-        g_fig.canvas.mpl_connect('motion_notify_event',
-            ShowCelestialObjects(the_region=region,the_wcs=wcs,the_fig=fig))
+        #stars(region, wcs, fig)
+        main_ax.imshow(lib_cluster.add_crosses(pixels,clusters), interpolation='none')
+        fig.canvas.mpl_connect('motion_notify_event',
+            lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
         plt.show()
 
     return 0

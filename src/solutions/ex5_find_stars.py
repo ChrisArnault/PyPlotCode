@@ -6,7 +6,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import lib_args, lib_fits, lib_background, lib_cluster
-import lib_wcs, lib_stars
+import lib_wcs, lib_stars, lib_graphics
 
 CONE = 0.001
 
@@ -21,35 +21,13 @@ def get_celestial_objects( wcs, cluster ):
 
 class ShowCelestialObjects():
 
-    def __init__(self, the_region, the_wcs, the_fig):
+    def __init__(self, wcs):
 
-        self.region = the_region
-        self.wcs = the_wcs
-        self.fig = the_fig
-        self.text = None
+        self.wcs = wcs
 
-    def __call__(self, event):
+    def __call__(self, cluster):
 
-        if event.xdata is None or event.ydata is None: return
-
-        if self.text is not None:
-            self.text.remove()
-            self.text = None
-
-        results = find_clusters(self.region.clusters,event.xdata,event.ydata, 5)
-
-        if len(results) > 0:
-
-            tokens = []
-
-            for cluster in results:
-
-                cobjects = get_celestial_objects(self.wcs,cluster)
-                tokens.extend(cobjects)
-
-            self.text = plt.text(pxy.x, pxy.y, ' '.join(tokens), fontsize=14, color='white')
-
-        self.fig.canvas.draw()
+        return get_celestial_objects(self.wcs,cluster)
 
 
 def main():
@@ -70,9 +48,9 @@ def main():
     # graphic output
     if not batch:
         fig, main_ax = plt.subplots()
-        main_ax.imshow(peaks, interpolation='none')
+        main_ax.imshow(pixels, interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
-          ShowCelestialObjects(the_region=region,the_wcs=wcs,the_fig=fig))
+            lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
         plt.show()
 
     return 0
