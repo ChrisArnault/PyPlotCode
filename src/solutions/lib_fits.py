@@ -18,24 +18,20 @@ def read_first_image( file_name ):
     return header, pixels
 
 
-def tests():
-
-    ''' Unit tests '''
-
-    import lib_wcs
-    filename = '../../data/fits/dss.19.59.54.3+09.59.20.9 10x10.fits'
-    header, _ = lib_fits.read_first_image(filename)
-    wcs = lib_wcs.get_cws(header)
-    pxy = lib_wcs.PixelXY(0, 0)
-    radec = w.xy_to_radec(wcs, pxy)
-    if abs(ra - 300.060983768) > 1e-5: print('error')
-    if abs(dec - 9.90624639801) > 1e5: print('error')
-
-    return 0
-
+# =====
+# Unit tests
+# =====
 
 if __name__ == '__main__':
     
-    sys.exit(tests())
+    filename = '../../data/fits/NPAC.fits'
+    header, pixels = read_first_image(filename)
+    print('shape:',pixels.shape)
+    print('cd1_1: {:.10f}'.format(header['CD1_1']))
+    print('cd1_2: {:.10f}'.format(header['CD1_2']))
+    print('cd2_1: {:.10f}'.format(header['CD2_1']))
+    print('cd2_2: {:.10f}'.format(header['CD2_2']))
+
+    sys.exit(0)
 
 
