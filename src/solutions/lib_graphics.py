@@ -53,8 +53,8 @@ if __name__ == '__main__':
     clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
     wcs = lib_wcs.get_wcs(header)
 
-    fig, main_ax = plt.subplots()
-    main_ax.imshow(pixels, interpolation='none')
+    fig, axis = plt.subplots()
+    axis.imshow(pixels, interpolation='none')
     fig.canvas.mpl_connect('motion_notify_event',
         ShowClusterProperties(fig,clusters,lambda cl: [ "{}".format(cl.integral) ] ))
     plt.show()

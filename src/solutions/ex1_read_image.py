@@ -18,9 +18,9 @@ def main():
 
     # graphic output
     if not batch:
-        _, main_ax = plt.subplots()
+        _, axis = plt.subplots()
         plt.text(0, -10, file_name, fontsize=14, color='white')
-        main_ax.imshow(pixels)
+        axis.imshow(pixels)
         plt.show()
 
     return 0
