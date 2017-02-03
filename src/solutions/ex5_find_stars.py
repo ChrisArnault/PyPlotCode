@@ -47,8 +47,8 @@ def main():
 
     # graphic output
     if not batch:
-        fig, main_ax = plt.subplots()
-        main_ax.imshow(pixels, interpolation='none')
+        fig, axis = plt.subplots()
+        axis.imshow(pixels, interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
             lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
         plt.show()

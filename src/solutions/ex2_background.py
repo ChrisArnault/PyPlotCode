@@ -21,8 +21,8 @@ def main():
 
     # graphic output
     if not batch:
-        _, main_ax = plt.subplots()
-        main_ax.imshow(pixels)
+        _, axis = plt.subplots()
+        axis.imshow(pixels)
         plt.show()
 
     return 0

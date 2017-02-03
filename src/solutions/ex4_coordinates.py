@@ -42,8 +42,8 @@ def main():
 
     # graphic output
     if not batch:
-        fig, main_ax = plt.subplots()
-        main_ax.imshow(pixels)
+        fig, axis = plt.subplots()
+        axis.imshow(pixels)
         fig.canvas.mpl_connect('motion_notify_event',
             lib_graphics.ShowClusterProperties(fig,clusters,ShowRaDec(wcs)))
         plt.show()

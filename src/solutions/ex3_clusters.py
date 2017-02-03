@@ -24,9 +24,9 @@ def main():
 
     # graphic output
     if not batch:
-        _, main_ax = plt.subplots(2)
-        _ = main_ax[0].imshow(lib_cluster._build_pattern(9))
-        _ = main_ax[1].imshow(lib_cluster.add_crosses(pixels,clusters))
+        _, axes = plt.subplots(2)
+        _ = axes[0].imshow(lib_cluster._build_pattern(9))
+        _ = axes[1].imshow(lib_cluster.add_crosses(pixels,clusters))
         plt.show()
 
     return 0

@@ -165,9 +165,9 @@ def main():
 
     # graphics
     if not batch:
-        fig, main_ax = plt.subplots()
+        fig, axis = plt.subplots()
         #stars(region, wcs, fig)
-        main_ax.imshow(lib_cluster.add_crosses(pixels,clusters), interpolation='none')
+        axis.imshow(lib_cluster.add_crosses(pixels,clusters), interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
             lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
         plt.show()
