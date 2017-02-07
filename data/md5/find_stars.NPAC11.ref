@@ -2,9 +2,11 @@ name of image: ../fits/NPAC11.fits
 cd1_1: -0.00046951279254044, cd1_2: -5.3557520682983e-05, cd2_1: -5.2566462327133e-05, cd2_2: 0.00046962668659785
 height: 106, width: 106
 background: 2699, dispersion: 145
-number of clusters:  2, greatest integral:  157897, x: 83.0, y:  7.0
+number of clusters:  4, greatest integral:  157897, x: 83.0, y:  7.0
 cluster 0: 11993/157897 at 7.0, 83.0
 cluster 1: 8842/52124 at 78.0, 52.0
+cluster 2: 7118/42262 at 51.0, 1.0
+cluster 3: 5330/38785 at 45.0, 25.0
 right ascension: 148.364, declination: 69.232
 0> celestial object: 2MASS J09532723+6913536 IR
 1> celestial object: 2MASS J09533446+6915586 IR

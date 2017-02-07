@@ -22,6 +22,9 @@ targets = [
 
 # filters
 
-run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "ex(4|5)%"}, ]
+run_filters_out = [
+    {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "ex(4|5)%"},
+    {"name": "time", "re": "^.*execution time.*$", "apply": "%"},
+]
 diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "%"} ]
 

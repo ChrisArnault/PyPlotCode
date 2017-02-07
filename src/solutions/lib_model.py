@@ -3,6 +3,7 @@
 
 
 import sys
+sys.path.append('../skeletons')
 import numpy as np
 
 

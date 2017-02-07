@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 
+import sys
+sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import lib_cluster
 

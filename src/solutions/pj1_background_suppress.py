@@ -3,6 +3,7 @@
 
 
 import sys
+sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import matplotlib.widgets as widgets
 import lib_args, lib_fits, lib_background

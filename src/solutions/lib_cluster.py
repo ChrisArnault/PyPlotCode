@@ -7,9 +7,10 @@ Search clusters in images.
 '''
 
 
-import sys, math
+import sys, time
+sys.path.append('../skeletons')
+import math
 import numpy as np
-
 
 class Cluster():
 
@@ -71,8 +72,10 @@ def _build_pattern(size):
     # create a 2D gaussian distribution inside this grid.
     sigma = size / 4.0
     pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
+    pattern = pattern / pattern.sum()
 
     return pattern
+
 
 def _has_peak(image, r, c):
 
@@ -125,7 +128,9 @@ def _spread_peak(image, threshold, r, c):
         previous_integral = integral
 
 
-def convolution_clustering(image, background, dispersion, factor=6.0):
+PATTERN_SIZE = 9
+
+def _convolution_image(image):
 
     """
     principle:
@@ -138,6 +143,37 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
         - this zone is convoluted with the pattern (convolution product - CP)
         - if the CP is greater than a threshold, the CP is stored at the row/column
             position in a convolution image (CI)
+    """
+
+    # we start by building a PSF with a given width
+    pattern = _build_pattern(PATTERN_SIZE)
+    half = PATTERN_SIZE // 2
+
+    # define a convolution image that stores the convolution products at each pixel position
+    cp_image = np.zeros((image.shape[0]-2*half,image.shape[1]-2*half), np.float)
+
+    # loop on all pixels except the border
+    for rnum in range(half,image.shape[0]-half):
+        for cnum in range(half,image.shape[1]-half):
+
+            rmin = rnum - half
+            rmax = rnum + half + 1
+            cmin = cnum - half
+            cmax = cnum + half + 1
+
+            sub_image = image[rmin:rmax, cmin:cmax]
+
+            # convolution product
+            cp_image[rnum-half, cnum-half] = np.sum(sub_image * pattern)
+
+    # result
+    return cp_image
+
+
+def convolution_clustering(image, background, dispersion, factor=6.0):
+
+    """
+    principle:
     - we then start a scan of the convolution image (CI):
         - at every position we detect if there is a peak:
             - we extract a 3x3 region of the CI centered at the current position
@@ -149,12 +185,8 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
     - this list of clusters is returned.
     """
 
-    # we start by building a PSF with a given width
-    pattern_width = 9
-    pattern = _build_pattern(pattern_width)
-    half = pattern_width // 2
-
-    # make a copy with a border
+    # make a copy with a border of half
+    half = PATTERN_SIZE // 2
     ext_image = np.copy(image)
     for n in range(half):
         ext_image = np.insert(ext_image,0,background,axis=0)
@@ -162,50 +194,24 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
         ext_image = np.insert(ext_image,0,background,axis=1)
         ext_image = np.insert(ext_image,ext_image.shape[1],background,axis=1)
 
-    # define a convolution image that stores the convolution products at each pixel position
-    threshold = background+factor*dispersion
-    cp_image = np.zeros_like(ext_image, np.float)
-    cp_threshold = None
+    # build the convolution product image
+    cp_image = _convolution_image(ext_image)
 
-    # loop on all pixels except the border
-    max_image = np.max(image)
-    for rnum in range(half,ext_image.shape[0]-half):
-        for cnum in range(half,ext_image.shape[1]-half):
-
-            """
-            rnum, cnum is the center of the convolution zone
-            """
-
-            if ext_image[rnum, cnum] < threshold:
-                cp_image[rnum, cnum] = 0
-                continue
-
-            rmin = rnum - half
-            rmax = rnum + half + 1
-            cmin = cnum - half
-            cmax = cnum + half + 1
-
-            sub_image = ext_image[rmin:rmax, cmin:cmax]
-
-            # convolution product
-            product = np.sum(sub_image * pattern / max_image)
-
-            if cp_threshold is None or product < cp_threshold:
-                # get the lower value of the CP
-                cp_threshold = product
-
-            cp_image[rnum, cnum] = product
-
-    # make the CP threshold above the background fluctuations
-    cp_threshold *= 1.3
+    # make a copy with a border of 1
+    ext_cp_image = np.copy(cp_image)
+    ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
+    ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
+    ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
+    ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
 
     # scan the convolution image to detect peaks and build clusters
+    threshold = background+factor*dispersion
     clusters = []
     for rnum in range(image.shape[0]):
         for cnum in range(image.shape[1]):
-            if cp_image[rnum+half, cnum+half] <= cp_threshold:
+            if cp_image[rnum, cnum] <= threshold:
               continue
-            if not _has_peak(cp_image, rnum+half, cnum+half):
+            if not _has_peak(ext_cp_image, rnum+1, cnum+1):
               continue
             integral, radius = _spread_peak(image, threshold, rnum, cnum)
             if radius > 0:
@@ -220,6 +226,9 @@ def convolution_clustering(image, background, dispersion, factor=6.0):
 
 
 def add_crosses(image, clusters):
+    """
+    Return a new image with crosses
+    """
 
     x = 3
     peaks = np.copy(image)

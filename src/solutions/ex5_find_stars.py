@@ -3,9 +3,11 @@
 
 
 import sys
+sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
+
 
 CONE = 0.001
 
@@ -34,9 +36,9 @@ def main():
     file_name, batch = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
+    clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
 
     # celestial objects for the biggest cluster
-    clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
     wcs = lib_wcs.get_wcs(header)
     cobjects = get_celestial_objects(wcs, clusters[0])
 
