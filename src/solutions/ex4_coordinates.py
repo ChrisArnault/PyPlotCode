@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import sys, logging
-import numpy as np
+import sys
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_graphics
