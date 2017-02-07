@@ -4,8 +4,6 @@
 
 import sys
 import matplotlib.pyplot as plt
-import numpy as np
-from scipy.optimize import curve_fit
 import lib_args, lib_fits, lib_background
 
 

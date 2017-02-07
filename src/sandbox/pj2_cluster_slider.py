@@ -53,7 +53,7 @@ def main():
             x = s_thresh.val
             print(background, threshold, dispersion, x)
             clusters = lib_cluster.convolution_clustering(pixels, background, dispersion, (x-background)/dispersion)
-            peaks = add_crosses(pixels,clusters)
+            peaks = lib_cluster.add_crosses(pixels,clusters)
             logging.info('%d clusters', len(clusters))
 
             imgplot.set_data(peaks)
