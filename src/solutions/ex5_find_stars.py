@@ -36,7 +36,8 @@ def main():
     file_name, batch = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
-    clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
+    clustering = lib_cluster.Clustering()
+    clusters = clustering.convolution_clustering(pixels, background, dispersion)
 
     # celestial objects for the biggest cluster
     wcs = lib_wcs.get_wcs(header)

@@ -20,7 +20,8 @@ class UpdateSlider():
 
     def __call__(self, val):
 
-        clusters = lib_cluster.convolution_clustering(self.pixels, self.background, self.dispersion, val)
+        clustering = lib_cluster.Clustering()
+        clusters = clustering.convolution_clustering(self.pixels, self.background, self.dispersion, val)
         print('{} clusters'.format(len(clusters)))
         crosses = lib_cluster.add_crosses(self.pixels, clusters)
         self.imgplot.set_data(crosses)
@@ -32,7 +33,8 @@ def main():
     file_name, batch = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, max_x = lib_background.compute_background(pixels)
-    clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
+    clustering = lib_cluster.Clustering()
+    clusters = clustering.convolution_clustering(pixels, background, dispersion)
 
     # console output
     if batch:
