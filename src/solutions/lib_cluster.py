@@ -2,15 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-'''
-Search clusters in images.
-'''
-
-
-import sys, time
-sys.path.append('../skeletons')
+import sys
 import math
 import numpy as np
+sys.path.append('../skeletons')
+
 
 class Cluster():
 
@@ -172,7 +168,7 @@ class Clustering():
         # result
         return cp_image
 
-    def convolution_clustering(self, image, background, dispersion, factor=6.0):
+    def __call__(self, image, background, dispersion, factor=6.0):
 
         """
         principle:

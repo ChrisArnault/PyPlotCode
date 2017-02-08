@@ -2,20 +2,13 @@
 # -*- coding: utf-8 -*-
 
 
-"""
-Test program to
-- open a fits files
-- compute background of the sky image using a gaussian fit
-- display the background analysis
-- display the image
-"""
-
-
 import sys
 from lib_logging import logging
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
+sys.path.append('../solutions')
+sys.path.append('../skeletons')
 
 CONE = 0.001
 THREAD = False
@@ -139,7 +132,7 @@ def main():
         ly = pixels.shape[1]
 
     clustering = lib_cluster.Clustering()
-    clusters = clustering.convolution_clustering(pixels[DY:ly, DX:lx], background, dispersion)
+    clusters = clustering(pixels[DY:ly, DX:lx], background, dispersion)
     cluster0 = clusters[0]
     max_integral = cluster0.integral
     
