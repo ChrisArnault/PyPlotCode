@@ -110,8 +110,8 @@ class ParallelClustering(lib_cluster.Clustering):
         exes = concurrent.futures.ProcessPoolExecutor()
         threshold = background + factor * dispersion
         candidates = []
-        for rnum in range(image.shape[0]):
-            for cnum in range(image.shape[1]):
+        for rnum, row in enumerate(image):
+            for cnum, col in enumerate(row):
                 if cp_image[rnum, cnum] <= threshold:
                     continue
                 if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
