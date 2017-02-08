@@ -16,7 +16,7 @@ targets = [
     {"name": "pj2_cluster_slider", "command": "python pj2_cluster_slider.py -b ../../data/fits/NPAC.fits"},
     {"name": "pj3_file_selector", "command": "python pj3_file_selector.py -b ../../data"},
 #    {"name": "pj4_recursive_clustering", "command": "python pj4_recursive_clustering.py -b ../../data/fits/NPAC.fits"},
-    {"name": "pj5_parallel_clustering", "command": "python pj5_parallel_clustering.py -b ../../data/fits/NPAC.fits"},
+    {"name": "pj5_concurrent_clustering", "command": "python pj5_concurrent_clustering.py -b ../../data/fits/NPAC.fits"},
 
 ]
 
