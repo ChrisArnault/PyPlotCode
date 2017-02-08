@@ -77,29 +77,41 @@ class ParallelClustering(lib_cluster.Clustering):
 
         # make a copy with a border of half
         half = self.pattern_size // 2
+
+        def extend_image(image, border, value):
+            extended = np.zeros(np.array(image.shape) + border * 2) + value
+            extended[border:-border, border:-border] = np.copy(image)
+            return extended
+
+        ext_image = extend_image(image, half, background)
+        """
         ext_image = np.copy(image)
         for n in range(half):
             ext_image = np.insert(ext_image, 0, background, axis=0)
             ext_image = np.insert(ext_image, ext_image.shape[0], background, axis=0)
             ext_image = np.insert(ext_image, 0, background, axis=1)
             ext_image = np.insert(ext_image, ext_image.shape[1], background, axis=1)
+        """
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
 
         # make a copy with a border of 1
+        ext_cp_image = extend_image(cp_image, 1, background)
+        """
         ext_cp_image = np.copy(cp_image)
         ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
         ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
         ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
         ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
+        """
 
         # scan the convolution image to detect peaks and build cluster candidates
         exes = concurrent.futures.ProcessPoolExecutor()
         threshold = background + factor * dispersion
         candidates = []
-        for rnum in range(image.shape[0]):
-            for cnum in range(image.shape[1]):
+        for rnum, row in enumerate(image):
+            for cnum, col in enumerate(row):
                 if cp_image[rnum, cnum] <= threshold:
                     continue
                 if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
