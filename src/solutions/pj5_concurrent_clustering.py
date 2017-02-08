@@ -3,15 +3,15 @@
 
 
 import sys, time
-sys.path.append('../skeletons')
 import concurrent.futures
 import numpy as np
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
+sys.path.append('../skeletons')
 
 
 class SeqFuture:
-    def __init__(self,value):
+    def __init__(self, value):
         self.value = value
     def result(self):
         return self.value
@@ -28,7 +28,7 @@ class ParallelClustering(lib_cluster.Clustering):
 
     def __init__(self, pattern_size=9):
 
-        lib_cluster.Clustering.__init__(self,pattern_size)
+        lib_cluster.Clustering.__init__(self, pattern_size)
 
     def _convolution_image(self, pixels):
 
@@ -78,26 +78,27 @@ class ParallelClustering(lib_cluster.Clustering):
         # make a copy with a border of half
         half = self.pattern_size // 2
 
-        def extend_image(image, border, value):
-            extended = np.zeros(np.array(image.shape) + border * 2) + value
-            extended[border:-border, border:-border] = np.copy(image)
+        def extend_image(img, border, value):
+            extended = np.zeros(np.array(img.shape) + border * 2) + value
+            extended[border:-border, border:-border] = img
             return extended
 
         ext_image = extend_image(image, half, background)
 
         # build the convolution product image
+        # receive an image with a "half" border, and
+        # return an image without border
         cp_image = self._convolution_image(ext_image)
 
         # make a copy with a border of 1
         ext_cp_image = extend_image(cp_image, 1, background)
 
         # scan the convolution image to detect peaks
-        exes = concurrent.futures.ProcessPoolExecutor()
         threshold = background + factor * dispersion
         peaks = []
-        for rnum, row in enumerate(image):
-            for cnum, col in enumerate(row):
-                if cp_image[rnum, cnum] <= threshold:
+        for rnum, row in enumerate(cp_image):
+            for cnum, pixel in enumerate(row):
+                if pixel <= threshold:
                     continue
                 if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
                     continue
@@ -147,7 +148,7 @@ def main():
     # graphic output
     if not batch:
         _, axis = plt.subplots()
-        axis.imshow(lib_cluster.add_crosses(pixels,clusters))
+        axis.imshow(lib_cluster.add_crosses(pixels, clusters))
         plt.show()
 
     return 0
@@ -155,4 +156,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-
