@@ -84,40 +84,30 @@ class ParallelClustering(lib_cluster.Clustering):
             return extended
 
         ext_image = extend_image(image, half, background)
-        """
-        ext_image = np.copy(image)
-        for n in range(half):
-            ext_image = np.insert(ext_image, 0, background, axis=0)
-            ext_image = np.insert(ext_image, ext_image.shape[0], background, axis=0)
-            ext_image = np.insert(ext_image, 0, background, axis=1)
-            ext_image = np.insert(ext_image, ext_image.shape[1], background, axis=1)
-        """
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
 
         # make a copy with a border of 1
         ext_cp_image = extend_image(cp_image, 1, background)
-        """
-        ext_cp_image = np.copy(cp_image)
-        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
-        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
-        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
-        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
-        """
 
-        # scan the convolution image to detect peaks and build cluster candidates
+        # scan the convolution image to detect peaks
         exes = concurrent.futures.ProcessPoolExecutor()
         threshold = background + factor * dispersion
-        candidates = []
+        peaks = []
         for rnum, row in enumerate(image):
             for cnum, col in enumerate(row):
                 if cp_image[rnum, cnum] <= threshold:
                     continue
                 if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
                     continue
-                future_integral_radius = pool.submit(lib_cluster.Clustering._spread_peak,self, image, threshold, rnum, cnum)
-                candidates.append((rnum, cnum,future_integral_radius))
+                peaks.append((rnum, cnum))
+
+        # build the future candidate clusters from the detected peaks
+        candidates = []
+        for rnum, cnum in peaks:
+            future_integral_radius = pool.submit(lib_cluster.Clustering._spread_peak,self, image, threshold, rnum, cnum)
+            candidates.append((rnum, cnum, future_integral_radius))
 
         # scan the candidates and build clusters
         clusters = []
