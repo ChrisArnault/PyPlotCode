@@ -11,7 +11,6 @@ targets = [
     
     {"name": "lib_fits", "command" : "python lib_fits.py" },
     {"name": "lib_cluster", "command" : "python lib_cluster.py"  },
-    {"name": "lib_pixels_set", "command" : "python lib_pixels_set.py"  },
 
     {"name": "pj1_background_suppress", "command": "python pj1_background_suppress.py -b ../../data/fits/NPAC.fits"},
     {"name": "pj2_cluster_slider", "command": "python pj2_cluster_slider.py -b ../../data/fits/NPAC.fits"},

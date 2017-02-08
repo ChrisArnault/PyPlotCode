@@ -19,7 +19,8 @@ targets = [
 
     { "name" : "lib_wcs"  , "command" : "python lib_wcs.py"  },
     { "name" : "lib_stars", "command" : "python lib_stars.py"  },
-    
+    { "name" : "lib_pixels_set", "command" : "python lib_pixels_set.py"},
+
 ]
 
 # filters

@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import sys, math
-import lib_cluster
-sys.path.append('../skeletons')
+import math
 
 
 # =====
@@ -111,10 +109,5 @@ if __name__ == '__main__':
     print("weighted: {:.2f} {:.2f}".format(*ps.get_weighted()))
     print("peak: {:.2f} {:.2f}".format(*ps.get_peak()))
 
-    # find_clusters
 
-    cls = [ lib_cluster.Cluster(*ps.get_peak(),ps.get_top(),ps.get_integral()) ]
-    print("find around 1, 1: ",len(lib_cluster.find_clusters(cls,1,1,1)))
-    print("find around 2, 2: ",len(lib_cluster.find_clusters(cls,2,2,1)))
-    
 
