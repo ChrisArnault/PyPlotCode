@@ -2,7 +2,7 @@
 
 import sys
 
-ifilename = "{}.NPAC.ref".format(sys.argv[1])
+ifilename = "{}.ref".format(sys.argv[1])
 ofilename = "{}.rst".format(sys.argv[1])
 
 

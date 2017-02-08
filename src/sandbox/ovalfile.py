@@ -23,9 +23,6 @@ targets = [
 
     { "name" : "find_stars" , "command" : "python find_stars.py -b ../../data/fits/NPAC.fits"  },
 
-    { "name" : "pj1_background_suppress" , "command" : "python pj1_background_suppress.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj2_cluster_slider" , "command" : "python pj2_cluster_slider.py -b ../../data/fits/NPAC.fits"  },
-    { "name" : "pj3_file_selector" , "command" : "python pj3_file_selector.py -b ../../data/fits/NPAC.fits"  },
 ]
 
 # filters
