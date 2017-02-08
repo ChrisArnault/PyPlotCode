@@ -10,6 +10,20 @@ import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 
 
+class SeqFuture:
+    def __init__(self,value):
+        self.value = value
+    def result(self):
+        return self.value
+
+class SeqPoolExecutor:
+    def submit(self,f,*args,**kwargs):
+        return SeqFuture(f(*args,**kwargs))
+
+
+pool = concurrent.futures.ProcessPoolExecutor()
+
+
 class ParallelClustering(lib_cluster.Clustering):
 
     def __init__(self, pattern_size=9):
@@ -32,11 +46,10 @@ class ParallelClustering(lib_cluster.Clustering):
         se = pixels[(rmax // 2 - half):rmax, (cmax // 2 - half):cmax]
 
         # compute convolution product images
-        exes = concurrent.futures.ProcessPoolExecutor()
-        future_cp_nw = exes.submit(lib_cluster.Clustering._convolution_image, self, nw)
-        future_cp_ne = exes.submit(lib_cluster.Clustering._convolution_image, self, ne)
-        future_cp_sw = exes.submit(lib_cluster.Clustering._convolution_image, self, sw)
-        future_cp_se = exes.submit(lib_cluster.Clustering._convolution_image, self, se)
+        future_cp_nw = pool.submit(lib_cluster.Clustering._convolution_image, self, nw)
+        future_cp_ne = pool.submit(lib_cluster.Clustering._convolution_image, self, ne)
+        future_cp_sw = pool.submit(lib_cluster.Clustering._convolution_image, self, sw)
+        future_cp_se = pool.submit(lib_cluster.Clustering._convolution_image, self, se)
 
         # join convolution product images
         cp_pixels = np.zeros((pixels.shape[0] - 2 * half, pixels.shape[1] - 2 * half), np.float)
@@ -91,7 +104,7 @@ class ParallelClustering(lib_cluster.Clustering):
                     continue
                 if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
                     continue
-                future_integral_radius = exes.submit(lib_cluster.Clustering._spread_peak,self, image, threshold, rnum, cnum)
+                future_integral_radius = pool.submit(lib_cluster.Clustering._spread_peak,self, image, threshold, rnum, cnum)
                 candidates.append((rnum, cnum,future_integral_radius))
 
         # scan the candidates and build clusters
