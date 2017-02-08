@@ -36,13 +36,6 @@ for filename in os.listdir('../fits'):
         command = "../../src/sandbox/find_stars.py -b ../fits/{}".format(filename)
         targets.append({"name": target, "command": command})
 
-# rst generation
-
-for exnum, exname in enumerate(exercices):
-    tname = "rst{}".format(exnum)
-    tcommand = "python ref_to_rst.py {}".format(exname)
-    targets.append({"name": tname, "command": tcommand})
-
 
 # filters
 
