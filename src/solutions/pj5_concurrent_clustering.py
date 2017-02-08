@@ -91,7 +91,7 @@ class ParallelClustering(lib_cluster.Clustering):
         # make a copy with a border of 1
         ext_cp_image = extend_image(cp_image, 1, background)
 
-        # scan the convolution image to detect peaks and build cluster candidates
+        # scan the convolution image to detect peaks
         exes = concurrent.futures.ProcessPoolExecutor()
         threshold = background + factor * dispersion
         peaks = []
@@ -103,6 +103,7 @@ class ParallelClustering(lib_cluster.Clustering):
                     continue
                 peaks.append((rnum, cnum))
 
+        # build the future candidate clusters from the detected peaks
         candidates = []
         for rnum, cnum in peaks:
             future_integral_radius = pool.submit(lib_cluster.Clustering._spread_peak,self, image, threshold, rnum, cnum)
