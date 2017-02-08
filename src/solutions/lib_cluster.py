@@ -215,7 +215,7 @@ class Clustering():
                 if radius > 0:
                     clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
-        # sort by integrals
+        # sort by integrals then by top
         max_top = max(clusters, key=lambda cl: cl.top).top
         clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
 

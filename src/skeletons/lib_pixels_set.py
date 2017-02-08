@@ -23,6 +23,10 @@ class PixelsSet():
         """ add a given pixel to the set """
         self.pixels.append((row, column, value))
 
+    def get_len(self):
+        """ return the number of pixels """
+        return len(self.pixels)
+
     def get_integral(self):
         """ sum the values of all pixels """
         return sum([pixel[2] for pixel in self.pixels])
