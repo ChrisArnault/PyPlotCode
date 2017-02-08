@@ -10,7 +10,6 @@ import lib_wcs, lib_stars, lib_graphics
 sys.path.append('../solutions')
 sys.path.append('../skeletons')
 
-CONE = 0.001
 THREAD = False
 
 DX = 0
@@ -48,7 +47,7 @@ class StarScan():
 
         #g_io_lock.acquire()
         radec = lib_wcs.xy_to_radec(self.wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -96,7 +95,7 @@ class ShowCelestialObjects():
 
         pxy = lib_wcs.PixelXY(cluster.column,cluster.row)
         radec = lib_wcs.xy_to_radec(self.wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         result = []
         for cobj in cobjects:
             result.append('{} [{}, {}]'.format(cobj, pxy.x, pxy.y))
@@ -153,7 +152,7 @@ def main():
         #ic = region.clusters[0]
         pxy = lib_wcs.PixelXY(DX + ic.column, DY + ic.row)
         radec = lib_wcs.xy_to_radec(wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         for cobj in sorted(list(cobjects.keys())):
             logging.info('%d> celestial object: %s %s', nic, cobj, cobjects[cobj])
 

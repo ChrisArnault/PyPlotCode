@@ -9,14 +9,11 @@ import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
 
 
-CONE = 0.001
-
-
 def get_celestial_objects( wcs, cluster ):
 
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
-    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects(radec)
     return cobjects
 
 
