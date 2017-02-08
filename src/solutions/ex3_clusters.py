@@ -3,6 +3,7 @@
 
 
 import sys
+sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 
@@ -14,7 +15,8 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
 
     # search for clusters
-    clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)
+    clustering = lib_cluster.Clustering()
+    clusters = clustering.convolution_clustering(pixels, background, dispersion)
     max_cluster = clusters[0]
 
     # console output

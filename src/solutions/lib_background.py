@@ -5,7 +5,7 @@
 ''' Compute the noise '''
 
 
-import sys
+import sys ; sys.path.append('../skeletons')
 import numpy as np
 from scipy.optimize import curve_fit
 import lib_model

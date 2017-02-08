@@ -9,10 +9,9 @@ Test program to
 - search for clusters
 """
 
-import sys
-sys.path.append('../solutions')
 
-import sys, argparse
+import sys ; sys.path.append('../skeletons')
+import argparse
 import matplotlib.pyplot as plt
 import numpy as np
 from lib_logging import logging
