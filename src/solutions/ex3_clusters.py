@@ -16,7 +16,7 @@ def main():
 
     # search for clusters
     clustering = lib_cluster.Clustering()
-    clusters = clustering.convolution_clustering(pixels, background, dispersion)
+    clusters = clustering(pixels, background, dispersion)
     max_cluster = clusters[0]
 
     # console output

@@ -9,14 +9,11 @@ import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
 
 
-CONE = 0.001
-
-
 def get_celestial_objects( wcs, cluster ):
 
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
-    cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+    cobjects, _, _ = lib_stars.get_celestial_objects(radec)
     return cobjects
 
 
@@ -37,7 +34,7 @@ def main():
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
     clustering = lib_cluster.Clustering()
-    clusters = clustering.convolution_clustering(pixels, background, dispersion)
+    clusters = clustering(pixels, background, dispersion)
 
     # celestial objects for the biggest cluster
     wcs = lib_wcs.get_wcs(header)

@@ -3,10 +3,10 @@
 
 
 import sys, os
-sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import matplotlib.widgets as widgets
 import lib_args, lib_fits
+sys.path.append('../skeletons')
 
 
 def scan_dir(where):

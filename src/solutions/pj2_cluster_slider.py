@@ -3,10 +3,11 @@
 
 
 import sys
-sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
 import matplotlib.widgets as widgets
 import lib_args, lib_fits, lib_background, lib_cluster
+sys.path.append('../skeletons')
+
 
 class UpdateSlider():
 
@@ -21,7 +22,7 @@ class UpdateSlider():
     def __call__(self, val):
 
         clustering = lib_cluster.Clustering()
-        clusters = clustering.convolution_clustering(self.pixels, self.background, self.dispersion, val)
+        clusters = clustering(self.pixels, self.background, self.dispersion, val)
         print('{} clusters'.format(len(clusters)))
         crosses = lib_cluster.add_crosses(self.pixels, clusters)
         self.imgplot.set_data(crosses)
@@ -34,7 +35,7 @@ def main():
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, max_x = lib_background.compute_background(pixels)
     clustering = lib_cluster.Clustering()
-    clusters = clustering.convolution_clustering(pixels, background, dispersion)
+    clusters = clustering(pixels, background, dispersion)
 
     # console output
     if batch:

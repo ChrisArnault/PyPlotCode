@@ -60,7 +60,7 @@ class ParallelClustering(lib_cluster.Clustering):
 
         return cp_pixels
 
-    def convolution_clustering(self, image, background, dispersion, factor=6.0):
+    def __call__(self, image, background, dispersion, factor=6.0):
 
         """
         principle:
@@ -136,7 +136,7 @@ def main():
     # search for clusters
     time0 = time.time()
     clustering = ParallelClustering()
-    clusters = clustering.convolution_clustering(pixels, background, dispersion)
+    clusters = clustering(pixels, background, dispersion)
     time1 = time.time()
     max_cluster = clusters[0]
 

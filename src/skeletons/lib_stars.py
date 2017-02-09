@@ -12,7 +12,10 @@ import urllib.request, urllib.error, urllib.parse
 import numpy as np
 
 
-def get_celestial_objects(radec, radius):
+RADIUS = 0.001
+
+
+def get_celestial_objects(radec, radius=RADIUS):
 
     def make_req(radec, radius):
         """

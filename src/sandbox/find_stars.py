@@ -2,22 +2,14 @@
 # -*- coding: utf-8 -*-
 
 
-"""
-Test program to
-- open a fits files
-- compute background of the sky image using a gaussian fit
-- display the background analysis
-- display the image
-"""
-
-
 import sys
 from lib_logging import logging
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
+sys.path.append('../solutions')
+sys.path.append('../skeletons')
 
-CONE = 0.001
 THREAD = False
 
 DX = 0
@@ -55,7 +47,7 @@ class StarScan():
 
         #g_io_lock.acquire()
         radec = lib_wcs.xy_to_radec(self.wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         #g_io_lock.release()
 
         if len(cobjects) == 0:
@@ -103,7 +95,7 @@ class ShowCelestialObjects():
 
         pxy = lib_wcs.PixelXY(cluster.column,cluster.row)
         radec = lib_wcs.xy_to_radec(self.wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         result = []
         for cobj in cobjects:
             result.append('{} [{}, {}]'.format(cobj, pxy.x, pxy.y))
@@ -139,7 +131,7 @@ def main():
         ly = pixels.shape[1]
 
     clustering = lib_cluster.Clustering()
-    clusters = clustering.convolution_clustering(pixels[DY:ly, DX:lx], background, dispersion)
+    clusters = clustering(pixels[DY:ly, DX:lx], background, dispersion)
     cluster0 = clusters[0]
     max_integral = cluster0.integral
     
@@ -160,7 +152,7 @@ def main():
         #ic = region.clusters[0]
         pxy = lib_wcs.PixelXY(DX + ic.column, DY + ic.row)
         radec = lib_wcs.xy_to_radec(wcs,pxy)
-        cobjects, _, _ = lib_stars.get_celestial_objects(radec, CONE)
+        cobjects, _, _ = lib_stars.get_celestial_objects(radec)
         for cobj in sorted(list(cobjects.keys())):
             logging.info('%d> celestial object: %s %s', nic, cobj, cobjects[cobj])
 

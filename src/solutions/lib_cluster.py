@@ -2,15 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-'''
-Search clusters in images.
-'''
-
-
-import sys, time
-sys.path.append('../skeletons')
+import sys
 import math
 import numpy as np
+sys.path.append('../skeletons')
+
 
 class Cluster():
 
@@ -172,7 +168,7 @@ class Clustering():
         # result
         return cp_image
 
-    def convolution_clustering(self, image, background, dispersion, factor=6.0):
+    def __call__(self, image, background, dispersion, factor=6.0):
 
         """
         principle:
@@ -219,7 +215,7 @@ class Clustering():
                 if radius > 0:
                     clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
-        # sort by integrals
+        # sort by integrals then by top
         max_top = max(clusters, key=lambda cl: cl.top).top
         clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
 
