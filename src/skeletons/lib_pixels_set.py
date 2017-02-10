@@ -46,7 +46,8 @@ class PixelsSet():
     def get_centroid(self):
         """ average row and col """
         nbpixels = len(self.pixels)
-        if nbpixels == 0: return None, None
+        if nbpixels == 0:
+            return None, None
         rows, cols, _ = zip(*self.pixels)
         row_mean = sum(rows) / nbpixels
         col_mean = sum(cols) / nbpixels
