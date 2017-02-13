@@ -94,17 +94,7 @@ class Clustering():
 
         inf = image[r - 1:r + 2, c - 1:c + 2] < image[r, c]
         inf[1, 1] = True
-        return np.all(inf)
-
-        zone = image[r - 1:r + 2, c - 1:c + 2]
-        top = zone[1, 1]
-        if top == 0.0:
-            return False
-
-        checker = zone < top
-        checker[1,1] = True
-
-        return checker.all()
+        return inf.all()
 
 
     def _spread_peak(self, image, threshold, r, c):

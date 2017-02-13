@@ -12,7 +12,6 @@ import numpy as np
 import astropy.wcs
 
 
-
 # =====
 # Information for a given image
 #=====
