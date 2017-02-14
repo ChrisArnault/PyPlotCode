@@ -26,9 +26,9 @@ pool = concurrent.futures.ProcessPoolExecutor()
 
 class ParallelClustering(lib_cluster.Clustering):
 
-    def __init__(self, pattern_size=9):
+    def __init__(self, pattern_radius=4):
 
-        lib_cluster.Clustering.__init__(self, pattern_size)
+        lib_cluster.Clustering.__init__(self, pattern_radius)
 
     def _convolution_image(self, pixels):
 
@@ -37,7 +37,7 @@ class ParallelClustering(lib_cluster.Clustering):
             raise ValueError
 
         # split input image in four parts
-        half = self.pattern_size // 2
+        half = self.pattern_radius
         rmax = pixels.shape[0]
         cmax = pixels.shape[1]
         nw = pixels[0:(rmax // 2 + half), 0:(cmax // 2 + half)]
@@ -76,7 +76,7 @@ class ParallelClustering(lib_cluster.Clustering):
         """
 
         # make a copy with a border of half
-        half = self.pattern_size // 2
+        half = self.pattern_radius
 
         def extend_image(img, border, value):
             extended = np.zeros(np.array(img.shape) + border * 2) + value
