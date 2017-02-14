@@ -16,15 +16,6 @@ def gaussian_model(x, maxvalue, meanvalue, sigma):
     return maxvalue * np.exp(-(x - meanvalue)**2 / (2 * sigma**2))
 
 
-def gaussian_r_model(x, maxvalue, sigma, level):
-
-    """
-    ?
-    """
-
-    return maxvalue * np.exp(-(x*x) / (2 * (sigma*sigma))) + level
-
-
 def tests():
     'Unit tests'
     return 0

@@ -5,6 +5,7 @@
 import sys
 import math
 import numpy as np
+import lib_model
 sys.path.append('../skeletons')
 
 
@@ -64,20 +65,20 @@ class Clustering():
         normalized gaussian. The size must be odd.
         """
 
-        pattern_size = self.pattern_radius*2+1
+        pradius = self.pattern_radius
+        psize = pradius*2+1
 
-        x = np.arange(0, pattern_size, 1, float)
-        y = np.arange(0, pattern_size, 1, float)
+        x = np.arange(0, psize, 1, float)
+        y = np.arange(0, psize, 1, float)
+        y = y[:, np.newaxis] # transpose y
 
-        # transpose y
-        y = y[:, np.newaxis]
+        x0 = pradius
+        y0 = pradius
+        sigma = psize/4.0/math.sqrt(2.0)
 
-        # center
-        y0 = x0 = self.pattern_radius
-
-        # create a 2D gaussian distribution inside this grid.
-        sigma = 9/4.0
-        pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2 )
+        gx = lib_model.gaussian_model(x,1.0,x0,sigma)
+        gy = lib_model.gaussian_model(y,1.0,y0,sigma)
+        pattern = gx*gy
         pattern = pattern / pattern.sum()
 
         return pattern
@@ -260,7 +261,6 @@ if __name__ == '__main__':
     clustering = Clustering(1)
     pattern = clustering._build_pattern()
     print(pattern)
-    print(pattern.sum())
 
     # has_peak & spread_peak
 
