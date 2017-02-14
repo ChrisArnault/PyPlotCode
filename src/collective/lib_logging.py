@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 'Custom logging'
 
-import os
+
 import os.path
 import sys
 import logging
@@ -65,16 +66,19 @@ logger.addHandler(console_handler)
 logger.addHandler(log_file_handler)
 #logger.addHandler(out_file_handler)
 
-def tests():
-    'Unit tests'
+
+# =====
+# Unit tests
+# =====
+
+if __name__ == '__main__':
+
     logging.debug('Debug message')
     logging.info('Info message')
     logging.warning('Warning message')
     logging.error('Error message')
     logging.critical('Critical message')
-    return 0
 
-if __name__ == '__main__':
-    sys.exit(tests())
+    sys.exit(0)
 
 

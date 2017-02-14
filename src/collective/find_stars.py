@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import sys
-sys.path.append('../skeletons')
-sys.path.append('../solutions')
-
+from lib_config import sys
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs, lib_stars, lib_graphics
@@ -33,6 +30,7 @@ def main():
 
     # analyse command line arguments
     file_name, batch = lib_args.get_args()
+    logging.info('----------------')
     logging.info('name of file: {}'.format(file_name))
 
     # read fits file
@@ -50,20 +48,22 @@ def main():
     # clustering
     clustering = lib_cluster.Clustering()
     clusters = clustering(pixels, background, dispersion)
-    logging.info('number of clusters: {:2d}'.format(len(clusters)))
-    logging.info('greatest integral: {}'.format(clusters[0]))
+    for icl, cl in enumerate(clusters):
 
-    # radec coordinates of the greatest cluster
-    wcs = lib_wcs.get_wcs(header)
-    pxy = lib_wcs.PixelXY(clusters[0].column, clusters[0].row)
-    radec = lib_wcs.xy_to_radec(wcs, pxy)
-    logging.info('right ascension: {:.3f}'.format(radec.ra))
-    logging.info('declination: {:.3f}'.format(radec.dec))
+        logging.info('----------------')
+        logging.info('cluster {:d}: {}'.format(icl,cl))
 
-    # celestial objects for the biggest cluster
-    cobjects = get_celestial_objects(wcs, clusters[0])
-    for cobj in cobjects.keys():
-        logging.info('celestial object: {}'.format(cobj))
+        # radec coordinates of the greatest cluster
+        wcs = lib_wcs.get_wcs(header)
+        pxy = lib_wcs.PixelXY(cl.column, cl.row)
+        radec = lib_wcs.xy_to_radec(wcs, pxy)
+        logging.info('right ascension: {:.3f}'.format(radec.ra))
+        logging.info('declination: {:.3f}'.format(radec.dec))
+
+        # celestial objects for the biggest cluster
+        cobjects = get_celestial_objects(wcs, cl)
+        for icobj, cobj in enumerate(cobjects.keys()):
+            logging.info('celestial object {}: {}'.format(icobj,cobj))
 
     # graphic output
     if not batch:
@@ -73,6 +73,7 @@ def main():
             lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
         plt.show()
 
+    logging.info('----------------')
     return 0
 
 
