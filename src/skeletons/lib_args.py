@@ -34,10 +34,12 @@ def get_args():
 
 # =====
 # Unit tests
-#=====
+# =====
 
 if __name__ == '__main__':
+
     print(get_args())
+
     sys.exit(0)
 
 

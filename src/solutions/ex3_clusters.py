@@ -5,7 +5,8 @@
 import sys
 sys.path.append('../skeletons')
 import matplotlib.pyplot as plt
-import lib_args, lib_fits, lib_background, lib_cluster
+import lib_args, lib_fits, lib_background
+import lib_cluster_detailed as lib_cluster
 
 
 def main():

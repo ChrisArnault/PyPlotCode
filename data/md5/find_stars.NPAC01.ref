@@ -1,18 +1,39 @@
-name of image: ../fits/NPAC01.fits
-cd1_1: -0.00047050723155616, cd1_2: -4.4005382180958e-05, cd2_1: -4.3011823363536e-05, cd2_2: 0.00047061938956402
-height: 106, width: 106
-background: 2736, dispersion: 146
-number of clusters:  6, greatest integral:  154370, x: 55.0, y: 71.0
+----------------
+name of file: ../fits/NPAC01.fits
+cd1_1: -0.0004705072
+cd1_2: -0.0000440054
+cd2_1: -0.0000430118
+cd2_2: 0.0004706194
+background: 2736
+dispersion: 146
+----------------
 cluster 0: 12031/154370 at 71.0, 55.0
+right ascension: 149.621
+declination: 68.892
+celestial object 0: 2MASS J09582858+6853280
+----------------
 cluster 1: 12116/146645 at 19.0, 100.0
+right ascension: 149.568
+declination: 68.865
+celestial object 0: 2MASS J09581612+6851530
+----------------
 cluster 2: 11131/140830 at 32.0, 24.0
+right ascension: 149.666
+declination: 68.875
+celestial object 0: 2MASS J09583966+6852281
+----------------
 cluster 3: 11999/138052 at 10.0, 52.0
+right ascension: 149.632
+declination: 68.863
+celestial object 0: 2MASS J09583135+6851450
+----------------
 cluster 4: 10325/126052 at 92.0, 6.0
+right ascension: 149.682
+declination: 68.904
+celestial object 0: 2MASS J09584361+6854099
+----------------
 cluster 5: 7518/45675 at 20.0, 23.0
-right ascension: 149.621, declination: 68.892
-0> celestial object: 2MASS J09582858+6853280 IR
-1> celestial object: 2MASS J09581612+6851530 IR
-2> celestial object: 2MASS J09583966+6852281 IR
-3> celestial object: 2MASS J09583135+6851450 IR
-4> celestial object: 2MASS J09584361+6854099 IR
-5> celestial object: 2MASS J09584033+6852070 IR
+right ascension: 149.669
+declination: 68.869
+celestial object 0: 2MASS J09584033+6852070
+----------------

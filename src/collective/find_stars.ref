@@ -1,0 +1,24 @@
+----------------
+name of file: /Users/chamont/Code/Npac/PyPlotCode/data/fits/NPAC.fits
+cd1_1: -0.0004703406
+cd1_2: -0.0000462434
+cd2_1: -0.0000452257
+cd2_2: 0.0004704525
+background: 2816
+dispersion: 151
+----------------
+cluster 0: 13102/1485901 at 56.0, 51.0
+right ascension: 149.349
+declination: 69.306
+celestial object 0: TYC 4383-1121-1
+----------------
+cluster 1: 10876/135755 at 56.0, 95.0
+right ascension: 149.290
+declination: 69.304
+celestial object 0: 2MASS J09570938+6918154
+----------------
+cluster 2: 10870/124386 at 35.0, 73.0
+right ascension: 149.322
+declination: 69.295
+celestial object 0: 2MASS J09571701+6917432
+----------------

@@ -1,15 +1,24 @@
-name of image: ../fits/NPAC09.fits
-cd1_1: -0.00046984933108334, cd1_2: -5.0734163719278e-05, cd2_1: -4.9731377935571e-05, cd2_2: 0.00046996203747162
-height: 106, width: 106
-background: 2762, dispersion: 150
-number of clusters:  4, greatest integral:   50533, x: 99.0, y: 84.0
+----------------
+name of file: ../fits/NPAC09.fits
+cd1_1: -0.0004698493
+cd1_2: -0.0000507342
+cd2_1: -0.0000497314
+cd2_2: 0.0004699620
+background: 2762
+dispersion: 150
+----------------
 cluster 0: 8218/50533 at 84.0, 99.0
+right ascension: 148.699
+declination: 69.303
+celestial object 0: 2MASS J09544734+6918083
+----------------
 cluster 1: 7397/47371 at 36.0, 13.0
+right ascension: 148.819
+declination: 69.284
+celestial object 0: 2MASS J09551654+6917037
+----------------
 cluster 2: 7481/45984 at 93.0, 74.0
-cluster 3: 6056/41422 at 1.0, 96.0
-right ascension: 148.699, declination: 69.303
-0> celestial object: 2MASS J09544734+6918083 IR
-1> celestial object: 2MASS J09551654+6917037 IR
-2> celestial object: 2MASS J09545495+6918285 IR
-3> celestial object: 2MASS J09545126+6915494 IR
-3> celestial object: [GTK91b] 20 GlCl?
+right ascension: 148.730
+declination: 69.308
+celestial object 0: 2MASS J09545495+6918285
+----------------

@@ -5,7 +5,6 @@
 import sys
 import math
 import numpy as np
-import lib_model
 sys.path.append('../skeletons')
 
 
@@ -54,8 +53,8 @@ class Clustering():
     General clustering algorithm
     """
 
-    def __init__(self, pattern_radius=4):
-        self.pattern_radius = pattern_radius
+    def __init__(self, pattern_size=9):
+        self.pattern_size = pattern_size
 
     def _build_pattern(self):
         
@@ -65,20 +64,19 @@ class Clustering():
         normalized gaussian. The size must be odd.
         """
 
-        pradius = self.pattern_radius
-        psize = pradius*2+1
+        if self.pattern_size%2 == 0:
+            raise ValueError
 
-        x = np.arange(0, psize, 1, float)
-        y = np.arange(0, psize, 1, float)
-        y = y[:, np.newaxis] # transpose y
+        x = np.arange(0, self.pattern_size, 1, float)
+        y = np.arange(0, self.pattern_size, 1, float)
+        # transpose y
+        y = y[:, np.newaxis]
 
-        x0 = pradius
-        y0 = pradius
-        sigma = psize/4.0/math.sqrt(2.0)
+        y0 = x0 = self.pattern_size // 2
 
-        gx = lib_model.gaussian_model(x,1.0,x0,sigma)
-        gy = lib_model.gaussian_model(y,1.0,y0,sigma)
-        pattern = gx*gy
+        # create a 2D gaussian distribution inside this grid.
+        sigma = self.pattern_size / 4.0
+        pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
         pattern = pattern / pattern.sum()
 
         return pattern
@@ -92,10 +90,19 @@ class Clustering():
            - we verify all values immediately around the specified position are lower
         """
 
-        inf = image[r - 1:r + 2, c - 1:c + 2] < image[r, c]
-        inf[1, 1] = True
-        return inf.all()
-
+        zone = image[r - 1:r + 2, c - 1:c + 2]
+        top = zone[1, 1]
+        if top == 0.0 or \
+                        zone[0, 0] >= top or \
+                        zone[0, 1] >= top or \
+                        zone[0, 2] >= top or \
+                        zone[1, 0] >= top or \
+                        zone[1, 2] >= top or \
+                        zone[2, 0] >= top or \
+                        zone[2, 1] >= top or \
+                        zone[2, 2] >= top:
+            return False
+        return True
 
     def _spread_peak(self, image, threshold, r, c):
 
@@ -140,7 +147,7 @@ class Clustering():
 
         # we start by building a PSF with a given width
         pattern = self._build_pattern()
-        half = self.pattern_radius
+        half = self.pattern_size // 2
 
         # define a convolution image that stores the convolution products at each pixel position
         cp_image = np.zeros((image.shape[0] - 2 * half, image.shape[1] - 2 * half), np.float)
@@ -176,95 +183,64 @@ class Clustering():
         - this list of clusters is returned.
         """
 
-        def extend_image(image, margin):
-            ext_shape = np.array(image.shape) + 2 * margin
-            ext_image = np.zeros(ext_shape)
-            ext_image[margin:-margin, margin:-margin] = image
-
-            return ext_image
-
         # make a copy with a border of half
-        half = self.pattern_radius
-        ext_image = extend_image(image, self.pattern_radius)
+        half = self.pattern_size // 2
+        ext_image = np.copy(image)
+        for n in range(half):
+            ext_image = np.insert(ext_image, 0, background, axis=0)
+            ext_image = np.insert(ext_image, ext_image.shape[0], background, axis=0)
+            ext_image = np.insert(ext_image, 0, background, axis=1)
+            ext_image = np.insert(ext_image, ext_image.shape[1], background, axis=1)
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
+        print('conv[4,4]:',int(cp_image[4,4]))
+        print('conv[101,4]:',int(cp_image[101,4]))
+        print('conv[44,44]:',int(cp_image[44,44]))
+        print('conv[61,44]:',int(cp_image[61,44]))
+        print('conv[44,61]:',int(cp_image[44,61]))
+        print('conv[61,61]:',int(cp_image[61,61]))
+        print('conv[4,101]:',int(cp_image[4,101]))
+        print('conv[101,101]:',int(cp_image[101,101]))
 
         # make a copy with a border of 1
-        ext_cp_image = extend_image(cp_image, 1)
+        ext_cp_image = np.copy(cp_image)
+        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
+        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
+        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
+        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
+        print('threshold:', int(background + 6.0 * dispersion))
 
         # scan the convolution image to detect peaks and build clusters
         threshold = background + factor * dispersion
-        clusters = []
+        peaks = []
         for rnum in range(image.shape[0]):
             for cnum in range(image.shape[1]):
                 if cp_image[rnum, cnum] <= threshold:
                     continue
-                if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
-                    continue
-                integral, radius = self._spread_peak(image, threshold, rnum, cnum)
-                if radius > 0:
-                    clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
+                if self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
+                    peaks.append((rnum,cnum))
+        for npeak, peak in enumerate(peaks):
+            print('peak[{}]: {}'.format(npeak,peak))
+
+        # build clusters
+        clusters = []
+        for n, peak in enumerate(peaks):
+            rnum, cnum = peak[0], peak[1]
+            integral, radius = self._spread_peak(image, threshold, rnum, cnum)
+            print('candidate[{}]: {}, radius: {}'.format(npeak,peak,radius))
+            if radius > 0:
+                clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
         # sort by integrals then by top
-        if len(clusters) > 0:
-            max_top = max(clusters, key=lambda cl: cl.top).top
-            clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+        max_top = max(clusters, key=lambda cl: cl.top).top
+        clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
 
         # results
         return clusters
 
 
-def add_crosses(image, clusters):
-    """
-    Return a new image with crosses
-    """
-
-    x = 3
-    peaks = np.copy(image)
-    for cl in clusters:
-        rnum, cnum = round(cl.row), round(cl.column)
-        peaks[rnum - x:rnum + x + 1, cnum] = image[rnum, cnum]
-        peaks[rnum, cnum - x:cnum + x + 1] = image[rnum, cnum]
-    return peaks
-
-
-# =====
-# Unit tests
-# =====
-
-if __name__ == '__main__':
-
-    # Cluster
-    
-    cl = Cluster(2.5,2.5,10,20)
-    print(cl)
-
-    # find_clusters
-
-    cls = [ cl ]
-    print("find around 1, 1: ",len(find_clusters(cls,1,1,1)))
-    print("find around 2, 2: ",len(find_clusters(cls,2,2,1)))
-    
-    # build_pattern
-
-    clustering = Clustering(1)
-    pattern = clustering._build_pattern()
-    print(pattern)
-
-    # has_peak & spread_peak
-
-    image = np.array([
-        (0,0,0,0,0),
-        (0,1,2,2,0),
-        (0,1,3,2,0),
-        (0,1,1,1,0),
-        (1,0,0,0,0),
-    ])
-    print(image)
-
-    print(clustering._has_peak(image,2,2))
-    print(clustering._has_peak(image,1,3))
-    print(clustering._spread_peak(image,1,2,2))
-
+    #fig, axis = plt.subplots()
+    #_ = axis.imshow(pattern)
+    #plt.show()
 
