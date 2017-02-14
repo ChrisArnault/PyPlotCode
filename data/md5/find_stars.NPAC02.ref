@@ -1,16 +1,37 @@
-name of image: ../fits/NPAC02.fits
-cd1_1: -0.00046987575771404, cd1_2: -4.9919623119722e-05, cd2_1: -4.8952113442505e-05, cd2_2: 0.00046999014282
-height: 106, width: 106
-background: 2604, dispersion: 139
-number of clusters:  6, greatest integral: 1101292, x: 51.0, y: 55.0
+----------------
+name of file: ../fits/NPAC02.fits
+cd1_1: -0.0004698758
+cd1_2: -0.0000499196
+cd2_1: -0.0000489521
+cd2_2: 0.0004699901
+background: 2604
+dispersion: 139
+----------------
 cluster 0: 13260/1101292 at 55.0, 51.0
+right ascension: 148.860
+declination: 68.856
+celestial object 0: TYC 4383-1031-1
+----------------
 cluster 1: 13515/375692 at 38.0, 86.0
+right ascension: 148.816
+declination: 68.846
+celestial object 0: GSC 04383-01037
+----------------
 cluster 2: 11360/149614 at 47.0, 4.0
+right ascension: 148.922
+declination: 68.854
+celestial object 0: 2MASS J09554113+6851143
+----------------
 cluster 3: 9748/115855 at 5.0, 46.0
+right ascension: 148.873
+declination: 68.833
+celestial object 0: 2MASS J09552920+6849559
+----------------
 cluster 4: 6054/41484 at 84.0, 69.0
+right ascension: 148.832
+declination: 68.869
+----------------
 cluster 5: 4995/36699 at 78.0, 12.0
-right ascension: 148.860, declination: 68.856
-0> celestial object: TYC 4383-1031-1 Star
-1> celestial object: GSC 04383-01037 PM*
-2> celestial object: 2MASS J09554113+6851143 IR
-3> celestial object: 2MASS J09552920+6849559 IR
+right ascension: 148.907
+declination: 68.869
+----------------

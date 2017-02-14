@@ -33,7 +33,7 @@ for filename in os.listdir('../fits'):
     if exp.match(filename):
         token = filename[:-5]
         target = "find_stars.{}".format(token)
-        command = "../../src/sandbox/find_stars.py -b ../fits/{}".format(filename)
+        command = "../../src/collective/find_stars.py -b ../fits/{}".format(filename)
         targets.append({"name": target, "command": command})
 
 

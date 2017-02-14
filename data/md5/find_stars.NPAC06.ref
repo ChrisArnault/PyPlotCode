@@ -1,13 +1,28 @@
-name of image: ../fits/NPAC06.fits
-cd1_1: -0.00047036569901843, cd1_2: -4.5899500151465e-05, cd2_1: -4.4886742681018e-05, cd2_2: 0.00047047771686703
-height: 106, width: 106
-background: 2797, dispersion: 151
-number of clusters:  4, greatest integral:  394966, x: 50.0, y: 57.0
+----------------
+name of file: ../fits/NPAC06.fits
+cd1_1: -0.0004703657
+cd1_2: -0.0000458995
+cd2_1: -0.0000448867
+cd2_2: 0.0004704777
+background: 2797
+dispersion: 151
+----------------
 cluster 0: 13422/394966 at 57.0, 50.0
+right ascension: 149.392
+declination: 69.230
+celestial object 0: GPM 149.391696+69.229356
+----------------
 cluster 1: 11183/83328 at 33.0, 1.0
+right ascension: 149.460
+declination: 69.221
+celestial object 0: 2MASS J09575075+6913140
+----------------
 cluster 2: 10075/81295 at 104.0, 30.0
+right ascension: 149.413
+declination: 69.253
+celestial object 0: GPM 149.412104+69.253417
+----------------
 cluster 3: 5908/40341 at 40.0, 76.0
-right ascension: 149.392, declination: 69.230
-0> celestial object: GPM 149.391696+69.229356 Star
-1> celestial object: 2MASS J09575075+6913140 Star
-2> celestial object: GPM 149.412104+69.253417 Star
+right ascension: 149.360
+declination: 69.220
+----------------

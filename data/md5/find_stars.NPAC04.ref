@@ -1,14 +1,32 @@
-name of image: ../fits/NPAC04.fits
-cd1_1: -0.00047028996310895, cd1_2: -4.6352540501961e-05, cd2_1: -4.5357070943985e-05, cd2_2: 0.00047040247671923
-height: 106, width: 106
-background: 2692, dispersion: 163
-number of clusters:  5, greatest integral:  396746, x:  9.0, y: 44.0
+----------------
+name of file: ../fits/NPAC04.fits
+cd1_1: -0.0004702900
+cd1_2: -0.0000463525
+cd2_1: -0.0000453571
+cd2_2: 0.0004704025
+background: 2692
+dispersion: 163
+----------------
 cluster 0: 13374/396746 at 44.0, 9.0
+right ascension: 149.384
+declination: 69.025
+celestial object 0: GSC 04383-01028
+----------------
 cluster 1: 13484/317281 at 54.0, 52.0
+right ascension: 149.326
+declination: 69.028
+celestial object 0: 2MASS J09571791+6901366
+----------------
 cluster 2: 7900/270428 at 16.0, 49.0
+right ascension: 149.335
+declination: 69.010
+----------------
 cluster 3: 10548/124625 at 67.0, 72.0
+right ascension: 149.298
+declination: 69.033
+celestial object 0: 2MASS J09571137+6901566
+----------------
 cluster 4: 8041/67250 at 1.0, 83.0
-right ascension: 149.384, declination: 69.025
-0> celestial object: GSC 04383-01028 Star
-1> celestial object: 2MASS J09571791+6901366 Star
-3> celestial object: 2MASS J09571137+6901566 IR
+right ascension: 149.292
+declination: 69.001
+----------------
