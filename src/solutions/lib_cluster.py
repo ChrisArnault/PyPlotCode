@@ -53,8 +53,8 @@ class Clustering():
     General clustering algorithm
     """
 
-    def __init__(self, pattern_size=9):
-        self.pattern_size = pattern_size
+    def __init__(self, pattern_radius=4):
+        self.pattern_radius = pattern_radius
 
     def _build_pattern(self):
         
@@ -64,19 +64,20 @@ class Clustering():
         normalized gaussian. The size must be odd.
         """
 
-        if self.pattern_size%2 == 0:
-            raise ValueError
+        pattern_size = self.pattern_radius*2+1
 
-        x = np.arange(0, self.pattern_size, 1, float)
-        y = np.arange(0, self.pattern_size, 1, float)
+        x = np.arange(0, pattern_size, 1, float)
+        y = np.arange(0, pattern_size, 1, float)
+
         # transpose y
         y = y[:, np.newaxis]
 
-        y0 = x0 = self.pattern_size // 2
+        # center
+        y0 = x0 = self.pattern_radius
 
         # create a 2D gaussian distribution inside this grid.
-        sigma = self.pattern_size / 4.0
-        pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2)
+        sigma = 9/4.0
+        pattern = np.exp(-1 * ((x - x0) ** 2 + (y - y0) ** 2) / sigma ** 2 )
         pattern = pattern / pattern.sum()
 
         return pattern
@@ -89,6 +90,10 @@ class Clustering():
            - we consider the value at the specified position
            - we verify all values immediately around the specified position are lower
         """
+
+        inf = image[r - 1:r + 2, c - 1:c + 2] < image[r, c]
+        inf[1, 1] = True
+        return np.all(inf)
 
         zone = image[r - 1:r + 2, c - 1:c + 2]
         top = zone[1, 1]
@@ -144,7 +149,7 @@ class Clustering():
 
         # we start by building a PSF with a given width
         pattern = self._build_pattern()
-        half = self.pattern_size // 2
+        half = self.pattern_radius
 
         # define a convolution image that stores the convolution products at each pixel position
         cp_image = np.zeros((image.shape[0] - 2 * half, image.shape[1] - 2 * half), np.float)
@@ -188,8 +193,8 @@ class Clustering():
             return ext_image
 
         # make a copy with a border of half
-        half = self.pattern_size // 2
-        ext_image = extend_image(image, half)
+        half = self.pattern_radius
+        ext_image = extend_image(image, self.pattern_radius)
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
@@ -252,8 +257,10 @@ if __name__ == '__main__':
     
     # build_pattern
 
-    clustering = Clustering(3)
-    print(clustering._build_pattern())
+    clustering = Clustering(1)
+    pattern = clustering._build_pattern()
+    print(pattern)
+    print(pattern.sum())
 
     # has_peak & spread_peak
 
