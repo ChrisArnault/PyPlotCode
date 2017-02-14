@@ -26,7 +26,7 @@ def main():
     # graphic output
     if not batch:
         _, axes = plt.subplots(2)
-        _ = axes[0].imshow(lib_cluster._build_pattern(9))
+        _ = axes[0].imshow(clustering._build_pattern())
         _ = axes[1].imshow(lib_cluster.add_crosses(pixels,clusters))
         plt.show()
 
