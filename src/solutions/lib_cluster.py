@@ -92,17 +92,14 @@ class Clustering():
 
         zone = image[r - 1:r + 2, c - 1:c + 2]
         top = zone[1, 1]
-        if top == 0.0 or \
-                        zone[0, 0] >= top or \
-                        zone[0, 1] >= top or \
-                        zone[0, 2] >= top or \
-                        zone[1, 0] >= top or \
-                        zone[1, 2] >= top or \
-                        zone[2, 0] >= top or \
-                        zone[2, 1] >= top or \
-                        zone[2, 2] >= top:
+        if top == 0.0:
             return False
-        return True
+
+        checker = zone < top
+        checker[1,1] = True
+
+        return checker.all()
+
 
     def _spread_peak(self, image, threshold, r, c):
 
@@ -183,24 +180,22 @@ class Clustering():
         - this list of clusters is returned.
         """
 
+        def extend_image(image, margin):
+            ext_shape = np.array(image.shape) + 2 * margin
+            ext_image = np.zeros(ext_shape)
+            ext_image[margin:-margin, margin:-margin] = image
+
+            return ext_image
+
         # make a copy with a border of half
         half = self.pattern_size // 2
-        ext_image = np.copy(image)
-        for n in range(half):
-            ext_image = np.insert(ext_image, 0, background, axis=0)
-            ext_image = np.insert(ext_image, ext_image.shape[0], background, axis=0)
-            ext_image = np.insert(ext_image, 0, background, axis=1)
-            ext_image = np.insert(ext_image, ext_image.shape[1], background, axis=1)
+        ext_image = extend_image(image, half)
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
 
         # make a copy with a border of 1
-        ext_cp_image = np.copy(cp_image)
-        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
-        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
-        ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
-        ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
+        ext_cp_image = extend_image(cp_image, 1)
 
         # scan the convolution image to detect peaks and build clusters
         threshold = background + factor * dispersion
@@ -216,8 +211,9 @@ class Clustering():
                     clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
         # sort by integrals then by top
-        max_top = max(clusters, key=lambda cl: cl.top).top
-        clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+        if len(clusters) > 0:
+            max_top = max(clusters, key=lambda cl: cl.top).top
+            clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
 
         # results
         return clusters
