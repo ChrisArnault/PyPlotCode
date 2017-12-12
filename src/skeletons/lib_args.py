@@ -15,21 +15,24 @@ def get_args():
 
     # establish the default path and file values
     DEFAULT_DATA_PATH = os.environ.get('DATAPATH')
+    DEFAULT_DATA_FILE = 'NPAC'
+
     if DEFAULT_DATA_PATH == None:
-        DEFAULT_DATA_PATH = '../data'
-        DEFAULT_DATA_FILE = 'common'
-    else:
-        DEFAULT_DATA_FILE = 'NPAC'
+        DEFAULT_DATA_PATH = '../data/fits'
 
     # if no file name given on the command line
-    if not args.file:
-        if not args.b:
-            args.file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
-        if args.b or len(args.file) == 0:
-            args.file = DEFAULT_DATA_FILE
-        args.file = DEFAULT_DATA_PATH + '/' + args.file + '.fits'
 
-    return args.file, args.b
+    interactive = not args.b
+
+    if not args.file:
+        if not interactive:
+            args.file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
+        if not interactive or len(args.file) == 0:
+            args.file = DEFAULT_DATA_FILE
+
+    file = DEFAULT_DATA_PATH + '/' + args.file + '.fits'
+
+    return file, interactive
 
 
 # =====

@@ -1,1 +1,1 @@
-file: ../../data/fits/NPAC.fits, batch: True
+file: ../../data/fits/NPAC.fits, interactive: False

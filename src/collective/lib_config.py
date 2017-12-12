@@ -14,7 +14,7 @@ sys.path.append('../solutions')
 if __name__ == '__main__':
 
     import lib_args
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     print('name of file: {}'.format(file_name))
-    print('batch: {}'.format(batch))
+    print('interactive: {}'.format(interactive))
 

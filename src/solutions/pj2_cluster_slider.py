@@ -31,19 +31,19 @@ class UpdateSlider():
 
 def main():
 
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, max_x = lib_background.compute_background(pixels)
     clustering = lib_cluster.Clustering()
     clusters = clustering(pixels, background, dispersion)
 
     # console output
-    if batch:
+    if not interactive:
 
         print('{} clusters'.format(len(clusters)))
 
-    # graphic output
     else:
+        # graphic output
 
         fig, axis = plt.subplots()
         imgplot = axis.imshow(pixels)

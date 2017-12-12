@@ -10,7 +10,7 @@ import lib_args, lib_fits, lib_background
 
 def main():
 
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
@@ -18,7 +18,7 @@ def main():
     print('background: {:d}, dispersion: {:d}'.format(int(background),int(dispersion)))
 
     # graphic output
-    if not batch:
+    if interactive:
         _, axis = plt.subplots()
         axis.imshow(pixels)
         plt.show()

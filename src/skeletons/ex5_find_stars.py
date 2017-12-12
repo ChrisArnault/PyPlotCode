@@ -11,17 +11,17 @@ import lib_stars
 def main():
 
     # analyse command line arguments
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
 
     # main tasks
     # ...
 
     # example of console output
     # ...
-    print('file: {}, batch: {}'.format(file_name, batch))
+    print('file: {}, interactive: {}'.format(file_name, interactive))
 
     # graphic output
-    if not batch:
+    if interactive:
         # ...
         pass
 

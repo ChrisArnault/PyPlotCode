@@ -11,7 +11,7 @@ import lib_cluster_detailed as lib_cluster
 
 def main():
 
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
@@ -25,7 +25,7 @@ def main():
         len(clusters), max_cluster.integral, max_cluster.column, max_cluster.row))
 
     # graphic output
-    if not batch:
+    if interactive:
         _, axes = plt.subplots(2)
         _ = axes[0].imshow(clustering._build_pattern())
         _ = axes[1].imshow(lib_cluster.add_crosses(pixels,clusters))
