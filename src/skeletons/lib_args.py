@@ -18,19 +18,32 @@ def get_args():
     DEFAULT_DATA_FILE = 'NPAC'
 
     if DEFAULT_DATA_PATH == None:
-        DEFAULT_DATA_PATH = '../data/fits'
-
-    # if no file name given on the command line
+        if os.path.exists('../../data/fits'):
+            DEFAULT_DATA_PATH = '../../data/fits'
+        elif os.path.exists('../data/fits'):
+            DEFAULT_DATA_PATH = '../data/fits'
+        elif os.path.exists('../data'):
+            DEFAULT_DATA_PATH = '../data'
+        else:
+            print('No data file found')
+            exit(1)
 
     interactive = not args.b
 
     if not args.file:
-        if not interactive:
-            args.file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
-        if not interactive or len(args.file) == 0:
-            args.file = DEFAULT_DATA_FILE
+        # if no file name given on the command line
 
-    file = DEFAULT_DATA_PATH + '/' + args.file + '.fits'
+        if interactive:
+            file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
+            if len(file) == 0:
+                file = DEFAULT_DATA_FILE
+
+        else:
+            file = DEFAULT_DATA_FILE
+    else:
+        file = args.file
+
+    file = DEFAULT_DATA_PATH + '/' + file + '.fits'
 
     return file, interactive
 
