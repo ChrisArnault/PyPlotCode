@@ -35,11 +35,11 @@ class UpdateFile():
 
 def main():
 
-    dirpath, batch = lib_args.get_args()
+    dirpath, interactive = lib_args.get_args()
     filepaths = scan_dir(dirpath)
 
     # batch console output
-    if batch:
+    if not interactive:
 
         for filepath in filepaths:
             print(filepath)

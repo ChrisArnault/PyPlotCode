@@ -129,7 +129,7 @@ class ParallelClustering(lib_cluster.Clustering):
 
 def main():
 
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
@@ -146,7 +146,7 @@ def main():
     print('clustering execution time: {:.3f} seconds'.format(time1-time0))
 
     # graphic output
-    if not batch:
+    if interactive:
         _, axis = plt.subplots()
         axis.imshow(lib_cluster.add_crosses(pixels, clusters))
         plt.show()

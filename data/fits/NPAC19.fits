@@ -1,263 +1,4 @@
-SIMPLE  =                    T /FITS header                                     BITPIX  =                   16 /No.Bits per pixel                               NAXIS   =                    2 /No.dimensions                                   NAXIS1  =                  106 /Length X axis                                   NAXIS2  =                  106 /Length Y axis                                   EXTEND  =                    T /                                                DATE    = '04/02/16          ' /Date of FITS file creation                      ORIGIN  = 'CASB -- STScI     ' /Origin of FITS image                            PLTLABEL= 'E685              ' /Observatory plate label                         PLATEID = '07IE              ' /GSSS Plate ID                                   REGION  = 'XE037             ' /GSSS Region Name                                DATE-OBS= '07/03/53          ' /UT date of Observation                          UT      = '06:33:00.00       ' /UT time of observation                          EPOCH   =  1.9531788330078E+03 /Epoch of plate                                  PLTRAH  =                   10 /Plate center RA                                 PLTRAM  =                   23 /                                                PLTRAS  =  3.7330600000000E+01 /                                                PLTDECSN= '+                 ' /Plate center Dec                                PLTDECD =                   71 /                                                PLTDECM =                   16 /                                                PLTDECS =  1.7961790000000E+01 /                                                EQUINOX =  2.0000000000000E+03 /Julian Reference frame equinox                  EXPOSURE=  4.0000000000000E+01 /Exposure time minutes                           BANDPASS=                    8 /GSSS Bandpass code                              PLTGRADE=                    1 /Plate grade                                     PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       SITELAT = '+33:24:24.00      ' /Latitude of Observatory                         SITELONG= '-116:51:48.00     ' /Longitude of Observatory                        TELESCOP= 'Palomar 48-inch Schmidt'/Telescope where plate taken                 CNPIX1  =                11492 /X corner  (pixels)                              CNPIX2  =                 2376 /Y corner                                        DATATYPE= 'INTEGER*2         ' /Type of Data                                    SCANIMG = 'XE037_07IE_00_00.PIM'/Name of original scan                          SCANNUM =                    0 /Identifies scan of the plate                    DCHOPPED=                    F /Image repaired for chopping effects             DSHEARED=                    F /Image repaired for shearing effects             DSCNDNUM=                    0 /Identifies descendant of plate scan image       XPIXELSZ=  2.5284450000000E+01 /X pixel size microns                            YPIXELSZ=  2.5284450000000E+01 /Y pixel size microns                            PPO1    =  0.0000000000000E+00 /Orientation Coefficients                        PPO2    =  0.0000000000000E+00 /                                                PPO3    =  1.7747471555000E+05 /                                                PPO4    =  0.0000000000000E+00 /                                                PPO5    =  0.0000000000000E+00 /                                                PPO6    =  1.7747471555000E+05 /                                                AMDX1   =  6.7234391548000E+01 /Plate solution x coefficients                   AMDX2   =  7.3345355710310E-01 /                                                AMDX3   = -2.8860399941910E+02 /                                                AMDX4   = -1.7860733229560E-05 /                                                AMDX5   = -6.1179578925430E-06 /                                                AMDX6   =  1.5385348414370E-05 /                                                AMDX7   =  0.0000000000000E+00 /                                                AMDX8   =  1.8330507091850E-06 /                                                AMDX9   = -1.6081937613770E-07 /                                                AMDX10  =  2.3814822122600E-06 /                                                AMDX11  =  1.7954228847220E-08 /                                                AMDX12  =  0.0000000000000E+00 /                                                AMDX13  =  0.0000000000000E+00 /                                                AMDX14  =  0.0000000000000E+00 /                                                AMDX15  =  0.0000000000000E+00 /                                                AMDX16  =  0.0000000000000E+00 /                                                AMDX17  =  0.0000000000000E+00 /                                                AMDX18  =  0.0000000000000E+00 /                                                AMDX19  =  0.0000000000000E+00 /                                                AMDX20  =  0.0000000000000E+00 /                                                AMDY1   =  6.7258896731320E+01 /Plate solution y coefficients                   AMDY2   = -7.3429639674420E-01 /                                                AMDY3   = -1.5425004101100E+02 /                                                AMDY4   = -3.2808977562630E-07 /                                                AMDY5   = -2.5056640070610E-05 /                                                AMDY6   =  1.3445098358330E-06 /                                                AMDY7   =  0.0000000000000E+00 /                                                AMDY8   =  1.9754681872160E-06 /                                                AMDY9   = -1.9162032322980E-07 /                                                AMDY10  =  2.2805668029490E-06 /                                                AMDY11  =  8.0186985800440E-08 /                                                AMDY12  =  0.0000000000000E+00 /                                                AMDY13  =  0.0000000000000E+00 /                                                AMDY14  =  0.0000000000000E+00 /                                                AMDY15  =  0.0000000000000E+00 /                                                AMDY16  =  0.0000000000000E+00 /                                                AMDY17  =  0.0000000000000E+00 /                                                AMDY18  =  0.0000000000000E+00 /                                                AMDY19  =  0.0000000000000E+00 /                                                AMDY20  =  0.0000000000000E+00 /                                                        Based on photographic data of the National Geographic Society -- Palomar        Observatory Sky Survey (NGS-POSS) obtained using the Oschin Telescope on        Palomar Mountain.  The NGS-POSS was funded by a grant from the National         Geographic Society to the California Institute of Technology.  The              plates were processed into the present compressed digital form with             their permission.  The Digitized Sky Survey was produced at the Space           Telescope Science Institute under US Government grant NAG W-2166.                                                                                               Investigators using these scans are requested to include the above              acknowledgements in any publications.                                                                                                                           Copyright (c) 1994, Association of Universities for Research in                 Astronomy, Inc.  All rights reserved.                                   DATAMAX =                13476 /Maximum data value                              DATAMIN =                 1714 /Minimum data value                              OBJECT  = 'dss22018          ' /Object ID                                       OBJCTRA = '09 58 36.420      ' /Object Right Ascension (J2000)                  OBJCTDEC= '+68 58 07.90      ' /Object Declination (J2000)                      OBJCTX  =             11545.98 /Object X on plate (pixels)                      OBJCTY  =              2429.27 /Object Y on plate (pixels)                      CTYPE1  = 'RA---TAN'           /R.A. in tangent plane projection                CTYPE2  = 'DEC--TAN'           /DEC. in tangent plane projection                CRPIX1  =                 53.0 /Refpix of first axis                            CRPIX2  =                 53.0 /Refpix of second axis                           CRVAL1  =  1.4965378396344E+02 /RA at Ref pix in decimal degrees                CRVAL2  =  6.8968561059231E+01 /DEC at Ref pix in decimal degrees               CROTA1  =  5.2588405671018E+00 /Rotation angle of first axis (deg)              CROTA2  =  5.2588405671018E+00 /Rotation angle of second axis (deg)                     Warning: CROTA2 is inaccurate due to considerable skew                  SKEW    =  5.3186210015531E+00,  5.1990601326505E+00 /Measure of skew           CDELT1  = -4.7248281756357E-04 /RA pixel step (deg)                             CDELT2  =  4.7268614124684E-04 /DEC pixel step (deg)                            CD1_1   = -4.7053896901055E-04 /CD matrix                                       CD1_2   = -4.3815259405950E-05 /CD matrix                                       CD2_1   = -4.2814618243038E-05 /CD matrix                                       CD2_2   =  4.7065105032287E-04 /CD matrix                                       PC001001=  9.9588588519887E-01 /PC matrix                                       PC001002=  9.2734080007163E-02 /PC matrix                                       PC002001= -9.0577265773230E-02 /PC matrix                                       PC002002=  9.9569462536260E-01 /PC matrix                                       END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-øñ++888
-b
-è
-èffff
-èf000—
-˚
-˚—00
-≈õ
-Z0
-≈
-≈
-?
-?
-?
-t
-t
-t
-t
-
-Ì//
-Ç
-Ç
-ÇX
-ù
-ù
-ù
-ù
-g>
-“©
-˚
-$
-$
-$	Ó
-≈
-™	‘	‘
-™
-?
-?Ï¬±.
-?	‘
-™0
-Z
-Z
-Z
-Z0
-Z
-‡
-‡
-‡
-	KK
-t
-t
-™ÅÏ∂∂KKRR
-øñÂ88
-b
-è
-èff
-è
-è	π
-è000—
-˚
-˚—00
-≈õ
-Z0
-≈
-≈
-?
-?
-?KK
-t
-t
-
-ÌXX
-Ç
-Ç
-ÇX
-ù
-ùss
-g>©
-“
-˚
-$
-$
-$	Ó
-≈00
-™	‘	‘
-™
-?
-?Ï.W
-?	‘
-™
-Z	É
-Z
-Z
-Z
-Z	É
-Z
-	
-	
-	
-‡KKKK
-™Å
-?∂∂!!RRñlll8
-Õ
-Õ
-˚
-˚
-˚
-˚
-$
-$
-è
-è
-Z
-Z
-≈
-≈ff
-˚
-˚
-≈õ
-≈
-≈00
-≈
-≈
-?
-?
-?KK
-t
-t
-ÇX
-Ì
-
-
-Ì
-
-Ìss
-ù
-ù
-“©©©f
-è
-˚
-$
-≈
-≈
-Z
-Z
-™
-™
-™
-™
-?
-?
-™ÅÅÅ
-?
-?
-Z
-Z
-≈õ
-≈
-≈
-Z0
-‡
-	
-tK
-‡
-‡
-‡
-‡
-™Å
-?KK∂∂RRCÂ££
-˚
-˚
-˚
-˚
-$
-$
-è
-è
-Z
-Z
-≈
-≈<<
-˚
-˚	Ó
-≈
-≈
-≈
-Z
-Z
-≈
-≈
-?
-?
-?
-t
-t
-t
-t
-ÇX
-Ì
-
-Ìƒ
-
-Ì
-ù
-ù
-ù
-ù
-“©©©
-èf
-$
-˚
-≈
-≈
-Z
-ZÅÅÅÅ
-?
-?
-™Å
-™
-™
-?
-?
-?
-?
-Z
-Z
-≈õõõ
-Z0∂
-‡
-tK
-‡
-‡
-	
-		‘
-™
-?KK
-‡
-‡RRµ9Pz0
-Z
-≈
-≈
-è	π
-è
-è
-≈
-≈00
-Z
-≈
-≈00
-≈
-≈
-≈
-≈
-t	û
-‡
-‡
-?
-?
-ÇX
+SIMPLE  =                    T /FITS header                                     BITPIX  =                   16 /No.Bits per pixel                               NAXIS   =                    2 /No.dimensions                                   NAXIS1  =                  106 /Length X axis                                   NAXIS2  =                  106 /Length Y axis                                   EXTEND  =                    T /                                                DATE    = '13/12/17          ' /Date of FITS file creation                      ORIGIN  = 'CASB -- STScI     ' /Origin of FITS image                            PLTLABEL= 'E685              ' /Observatory plate label                         PLATEID = '07IE              ' /GSSS Plate ID                                   REGION  = 'XE037             ' /GSSS Region Name                                DATE-OBS= '07/03/53          ' /UT date of Observation                          UT      = '06:33:00.00       ' /UT time of observation                          EPOCH   =  1.9531788330078E+03 /Epoch of plate                                  PLTRAH  =                   10 /Plate center RA                                 PLTRAM  =                   23 /                                                PLTRAS  =  3.7330600000000E+01 /                                                PLTDECSN= '+                 ' /Plate center Dec                                PLTDECD =                   71 /                                                PLTDECM =                   16 /                                                PLTDECS =  1.7961790000000E+01 /                                                EQUINOX =  2.0000000000000E+03 /Julian Reference frame equinox                  EXPOSURE=  4.0000000000000E+01 /Exposure time minutes                           BANDPASS=                    8 /GSSS Bandpass code                              PLTGRADE=                    1 /Plate grade                                     PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       SITELAT = '+33:24:24.00      ' /Latitude of Observatory                         SITELONG= '-116:51:48.00     ' /Longitude of Observatory                        TELESCOP= 'Palomar 48-inch Schmidt'/Telescope where plate taken                 CNPIX1  =                11533 /X corner  (pixels)                              CNPIX2  =                 2380 /Y corner                                        DATATYPE= 'INTEGER*2         ' /Type of Data                                    SCANIMG = 'XE037_07IE_00_00.PIM'/Name of original scan                          SCANNUM =                    0 /Identifies scan of the plate                    DCHOPPED=                    F /Image repaired for chopping effects             DSHEARED=                    F /Image repaired for shearing effects             DSCNDNUM=                    0 /Identifies descendant of plate scan image       XPIXELSZ=  2.5284450000000E+01 /X pixel size microns                            YPIXELSZ=  2.5284450000000E+01 /Y pixel size microns                            PPO1    =  0.0000000000000E+00 /Orientation Coefficients                        PPO2    =  0.0000000000000E+00 /                                                PPO3    =  1.7747471555000E+05 /                                                PPO4    =  0.0000000000000E+00 /                                                PPO5    =  0.0000000000000E+00 /                                                PPO6    =  1.7747471555000E+05 /                                                AMDX1   =  6.7234391548000E+01 /Plate solution x coefficients                   AMDX2   =  7.3345355710310E-01 /                                                AMDX3   = -2.8860399941910E+02 /                                                AMDX4   = -1.7860733229560E-05 /                                                AMDX5   = -6.1179578925430E-06 /                                                AMDX6   =  1.5385348414370E-05 /                                                AMDX7   =  0.0000000000000E+00 /                                                AMDX8   =  1.8330507091850E-06 /                                                AMDX9   = -1.6081937613770E-07 /                                                AMDX10  =  2.3814822122600E-06 /                                                AMDX11  =  1.7954228847220E-08 /                                                AMDX12  =  0.0000000000000E+00 /                                                AMDX13  =  0.0000000000000E+00 /                                                AMDX14  =  0.0000000000000E+00 /                                                AMDX15  =  0.0000000000000E+00 /                                                AMDX16  =  0.0000000000000E+00 /                                                AMDX17  =  0.0000000000000E+00 /                                                AMDX18  =  0.0000000000000E+00 /                                                AMDX19  =  0.0000000000000E+00 /                                                AMDX20  =  0.0000000000000E+00 /                                                AMDY1   =  6.7258896731320E+01 /Plate solution y coefficients                   AMDY2   = -7.3429639674420E-01 /                                                AMDY3   = -1.5425004101100E+02 /                                                AMDY4   = -3.2808977562630E-07 /                                                AMDY5   = -2.5056640070610E-05 /                                                AMDY6   =  1.3445098358330E-06 /                                                AMDY7   =  0.0000000000000E+00 /                                                AMDY8   =  1.9754681872160E-06 /                                                AMDY9   = -1.9162032322980E-07 /                                                AMDY10  =  2.2805668029490E-06 /                                                AMDY11  =  8.0186985800440E-08 /                                                AMDY12  =  0.0000000000000E+00 /                                                AMDY13  =  0.0000000000000E+00 /                                                AMDY14  =  0.0000000000000E+00 /                                                AMDY15  =  0.0000000000000E+00 /                                                AMDY16  =  0.0000000000000E+00 /                                                AMDY17  =  0.0000000000000E+00 /                                                AMDY18  =  0.0000000000000E+00 /                                                AMDY19  =  0.0000000000000E+00 /                                                AMDY20  =  0.0000000000000E+00 /                                                        Based on photographic data of the National Geographic Society -- Palomar        Observatory Sky Survey (NGS-POSS) obtained using the Oschin Telescope on        Palomar Mountain.  The NGS-POSS was funded by a grant from the National         Geographic Society to the California Institute of Technology.  The              plates were processed into the present compressed digital form with             their permission.  The Digitized Sky Survey was produced at the Space           Telescope Science Institute under US Government grant NAG W-2166.                                                                                               Investigators using these scans are requested to include the above              acknowledgements in any publications.                                                                                                                           Copyright (c) 1994, Association of Universities for Research in                 Astronomy, Inc.  All rights reserved.                                   DATAMAX =                12845 /Maximum data value                              DATAMIN =                 2304 /Minimum data value                              OBJECT  = 'dss16565          ' /Object ID                                       OBJCTRA = '09 58 23.500      ' /Object Right Ascension (J2000)                  OBJCTDEC= '+68 58 08.00      ' /Object Declination (J2000)                      OBJCTX  =             11586.74 /Object X on plate (pixels)                      OBJCTY  =              2433.11 /Object Y on plate (pixels)                      CTYPE1  = 'RA---TAN'           /R.A. in tangent plane projection                CTYPE2  = 'DEC--TAN'           /DEC. in tangent plane projection                CRPIX1  =                 53.0 /Refpix of first axis                            CRPIX2  =                 53.0 /Refpix of second axis                           CRVAL1  =  1.4959961640705E+02 /RA at Ref pix in decimal degrees                CRVAL2  =  6.8968656556374E+01 /DEC at Ref pix in decimal degrees               CROTA1  =  5.3098451753559E+00 /Rotation angle of first axis (deg)              CROTA2  =  5.3098451753559E+00 /Rotation angle of second axis (deg)                     Warning: CROTA2 is inaccurate due to considerable skew                  SKEW    =  5.3695172770642E+00,  5.2501730736476E+00 /Measure of skew           CDELT1  = -4.7247977124361E-04 /RA pixel step (deg)                             CDELT2  =  4.7268389280024E-04 /DEC pixel step (deg)                            CD1_1   = -4.7049755378847E-04 /CD matrix                                       CD1_2   = -4.4233114555033E-05 /CD matrix                                       CD2_1   = -4.3234085089015E-05 /CD matrix                                       CD2_2   =  4.7060970462747E-04 /CD matrix                                       PC001001=  9.9580465117072E-01 /PC matrix                                       PC001002=  9.3619065295868E-02 /PC matrix                                       PC002001= -9.1465111774574E-02 /PC matrix                                       PC002002=  9.9561189157412E-01 /PC matrix                                       END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             X
 Ì
 ÌXX
 Ì
@@ -298,22 +39,27 @@ tÅÅ
 ™
 ™
 Ê
-ÊG%˚$NÅP0
-Z
-≈
-≈
-èf
-è
-è	Óõ00
-Z
-≈
-≈00õõ
-≈
-≈
-t	û
-‡
-‡
-ÇX
+Ê
+{
+{
+Fáá77
+Ã
+Ã77
+Ã
+Ã
+S
+S
+æ
+æ
+æ
+æ))zz
+£
+£
+£
+£Â¬¬
+Ä
+Ä!!!!rr
+0X
 Ì
 Ì
 Ç
@@ -350,19 +96,26 @@ t
 t
 tÅÅÅÅ
 Ê
-Ê/ù2˜2!(Ûíz£0000ffff
-≈õõõ0
-Z
-Z
-Z0rõ
-≈
-≈
-‡
-‡K
-t
-?
-?
-Ìƒƒ
+Ê
+{
+{
+F
+±
+±77
+Ã
+Ã77
+Ã
+Ã
+S
+S
+æ
+æ
+æ
+æ))
+£
+£	ÕzzzÂ¬¬
+Ä
+Ä!!!!rrƒƒ
 Ì
 Ì
 Ì
@@ -390,16 +143,27 @@ Z00
 ™ÏÏ.WKK
 t
 tÅÅWWR
-{2˜4§3Œ-wiPz0000ffffõrõõ0
-Z
-Z
-Z0rõ
-≈
-≈∂
-	K
-t
-?Ï
-Ìƒƒ
+{RR
+F
+F
+±
+±
+Ã
+Ã777
+`
+`
+`
+S
+Sïï))
+æ
+æ
+£
+£zz
+8¬¬
+Î¬¯!
+∂
+∂
+õrƒƒ
 Ì
 Ì
 Ì
@@ -425,20 +189,30 @@ Z00
 ™
 ™
 ™ÏÏ€¯KKKÅÅÅÅR
-{/ˆ3P2Â(1–##ÿ¢¢¢
+{RR
+F
+F
+±
+±
 Ã
-Ã¢¢
-Ã77
-Ã
-Ã))
+Ã777
+`
+`
+`))
+æ
+æ))
 æ
 æ
-Ù
-
-â_∞
-
-n
-nzzÂ
+£
+£
+£
+£
+8
+Î
+Î¬ò¯!
+∂
+∂
+õr
 £
 £
 £
@@ -467,23 +241,33 @@ P&
 Ö
 Ö\\\
 «
-5!∏(l(˙MMÿ
-Ã
-Ã¢
-Ã
-Ã¢¢
-Ã77
-Ã
-Ã))
-æ
-æ
-Ù
-
-â_
-Ÿ
-Ÿ
-n
-nzzÂ
+5
+†
+†
+5
+5
+†
+†	‰
+ª
+P
+P
+ª
+ª˝&Ñ
+≠
+„
+„∫
+„
+B
+B
+≠
+≠
+≠Ñ
+B
+ô
+ôpp
+ô
+ô¿¿
+
 £
 £
 £
@@ -506,24 +290,35 @@ F
 P&
 Ö\\\˝˝h>2\
 Ö\\\
-«‚£&ªa;∏vvllÿÿ¢
-Ã77
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-`
-`))))
-Ù
-Ù
-â
-â
-Ÿ
-Ÿ
-n
-nzzzzÂ
+«‚
+†
+†
+5
+5
+†
+†	‰
+ª
+P
+P
+ª
+ª˝&Ñ
+≠
+„
+„
+„
+
+B
+B
+≠
+≠
+≠Ñ
+B
+ô
+ô
+ô
+ô
+ô
+ô¿¿U
 £
 £
 £
@@ -554,28 +349,35 @@ P&ëë
 ªë\
 Ö
 ««
-\\wwrIﬁ1∏·vvllÿÿ¢
-Ã77
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-`
-`))
-S
-S
-Ù
-Ù
-â
-â
-Ÿ
-Ÿ
-n
-n
-£
-£zzºÂzzzz
+\\ww
+5
+5
+5
+5w
+†
+P&&
+P
+ª
+ª
+ª
+ª
+B
+≠
+≠
+x
+x
+„
+
+B
+B	◊
+≠ÑÑ
+B
+.
+.
+.
+.
+.p
+ôU,UÂzzzz
 æ
 æ
 S
@@ -601,22 +403,35 @@ F	•	•
 Ö
 
 
-«\\wwZ1≈Ô¨¨@@llÿ
-ñl77
-`
-`
-ñl
-+
-S)
-S
-S
-
-
-â
-â
-£	Õ	b
-8
-nDDD∞∞
+«\\ww
+5
+5w
+†
+P&&
+P
+ª
+ª
+ª
+ª
+B
+≠
+≠
+x
+x
+„
+
+B
+B	 	◊
+≠
+≠
+B
+.
+.
+.
+.
+.
+ô	√
+UU∞
 Ÿ∞
 nD
 Ÿ
@@ -647,21 +462,32 @@ P
 Ö
 
 ëëë
-ªÑZÔ¨¨ll
-+
-+
-+	ø
-ñ77
-`
-`
-ñl
-+) ))
-
-__
-£	Õ	b
-8
-nDDD
-Ÿ
+ª
+5
+5	ˇ	ˇA
+j&&&˝
+
+
+
+
+x
+x
+„
+„
+≠
+≠
+B
+B
+B
+B
+„
+„
+„∫•	¯
+d
+d	¯	¯
+d
+d
+UU
 Ÿ∞
 Ÿ
 nD
@@ -691,29 +517,32 @@ P
 «ù2\««ëë
 ª	‰
 5
-5ZÑ
-≠Ñ¨
-’ÿÿ
-ñ
-ñ
-+
-+
-+77
-`
-`
-+
-+
-ñ
-ñ) )
-S
-â
-â__
-8
-8	Õ
-£
-n
-nD
-nDDD
+5
+5
+5	ˇ	ˇA
+j&&
+P&
+
+
+
+NN
+„
+„
+≠
+≠
+B
+B
+B
+B
+„
+„
+„∫|
+œ
+d
+d	¯	¯
+d
+d
+UUDD
 n
 n
 n
@@ -745,29 +574,36 @@ j	‰	‰
 ««««
 &&	‰	‰
 †
-†Ñ
+†
+÷
+÷AA
+ª
+ª
+ª
+ª
+
+	Ø
+Ö∫∫∫
+„
+BÑ
 ≠
-≠Ñ¨
-’ÿÿ
-ñ
-ñ
-+77
-`
-`
-+
-+
-ñ
-ñ
-S))
-S
-â
-â__
-8
-8
-£z
-n
-nD
-nDDDDD
+B
+B
+B
+B
+„
+„
+
+„
+œ
+œ
+d
+d
+d
+d
+d:
+
+UDDDD
 Ÿ
 Ÿ
 â
@@ -806,30 +642,37 @@ j
 P
 P	‰	‰
 †
-†
+†
+÷
+÷
+ª
+ª
+ª
+ª
+
+	Ø
+Ö
+„
+„∫
+„
+BÑ
+≠
 B
-≠Ñëë&
-Ollllll
-Ã
-Ã
-`
-`
-`
-`	ı	ı
-æ
-æ
-æ
-æ
-â
-â
-â
-â
-8
-£
-£
-n	ó
-Ÿ
-Ÿ))ïïï
+B
+B
+B
+„
+„
+
+„
+œ
+œ::
+d
+d
+d:
+
+
+)ïïï
 æ))
 æ
 æ
@@ -860,30 +703,33 @@ P&&
 
 
 
-AA
-B
-≠Ñëë&
-O
-ñCCC
-Ã
-Ã
-`
-`
-`
-`
-Ã
-Ã
-æ
-æïï
-â
-â
-â
-âÂ
-£
-£
-n	ó
-Ÿ
-Ÿ))
+AA
+÷
+÷AAAAAAA
+j	 	 
+†
+†
+≠
+≠
+≠
+≠
+≠
+≠
+„
+„
+x
+x
+„
+„
+x
+x
+ô
+ôpp
+d
+d::
+ô
+ô
+ô)
 æ
 æ
 æï))
@@ -924,23 +770,33 @@ P&&
 
 «
 j
-≠ÑÑÑëë
-∫ëlC[22ÖC
-ñ77
-`
-`
-Ã
-Ã7))  
-â
-â
-â
-â
-£
-£
-
-
-Ÿ
-Ÿïï
+÷
+÷AAAAAAA
+j	 	 
+†
+†
+≠
+≠
+≠
+≠
+≠
+≠
+„
+„
+x
+x
+
+
+x
+x
+ô
+ôpp
+d
+d
+d
+d
+ô
+ôpï
 æ
 æ) )))
 S)
@@ -979,18 +835,31 @@ j	î	ˇ
 
 
 Ö\¨
+÷AA
 ÷
-≠ÑÑÑëëëgCåiìål7777
-Ã
-Ã7))÷÷
-â
-â
-â
-â
-£
-£
-Ÿ
-Ÿ∞∞ïï
+÷¨¨A
+÷	ˇ	 
+†
+5
+≠
+≠
+≠
+≠
+≠
+≠
+„
+„
+x
+x
+x
+x
+„
+„€≤•
+œ:
+d
+ô
+ô
+ôï
 æ
 æ
 S))))
@@ -1026,16 +895,23 @@ j	î	ˇ
 
 
 Ö\
-÷	ˇNN$N
-∫
-∫¸¸∫Î|,ª+yæÎ‰777
-ñlÿ
-Ù
-Ù
-Ù ïï )
-Ÿ
-Ÿ
-Ÿ∞PP  _
+÷	ˇAA
+÷
+÷¨¨A
+÷	ˇ
+†w
+5
+≠
+≠	◊	◊ÑÑ
+„
+„
+x
+xNN
+„
+„€•|:
+ô
+ô
+ô _
 â
 â
 â
@@ -1070,16 +946,18 @@ F
 P
 P&&
 5
-5NN$N
-∫
-∫¸¸ën'¥2ò2-(∫777
-ñlÿ
-Ù
-Ù
-Ù ïï )
-Ÿ
-Ÿ
-Ÿ∞zz  6_
+5‚‚
+÷
+÷AA‚AA
+j
+≠
+≠
+B
+BÑÑ
+„
+„
+xNÔÔ
+≠Ñ:::€Fpp 6_
 â
 â
 
@@ -1110,14 +988,27 @@ Fáá
 «2
 Ö
 P
-P&&$$NNëëëg&⁄#Ô/™/™!kVO77
-`7ÿ_
-â
-â_))ï
-æDD
-Ÿ
-Ÿ
-Ù
+P&&∏
+÷
+÷
+j
+j‚AA
+j
+≠
+≠
+B
+B
+≠
+≠
+„
+„
+xN
+≠Ñ
+d
+d:
+.p
+ô
+ô
 Ù6_
 â
 â
@@ -1150,14 +1041,38 @@ j
 \
 Ö
 P
-P&&NNNNëëëgO©]Ë]”y77
-`7ÿ
-â	≤
-â_))
-æïDD
-Ÿ
-Ÿ
-Ù
+P&&wwA
+j	ˇ	ˇ	 
+†
+†
+†
+÷
+÷
+÷
+÷
+B
+B
+≠
+≠
+B
+B
+B
+BNN
+„
+	◊
+≠
+≠
+≠
+œ
+œ
+œ
+œ
+ô
+ô	√
+ô
+ô
+ô
+ô
 Ù_
 â
 â
@@ -1193,22 +1108,38 @@ j
 \
 Ö
 P
-P&&
+P&&wwA
+j	ˇ	ˇ	 
+†
+†
+†
+÷
+÷
+÷
+÷
+B
+B
 ≠
 ≠
-≠Ñ¨¨(’¨YMv…Û
-Ê
-Ê
-Ê
-ÊÛ
-F
-F
-F
-F
-Ê
-Ê
-{R77¢¢7777
-Ÿ
+B
+B
+B
+BNN
+„
+	◊
+≠
+≠
+≠
+œ
+œ
+œ
+œ
+ô
+ô	√
+ô
+ô
+ô
+ô
 Ÿ
 Ÿ
 Ÿ
@@ -1249,23 +1180,32 @@ jAM
 ÷
 ÷	ˇ¨∫
 „
+xNN
+x
+x
+x
+x	°	°
+x
 ≠
 ≠
-≠Ñ
-’
-’@@RR((…ÛÛ
-Ê
-Ê
-Ê
-ÊÛ
-F
-F
-
-	•
-{77¢¢
-`
-`77
-Ÿ
+≠
+≠
+P
+P
+P
+P
+P
+P
+P
+PAAAA
+†
+†
+†wUU
+
+
+Iã
+¥
+¥
 Ÿ
 Ÿ
 Ÿ
@@ -1304,34 +1244,26 @@ jAM
 ÷
 „
 
-B
-B
-B
-j
-j@
-j
-
-ÊRR
-±
-±
-F
-F
-Ê
-
-
-Ê^^ááÛ
-F
-F
-{	•
-
-
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-nDDD	Õ
+xNN
+x
+x
+x
+x	°	°
+x	◊	◊
+≠
+≠
+P
+P
+P
+P
+P
+P
+P
+PAAAAww
+†wUUUU
+Iã
+¥
+¥DDD	Õ
 £zz
 Ÿ
 	ó	ó	Õ
@@ -1361,23 +1293,30 @@ jAA
 j
 „
 „
+„
+„
+„
+„
+x	°	°
+x
+
+
+≠
+≠
 B
 B
-B@@@
-ÊΩ
-{
-{
-±
-±
-Ê
-
-Ê
-áááá…ÛR
-{
-Ê
-Ê¢¢77
-Ã
-Ã¢¢D
+P&&
+P
+ª
+ª
+P	y
+jAA
+jww
+†
+†
+Í
+Í
+Í¿ˆãã
 n
 n
 n	Õ
@@ -1417,18 +1356,35 @@ j
 jAA
 j
 „
-„_	6
-„ê··R(
-Ê
-Ê
-±
-±
-±
-±RR
-Ê
-ÊRR
-ÊΩ((RRááááÿ
-ñlllD
+„
+„
+„
+„
+„N
+x
+xN
+„
+„
+≠
+≠
+B
+B
+P&&
+P
+ª
+ª
+P	y
+jAA
+jww
+†
+†
+Í
+Í
+Í¿
+I
+I
+Iãã
+I
 n
 n
 n
@@ -1466,21 +1422,34 @@ P
 ÷
 ÷
 jA‚w
-†≤â	6
-„··R
-{
-Ê
-Ê
-±
-±
-±
-±RR
-Ê
-ÊRR
-ÊΩRRRRááááÿ
-ñl
-ñ
-ñD
+†ÑÑ∫
+„
+„∫
+B	◊
+≠
+Ö\
+
+
+P
+P
+P
+P
+÷
+÷
+÷
+÷
+†
+†
+†
+†
+
+
+Í
+Í
+¥
+¥
+I
+IU,U
 n
 n
 nÂ∞
@@ -1517,28 +1486,35 @@ P
 
 ¨¨A
 j‚w
-†Ùâ	6·
-Ê
-
-{R
-F
-±
-±R
-{
-{
-{
-{RΩΩ
-Ê
-ÊΩ
-Êl
-ñ
-ñ
-ñ
-ñ
-ñ
-ñ
-ñ
-Ÿ
+†
+≠
+≠
+„
+
+
+„
+B	◊
+≠\2
+
+
+P
+P
+P
+P
+÷
+÷
+÷
+÷
+†
+†
+†
+†UU
+Í
+Í
+¥
+¥
+I
+IU,U
 Ÿ
 Ÿ∞zzzz
 Ÿ
@@ -1580,26 +1556,31 @@ j
 AA
 ÷
 ÷ww
-B Ùâ	6
-4
-4·
-Ê
-
-{R
-F
-±
-±R
-{
-{
-{
-{RΩΩ
-Ê
-ÊΩ
-Êl
-ñ
-ñ
-ñ	ø	ø	ø	ø
-Ÿ
+B
+≠ÑÑ
+≠
+„
+„	°
+x
+B
+B
+≠
+≠\\
+Ö
+Ö˝&	y
+P
+j
+j
+j
+j
+5
+5
+†wUU
+
+ã
+¥
+I
+,,
 Ÿ
 Ÿ∞zzzz∞
 Ÿ
@@ -1632,23 +1613,32 @@ j
 AA
 ÷
 ÷ww	l
-B	Ò				^
-4
-†
-†
-+
-ñlÿ
-±
-±R
-{
-{R777777
-Ã
-Ã¢¢7
-`
-+
-+
-+
-â
+B
+≠ÑÑ
+≠
+„
+„
+x	°
+B
+B
+≠
+≠
+Ö
+Ö
+Ö
+Ö˝&&˝
+j
+j
+j
+j
+5
+5
+†w,
+
+
+ã
+¥
+IUU,
 â
 Ù
 Ù__
@@ -1690,23 +1680,26 @@ j
 &˝ë
 ª	◊
 ≠
-»	Ò			^
-4
-†
-†ÿl
-ñÿÿÿ
-±
-±R
-{
-{R777777
-Ã
-Ã
-Ã
-Ã7
-`
-+
-+ÿ
-â
+B
+xN
+x
+x44
+]
+]
+]
+]ü
+»
+5
+5w
+†ww&
+P
+P
+P
+Ö
+Ö\2
+I	ﬁ
+¥
+¥ã,,,
 â
 Ù
 Ù
@@ -1746,32 +1739,24 @@ jA
 &˝ë
 ª	◊
 ≠
-]
-]	Ò	Ò
-4
-4
-4
-4
-+ÿl
-ñ
-ñCCl
-F
-F
-±
-±R
-{RR
-`
-`
-`7
-`
-`
-Ã
-Ã
-Ã
-Ã
-`
-`Cl
-â_
+BN
+x
+x
+x444444
+»	Ú
+5
+5w
+†
+†
+†
+P&
+P
+P
+Ö
+Ö
+Ö\ˆ	ﬁ
+¥
+¥ã,,,_
 Ù
 Ù_
 â
@@ -1804,38 +1789,34 @@ j
 ª
 ª
 B
-B
+BN
+x
+„
+„
+»
+»44ü
+»
 ]
 ]
-»
-»
-4
-4
-4
-4
-+
-+	ø
-ñll
-ñl
-F
-F
-±
-±R
-{
-{
-{
-`
-`	ä
-`
-`
-`
-Ã
-Ã
-Ã
-Ã
-`
-`Cl
-â_  _
+5w
+†w
+†
+5
+ª
+ª
+P
+P
+
+
+
+ã
+¥
+¥
+¥
+I
+I
+¥
+¥UUU_  _
 â
 â
 â
@@ -1869,35 +1850,34 @@ j
 ª
 ª
 ª
-ª
-˝
-˝‘‘
-4
-4
+ªN
+x
+
+
+»
+»44ü
+»
+]
+]‚w
+†	 
 †
-†¢¢
-Ã¢ll
-+
-F
-F
-F
-{
-{
-
-
-+
-+
-+
-+
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã¢7)))))
+5
+ª
+ª
+P
+P
+
+
+
+
+¥	ﬁ
+¥
+¥
+¥
+¥
+
+
+))))
 S)
 S
 n
@@ -1929,31 +1909,30 @@ j
 
 
 ÔÔ
-˝
-˝‘‘
+≠
+≠N
+x	°
+x
+˛
+˛ii
+˛
+˛
+˛
+˛A
+j
+j
+†	 	 
 †
-†¢¢¢
-Ã
-ñ
-ñÿ
-F
-F
-F
-{
-{
-
-
-+
-+
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã
-Ã¢7)))))
+ª
+ª
+P&&&
+P&
+
+
+UUU
+Í
+Í
+¥))))
 S)
 S
 n
@@ -1982,32 +1961,29 @@ j
 ª
 
 ««ÔÔ
-í
-íi
-í
-4
-†
-†
-Ã
-Ã¢
-Ã
-+
-+lC
-±
-±(
-{
-
-
-ñ
-ñ
-`	ä	ı
-Ã
-`
-`
-`
-`777
-`
-S
+≠
+≠N
+x	°
+x
+˛
+˛ii
+˛
+˛
+˛
+˛A
+j
+j
+†	 
+†w
+ª
+ª
+P&&&
+P&
+Í
+Í
+UUU
+Í
+Íˆˆã
 S
 S)))ï
 æ
@@ -2035,31 +2011,24 @@ nDPzz
 jAA¨¨”˝
 ª
 ª
-Ö\ù«ÑÑ
-í
-í
-í	º
-4
+Ö\ù«ÑÑÑÑ
+x
+x
+x
+x
+˛
+˛
+˛‘ii
+˛
+˛AAAA
 †
-†
-Ã
-Ã¢
-Ã
-+
-+lC
-±
-±RR
-
-
-ñ
-ñ7
-`	ı
-Ã
-`
-`
-`
-`777
-`	|	|
+†
+ª
+ª&˝&
+P&&
+U¿¿UU
+Í
+Ía88	|
 S)))ï
 æ
 n	ó
@@ -2086,25 +2055,31 @@ jAA
 ÷É”˝ëë\
 Ö«
 ÑÑ
-ô	¬
-.
-.
-.∂ç∂
-‡
-?
-?Ï
-t
-t
-t
-t
-Z
-Z00
-˚
-˚
-èfõ
-≈00õ
-≈
-≈	Ó	T	T
+≠
+≠
+x
+x
+x
+x
+˛
+˛
+˛‘
+ì
+ì
+˛
+˛
+j
+jAA
+†
+†
+ª
+ª&˝&
+P&&
+U
+Í
+ÍUU
+Í
+Ía8a	T
 ñ
 ñ
 `
@@ -2135,30 +2110,23 @@ Pëë
 †
 †
 †‚‚««\\&
-P&&˝&&˝&&ëë--
-ô	¬
-.
-.
-.
-‡∂∂
-‡
-?
-?Ï
-?
-?
-t
-tKK
-Z
-Z
-Z
-Z
-$
-$
-èfõ
-≈00
-≈õ
-≈	Ó
-+
+P&&˝&&˝&&ëë----
+V
+V
+V-ò
+¬
+V-
+˜
+˜
+˜
+!
+‹
+‹HH}}-
+V-ò
+¬
+¬ò∫∫
+„
+„ÔZZÑÑÔ
 +
 ñ
 ñ
@@ -2200,37 +2168,28 @@ P
 P
 P&&&ëë
 V
-V	W	W
-.
-.
-ô
-ô
-ô
-ô
-‡
-‡
-t
-t
-?
-?
-™
-™
-?
-?
-™
-™
-‡
-‡
-t
-t
-≈
-≈
-Z
-Z
-$
-˚ff00
-≈õ0õõ
-ñ
+V--
+V
+V
+V-ò
+¬
+V-
+˜
+˜
+˜
+!
+‹
+‹HH
+ß
+ß-
+V
+V-ò
+¬
+¬ò∫∫
+„
+„Ô1Ñ
+≠
+≠Ô
 ñ
 +7¢
 Ã	ä
@@ -2268,40 +2227,30 @@ P
 ª
 V
 V
-.
-.
-.
-.
-ô
-ô
-ô
-ô
-‡
-‡
-t
-t
-?
-?
-™
-™
-?
-?
-™
-™
-‡
-‡
-t
-t
-≈
-≈
-Z
-Z
-$
-˚
-è
-è00
-≈õ0õõ
-ñ
+¬
+¬
+¬
+¬òò
+V
+V
+V-
+å
+å
+å
+å	õ	õ
+‹
+	e	Î	Î
+¬ò
+V
+V
+V
+V
+„
+„
+„
+„Ô
+≠
+≠Ô
 ñ
 +7¢
 Ã
@@ -2340,36 +2289,34 @@ P
 ª
 ª
 V
-V	¯
-œ::
-ô
-ôo
-ô
-™
-™
-™
-™
-?
-?
-?
-™Å
-?
-™
-™
-?	h
-$
-˚f
-è
-è
-è
-$
-˚
-Z
-Z
-Z000
-Z
-Z
-+
+V
+¬
+¬
+¬
+¬
+¬
+¬
+V
+V
+V-bb
+å
+å
+q
+q
+‹
+	e	Î	Î
+¬ò
+V
+V
+V
+V
+„
+„
+„
+„
+B
+≠
+≠
 +
 +ClClll
 ñ
@@ -2403,31 +2350,26 @@ P&ëë\
 Ö
 Ö\
 ¬
-¬	¯
-œ::
-ô
-ôo
-ô
-™
-™
-™
-™
-?
-™Å
-?
-™
-™
-?	h
-$
-˚f
-èff
-$
-˚
-Z
-Z
-Z0
-Z
-Z
+¬--b
+å
+˜
+˜
+!
+!
+å
+å
+¬ò--
+ß	–
+;
+!
+!
+˜Œ----
+B
+B
+B
+B
+B
+≠Ñ
 +lCClll
 ñ
 ñ
@@ -2453,33 +2395,24 @@ Z
 
 Ö
 Ö
-Ö\òò	ç
-c
-c
-c
-ô
-ô
-.
-.
-?
-?
-?
-?
-™
-™
-™
-™
-™	‘
-$—
-è
-è
-˚—
-è
-è
-≈
-≈0000
-Z
-Z
+Ö\òò--
+åb
+˜
+˜
+˜
+˜
+å
+åò
+¬--}
+ß
+;
+!
+!
+!
+˜----Ô
+B
+B
+≠Ñ
 +
 +
 +ÿ
@@ -2507,30 +2440,25 @@ n
 
 «2\
 Ö\
-«	ç
-c	ç	ç	¬	¬
-?
-?
-?
-?
-™
-™
-™
-™Å
-™
-$
-$	π	π
-$
-˚
-è
-è
-≈
-≈00
-Z
-Z
-Z
-Z
-+	T
+«--bb
+å
+å
+å
+åbb---
+ß
+ß
+ß}}}
+˜
+!
+å
+å
+V
+V
+¬
+¬
+≠
+≠
+≠Ñ	T
 +
 +
 +
@@ -2563,32 +2491,25 @@ P&&\\
 
 «2\
 Ö\
-«
-c
-c
-c
-c
-È
-UU
-˚
-$
-$
-$
-≈õõõ
-˚
-˚
-$
-˚
-Z
-Z00
-≈
-≈	Ó	Ó00
-Z
-t
-tKK
-™
-™
-+
+«--bb
+å
+å
+å
+åbb-
+V
+V
+ß
+ß
+ß}}}
+˜
+!
+å
+å--
+¬
+¬
+≠
+≠
+≠ÑÔ
 +
 ñ
 ñ
@@ -2623,31 +2544,30 @@ jA
 ª
 ª‚
 †
-†ww99
-c
-c
-c
-c
-È
-UU
-˚
-$
-$
-$
-≈õõõ
-$
-$
-$
-˚
-Z
-Z00
-≈
-≈	Ó	Ó00
-t
-tKK
-™
-™
-+
+†ww99b
+å
+˜
+!
+˜
+˜
+å
+åbb
+˜
+˜
+˜
+!HH
+qH
+;}}
+¬
+¬
+V
+V---ii
+ì
+ì
+]
+]44
+≠
+≠Ñ
 +
 ñ
 ñ
@@ -2681,31 +2601,33 @@ P&ëë‚
 †
 †
 †
-†bb::	¯	¯
-È
-
-~
-~f
-è
-è
-è
-≈
-≈00
-$
-$
-èf
-≈
-≈00
-≈	Ó
-Z
-Zõõ
-t
-t
-‡
-‡ÅÅ
-™
-™
-ñ
+†bbb
+å
+˜
+!
+!
+!
+å
+å
+å
+å
+˜
+˜
+˜
+!
+q
+q
+qH
+;
+ß
+ßòò
+V
+V
+V
+V-iiii4444
+≠
+≠
+≠
 ñll¢y‰∆ù[ÿ
 Ù
 Ù__
@@ -2742,30 +2664,35 @@ S
 †
 †
 ˜
-˜::
-œ
-œ
-È
-
-~
-~f
-è
-è
-è
-≈
-≈00
-$
-$
-èfõõ¥ää¥rõ
-Z
-ZõõKK
-‡
-‡
-™
-™
-™
-™
-ñ
+˜
+˜
+˜
+!
+!
+!
+!
+!
+!
+!
+!bb
+å
+å
+
+
+qH
+ß
+ß
+ß
+ßòo
+¬
+¬òò
+˛
+˛
+˛
+˛4444
+B
+B
+B
 ñ
 ñ
 ñ¢y‰zQµÖ
@@ -2803,31 +2730,35 @@ S
 †
 ˜
 ˜
-œ
-œ
-œ
-œ
-¥
-¥
-H
-˚
-˚
-˚
-˚ff
-˚
-˚
-èf
-˚
-˚õHO⁄4©ır
-˚
-$
-èfK
-t
-‡
-‡
-™
-™
-`7¢¢¢
+˜
+˜
+!
+!
+!
+!
+˜
+˜
+!
+!
+å
+å
+å
+å
+
+
+qH}}
+ß
+ß
+¬ò
+¬
+¬òò--
+˛
+˛‘‘44
+]
+]
+B
+B
+B7¢¢¢
 Ã
 Ã
 ÃÆµÙ)Ã(d©  
@@ -2861,31 +2792,34 @@ jAA
 ÷
 ÷
 ˜
+˜b
+å
+V
+V
+V
+V
+¬
+¬
+V	Ä	Î
+¬
+V
+V
+q
+q
+q
+q}}
+ß
+ß
+¬
+¬
+¬
+¬
 ˜
-œ
-œ
-œ
-œää
-H
-˚
-˚
-˚
-˚
-è
-è
-˚
-˚f<
-˚
-˚õH”&k-";Or—
-˚
-èf!K
-‡
-‡
-™
-™
-?
-?
-`7¢¢¢
+˜bb
+ìi‘‘
+»
+»4
+]ÑÑÑ7¢¢¢
 Ã¢¢Æb&®2-2-&r°
 Ù
 Ù
@@ -2918,30 +2852,35 @@ jAAAA
 ÷
 ÷
 ˜
-˜
-œ
-œ
-c
-c
-¥
-¥
-è
-è
-˚
-˚
-è
-è
-è
-èf
-è
-$
-˚0›ë& - éyr—
-˚
-˚—∂∂
-‡∂ÅÅ
-?
-?
-`	ä¢
+˜9b--
+V
+V
+¬
+¬
+V	Ä	Î
+¬
+V
+V
+q
+q
+q
+q}}
+ß
+ß
+¬
+¬
+¬
+¬
+!
+!
+å
+å
+ìi‘‘
+»
+»4
+]
+≠
+≠Ñ	ä¢
 Ã
 Ã
 Ã¢¢ÿÆå$$0Ä/™! Î°
@@ -2969,23 +2908,31 @@ j
 j
 ÷
 ÷
-˜Œ
-œ
-œ::
-¥
-¥
-è
-è
-$
-$fffff
-è
-$
-˚
-Za¬áVıõ—
-˚
-˚—∂∂∂
-‡ÅÅ
-`	ä
+˜Œb
+å--
+¬
+¬
+V
+V
+V
+V--
+¬	Î
+qH
+‹
+‹}}}}-
+V
+V
+V
+˜
+!
+å
+å
+ìii
+ì
+»
+»
+]
+]Ô	ä
 Ã	ı
 Ã
 Ã¢¢ÿ[ÊËæ»g°
@@ -3015,24 +2962,26 @@ j
 j
 ÷
 ÷
-˜Œ
-c
-c::
-¶
-¶
-tK
-t
-tKKKK
-≈
-≈
-Z
-Z
-˚
-˚¿S¶˘#
-ÇXƒƒƒƒöƒ
-ÇXX
-Ç
-Ê
+˜Œb
+å--
+¬
+¬
+V
+V
+V
+V--
+¬	Î
+qH
+‹
+‹}}}}-
+V--Œ
+˜
+å
+å
+ìii
+ì	Ú	Ú
+]
+]Ô
 Ê
 {
 {R
@@ -3067,25 +3016,28 @@ F	‰
 †
 I
 I
-c
-c::
-¶
-¶
-tKKKKKKK
-≈
-≈
-Z
-Z
-˚
-˚ff˘˘#
-L
-ÇXƒƒ
-Ì
-Ìƒ
-Ì
-ÇXX
-Ç
-Ê
+¥
+¥
+¥
+¥ã
+¥
+œ
+œ
+œ
+œ::
+œ
+œ
+œ
+œ::€€p
+ô
+]4
+»
+»
+»
+»	Ú
+»
+˛
+˛‘
 Ê
 {
 {R
@@ -3123,28 +3075,23 @@ P
 †
 †
 I
-I••••}
-¶
-	
-‡
-‡∂
-‡
-‡
-tK	Ó	Ó	Ó
-≈
-˚
-˚
-˚
-˚
-∏é˘#
-Ìƒƒ
-Ì
-Ç
-ÇXX
-Ì
-Ì
-Ç
-ÇRRR(RR
+I
+¥
+¥ãã
+Iˆã
+¥
+œ
+œ••
+œ
+œ
+œ
+œ::p
+ô
+]4üüüü	Ú
+»
+˛
+˛
+˛RR(RR
 {	•	ı	ı
 `7777
 Ê
@@ -3182,33 +3129,24 @@ j
 jAA
 †
 †
+¥
+¥ãã
+¥ãˆ
+¥
+¥::••
+œ
+œ:
+d
+d
+d
 œ
 œ
-œ
-œ
-¶	–
-	
-‡
-‡∂
-‡
-‡
-tK	Ó	Ó	Ó
-≈
-˚
-˚
-˚
-˚
-∏é˘#
-Ìƒƒ
-Ì
-Ç
-Ç
-Ç
-Ç
-
-
-Ç
-ÇRRR(RR
+.ppüü
+»ü4
+44
+ì
+ì
+˛RR(RR
 {	•	ı	ı
 `7777
 
@@ -3243,39 +3181,26 @@ j
 j
 †
 †
-c
-c
-œ	¯
-‹
-‹
-q
-q
-?
-?
-?
-t
-t
-t
-t0
-Z
-≈õõõ0
-Z
-L
-L
-∏
-∏
-Ç
-Ç
-Ì
-Ì
-∏
-∏
-∏
-∏
-Ì
-Ì
-Ì
-ÌΩΩRR
+¥
+¥
+¥
+¥
+¥ãˆ
+¥
+¥::••
+œ
+œ:
+d
+d
+d
+œ
+œ	X
+.ppüüü
+»
+]444
+ì
+ì
+˛ΩRR
 F
 F
 +
@@ -3311,41 +3236,26 @@ j
 jA
 j
 I
+I	ﬁ
+¥ãa
 I
-c
-c
-œ	¯
-‹
-‹
-q
-q
-?
-?
-?
-t
-t
-t
-t0
-Z
-≈õõõ0
-Z
-L
-L
-∏
-∏
-Ç
-Ç
-Ì
-Ì
-∏
-∏
-∏
-∏
-Ì
-Ì
-Ì
-Ì
-Ê
+
+
+Í
+Íãã
+œ
+œ:::
+d::
+ô
+ô
+ô
+ô€444
+]
+»
+»
+]4
+»
+»4
 Ê
 {
 {
@@ -3382,38 +3292,22 @@ j
 jA
 j
 I
-I
-c
-c:
-c
-q
-q
-qG
-™
-™
-?
-?
-	
-	
-‡∂
-≈
-≈
-Z
-Z
-≈
-≈
-≈
-≈
-L#˘#
-Ç
-Ç
-Ì
-Ì
-∏
-∏##ƒƒ
-Ì
-Ì
-Ê
+I	ﬁ
+¥ãaˆUU
+Í
+Íãã
+œ
+œ:::
+d
+d
+dpp
+ô
+ô€444
+]
+»
+»
+]4üü
+]
 Ê
 Ê
 
@@ -3455,39 +3349,26 @@ P
 †
 †	 
 jAAAã
-¥:::
-c
-q
-q
-qG
-™
-™
-?
-?
-‡
-‡∂
-‡
-≈
-≈
-Z
-Z
-≈
-≈
-≈
-≈
-L##
-L
-Ç
-Ç
-Ì
-Ì
-∏
-∏
-L
-L
-Ì
-Ìƒƒ
-Ê
+¥
+¥ã
+¥
+¥¿
+ÍUU
+¥
+¥:
+œ
+œ
+œ
+œ
+d
+d
+ô
+ô≤F
+ô444
+]
+]	á
+]4
+44
 Ê
 
 Êá
@@ -3522,26 +3403,27 @@ P
 †
 †	 
 jAAA
-¥ãUUUU,,
-¡
-¡
-™
-™
-?
-?
-‡
-‡KK
-è	π	π	π
-è
-è
-èf
-Ì
-ÌX	´
-L###
-g	ë
-g
-g	¸	¸>>
-±
+¥ã
+¥ã
+I
+I
+¥
+¥
+Í¿UU
+¥
+¥:	¯	¯
+œ
+œ::
+ô
+ô
+.€p
+]
+]
+]	á	á
+]
+]4
+4
+]
 ±
 ±
 ±áá
@@ -3574,29 +3456,33 @@ P
 †w
 5
 5
-5∏∏UUUUUU,,
-¡
-¡
-™
-™
-?
-?
-‡
-‡KKf
-è
-è
-è
-è
-è
-èfƒƒ/
-Ç
-L#˘˘>
-g
-g
-g
-“
-“>>
-±
+5∏∏UU
+Í
+Í
+I
+I
+¥
+¥
+UUU
+¥
+¥
+¥
+¥::	¯
+œ
+ô
+ô
+œ	¯
+d
+d
+d:::
+˛
+˛
+ì
+ì
+»
+»
+]4
+4ü
 ±
 F
 F
@@ -3637,30 +3523,32 @@ P
 †w
 5
 5‚‚èø∏UU
-È
-
-È
-È
-V
-V,Ï
-?
-?
-t
-t
-t!———
-˚
-$
-$f
-è
-ÌƒX
-Ç##˘#
-“
-“
-g>
-g>
-“
-“
-±á
+Í
+Í
+I
+I
+¥
+¥
+UUU
+¥
+¥
+¥
+¥::	¯
+œ
+ô
+ô
+œ	¯
+d
+d
+d:
+d
+d
+˛
+˛ii
+»
+»
+]44
+uá
 F		⁄
 ±
 ±
@@ -3694,34 +3582,30 @@ P	‰	‰
 †
 †‚èè‚
 
+U
 
-È
-
-
-
-V
-V,Ï
-?
-?
-t
-t
-t
-t
-˚
-˚
-˚
-$
-$
-$
-è	π
-ÌƒX
-Ç###
-L
-“
-“>
-g
-g>©	¸
-±áÛ	⁄
+I
+I
+¥
+¥
+Í¿¿¿
+I
+¥
+¥:
+d	¯	¯	√
+ô	√
+ô
+d
+d
+d
+d::••
+˛
+˛
+˛‘
+»
+»
+»
+»üuLáÛ	⁄
 ±
 ±
 ±
@@ -3751,31 +3635,28 @@ P	‰	‰
 †M
 †	 	 ‚‚
 
-UU
-
-
-V
-V,Ï
-?
-?
-	
-‡
-‡
-‡
-≈
-≈
-≈
-≈
-≈	Ó	Ó	Ó
-ÇXXX
-Ì
-Ì
-ÇX©©>
-g
-1
-1
-1
-
+U
+
+I
+I
+¥
+¥
+Í¿¿¿
+I
+¥
+¥:
+d	¯	¯	√
+ô
+ôp::::••
+˛
+˛
+'
+˛
+»
+»
+»
+»
+»üu
 ÊΩìRR
 
 
@@ -3814,33 +3695,26 @@ j
 j
 
 UU
-È
-È
-V
-V
-V,Ï
-?
-?
-	
-‡
-‡
-‡
-≈
-≈
-≈
-≈õ
-≈
-≈
-≈
-ÇXXX
-Ì
-Ì
-ÇX©©>
-g
-1
-1
-1
-Ê
+
+U,,U¿¿
+Í
+
+
+
+.
+.	X
+.
+.pp€pp•
+œ
+d
+d44
+]
+]
+]
+]
+»	Ú	á
+]
+]
 
 ÊΩRR
 
@@ -3881,36 +3755,32 @@ j
 j
 j
 
+UU
 
-~U
-È
-È
-¡	Î	Î
-¡Å
-™
-™
-™
-‡
-	
-tK
-≈
-≈
-≈
-≈
-≈	Ó
-≈
-≈
-Ì
-ÌX
-Ç
-Ì
-Ì
-Ì
-Ì>>©
-“
-ù
-ù
-Ê
+
+UU
+¿¿
+Í
+
+
+
+.
+.
+.
+.pp
+.
+ô
+ô•
+œ
+d
+d44
+]
+]
+]
+]
+»	Ú	á
+]
+]
 
 Ê
 ÊR
@@ -3956,35 +3826,31 @@ j
 j
 
 Í
-~U
-È
-È
-¡	Î	Î
-¡Å
-™
-™
-™
-‡
-	
-tK
-≈
-≈
-≈
-≈
-≈	Ó
-≈
-≈
-Ì
-Ì
-Ç	´
-Ì
-Ì
-Ì
-Ì>>©
-“
-ù
-ù
-
+
+	®	®
+
+
+
+
+Í
+Í
+
+
+
+
+.
+.
+.
+ô
+ô€
+ô	√	√
+ô•
+œ::44
+]4ü
+»
+]
+]	Ú
+»	Ú
 Ê
 Ê
 ÊR
@@ -4025,38 +3891,36 @@ j	î	ˇ
 j
 j
 
-Í	∏
-è
-è
-è
-
-
-
-Ìw
-†
-5
-5
-÷	ˇ
-j
-j
-5
-5‚A
-j
-÷
-÷
+Í
+
+
+
+UU
+Í
+Í
+Í
+Í
+
+
+
+
+.
+.	X
+.
+ô
+ô€
+ô	√	√
+ô
+œ	¯
+d
+d
+]
+]
+]4ü
+»
+]
+]	Ú
 »	Ú
-]
-]
-ì
-ì
-ì
-ì
-B
-B
-≠
-≠ÑÑ
-≠
-≠	ﬁ
 ¥
 ¥
 ¥U
@@ -4095,30 +3959,30 @@ n
 
 â666z
 £Â
-8	∏
-è
-è
-è
+8ÏÏÅÅ
+?
+?
+?
+™Å∂
+‡KK
+™
+™
+™Å
+≈	Ó0
+Z
+≈	Ó
+Z
+Z
+g
+g
+“
+“
+g>
+“
+“
 Ì
 Ì
-
-Ìw
-†
-5‚¨
-÷
-j
-j‚∏A
-j
-÷Éü
-»44
-ì
-ì
-ì
-ì
-B
-B
-≠
-≠ÑÑÑÑ	ﬁ
+
 ¥
 ¥
 ¥U
@@ -4153,33 +4017,32 @@ n
 
 
 Ù
-Ù_PzÂÂÏÏ
-$
-˙
-$
-$
-Å
-Å
+Ù_PzÂÂÏÏ
+?
+?ÏÏÅÅ
+?
+?
+?
+™Å∂
+‡KK
+™
+™
+™Åõ
+≈
+Z0
+≈	Ó
+Z
+Z
+g
+g
+“
+“
+g>
+“
+“
 Ì
-Ì
-†w¨¨¨
-÷
-†w‚‚
-j
-÷
-÷
-»
-»4
-]
-ì
-ì
-ì
-ì
-≠
-≠
-B
-B
-≠ÑÔÔã
+Ì
+
 ¥
 I
 
@@ -4218,29 +4081,24 @@ nDD
 â
 â66„ê'zÂÂzz
 ™Å
-˙
-$
-$
-$XX
-Ì
-Ì‚‚
-†w¨¨¨
-÷
-†wAA
-÷
-÷
-»
-»4
-]
-ì
-ì
-ì
-ì
-≠
-≠
-B
-B
-≠Ñã
+?
+?
+?
+?
+?
+™
+™Ï∂
+‡
+‡
+‡
+?
+™Å00000
+Z
+Z	¸	¸
+g
+g
+g>>XX
+Ç
 ¥
 I
 
@@ -4276,32 +4134,26 @@ nDD__
 â
 â__πP
 £zz
-™Å
-Y
-Y	Ó
-ƒ""
-∑	·w
-†
-5AA¨¨	 	 
-†
-†
-ì
-ì
-ì
-ì
-ì
-ì
-˛
-'
-
-
-„
-„
-
-„
-„
-„
-
+™Å
+?
+?
+?
+?
+?¬
+™
+™Ï
+‡
+	
+‡
+‡
+?
+™Å0
+Z0000
+Z
+Z	¸	¸
+g
+g
+g>>XX/
 UU
 Í
 Í
@@ -4339,31 +4191,31 @@ n
 £	Õ
 £z
 ‡∂
-Y
-Y	Ó
-ƒ""é
-∑
-†	 
-5AA¨¨
-†
-†
-†
-†
-ì
-ìi	º
-ì
-ì
-˛
-'
-
-
-„
-„
-„
-
-
-
-
+‡
+‡
+	
+	
+‡
+	KK¯K
+t
+tK!ç
+‡
+‡
+‡
+™Å
+è
+è
+˚—0
+Z
+Z
+1
+1
+1
+1
+“
+“
+g>é
+∏#
 
 
 
@@ -4400,34 +4252,28 @@ n
 8
 8	Õ
 £
-‡∂	Ó
-ƒõõéé˘˘w
-†AAA
-j
-†
-†
-†
-†
-†
-†
-†
-†
-˛
-˛
-'
-'
-'
-˛‘
-˛
-„
-
-x
-x
-„
-
-x
-x
-Í
+‡∂
+‡
+‡
+‡
+‡∂
+‡KKKKKK
+tKççç
+‡ÅW
+è
+è
+˚—0
+Z
+Z
+Z
+1
+1
+1
+1
+“
+“>é
+∏
+L
 Í
 
 ¿¿UU
@@ -4467,32 +4313,23 @@ n
 £z	Õ	b
 8
 	
-‡
-ƒõõõéé˘˘
-†wAAA
-j
-†
-†
-†
-†ww
-†
-†
-˛
-˛
-'
-'
-'
-˛‘
-˛
-„
-
-x
-x
-„
-
-x
-x
-Í
+‡KKKK!K!K
+	
+‡K
+t
+t
+tK!∂∂Å
+™ÅWf
+è
+˚
+˚
+Z
+Z
+Z
+Z
+1
+1
+g>>>###
 Í
 
 
@@ -4532,26 +4369,26 @@ n
 £
 8	b
 	
-‡
-™	”
+‡
+t
+tKK!K!K
+	
+‡!KKK
+tK
+‡
+‡Å
+™
+™Åf
+è
+˚
+˚
+Z
+Z
+Z
+Z
+1
 1
-1
-1
-†Mw
-†
-5w
-†ww44
-]
-]
-'
-˛
-˛
-'	º	º
-'
-'
-'
-'i
-ì
+g>>>###
 I
 I
 ¥
@@ -4588,30 +4425,30 @@ n
 £
 	
 	
->
->	”
-™
+‡
+‡
+‡∂∂
+‡
+™
+™KK
+‡
+‡
+$
+$
+èfõ
+≈	Ó
+≈Ï
+?
+™
+™
+“
+“	¸	¸
+g
+g>
+g
 1
 1
-1
-†
-†w
-†
-5Mwww44
-]
-]
-'
-˛
-˛
-'
-ì
-ì
-˛
-˛
-'
-'
-ì	º
-I
+ù
 I
 ¥
 ¥
@@ -4645,38 +4482,30 @@ n
 £
 	
 	
-™	”
->
-ú
-ú
+	
+	
+‡∂∂
+‡
+™
+™KK
+‡
+‡
+˚
+˚
+èf
+≈	Ó	Ó
+≈Ï
+?
+™
+™
+“
+“	¸	¸
+g
+g
+g>
 1
-1ww
-†
-†
-†
-†
-†
-†
-†
-†
-†
-†
-5
-5w
-†
-»
-»
-]
-]
-ìi‘
-˛
-ì
-ì
-˛‘
-ì
-ì
-ì	º
-I
+1
+ù
 I
 ¥
 ¥
@@ -4712,36 +4541,30 @@ n
 £
 ‡
 ‡
-™	”
->
-ú
-ú
-1
-1ww
-†
-†
-†
-†
-†
-†
-†
-†
-†
-†
-5
-5
-†	 	Ú	Ú
-]
-]
-ìi‘´
-ì
-ì
-'
-˛
-ì
-ì
-ì	º
-I
+‡
+‡
+‡
+‡∂
+‡
+™
+™KK!!f
+è
+è
+è
+≈
+≈	Ó
+≈ÏÏÅ
+™
+?
+?
+g
+g	¸
+“
+“	¸
+“
+“
+ù
+ùs
 I	ﬁ	ﬁ
 ¥
 ¥
@@ -4774,36 +4597,28 @@ n
 Ÿz
 £
 ‡
-‡
->
+‡∂∂∂∂∂
+‡
 ™
+™KKKKf
+è
+è
+è
+≈
+≈	Ó
+≈Ï¬ÏÅ
 ™
-ú
-ú
-ú
-úw
-†
-†
-†
-j
-j
-÷
-÷
-†
-†
-†
-†	^w
-†
-]
-]	á
-]
-44
-	Ú	Ú
-]	á
-ì
-ì
-ì
-ì	ﬁ	ﬁ	ﬁ
+?
+?
+g
+g	¸
+“
+“	¸
+“
+“
+ù
+ù
+ù	ﬁ	ﬁ
 ¥
 I
 I	ﬁ	ﬁ
@@ -4838,40 +4653,23 @@ n
 £
 £
 ™
-™
->
 ™
 ™
-ú
-ú
-ú
-úw
-†
-†
-†
-j
-j
-÷
-÷
-†
-†
-†
-†
-5
-5w
-†
-]
-]	á
-]
-44
-
-»
-»4
-]
-ì
-ì
-ì
-ì	ﬁ	ﬁ
+™ôô
+‡∂!K∂∂∂∂<f
+è
+è
+è
+˚
+˚Ï
+?
+1
+1ﬁ
+g
+g>
+g	¸
+“
+g	ﬁ
 ¥ã
 ¥
 ¥
@@ -4904,23 +4702,23 @@ n	Õ	Õ
 £
 £
 ™
-™
->
-ús
-1
-5
-†
-†
-j
-jAA
-5
-5
-5
-5üü44üüüü44ü
-»
-ì
-ì
-ì	º	ﬁ
+™
+™
+™ôF∂
+‡K
+t
+‡
+‡∂∂f<f
+è
+è
+è
+˚
+˚Ï
+?
+1
+1ﬁ>>>
+g
+“©>
 ¥ããˆˆ
 ¥ã
 ¥
@@ -4952,23 +4750,19 @@ n
 £
 ?
 ?
->
->
->
-úsﬁ
-5ww
-j
-j
-j
-j
-5
-5
-5
-5üü44üüüü44
-»ü
-ì
-ìi
-ì	ﬁ
+™
+™¬Å!KKKKK!!——fff
+è—
+˚
+?
+?Ï¬Å
+™	‘
+™
+1
+1ﬁ©©
+“
+“
+“©	¸
 ¥
 ¥
 ¥
@@ -4997,34 +4791,23 @@ S)zzPz
 Ÿ
 n
 n
-8zz	´
-Å
-Ì
-Ì0000
-
-«
-
-
-
-Ö
-Ö	 
-†
-5
-5
-÷
-÷A∏‚
-5¨¨
-÷
-÷
-†
-†
-†
-†
-j
-j
-÷
-÷
-I
+8zz
+™
+™Å
+™!K!!!
+tKK——fff
+è—
+˚
+?
+?
+?
+™	‘	‘
+™
+1
+1ﬁ©©
+“
+“
+“	¸	¸
 I
 ¥
 ¥
@@ -5059,36 +4842,30 @@ F
 n
 nD
 n
-Ÿ∞f	´
-Å
-
-
-Y
-Y00«««
-
-
-
-Ö
-Ö	 
-†
-5
-5
-÷
-÷A‚
-5
-÷
-÷
-÷
-÷
-†
-†
-†
-†
-j
-j
-÷
-÷
-I
+Ÿ∞f
+è
+è
+è
+è
+$
+˚KK
+‡
+	
+?
+?
+?
+“©©
+“>>>
+ù	∆	∆
+ù
+1	∆	∆
+∏
+∏ééƒƒ
+Ç
+Ç
+∏
+∏
+∏
 I
 I
 I
@@ -5127,35 +4904,31 @@ F
 S
 æïBkÜÜDDD
 n
-Ÿ∞<<
-Ì
-
-
-
-ƒ
-ƒ00
-«\
-Ö
-Ö\
-
-
-5
-5
-5
-5
-÷¨AA‚‚
-÷
-÷
-j
-j
-†
-†
-†
-†
-j
-j¨
-÷
-I
+Ÿ∞<<<
+è
+è
+è
+$
+˚KK
+‡
+	
+?
+?
+?
+“©©
+“
+g
+g
+g>
+ù	∆	∆
+ù
+1	∆	∆
+∏
+∏
+∏
+∏ƒƒ
+Ç
+Ç	·	·	·
 I
 Iããã
 ¥	ﬁ	ﬁ	ﬁ
@@ -5178,35 +4951,35 @@ d
 S)ïï)÷≈‡Ü∞
 Ÿ
 Ÿ
-ŸDD—®
-Ì
-
-
-	Ó	Ó
-Y
-Y
-
-\
-Ö
-Ö\
-
-
-5
-5
-5
-5
-÷¨AA
-5‚
-÷
-÷
-j
-j
-†
-†
-†
-†AA¨
-÷
-I
+ŸDD—®U®
+˚
+$
+˚
+˚
+‡
+‡
+‡
+‡
+?
+?
+?
+?
+g
+g	¸
+“	¸	¸
+g
+g	∆	∆
+1
+1	∆	∆
+1
+L
+L
+∏
+∏
+ÇX
+Ç
+Ç	·	·
+L
 I
 Iããã
 ¥	ﬁ	ﬁ	ﬁ
@@ -5231,35 +5004,35 @@ S)ïï ≠Ã áA3∞
 Ÿ∞∞
 n
 n
-˚—X
-Å
-Ì
-	M
+˚—®®
+˚
 $
 $
 $
-P
-P˝˝
-
-
-Ö
-Ö
-j
-j
-j
-j
-jA
-÷
-÷
-÷
-÷AA
-†
-†	 
-†
-†	 
-†
-†
-Í
+‡
+‡
+‡
+‡
+?
+?
+g
+g	¸
+“	¸	¸
+g
+g
+ù
+ù
+1
+1
+ù
+ùﬁ
+L
+L
+∏
+∏
+ÇX
+Ç
+Ç	·	·	v
 
 
 
@@ -5299,33 +5072,33 @@ F
 £
 Ÿ
 Ÿ
-nDffX
-Å
-Ì
-
-$
-˙
-$
-$
-P
-P&&
-
-
-Ö
-Ö
-j
-j
-j
-j
-jA
-÷
-÷
-÷
-÷AA
-†
-†	 
-†
-†	 	 	 ¿
+nDff——f
+è
+è
+èKK∂∂
+‡
+‡
+t
+t
+ù
+ù
+1
+1
+1
+ù
+ù
+ù
+ù
+ù
+ùﬁﬁX
+Ç
+Ç
+Ç
+L#
+∏
+∏	·
+∏
+L
 Í
 
 
@@ -5362,34 +5135,28 @@ F
 £
 
 
-nDff
-Å
-Å	´	´
+nDff——f
 è
 è
-è
-è
-ª
-ª
-P
-P
-Ö
-Ö
-
-	ˇ	ˇ
-j
-jAAA
-j
-÷
-÷
-÷¨‚
-5
-5
-5
-†
-†	 	 
-†
-†UU
+èKK
+‡
+‡
+‡
+‡
+t
+t
+ù
+ù
+1
+1ﬁssssssX
+Ç
+Ç
+Ç
+L#
+∏
+∏
+∏é
+LU
 Í
 Í
 Í
@@ -5429,33 +5196,33 @@ F
 Ÿ∞
 ˚
 ˚
-Å
-Å
-Å
-Å
 è
 è
-è
-è
-ª
-ª
-P
-P
-Ö
-Ö
-
-
-÷
-÷
-j
-jAAA
-÷
-÷
-÷¨∏
-5
-5ww
-†
-†wwUU
+˚
+$
+$
+$KK
+t	û
+t
+t
+‡
+‡
+1
+1
+ù
+ù
+ùs
+1
+1ãﬁ
+ù
+ù
+Ì
+
+Ç	´
+L#
+∏
+∏éé
+LU
 Í
 Í
 Í
@@ -5495,30 +5262,35 @@ F	⁄
 Ÿ∞
 ˚
 ˚
-Ì
-Ì
-Ì
-Ì
 è
 è
-è
-è
-j
-j	î	î
-÷
-÷	ˇ	ˇwM
-†
-†
-†
-†«
-
-«ë
-ª
-ª
-ª\\«««
-
-
-:::
+˚
+$
+$
+$
+t
+t
+t	û	û	û
+	
+	
+1
+1
+ù
+ù
+ùs
+1
+1ãﬁ
+ù
+ù
+Ì
+
+Ç	´
+L#
+∏
+∏
+∏
+∏
+L::
 d
 .
 .p
@@ -5564,34 +5336,27 @@ nD
 £z
 ≈
 ≈
-Ì
-Ì
-Ì
-Ì
+≈
+≈f	π
+$
+$
+Z
+Z	Ó	Ó	π
 è
 è
 è
-è
-j
-j
-j
-j
-÷
-÷	ˇ	ˇw
-†
-†
-†
-†
-†«
-
-
-
-ªë
-ª
-ª\\ùù«
-
-
-:::
+Ç
+ÇXX
+L
+L##>
+g
+“
+“
+1
+1	·
+∏	·	·###
+L
+ù::
 d
 .
 .p
@@ -5635,23 +5400,31 @@ n
 £z
 ≈
 ≈
-ÅXXX
-˙
-˙ee
-÷
-÷	ˇ	ˇ
-jA
-÷	ˇ
-†
-†
-5w
-†ww\
-Ö
-
-
-ª
-ª
-ªë«ùt«\\\2Á•
+≈
+≈f	π	N	N
+Z
+Z	Ó	Ó	π
+è
+è
+è
+Ç
+Ç
+Ç
+Ç
+L
+L##
+g	ë
+“
+“
+1
+1
+1
+1	·
+∏	·	·
+L
+L#
+L
+ù•
 œ
 .
 .
@@ -5686,27 +5459,37 @@ n
 nzzzzÂÂ
 ≈
 ≈
-ÅX..
-˙
-˙
+≈
+≈
+è	π
+$
+$
+Z
+Z
+Z	É	N
+$	π
 è
-è
-÷
-÷
-÷
-÷
-jA¨
-÷
-†
-†
-5w
-†ww
-Ö	Ø
-
-
-ª
-ª
-ªëùtt«\\\2Á•
+Ì
+Ì
+Ì
+Ì	·
+∏#
+L
+g
+g
+g
+g
+ù
+ù	[
+1
+∏
+∏
+∏	·#
+L
+L
+L
+ù
+ùÁ•
 œ
 .
 .
@@ -5741,22 +5524,36 @@ n
 £
 £zzÂÂ
 ≈
-≈..√√
-Y0
-ƒ
-ƒ
-jAAAAAA
-÷
-÷
-jA¨
-÷
-÷
-÷	‰
-ª
-ª
-ª	‰	‰	‰
-ª««\\«
-\2FFp
+≈
+≈
+≈
+è	π
+$
+$
+Z
+Z
+Z	É	N
+$	π
+è
+
+
+Ì
+Ì
+∏é#
+L>>
+g
+g
+ù
+ù
+1
+∏
+∏
+∏	·
+L	v
+L
+L
+ù
+ùFp
 ô
 d
 d
@@ -5790,30 +5587,36 @@ I
 8
 8zP
 è
-èXX
+è
+è
+è
+≈
+≈
+Z
+Z
+Z
+Z
+Z	É
+Z
+Z
+Z
+Z
+∏	·
+∏é
 Ì
 Ì
-Y0
-ƒ
-ƒ
-jAAAAAA
-j
-÷
-÷A
-j¨
-÷
-÷
-÷	‰
-ª
-ª
-ª	‰	‰	‰
-ª
-
-
-Ö
-Ö
-
-\2ppp
+Ì
+Ìss
+ù
+ù
+Ìƒ
+Ì
+
+L	v	v
+L
+ù
+ù
+ùpp
 ô
 d
 d
@@ -5843,31 +5646,37 @@ F
 £
 8
 8zPff
-Å
-Å
+è
+è
+≈
+≈
+Z
+Z
+Z
+Z0
+Z
+Z
+Z
+Z
+Z
+∏	·
+∏é
 Ì
-Ì00
-ƒ	Ó	ˇ
-÷
-÷¨AA
-÷	ˇ
-÷
-÷
-÷
-÷¨¨
-÷
-÷
-P
-P
-ª
-ªë
-ª
-P&
-Ö	Ø
-
-\
-Ö
-«
+Ì
+Ì
+Ì
+ù
+ù
+ù
+ù
+Ìƒ
+Ì
+
+L	v	v
+L
+ù
+ù
+ù
 .
 ôp:
 d
@@ -5901,30 +5710,30 @@ IRRRRÛÛ
 8
 £
 £zzzzzzzzff
-Å
-Å
+è
+è
+Z
+Z
+Z0
+≈
+≈
+≈
+≈
+Z
+Z
+Z0#
+L##XXXX
+ù
+ù
+1
+1
 Ì
-Ì00
-ƒ	Ó	ˇ
-÷	ˇ
-÷AA
-÷	ˇ
-÷
-÷
-÷
-÷
-÷
-÷
-÷
-÷&&ëë
-ª	‰	y
-P
-Ö	Ø
-
-\
-Ö
-
-
+Ì
+Ì
+Ì
+L
+L
+L#Jss
 .pF:
 d
 d
@@ -5962,25 +5771,34 @@ F
 £
 è
 è
-à
-à
-
-Û
-ñ
-ñ
-*	ﬁ	ﬁ
-Iˆ
-I
-¥ã
-ô
-ô
-.€::::::••
-ô	√
-.	X	ç
-d
-d:•
-œ
-d:i
+è
+è
+Z
+Z
+Z0
+≈
+≈
+≈
+≈
+Z
+Z0#
+L
+L
+LXXXX
+1
+1
+ù
+ù
+1
+1
+1
+1
+Ì
+Ì
+Ì
+Ì
+L
+L#˘ Js
 ìi@üü4
 ]
 '
@@ -6024,27 +5842,30 @@ P
 Ê
 Ê
 FXX
-à
-à
-
-Û
-ñ
-ñ
-*	ﬁ	ﬁ
-I
-¥ãpp
-d
-d
-d
-d
-d
-d
-œ|p
-ô
-.	X	ç
-d:
-d
-œ	¯:i
+Ç
+Ç
+L
+L##>>
+g
+g
+“
+“©©
+“
+“
+g
+g
+ùs
+ù	∆	¸
+“
+g
+g	¸	%	¸	¸
+£
+£
+£z
+n
+n
+Ÿ
+Ÿïï 
 ì
 ìiüü4
 ]
@@ -6088,4 +5909,271 @@ P
 Ê
 F
 Ç
-Ç                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional binary table                     NAXIS1  =                   28 / width of table in bytes                        NAXIS2  =                   16 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group (required keyword)              TFIELDS =                    4 / number of fields in each row                   TTYPE1  = 'INTEGRATED_SIGNAL'  / label for field   1                            TFORM1  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT1  = 'log10Counts'        / physical unit of field                         TTYPE2  = 'MAGNITUDE'          / label for field   2                            TFORM2  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT2  = 'E_Magnitude'        / physical unit of field                         TTYPE3  = 'UNCERTAINTY'        / label for field   3                            TFORM3  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT3  = 'E_Magnitude'        / physical unit of field                         TTYPE4  = 'NUMBER_OF_OBJECTS'  / label for field   4                            TFORM4  = '1J      '           / data format of the field: 4-byte INTEGER       TUNIT4  = 'Objects '           / physical unit of field                         EXTNAME = 'Photometric CALTABLE' / name of this binary table extension          CALCNTXT= 'POSS_E  '           /Context in which calibration is valid           CALVERSN= '10/07/1996'         /Calibration version                             THRESHLD=                  500 /Threshold above sky which signal is measured                                                                                            The lookup table in this extension may be used to infer the                     magnitude of stars on plates within the context of CALCNTXT.  The               log(Integrated Signal) is obtained for a star by summing the                    total counts above THRESHLD above the background.  For example,                 if the background for a star is measured to be 4000 and                         THRESHLD is 500, then the integrated signal is the sum of counts                above 4500. The table may then be interpolated to log10(4500) to                obtain the star's magnitude.                                                                                                                                    "Number of Objects" is the number of objects used to derive the                 calibrated magnitude in each row of the table.                          HISTORY   TASK: fselect3.3e  on FILENAME: posse_cal.fits                        HISTORY   Expression: !(MAGNITUDE==0)                                           HISTORY   fselect3.3e at 1/5/97 9:42:8.0                                        END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @ôô†   @2ff`              @33:   @0· ¿   ?ËSw       @     @/®u    ?Â∑$`      =@ÃÃ‘   @.¿†   ?·◊p      P@ôô°   @,e¶¿   ?·Œ¬`     ¨@ffn   @*y¿   ?„	˛`     *@33;   @(π@   ?‚!¥`     Ú@     @&Nø‡   ?‚k‚†     @ÃÃ’   @$ï˜Ä   ?‡–E@     '@ôô¢   @#†   ?›´≥      .@ffo   @"ÅÄ   ?Ÿ‰z¿      Æ@33<   @!Fz    ?⁄gkÄ      q@  	   @ iç    ?ŸÛ„¿      '@ÃÃ÷   @ƒÚ‡   ?›Ñ]Ä      	@ôô£   @Ä                @ffp   @Aâ@                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+Ç
+Ç
+Ç
+L
+L
+L
+L>>
+g
+g
+“
+“
+“
+“
+“
+“
+g
+g
+ùs
+ùs
+“©
+g
+g
+“	¸	¸	¸
+£
+£
+£z
+n
+n
+
+
+æ
+æ)ii@
+444
+ì
+ì
+ì
+ì
+»ü
+»
+»
+Ö
+Ö
+Ö
+Ö
+
+
+Ö
+Ö
+ª
+ª
+ª
+ª
+Ö\
+
+
+£z
+£
+£
+â___
+Ù
+Ù
+â_¢O¢
+Ã777
+`
+
+ÊRR
+F
+F
+F
+
+
+	@	v
+L	·
+∏>
+g
+“
+“
+g
+g
+“
+“
+“
+“
+g>s
+ù
+“©
+“
+“	¸
+g
+g
+8
+8
+£z
+n	ó
+
+	Ë
+æ)ii@4
+]44
+ì
+ì
+ì
+ìüu
+»
+»
+Ö
+Ö
+Ö
+Ö
+
+
+Ö
+Ö
+ª
+ª
+ª
+ª
+Ö\
+
+
+£zz	Õ
+â___
+Ù
+Ù
+â_yyy¢7
+`
+
+ÊRR
+F
+F
+F
+
+
+	@	v
+L	·
+∏
+g	ë	¸	¸
+g
+g
+“
+“©©
+g>sJﬁ
+1
+“©
+“
+“	¸
+g
+g
+8
+8	Õ
+£
+n	ó
+
+	Ë
+æ)iii44
+»
+»
+»
+»
+»ü‘´i
+ì
+
+
+
+ë
+ª
+ª
+ª&&
+P&&&&&zz
+Ÿ∞
+Ÿ
+Ÿ____
+Ù
+Ù__¢¢¢¢ÿÿl
+ñ
+F
+F
+L
+L
+∏
+∏
+L
+L
+L
+L
+g>	¸	¸	∆
+ù
+1
+1ss>
+“
+“
+“
+“
+“
+£
+£
+8
+8
+8
+8
+S
+S
+æiii44
+»
+»
+»
+»
+»ü
+˛‘i
+ì
+
+
+
+ë
+ª	‰	‰&&
+P&&&&&
+£
+£
+Ÿ∞∞∞66
+â
+â
+
+
+â
+â
+Ã
+Ã
+Ã
+Ãl
+ñ
+F
+F
+F
+F
+F
+F
+L
+L
+∏
+∏
+L
+L
+L
+L
+g>
+“
+“
+ùs
+1
+1ss
+1
+1
+g>©VòÎ
+“
+“
+“
+“
+“
+8
+8
+£
+£
+8
+8
+8
+8
+S
+S
+æ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional binary table                     NAXIS1  =                   28 / width of table in bytes                        NAXIS2  =                   16 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group (required keyword)              TFIELDS =                    4 / number of fields in each row                   TTYPE1  = 'INTEGRATED_SIGNAL'  / label for field   1                            TFORM1  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT1  = 'log10Counts'        / physical unit of field                         TTYPE2  = 'MAGNITUDE'          / label for field   2                            TFORM2  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT2  = 'E_Magnitude'        / physical unit of field                         TTYPE3  = 'UNCERTAINTY'        / label for field   3                            TFORM3  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT3  = 'E_Magnitude'        / physical unit of field                         TTYPE4  = 'NUMBER_OF_OBJECTS'  / label for field   4                            TFORM4  = '1J      '           / data format of the field: 4-byte INTEGER       TUNIT4  = 'Objects '           / physical unit of field                         EXTNAME = 'Photometric CALTABLE' / name of this binary table extension          CALCNTXT= 'POSS_E  '           /Context in which calibration is valid           CALVERSN= '10/07/1996'         /Calibration version                             THRESHLD=                  500 /Threshold above sky which signal is measured                                                                                            The lookup table in this extension may be used to infer the                     magnitude of stars on plates within the context of CALCNTXT.  The               log(Integrated Signal) is obtained for a star by summing the                    total counts above THRESHLD above the background.  For example,                 if the background for a star is measured to be 4000 and                         THRESHLD is 500, then the integrated signal is the sum of counts                above 4500. The table may then be interpolated to log10(4500) to                obtain the star's magnitude.                                                                                                                                    "Number of Objects" is the number of objects used to derive the                 calibrated magnitude in each row of the table.                          HISTORY   TASK: fselect3.3e  on FILENAME: posse_cal.fits                        HISTORY   Expression: !(MAGNITUDE==0)                                           HISTORY   fselect3.3e at 1/5/97 9:42:8.0                                        END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @ôô†   @2ff`              @33:   @0· ¿   ?ËSw       @     @/®u    ?Â∑$`      =@ÃÃ‘   @.¿†   ?·◊p      P@ôô°   @,e¶¿   ?·Œ¬`     ¨@ffn   @*y¿   ?„	˛`     *@33;   @(π@   ?‚!¥`     Ú@     @&Nø‡   ?‚k‚†     @ÃÃ’   @$ï˜Ä   ?‡–E@     '@ôô¢   @#†   ?›´≥      .@ffo   @"ÅÄ   ?Ÿ‰z¿      Æ@33<   @!Fz    ?⁄gkÄ      q@  	   @ iç    ?ŸÛ„¿      '@ÃÃ÷   @ƒÚ‡   ?›Ñ]Ä      	@ôô£   @Ä                @ffp   @Aâ@                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              

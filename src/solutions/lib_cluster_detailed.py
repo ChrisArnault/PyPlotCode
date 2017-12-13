@@ -244,3 +244,17 @@ class Clustering():
     #_ = axis.imshow(pattern)
     #plt.show()
 
+def add_crosses(image, clusters):
+    """
+    Return a new image with crosses
+    """
+
+    x = 3
+    peaks = np.copy(image)
+    for cl in clusters:
+        rnum, cnum = round(cl.row), round(cl.column)
+        peaks[rnum - x:rnum + x + 1, cnum] = image[rnum, cnum]
+        peaks[rnum, cnum - x:cnum + x + 1] = image[rnum, cnum]
+    return peaks
+
+

@@ -24,7 +24,7 @@ class ShowRaDec():
 
 def main():
 
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
     clustering = lib_cluster.Clustering()
@@ -40,7 +40,7 @@ def main():
     print('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra,radec.dec))
 
     # graphic output
-    if not batch:
+    if interactive:
         fig, axis = plt.subplots()
         axis.imshow(pixels)
         fig.canvas.mpl_connect('motion_notify_event',

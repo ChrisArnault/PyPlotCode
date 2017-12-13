@@ -42,7 +42,7 @@ def main():
 
 
     # process command-line options
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
 
     logging.debug('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
@@ -59,7 +59,7 @@ def main():
     threshold = 6.0
 
     # graphic output
-    if not batch:
+    if interactive:
 
         # cluster central
         image = pixels[45:70, 40:65]

@@ -32,7 +32,7 @@ def main():
     global reg
 
     # process command-line options
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     header, pixels = lib_fits.read_first_image(file_name)
 
     logging.debug('cd1_1: %s, cd1_2: %s, cd2_1: %s, cd2_2: %s',
@@ -49,7 +49,7 @@ def main():
     threshold = 6.0
 
     # graphic output
-    if not batch:
+    if interactive:
         image = pixels
 
         reg = lib_cluster_thr.RegionThr(image, background + threshold*dispersion)

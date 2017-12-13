@@ -29,7 +29,7 @@ class ShowCelestialObjects():
 def main():
 
     # analyse command line arguments
-    file_name, batch = lib_args.get_args()
+    file_name, interactive = lib_args.get_args()
     logging.info('----------------')
     logging.info('name of file: {}'.format(file_name))
 
@@ -66,7 +66,7 @@ def main():
             logging.info('celestial object {}: {}'.format(icobj,cobj))
 
     # graphic output
-    if not batch:
+    if interactive:
         fig, axis = plt.subplots()
         axis.imshow(pixels, interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
