@@ -1,1 +1,1 @@
-file name [common]? ('../data/specific.fits', False)
+file name [common]? ('../data/specific.fits', True)
