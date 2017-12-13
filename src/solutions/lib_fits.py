@@ -25,7 +25,7 @@ def read_first_image( file_name ):
 
 if __name__ == '__main__':
     
-    filename = '../../data/fits/NPAC.fits'
+    filename = '../../data/fits/common.fits'
     header, pixels = read_first_image(filename)
     print('shape:',pixels.shape)
     print('cd1_1: {:.10f}'.format(header['CD1_1']))

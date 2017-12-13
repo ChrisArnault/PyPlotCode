@@ -21,7 +21,7 @@ targets = [
 #
 #    {"name": "lib_logging", "command": "python lib_logging.py"},
 
-#    { "name" : "find_stars" , "command" : "python find_stars.py -b ../../data/fits/NPAC.fits"  },
+#    { "name" : "find_stars" , "command" : "python find_stars.py -b ../../data/fits/common.fits"  },
 
 ]
 

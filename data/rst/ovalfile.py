@@ -25,7 +25,7 @@ exercices = (
 
 for exname in exercices:
     tname = exname
-    tcommand = "python ../../src/solutions/{}.py -b ../fits/NPAC.fits".format(exname)
+    tcommand = "python ../../src/solutions/{}.py -b ../fits/common.fits".format(exname)
     targets.append({"name": tname, "command": tcommand})
 
 

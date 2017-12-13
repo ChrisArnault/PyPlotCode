@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     import sys, lib_fits, lib_background, lib_wcs
 
-    filename = '../../data/fits/NPAC.fits'
+    filename = '../../data/fits/common.fits'
     header, pixels = lib_fits.read_first_image(filename)
     background, dispersion, _ = lib_background.compute_background(pixels)
     clusters = lib_cluster.convolution_clustering(pixels, background, dispersion)

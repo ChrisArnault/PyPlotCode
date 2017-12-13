@@ -4,6 +4,7 @@
 
 import sys
 sys.path.append('../skeletons')
+sys.path.append('../solutions')
 import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background
 import lib_cluster_detailed as lib_cluster
@@ -12,6 +13,7 @@ import lib_cluster_detailed as lib_cluster
 def main():
 
     file_name, interactive = lib_args.get_args()
+    print(file_name)
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
