@@ -23,7 +23,7 @@ def main():
     max_cluster = clusters[0]
 
     # console output
-    print('number of clusters: {:2d}, greatest integral: {:7d}, x: {:4.1f}, y: {:4.1f}'.format(
+    print('ex3 | number of clusters: {:2d}, greatest integral: {:7d}, x: {:4.1f}, y: {:4.1f}'.format(
         len(clusters), max_cluster.integral, max_cluster.column, max_cluster.row))
 
     # graphic output

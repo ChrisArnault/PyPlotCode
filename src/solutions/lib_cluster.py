@@ -187,29 +187,53 @@ class Clustering():
         half = self.pattern_radius
         ext_image = extend_image(image, self.pattern_radius)
 
+        print('clustering step1 | extended image: {:2d} {:2d}  {:5.0f}'.format(ext_image.shape[0], ext_image.shape[1], np.sum(ext_image)))
+
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
+
+        print('clustering step2 | convolution image: {:2d} {:2d}  {:5.0f}'.format(cp_image.shape[0],
+                                                                                  cp_image.shape[1],
+                                                                                  np.sum(cp_image)))
 
         # make a copy with a border of 1
         ext_cp_image = extend_image(cp_image, 1)
 
+        print('clustering step3 | extended convolution image: {:2d} {:2d}  {:5.0f}'.format(ext_cp_image.shape[0],
+                                                                                           ext_cp_image.shape[1],
+                                                                                           np.sum(ext_cp_image)))
+
         # scan the convolution image to detect peaks and build clusters
         threshold = background + factor * dispersion
-        clusters = []
+        peaks = []
         for rnum in range(image.shape[0]):
             for cnum in range(image.shape[1]):
                 if cp_image[rnum, cnum] <= threshold:
                     continue
-                if not self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
-                    continue
-                integral, radius = self._spread_peak(image, threshold, rnum, cnum)
-                if radius > 0:
-                    clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
+                if self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
+                    peaks.append((rnum, cnum))
+
+        print('clustering step4 | peaks: {:2d}'.format(len(peaks)))
+
+        for npeak, peak in enumerate(peaks):
+            print('peak[{}]: {}'.format(npeak,peak))
+
+        # build clusters
+        clusters = []
+        for n, peak in enumerate(peaks):
+            rnum, cnum = peak[0], peak[1]
+            integral, radius = self._spread_peak(image, threshold, rnum, cnum)
+            print('candidate[{}]: {}, radius: {}'.format(npeak,peak,radius))
+            if radius > 0:
+                clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
         # sort by integrals then by top
+        max_top = 0
         if len(clusters) > 0:
             max_top = max(clusters, key=lambda cl: cl.top).top
             clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+
+        print('clustering step5 | clusters: {:2d} max: {:5d}'.format(len(clusters), max_top))
 
         # results
         return clusters
