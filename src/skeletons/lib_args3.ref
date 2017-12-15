@@ -1,1 +1,1 @@
-file name [NPAC]? ('/work/data/fits/NPAC.fits', False)
+file name [common]? ('/work/data/fits/common.fits', True)

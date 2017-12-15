@@ -12,15 +12,16 @@ targets = [
     { "name" : "lib_args2", "command" : "python lib_args.py ../../data/fits/NPAC04.fits"  },
     { "name" : "lib_args3", "command" : "echo '' | python lib_args.py"  },
     { "name" : "lib_args4", "command" : "echo 'NPAC04' | python lib_args.py"},
-    { "name" : "lib_args5", "command" : "unset DATAPATH ; python lib_args.py -b"},
-    { "name" : "lib_args6", "command" : "unset DATAPATH ; python lib_args.py ../data/specific.fits"},
-    { "name" : "lib_args7", "command" : "unset DATAPATH ; echo '' | python lib_args.py"},
-    { "name" : "lib_args8", "command" : "unset DATAPATH ; echo 'specific' | python lib_args.py"},
 
     { "name" : "lib_wcs"  , "command" : "python lib_wcs.py"  },
     { "name" : "lib_stars", "command" : "python lib_stars.py"  },
     { "name" : "lib_pixels_set", "command" : "python lib_pixels_set.py"},
 
+    # those ones should be executed within the student environment
+    { "name" : "stud_lib_args5", "command" : "unset DATAPATH ; python lib_args.py -b"},
+    { "name" : "stud_lib_args6", "command" : "unset DATAPATH ; python lib_args.py ../data/specific.fits"},
+    { "name" : "stud_lib_args7", "command" : "unset DATAPATH ; echo '' | python lib_args.py"},
+    { "name" : "stud_lib_args8", "command" : "unset DATAPATH ; echo 'specific' | python lib_args.py"},
 ]
 
 # filters

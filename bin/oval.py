@@ -104,9 +104,11 @@ parser.add_argument('target', nargs='*', default=['%'],
                     help='the list of targets to be processed')
 args = parser.parse_args()
 
-# search for ovalfile in the current working directory
-sys.path.insert(0,os.getcwd())
+# search for ovalfile only in the current working directory
+syspathbackup = sys.path
+sys.path = ( os.getcwd() , )
 import ovalfile as config
+sys.path = syspathbackup
 
 
 # ==========================================
