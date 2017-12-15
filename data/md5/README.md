@@ -1,13 +1,12 @@
-
 # Prérequis
 
 Obligatoire : avoir "sourcer" le fichier `PyPlotCode/bin/env.sh`.
 
 Si on veut utiliser une image docker anaconda 3 :
-* se placer au-dessus de PyPlotCode
+* se placer dans PyPlotCode
 * lancer `anarun 3 bash`
-* sourcer `PyPlotCode/bin/env.sh`
-* revenir dans `PyPlotCode/data/md5`
+* sourcer `bin/env.sh`
+* revenir dans `data/md5`
 
 
 # Configuration ovalfile.py
