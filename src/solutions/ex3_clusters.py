@@ -53,8 +53,7 @@ def main():
 
     clusters, max_top = clustering.step_sort_clusters(clusters)
 
-    print('RESULT: cluster_max={:5d}'.format(max_top))
-
+    print('RESULT: cluster_max_top={:5d}'.format(max_top))
 
     max_cluster = clusters[0]
 
