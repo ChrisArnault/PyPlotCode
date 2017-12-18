@@ -187,21 +187,23 @@ class Clustering():
         half = self.pattern_radius
         ext_image = extend_image(image, self.pattern_radius)
 
-        print('clustering step1 | extended image: {:2d} {:2d}  {:5.0f}'.format(ext_image.shape[0], ext_image.shape[1], np.sum(ext_image)))
+        print('RESULT: extended_image_width={:2d}'.format(ext_image.shape[0]))
+        print('RESULT: extended_image_height={:2d}'.format(ext_image.shape[1]))
+        print('RESULT: extended_image_sum={:5.0f}'.format(np.sum(ext_image)))
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
 
-        print('clustering step2 | convolution image: {:2d} {:2d}  {:5.0f}'.format(cp_image.shape[0],
-                                                                                  cp_image.shape[1],
-                                                                                  np.sum(cp_image)))
+        print('RESULT: convolution_image_width={:2d}'.format(cp_image.shape[0]))
+        print('RESULT: convolution_image_height={:2d}'.format(cp_image.shape[1]))
+        print('RESULT: convolution_image_sum={:5.0f}'.format(np.sum(cp_image)))
 
         # make a copy with a border of 1
         ext_cp_image = extend_image(cp_image, 1)
 
-        print('clustering step3 | extended convolution image: {:2d} {:2d}  {:5.0f}'.format(ext_cp_image.shape[0],
-                                                                                           ext_cp_image.shape[1],
-                                                                                           np.sum(ext_cp_image)))
+        print('RESULT: extended_convolution_image_width={:2d}'.format(ext_cp_image.shape[0]))
+        print('RESULT: extended_convolution_image_height={:2d}'.format(ext_cp_image.shape[1]))
+        print('RESULT: extended_convolution_image_sum={:5.0f}'.format(np.sum(ext_cp_image)))
 
         # scan the convolution image to detect peaks and build clusters
         threshold = background + factor * dispersion
@@ -213,7 +215,7 @@ class Clustering():
                 if self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
                     peaks.append((rnum, cnum))
 
-        print('clustering step4 | peaks: {:2d}'.format(len(peaks)))
+        print('RESULT: peaks_number={:2d}'.format(len(peaks)))
 
         for npeak, peak in enumerate(peaks):
             print('peak[{}]: {}'.format(npeak,peak))
@@ -233,7 +235,8 @@ class Clustering():
             max_top = max(clusters, key=lambda cl: cl.top).top
             clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
 
-        print('clustering step5 | clusters: {:2d} max: {:5d}'.format(len(clusters), max_top))
+        print('RESULT: clusters_number={:2d}'.format(len(clusters)))
+        print('RESULT: cluster_max={:5d}'.format(max_top))
 
         # results
         return clusters

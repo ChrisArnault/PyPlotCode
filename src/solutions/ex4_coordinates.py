@@ -37,7 +37,8 @@ def main():
     radec = lib_wcs.xy_to_radec(wcs, pxy)
 
     # console output
-    print('right ascension: {:.3f}, declination: {:.3f}'.format(radec.ra,radec.dec))
+    print('RESULT: right_ascension = {:.3f}'.format(radec.ra))
+    print('RESULT: declination = {:.3f}'.format(radec.dec))
 
     # graphic output
     if interactive:
