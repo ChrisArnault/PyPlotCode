@@ -176,6 +176,10 @@ class Clustering():
 
         return ext_image
 
+    def step_build_pattern(self):
+        pattern = self._build_pattern()
+        return pattern
+
     def step_extend_image(self, image):
         ext_image = self.extend_image(image, self.pattern_radius)
         return ext_image

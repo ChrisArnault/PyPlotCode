@@ -22,6 +22,10 @@ def main():
     clustering = lib_cluster.Clustering()
     #   clusters = clustering(pixels, background, dispersion)
 
+    pattern = clustering.step_build_pattern()
+
+    print('RESULT: pattern_sum={:5.0f}'.format(np.sum(pattern)))
+
     ext_image = clustering.step_extend_image(pixels)
 
     print('RESULT: extended_image_width={:2d}'.format(ext_image.shape[0]))
