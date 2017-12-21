@@ -1,4 +1,23 @@
-RESULT: number of clusters = 1
-RESULT: greatest integral = 50842
-RESULT: x = 52.0
-RESULT: y = 53.0
+../fits/NPAC07.fits
+RESULT: pattern_sum =     1
+RESULT: extended_image_width = 114
+RESULT: extended_image_height = 114
+RESULT: extended_image_sum = 30861127
+RESULT: convolution_image_width = 106
+RESULT: convolution_image_height = 106
+RESULT: convolution_image_sum = 30158154
+RESULT: extended_convolution_image_width = 108
+RESULT: extended_convolution_image_height = 108
+RESULT: extended_convolution_image_sum = 30158154
+RESULT: peaks_number =  3
+peak[0]: (13, 42)
+peak[1]: (29, 16)
+peak[2]: (68, 75)
+candidate[0]: (13, 42), radius: 1
+candidate[1]: (29, 16), radius: 1
+candidate[2]: (68, 75), radius: 1
+RESULT: clusters_number =  3
+RESULT: cluster_max_top =  8599
+RESULT: cluster_max_integral = 55405
+RESULT: cluster_max_column =    16
+RESULT: cluster_max_row =    29
