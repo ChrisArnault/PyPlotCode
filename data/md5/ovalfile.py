@@ -40,4 +40,7 @@ for filename in os.listdir('../fits'):
 # filters
 
 run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "%"}, ]
-diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "%"} ]
+diff_filters_in = [
+    {"name": "exercices", "re": "^\s*RESULT\s*:\s*(.+)\s*$", "apply": "ex%"},
+    {"name": "find_stars", "re": "^(.+)$", "apply": "find%"},
+]
