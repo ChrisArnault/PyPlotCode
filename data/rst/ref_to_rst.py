@@ -13,7 +13,9 @@ with open(ofilename, 'w') as ofile:
 
     with open(ifilename, 'r') as ifile:
         for line in ifile.readlines():
-            ofile.write("  "+line+'\n')
+            ofile.write("  "+line)
+
+    ofile.write('\n')
 
 print('done')
 

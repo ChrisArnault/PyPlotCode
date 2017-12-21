@@ -40,4 +40,7 @@ for exnum, exname in enumerate(exercices):
 # filters
 
 run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form of).*$", "apply": "%"}, ]
-diff_filters_in = [ {"name": "all", "re": "^(.+)$", "apply": "%"} ]
+diff_filters_in = [
+    {"name": "exercices", "re": "^\s*RESULT\s*:\s*(.+?)\s*=\s*(.+?)\s*$", "apply": "ex%"},
+    {"name": "rst", "re": "^(.+)$", "apply": "rst%"},
+]

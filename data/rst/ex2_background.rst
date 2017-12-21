@@ -1,4 +1,5 @@
 .. code-block:: python
 
-  background: 2816, dispersion: 151
+  RESULT: background = 2816
+  RESULT: dispersion = 151
 
