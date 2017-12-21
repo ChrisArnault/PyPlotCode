@@ -1,1 +1,15 @@
-RESULT: celestial object = GPM 149.391696+69.229356
+peak[0]: (4, 84)
+peak[1]: (9, 10)
+peak[2]: (14, 52)
+peak[3]: (20, 70)
+peak[4]: (51, 16)
+peak[5]: (79, 72)
+peak[6]: (86, 11)
+candidate[0]: (4, 84), radius: 1
+candidate[1]: (9, 10), radius: 2
+candidate[2]: (14, 52), radius: 3
+candidate[3]: (20, 70), radius: 1
+candidate[4]: (51, 16), radius: 3
+candidate[5]: (79, 72), radius: 1
+candidate[6]: (86, 11), radius: 5
+RESULT: celestial_object = GSC 04383-00224

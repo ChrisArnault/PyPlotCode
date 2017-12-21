@@ -1,1 +1,11 @@
-RESULT: celestial object = 2MASS J09544734+6918083
+peak[0]: (20, 81)
+peak[1]: (29, 56)
+peak[2]: (74, 62)
+peak[3]: (77, 30)
+peak[4]: (90, 45)
+candidate[0]: (20, 81), radius: 1
+candidate[1]: (29, 56), radius: 1
+candidate[2]: (74, 62), radius: 2
+candidate[3]: (77, 30), radius: 3
+candidate[4]: (90, 45), radius: 1
+RESULT: celestial_object = GSC 04383-00430
