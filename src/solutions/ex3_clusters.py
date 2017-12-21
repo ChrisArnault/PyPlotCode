@@ -62,7 +62,6 @@ def main():
     max_cluster = clusters[0]
 
     # console output
-    print('RESULT: clusters_number={:2d}'.format(len(clusters)))
     print('RESULT: cluster_max={:5d}'.format(max_cluster.integral))
     print('RESULT: cluster_max_column={:5d}'.format(max_cluster.column))
     print('RESULT: cluster_max_row={:5d}'.format(max_cluster.row))
