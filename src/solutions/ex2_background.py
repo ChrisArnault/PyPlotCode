@@ -15,7 +15,8 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
 
     # console output
-    print('background: {:d}, dispersion: {:d}'.format(int(background),int(dispersion)))
+    print('RESULT: background = {:d}'.format(int(background)))
+    print('RESULT: dispersion = {:d}'.format(int(dispersion)))
 
     # graphic output
     if interactive:
