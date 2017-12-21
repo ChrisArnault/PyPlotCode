@@ -332,9 +332,11 @@ def apply_diff(target_name):
                 nbdiff += 1
         else:
             logging.info(prefix + 'unexpected {}'.format(k))
+            nbdiff += 1
     for k in out_ref_dict:
         if not k in out_log_dict:
             logging.info(prefix + 'lacking {}'.format(k))
+            nbdiff += 1
 
     # final summary
     if nbdiff == 0:
