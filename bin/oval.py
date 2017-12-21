@@ -263,6 +263,10 @@ def apply_diff(target_name):
         ref_file_name = target['md5']
         md5 = True
     fexps = [re.compile('^' + f.replace('%', '.*') + '$') for f in target['diff_filters_in']]
+    if multi or expanded:
+        prefix = target_name + ': '
+    else:
+        prefix = ''
 
     # collect matching groups in output
     proc1 = subprocess.run("cat {} 2>&1".format(out_file_name),
@@ -276,10 +280,13 @@ def apply_diff(target_name):
             if fmatch:
                 grps = fmatch.groups()
                 if len(grps)==2:
-                    out_log_dict[grps[0]] = grps[1]
-                    out_md5_dict[grps[0]] = hashlib.md5(grps[1].encode('utf-8')).hexdigest()
+                    if grps[0] in out_log_dict:
+                        logging.error(prefix + 'redefinition of {} in output'.format(grps[0]))
+                    else:
+                        out_log_dict[grps[0]] = grps[1]
+                        out_md5_dict[grps[0]] = hashlib.md5(grps[1].encode('utf-8')).hexdigest()
                 else:
-                    for grp in fmatch.groups():
+                    for grp in grps:
                         out_log_matches.append(grp)
                         out_md5_matches.append(hashlib.md5(grp.encode('utf-8')).hexdigest())
 
@@ -292,10 +299,13 @@ def apply_diff(target_name):
         for fmatch in [fexp.match(line) for fexp in fexps]:
             if fmatch:
                 grps = fmatch.groups()
-                if len(fmatch.groups())==2:
-                    out_ref_dict[grps[0]] = grps[1]
+                if len(grps)==2:
+                    if grps[0] in out_ref_dict:
+                        logging.error(prefix + 'redefinition of {} in reference'.format(grps[0]))
+                    else:
+                        out_ref_dict[grps[0]] = grps[1]
                 else:
-                    for grp in fmatch.groups():
+                    for grp in grps:
                         out_ref_matches.append(grp)
 
     # complete lacking matches in lists
@@ -307,10 +317,6 @@ def apply_diff(target_name):
 
     # prepare comparisons between output and ref
     nbdiff = 0
-    if multi or expanded:
-        prefix = target_name + ': '
-    else:
-        prefix = ''
 
     # compare single matches
     zipped = zip(out_log_matches, out_md5_matches, out_ref_matches)
