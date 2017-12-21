@@ -1,1 +1,13 @@
-celestial object: 2MASS J09555565+6916142
+peak[0]: (18, 50)
+peak[1]: (45, 33)
+peak[2]: (51, 26)
+peak[3]: (68, 24)
+peak[4]: (81, 37)
+peak[5]: (94, 87)
+candidate[0]: (18, 50), radius: 1
+candidate[1]: (45, 33), radius: 1
+candidate[2]: (51, 26), radius: 1
+candidate[3]: (68, 24), radius: 1
+candidate[4]: (81, 37), radius: 1
+candidate[5]: (94, 87), radius: 1
+RESULT: celestial_object = 2MASS J09554382+6916574

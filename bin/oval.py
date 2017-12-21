@@ -203,13 +203,18 @@ for target_name in target_names:
             target['diff_filters_in'].append(f['re'])
 
 
+
 # ==========================================
-# Helper functions for commands
+# SUBCOMMAND: Build
 
 def apply_build(target_name):
     command = 'make {}.exe'.format(target_name)
     logging.info(command)
     subprocess.check_call(command, shell=True)
+
+
+# ==========================================
+# SUBCOMMAND: Run
 
 def apply_run(target_name):
     target = all_targets[target_name]
@@ -231,7 +236,17 @@ def apply_run(target_name):
             else:
                 logging.info(line)
 
+
+# ==========================================
+# SUBCOMMAND: Diff
+
 def apply_diff(target_name):
+
+    # if a line has two matching groups, we suppose it a a key/value pair
+    # and put it in a dictionary. Else, it is put in a list.
+    # ATTENTION : la partie cryptage n'est pas operationnelle
+    # pour les filtres de diff qui ont plusieurs groupes !!!
+
     target = all_targets[target_name]
     logging.debug('process target {}'.format(target_name))
     if not target['out']:
@@ -248,37 +263,57 @@ def apply_diff(target_name):
         ref_file_name = target['md5']
         md5 = True
     fexps = [re.compile('^' + f.replace('%', '.*') + '$') for f in target['diff_filters_in']]
+
+    # collect matching groups in output
     proc1 = subprocess.run("cat {} 2>&1".format(out_file_name),
                            shell=True, stdout=subprocess.PIPE, universal_newlines=True)
     out_log_matches = []
     out_md5_matches = []
+    out_log_dict = {}
+    out_md5_dict = {}
     for line in proc1.stdout.split('\n'):
         for fmatch in [fexp.match(line) for fexp in fexps]:
             if fmatch:
-                for grp in fmatch.groups():
-                    out_log_matches.append(grp)
-                    out_md5_matches.append(hashlib.md5(grp.encode('utf-8')).hexdigest())
+                grps = fmatch.groups()
+                if len(grps)==2:
+                    out_log_dict[grps[0]] = grps[1]
+                    out_md5_dict[grps[0]] = hashlib.md5(grps[1].encode('utf-8')).hexdigest()
+                else:
+                    for grp in fmatch.groups():
+                        out_log_matches.append(grp)
+                        out_md5_matches.append(hashlib.md5(grp.encode('utf-8')).hexdigest())
+
+    # collect matching groups in reference
     proc2 = subprocess.run("cat {} 2>&1".format(ref_file_name),
                            shell=True, stdout=subprocess.PIPE, universal_newlines=True)
     out_ref_matches = []
+    out_ref_dict = {}
     for line in proc2.stdout.split('\n'):
         for fmatch in [fexp.match(line) for fexp in fexps]:
             if fmatch:
-                for grp in fmatch.groups():
-                    out_ref_matches.append(grp)
-    # complete lacking matches
+                grps = fmatch.groups()
+                if len(fmatch.groups())==2:
+                    out_ref_dict[grps[0]] = grps[1]
+                else:
+                    for grp in fmatch.groups():
+                        out_ref_matches.append(grp)
+
+    # complete lacking matches in lists
     while len(out_log_matches) < len(out_ref_matches):
         out_log_matches.append('EMPTY STRING')
         out_md5_matches.append('EMPTY STRING')
     while len(out_log_matches) > len(out_ref_matches):
         out_ref_matches.append('EMPTY STRING')
-    # compare
-    zipped = zip(out_log_matches, out_md5_matches, out_ref_matches)
+
+    # prepare comparisons between output and ref
     nbdiff = 0
     if multi or expanded:
         prefix = target_name + ': '
     else:
         prefix = ''
+
+    # compare single matches
+    zipped = zip(out_log_matches, out_md5_matches, out_ref_matches)
     for tpl in zipped:
         if md5:
             if tpl[1] != tpl[2]:
@@ -288,8 +323,28 @@ def apply_diff(target_name):
             if tpl[0] != tpl[2]:
                 logging.info(prefix + "{} != {}".format(tpl[0], tpl[2]))
                 nbdiff += 1
+
+    # compare key/value matches (not implemented for md5
+    for k in out_log_dict:
+        if k in out_ref_dict:
+            if out_log_dict[k] != out_ref_dict[k]:
+                logging.info(prefix + "for {}, {} != {}".format(k,out_log_dict[k],out_ref_dict[k]))
+                nbdiff += 1
+        else:
+            logging.info(prefix + 'unexpected {}'.format(k))
+            nbdiff += 1
+    for k in out_ref_dict:
+        if not k in out_log_dict:
+            logging.info(prefix + 'lacking {}'.format(k))
+            nbdiff += 1
+
+    # final summary
     if nbdiff == 0:
         logging.info(prefix + 'no difference')
+
+
+# ==========================================
+# SUBCOMMAND: Crypt
 
 def apply_crypt( target_name ):
     target = all_targets[target_name]

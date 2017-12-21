@@ -1,1 +1,27 @@
-number of clusters:  5, greatest integral:  120653, x: 73.0, y: 75.0
+../fits/NPAC20.fits
+RESULT: pattern_sum =     1
+RESULT: extended_image_width = 114
+RESULT: extended_image_height = 114
+RESULT: extended_image_sum = 28603876
+RESULT: convolution_image_width = 106
+RESULT: convolution_image_height = 106
+RESULT: convolution_image_sum = 27959956
+RESULT: extended_convolution_image_width = 108
+RESULT: extended_convolution_image_height = 108
+RESULT: extended_convolution_image_sum = 27959956
+RESULT: peaks_number =  5
+peak[0]: (41, 43)
+peak[1]: (69, 74)
+peak[2]: (75, 64)
+peak[3]: (78, 29)
+peak[4]: (92, 20)
+candidate[0]: (41, 43), radius: 1
+candidate[1]: (69, 74), radius: 2
+candidate[2]: (75, 64), radius: 2
+candidate[3]: (78, 29), radius: 2
+candidate[4]: (92, 20), radius: 1
+RESULT: clusters_number =  5
+RESULT: cluster_max_top = 11042
+RESULT: cluster_max_integral = 120653
+RESULT: cluster_max_column =    74
+RESULT: cluster_max_row =    69
