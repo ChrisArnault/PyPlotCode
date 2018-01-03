@@ -4,28 +4,29 @@
 
 import sys
 sys.path.append('../skeletons')
-import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background, lib_cluster
-import lib_wcs, lib_stars, lib_graphics
+import lib_wcs
+import lib_stars
 
 
 def get_celestial_objects( wcs, cluster ):
-
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
     cobjects, _, _ = lib_stars.get_celestial_objects(radec)
     return cobjects
 
+def show_cluster(wcs, i, cluster):
+    print('DEBUG: {} cluster={} {} {}'.format(i, cluster.integral, cluster.column, cluster.row))
 
-class ShowCelestialObjects():
+    pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
+    radec = lib_wcs.xy_to_radec(wcs, pxy)
 
-    def __init__(self, wcs):
+    print('RESULT: right_ascension = {:.3f}'.format(radec.ra))
+    print('RESULT: declination = {:.3f}'.format(radec.dec))
 
-        self.wcs = wcs
-
-    def __call__(self, cluster):
-
-        return get_celestial_objects(self.wcs,cluster)
+    os = get_celestial_objects(wcs, cluster)
+    for cobj in os.keys():
+        print('RESULT: celestial_object={}'.format(cobj))
 
 
 def main():
@@ -35,25 +36,18 @@ def main():
     background, dispersion, _ = lib_background.compute_background(pixels)
     clustering = lib_cluster.Clustering()
     clusters = clustering(pixels, background, dispersion)
+    max_cluster = clusters[0]
 
-    # celestial objects for the biggest cluster
+    # coordinates ra dec
     wcs = lib_wcs.get_wcs(header)
-    cobjects = get_celestial_objects(wcs, clusters[0])
 
-    # console output
-    for cobj in cobjects.keys():
-        print('zzzcelestial object: {}'.format(cobj))
-
-    # graphic output
-    if interactive:
-        fig, axis = plt.subplots()
-        axis.imshow(pixels, interpolation='none')
-        fig.canvas.mpl_connect('motion_notify_event',
-            lib_graphics.ShowClusterProperties(fig,clusters,ShowCelestialObjects(wcs)))
-        plt.show()
+    for i, c in enumerate(clusters):
+        show_cluster(wcs, i, c)
+        break
 
     return 0
 
 
 if __name__ == '__main__':
+
     sys.exit(main())
