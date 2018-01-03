@@ -14,7 +14,10 @@ def main():
     header, pixels = lib_fits.read_first_image(file_name)
 
     # console output
-    print('cd1_1: {CD1_1:.10f}, cd1_2: {CD1_2:.10f}, cd2_1: {CD2_1:.10f}, cd2_2: {CD2_2:.10f}'.format(**header))
+    print('RESULT: cd1_1 = {CD1_1:.10f}'.format(**header))
+    print('RESULT: cd1_2 = {CD1_2:.10f}'.format(**header))
+    print('RESULT: cd2_1 = {CD2_1:.10f}'.format(**header))
+    print('RESULT: cd2_2 = {CD2_2:.10f}'.format(**header))
 
     # graphic output
     if interactive:

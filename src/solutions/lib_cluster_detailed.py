@@ -53,8 +53,9 @@ class Clustering():
     General clustering algorithm
     """
 
-    def __init__(self, pattern_size=9):
+    def __init__(self, pattern_size=9, pattern_radius=4):
         self.pattern_size = pattern_size
+        self.pattern_radius = pattern_radius
 
     def _build_pattern(self):
         
@@ -168,6 +169,67 @@ class Clustering():
         # result
         return cp_image
 
+    def extend_image(self, image, margin):
+        ext_shape = np.array(image.shape) + 2 * margin
+        ext_image = np.zeros(ext_shape)
+        ext_image[margin:-margin, margin:-margin] = image
+
+        return ext_image
+
+    def step_build_pattern(self):
+        pattern = self._build_pattern()
+        return pattern
+
+    def step_extend_image(self, image):
+        ext_image = self.extend_image(image, self.pattern_radius)
+        return ext_image
+
+    def step_build_convolution_image(self, ext_image):
+        cp_image = self._convolution_image(ext_image)
+        return cp_image
+
+    def step_extend_convolution_image(self, cp_image):
+        # make a copy with a border of 1
+        ext_cp_image = self.extend_image(cp_image, 1)
+        return ext_cp_image
+
+    def step_detect_peaks(self, image, cp_image, ext_cp_image, background, dispersion, factor=6.0):
+        # scan the convolution image to detect peaks and build clusters
+        threshold = background + factor * dispersion
+        peaks = []
+        for rnum in range(image.shape[0]):
+            for cnum in range(image.shape[1]):
+                if cp_image[rnum, cnum] <= threshold:
+                    continue
+                if self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
+                    peaks.append((rnum,cnum))
+
+        return peaks
+
+    def step_build_clusters(self, image, peaks, background, dispersion, factor=6.0):
+        # build clusters
+        threshold = background + factor * dispersion
+        clusters = []
+        for n, peak in enumerate(peaks):
+            rnum, cnum = peak[0], peak[1]
+            integral, radius = self._spread_peak(image, threshold, rnum, cnum)
+            print('candidate[{}]: {}, radius: {}'.format(n, peak, radius))
+            if radius > 0:
+                clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
+
+        return clusters
+
+
+    def step_sort_clusters(self, clusters):
+        # sort by integrals then by top
+        max_top = 0
+        if len(clusters) > 0:
+            max_top = max(clusters, key=lambda cl: cl.top).top
+            clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+
+        return clusters, max_top
+
+
     def __call__(self, image, background, dispersion, factor=6.0):
 
         """
@@ -183,17 +245,68 @@ class Clustering():
         - this list of clusters is returned.
         """
 
+        ext_image = self.step_extend_image(image)
+        cp_image = self.step_build_convolution_image(ext_image)
+        ext_cp_image = self.step_extend_convolution_image(cp_image)
+        peaks = clustering.step_detect_peaks(ext_cp_image, background, dispersion)
+
+        for npeak, peak in enumerate(peaks):
+            print('peak[{}]: {}'.format(npeak, peak))
+
+        clusters = clustering.step_build_clusters(peaks, background, dispersion)
+
+        clusters = clustering.step_sort_clusters(clusters)
+
+        # results
+        return clusters
+
+
+    def __call__(self, image, background, dispersion, factor=6.0):
+
+        """
+        principle:
+        - we then start a scan of the convolution image (CI):
+            - at every position we detect if there is a peak:
+                - we extract a 3x3 region of the CI centered at the current position
+                - a peak is detected when ALL pixels around the center of this little region are below the center.
+            - when a peak is detected, we get the cluster (the group of pixels around a peak):
+                - accumulate pixels circularly around the peak until the sum of pixels at a given distance
+                    is lower than the threshold
+                - we compute the integral of pixel values of the cluster
+        - this list of clusters is returned.
+        """
+
+        def extend_image(image, margin):
+            ext_shape = np.array(image.shape) + 2 * margin
+            ext_image = np.zeros(ext_shape)
+            ext_image[margin:-margin, margin:-margin] = image
+
+            return ext_image
+
         # make a copy with a border of half
         half = self.pattern_size // 2
+        ext_image = extend_image(image, half)
+
+        print('RESULT: extended_image_width={:2d}'.format(ext_image.shape[0]))
+        print('RESULT: extended_image_height={:2d}'.format(ext_image.shape[1]))
+        print('RESULT: extended_image_sum={:5.0f}'.format(np.sum(ext_image)))
+
+        """
         ext_image = np.copy(image)
         for n in range(half):
             ext_image = np.insert(ext_image, 0, background, axis=0)
             ext_image = np.insert(ext_image, ext_image.shape[0], background, axis=0)
             ext_image = np.insert(ext_image, 0, background, axis=1)
             ext_image = np.insert(ext_image, ext_image.shape[1], background, axis=1)
+        """
 
         # build the convolution product image
         cp_image = self._convolution_image(ext_image)
+
+        print('RESULT: convolution_image_width={:2d}'.format(cp_image.shape[0]))
+        print('RESULT: convolution_image_height={:2d}'.format(cp_image.shape[1]))
+        print('RESULT: convolution_image_sum={:5.0f}'.format(np.sum(cp_image)))
+
         print('conv[4,4]:',int(cp_image[4,4]))
         print('conv[101,4]:',int(cp_image[101,4]))
         print('conv[44,44]:',int(cp_image[44,44]))
@@ -204,11 +317,20 @@ class Clustering():
         print('conv[101,101]:',int(cp_image[101,101]))
 
         # make a copy with a border of 1
+        """
         ext_cp_image = np.copy(cp_image)
         ext_cp_image = np.insert(ext_cp_image, 0, background, axis=0)
         ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[0], background, axis=0)
         ext_cp_image = np.insert(ext_cp_image, 0, background, axis=1)
         ext_cp_image = np.insert(ext_cp_image, ext_cp_image.shape[1], background, axis=1)
+        """
+
+        ext_cp_image = extend_image(cp_image, 1)
+
+        print('RESULT: extended_convolution_image_width={:2d}'.format(ext_cp_image.shape[0]))
+        print('RESULT: extended_convolution_image_height={:2d}'.format(ext_cp_image.shape[1]))
+        print('RESULT: extended_convolution_image_sum={:5.0f}'.format(np.sum(ext_cp_image)))
+
         print('threshold:', int(background + 6.0 * dispersion))
 
         # scan the convolution image to detect peaks and build clusters
@@ -220,6 +342,9 @@ class Clustering():
                     continue
                 if self._has_peak(ext_cp_image, rnum + 1, cnum + 1):
                     peaks.append((rnum,cnum))
+
+        print('RESULT: peaks_number={:2d}'.format(len(peaks)))
+
         for npeak, peak in enumerate(peaks):
             print('peak[{}]: {}'.format(npeak,peak))
 
@@ -233,8 +358,13 @@ class Clustering():
                 clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
         # sort by integrals then by top
-        max_top = max(clusters, key=lambda cl: cl.top).top
-        clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+        max_top = 0
+        if len(clusters) > 0:
+            max_top = max(clusters, key=lambda cl: cl.top).top
+            clusters.sort(key=lambda cl: cl.integral + cl.top / max_top, reverse=True)
+
+        print('RESULT: clusters_number={:2d}'.format(len(clusters)))
+        print('RESULT: cluster_max={:5d}'.format(max_top))
 
         # results
         return clusters
