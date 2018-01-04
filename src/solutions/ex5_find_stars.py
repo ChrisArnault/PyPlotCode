@@ -42,7 +42,7 @@ def main():
 
     # console output
     for cobj in cobjects.keys():
-        print('zzzcelestial object: {}'.format(cobj))
+        print('RESULT: celestial_object = {}'.format(cobj))
 
     # graphic output
     if interactive:

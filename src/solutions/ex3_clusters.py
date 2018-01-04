@@ -24,47 +24,47 @@ def main():
 
     pattern = clustering.step_build_pattern()
 
-    print('RESULT: pattern_sum={:5.0f}'.format(np.sum(pattern)))
+    print('RESULT: pattern_sum = {:5.0f}'.format(np.sum(pattern)))
 
     ext_image = clustering.step_extend_image(pixels)
 
-    print('RESULT: extended_image_width={:2d}'.format(ext_image.shape[0]))
-    print('RESULT: extended_image_height={:2d}'.format(ext_image.shape[1]))
-    print('RESULT: extended_image_sum={:5.0f}'.format(np.sum(ext_image)))
+    print('RESULT: extended_image_width = {:2d}'.format(ext_image.shape[0]))
+    print('RESULT: extended_image_height = {:2d}'.format(ext_image.shape[1]))
+    print('RESULT: extended_image_sum = {:5.0f}'.format(np.sum(ext_image)))
 
     cp_image = clustering.step_build_convolution_image(ext_image)
 
-    print('RESULT: convolution_image_width={:2d}'.format(cp_image.shape[0]))
-    print('RESULT: convolution_image_height={:2d}'.format(cp_image.shape[1]))
-    print('RESULT: convolution_image_sum={:5.0f}'.format(np.sum(cp_image)))
+    print('RESULT: convolution_image_width = {:2d}'.format(cp_image.shape[0]))
+    print('RESULT: convolution_image_height = {:2d}'.format(cp_image.shape[1]))
+    print('RESULT: convolution_image_sum = {:5.0f}'.format(np.sum(cp_image)))
 
     ext_cp_image = clustering.step_extend_convolution_image(cp_image)
 
-    print('RESULT: extended_convolution_image_width={:2d}'.format(ext_cp_image.shape[0]))
-    print('RESULT: extended_convolution_image_height={:2d}'.format(ext_cp_image.shape[1]))
-    print('RESULT: extended_convolution_image_sum={:5.0f}'.format(np.sum(ext_cp_image)))
+    print('RESULT: extended_convolution_image_width = {:2d}'.format(ext_cp_image.shape[0]))
+    print('RESULT: extended_convolution_image_height = {:2d}'.format(ext_cp_image.shape[1]))
+    print('RESULT: extended_convolution_image_sum = {:5.0f}'.format(np.sum(ext_cp_image)))
 
     peaks = clustering.step_detect_peaks(pixels, cp_image, ext_cp_image, background, dispersion)
 
-    print('RESULT: peaks_number={:2d}'.format(len(peaks)))
+    print('RESULT: peaks_number = {:2d}'.format(len(peaks)))
 
     for npeak, peak in enumerate(peaks):
         print('peak[{}]: {}'.format(npeak, peak))
 
     clusters = clustering.step_build_clusters(pixels, peaks, background, dispersion)
 
-    print('RESULT: clusters_number={:2d}'.format(len(clusters)))
+    print('RESULT: clusters_number = {:2d}'.format(len(clusters)))
 
     clusters, max_top = clustering.step_sort_clusters(clusters)
 
-    print('RESULT: cluster_max_top={:5d}'.format(max_top))
+    print('RESULT: cluster_max_top = {:5d}'.format(max_top))
 
     max_cluster = clusters[0]
 
     # console output
-    print('RESULT: cluster_max_integral={:5d}'.format(max_cluster.integral))
-    print('RESULT: cluster_max_column={:5d}'.format(max_cluster.column))
-    print('RESULT: cluster_max_row={:5d}'.format(max_cluster.row))
+    print('RESULT: cluster_max_integral = {:5d}'.format(max_cluster.integral))
+    print('RESULT: cluster_max_column = {:5d}'.format(max_cluster.column))
+    print('RESULT: cluster_max_row = {:5d}'.format(max_cluster.row))
 
     # graphic output
     if interactive:
