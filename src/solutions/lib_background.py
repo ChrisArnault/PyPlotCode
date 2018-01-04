@@ -10,17 +10,18 @@ import numpy as np
 from scipy.optimize import curve_fit
 import lib_model
 
-
-def compute_background(pixels):
-
+def build_pixel_histogram(pixels, sampling_size):
     # Reshape the pixels array as a flat list
     flat = np.asarray(pixels).ravel()
 
-    # sampling size to analyze the background
-    sampling_size = 200
-
     # build the pixel distribution to extract the background
     y, x = np.histogram(flat, sampling_size)
+    return (y, x)
+
+def compute_background(histogram):
+
+    y = histogram[0]
+    x = histogram[1]
 
     # normalize the distribution for the gaussian fit
     my = np.float(np.max(y))
@@ -33,7 +34,7 @@ def compute_background(pixels):
 
     background = fit[1] * mx
     dispersion = abs(fit[2]) * mx
-    return background, dispersion, mx
+    return background, dispersion, mx, y, x
 
 
 def tests():
