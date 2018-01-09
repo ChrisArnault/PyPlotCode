@@ -1,4 +1,4 @@
 .. code-block:: python
 
-  celestial object: TYC 4383-1121-1
+  RESULT: celestial_object = TYC 4383-1121-1
 

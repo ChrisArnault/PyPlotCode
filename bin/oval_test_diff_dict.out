@@ -2,4 +2,5 @@ begin
 RESULT: var 1 = tralala
 RESULT: var2 = tralalère
 RESULT: var 3 = hello world !
+RESULT: var 3 = new hello world !
 end
