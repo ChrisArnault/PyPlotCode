@@ -9,22 +9,19 @@ def get_args():
 
     # use argparse to analyse the command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', action="store_true", default=False, help='batch mode, no graphics and no interaction')
+    parser.add_argument('-b', dest="batch", action="store_true", default=False, help='batch mode, no graphics and no interaction')
     parser.add_argument('file', nargs='?', help='fits input file')
     args = parser.parse_args()
-
-    interactive = not args.b
 
     if not args.file:
         # if no file name given on the command line
         DEFAULT_DATA_FILE = 'common'
-        if interactive:
+        if args.batch:
+            file = DEFAULT_DATA_FILE
+        else:
             file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
             if len(file) == 0:
                 file = DEFAULT_DATA_FILE
-
-        else:
-            file = DEFAULT_DATA_FILE
     else:
         file = args.file
 
@@ -56,7 +53,7 @@ def get_args():
     # we don't test if the file actually exists.
     # thus we expect that this test will occur at open time (perhaps using a try clause)
 
-    return file, interactive
+    return file, not args.batch
 
 
 # =====
