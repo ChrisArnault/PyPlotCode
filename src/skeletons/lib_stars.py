@@ -96,7 +96,7 @@ def get_celestial_objects(radec, radius=RADIUS):
                         lines = text.split('<BR>\n')
                         return lines[0]
                     except Exception:
-                        print('cannot read')
+                        print('cannot read URL {}'.format(url), file=sys.stderr)
                     except:
                         raise
 
@@ -106,7 +106,7 @@ def get_celestial_objects(radec, radius=RADIUS):
                     time.sleep(0.2)
                 except:
                     raise
-            print(retry)
+            print('Retrying to read {} ({} attempts remaining)'.format(url,retry), file=sys.stderr)
 
         out = send(req)
 
