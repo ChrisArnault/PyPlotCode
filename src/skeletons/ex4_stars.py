@@ -5,7 +5,6 @@
 import sys
 import lib_args
 import lib_wcs
-import lib_stars
 
 
 def main():
@@ -18,7 +17,8 @@ def main():
 
     # example of console output
     # ...
-    print('file: {}, interactive: {}'.format(file_name, interactive))
+    print('RESULT: file = {}'.format(file_name))
+    print('RESULT: interactive = {}'.format(interactive))
 
     # graphic output
     if interactive:

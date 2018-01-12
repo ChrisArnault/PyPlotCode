@@ -1,2 +1,2 @@
-RESULT: file = ../../data/fits/NPAC.fits
+RESULT: file = ../../data/fits/common.fits
 RESULT: interactive = False
