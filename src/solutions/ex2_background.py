@@ -20,7 +20,7 @@ def main():
     y, x = lib_background.build_pixel_histogram(pixels, 200)
     print('RESULT: histogram = {:5d}'.format(np.sum(y)))
 
-    background, dispersion, mx, y, x = lib_background.compute_background((y, x))
+    background, dispersion, mx, y, x = lib_background.compute_background_from_histogram((y, x))
 
     # console output
     print('RESULT: background = {:d}'.format(int(background)))
