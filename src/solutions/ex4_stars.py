@@ -26,7 +26,7 @@ def show_cluster(wcs, i, cluster):
 
     os = get_celestial_objects(wcs, cluster)
     for cobj in os.keys():
-        print('RESULT: celestial_object={}'.format(cobj))
+        print('RESULT: celestial_object = {}'.format(cobj))
 
 
 def main():
