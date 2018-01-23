@@ -4,7 +4,6 @@
 
 import sys
 sys.path.append('../skeletons')
-import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background
 import numpy as np
 import lib_model
@@ -28,6 +27,8 @@ def main():
 
     # graphic output
     if interactive:
+        import matplotlib.pyplot as plt
+
         _, axis = plt.subplots()
         # axis.imshow(pixels)
 

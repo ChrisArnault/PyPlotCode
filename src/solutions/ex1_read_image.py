@@ -4,9 +4,7 @@
 
 import sys
 sys.path.append('../skeletons')
-import matplotlib.pyplot as plt
 import lib_args, lib_fits
-
 
 def main():
 
@@ -21,6 +19,8 @@ def main():
 
     # graphic output
     if interactive:
+        import matplotlib.pyplot as plt
+
         _, axis = plt.subplots()
         plt.text(0, -10, file_name, fontsize=14, color='white')
         axis.imshow(pixels)

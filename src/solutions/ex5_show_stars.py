@@ -7,8 +7,6 @@ sys.path.append('../skeletons')
 import lib_args, lib_fits, lib_background, lib_cluster
 import lib_wcs
 import lib_stars
-import matplotlib.pyplot as plt
-import lib_graphics
 
 
 def get_celestial_objects( wcs, cluster ):
@@ -73,6 +71,9 @@ def main():
 
     # graphic output
     if interactive:
+        import matplotlib.pyplot as plt
+        import lib_graphics
+
         fig, axis = plt.subplots()
         axis.imshow(pixels, interpolation='none')
         fig.canvas.mpl_connect('motion_notify_event',
