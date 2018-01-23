@@ -12,8 +12,7 @@ def get_celestial_objects( wcs, cluster ):
 
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
-    cobjects, _, _ = lib_stars.get_celestial_objects(radec)
-    return cobjects
+    return lib_stars.get_celestial_objects(radec)
 
 
 class ShowCelestialObjects():
@@ -37,7 +36,7 @@ def main():
 
     # celestial objects for the biggest cluster
     wcs = lib_wcs.get_wcs(header)
-    cobjects = get_celestial_objects(wcs, clusters[0])
+    cobjects, _, _ = get_celestial_objects(wcs, clusters[0])
 
     # console output
     for cobj in cobjects.keys():
