@@ -5,7 +5,6 @@
 import sys
 sys.path.append('../skeletons')
 sys.path.append('../solutions')
-import matplotlib.pyplot as plt
 import numpy as np
 import lib_args, lib_fits, lib_background
 import lib_cluster_detailed as lib_cluster
@@ -68,6 +67,8 @@ def main():
 
     # graphic output
     if interactive:
+        import matplotlib.pyplot as plt
+
         _, axes = plt.subplots(2)
         _ = axes[0].imshow(clustering._build_pattern())
         _ = axes[1].imshow(lib_cluster.add_crosses(pixels,clusters))

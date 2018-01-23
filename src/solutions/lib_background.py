@@ -5,7 +5,8 @@
 ''' Compute the noise '''
 
 
-import sys ; sys.path.append('../skeletons')
+import sys
+sys.path.append('../skeletons')
 import numpy as np
 from scipy.optimize import curve_fit
 import lib_model
@@ -18,7 +19,7 @@ def build_pixel_histogram(pixels, sampling_size):
     y, x = np.histogram(flat, sampling_size)
     return (y, x)
 
-def compute_background(histogram):
+def compute_background_from_histogram(histogram):
 
     y = histogram[0]
     x = histogram[1]
@@ -35,6 +36,11 @@ def compute_background(histogram):
     background = fit[1] * mx
     dispersion = abs(fit[2]) * mx
     return background, dispersion, mx, y, x
+
+def compute_background(pixels, sampling_size = 200):
+    histogram = build_pixel_histogram(pixels, sampling_size)
+    background, dispersion, mx, _, _ = compute_background_from_histogram(histogram)
+    return background, dispersion, mx
 
 
 def tests():

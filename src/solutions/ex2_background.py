@@ -4,7 +4,6 @@
 
 import sys
 sys.path.append('../skeletons')
-import matplotlib.pyplot as plt
 import lib_args, lib_fits, lib_background
 import numpy as np
 import lib_model
@@ -20,7 +19,7 @@ def main():
     y, x = lib_background.build_pixel_histogram(pixels, 200)
     print('RESULT: histogram = {:5d}'.format(np.sum(y)))
 
-    background, dispersion, mx, y, x = lib_background.compute_background((y, x))
+    background, dispersion, mx, y, x = lib_background.compute_background_from_histogram((y, x))
 
     # console output
     print('RESULT: background = {:d}'.format(int(background)))
@@ -28,6 +27,8 @@ def main():
 
     # graphic output
     if interactive:
+        import matplotlib.pyplot as plt
+
         _, axis = plt.subplots()
         # axis.imshow(pixels)
 
