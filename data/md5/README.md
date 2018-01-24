@@ -1,3 +1,4 @@
+
 # Prérequis
 
 Obligatoire : avoir "sourcer" le fichier `PyPlotCode/bin/env.sh`.
@@ -13,7 +14,7 @@ Si on veut utiliser une image docker anaconda 3 :
 
 La description des cibles de oval est faite dans le fichier "ovalfile.py". Dans une variante un peu compliquée, parce
 qu'au lieu de lister expliciter les cibles, j'utilise du code python pour les générer automatiquement à partir de
-ce qui est troué dans "data/fits".
+ce qui est trouvé dans "data/fits".
 
 Les données préparées par `ovalfile.py`, et qui seront exploitées par `oval.py`, doivent être des tableaux
 de la forme :
@@ -37,7 +38,6 @@ diff_filters_in = [
     # ...
 ]
 ```
-
 
 
 # Commandes oval
