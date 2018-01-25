@@ -16,8 +16,8 @@ exercices = (
     "ex1_read_image",
     "ex2_background",
     "ex3_clusters",
-    "ex4_coordinates",
-    "ex5_find_stars",
+    "ex4_stars",
+    "ex5_show_stars",
 )
 
 
