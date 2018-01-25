@@ -1,10 +1,3 @@
-peak[0]: (35, 73)
-peak[1]: (56, 51)
-peak[2]: (56, 95)
-candidate[0]: (35, 73), radius: 2
-candidate[1]: (56, 51), radius: 7
-candidate[2]: (56, 95), radius: 2
-DEBUG: 0 cluster=1485901 51 56
 RESULT: right_ascension = 149.349
 RESULT: declination = 69.306
 RESULT: celestial_object = TYC 4383-1121-1

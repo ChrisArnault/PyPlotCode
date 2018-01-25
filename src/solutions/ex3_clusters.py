@@ -13,7 +13,7 @@ import lib_cluster_detailed as lib_cluster
 def main():
 
     file_name, interactive = lib_args.get_args()
-    print(file_name)
+    #print(file_name)
     header, pixels = lib_fits.read_first_image(file_name)
     background, dispersion, _ = lib_background.compute_background(pixels)
 
@@ -47,9 +47,8 @@ def main():
 
     print('RESULT: peaks_number = {:2d}'.format(len(peaks)))
 
-    for npeak, peak in enumerate(peaks):
-        print('peak[{}]: {}'.format(npeak, peak))
-
+    #for npeak, peak in enumerate(peaks):
+    #    print('peak[{}]: {}'.format(npeak, peak))
     clusters = clustering.step_build_clusters(pixels, peaks, background, dispersion)
 
     print('RESULT: clusters_number = {:2d}'.format(len(clusters)))

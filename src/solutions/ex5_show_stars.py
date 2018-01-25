@@ -15,7 +15,7 @@ def get_celestial_objects( wcs, cluster ):
     return lib_stars.get_celestial_objects(radec)
 
 def show_cluster(wcs, i, cluster):
-    print('DEBUG: {} cluster={} {} {}'.format(i, cluster.integral, cluster.column, cluster.row))
+    #print('DEBUG: {} cluster={} {} {}'.format(i, cluster.integral, cluster.column, cluster.row))
 
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
