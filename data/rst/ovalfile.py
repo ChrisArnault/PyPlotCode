@@ -32,7 +32,7 @@ for exname in exercices:
 # rst targets
 
 for exnum, exname in enumerate(exercices):
-    tname = "rst{}".format(exnum)
+    tname = "rst{}".format(exnum+1)
     tcommand = "python ref_to_rst.py {}".format(exname)
     targets.append({"name": tname, "command": tcommand})
 
