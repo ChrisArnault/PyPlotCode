@@ -1,1 +1,11 @@
-RESULT: celestial_object = GPM 149.168941+68.830398
+RESULT: right_ascension_0 = 149.170
+RESULT: declination_0 = 68.831
+RESULT: celestial_object_0 = GPM 149.168941+68.830398
+RESULT: right_ascension_1 = 149.194
+RESULT: declination_1 = 68.859
+RESULT: right_ascension_2 = 149.215
+RESULT: declination_2 = 68.850
+RESULT: celestial_object_2 = 2MASS J09565127+6850580
+RESULT: right_ascension_3 = 149.134
+RESULT: declination_3 = 68.861
+RESULT: celestial_object_3 = 2MASS J09563197+6851389

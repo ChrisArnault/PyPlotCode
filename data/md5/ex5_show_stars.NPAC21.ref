@@ -1,11 +1,13 @@
-peak[0]: (20, 60)
-peak[1]: (34, 66)
-peak[2]: (52, 18)
-peak[3]: (65, 28)
-peak[4]: (67, 78)
-candidate[0]: (20, 60), radius: 2
-candidate[1]: (34, 66), radius: 3
-candidate[2]: (52, 18), radius: 3
-candidate[3]: (65, 28), radius: 1
-candidate[4]: (67, 78), radius: 2
-RESULT: celestial_object = GSC 04383-01005
+RESULT: right_ascension_0 = 149.554
+RESULT: declination_0 = 69.149
+RESULT: celestial_object_0 = GSC 04383-01005
+RESULT: right_ascension_1 = 149.615
+RESULT: declination_1 = 69.160
+RESULT: celestial_object_1 = 2MASS J09582746+6909328
+RESULT: right_ascension_2 = 149.534
+RESULT: declination_2 = 69.164
+RESULT: celestial_object_2 = 2MASS J09580757+6909513
+RESULT: right_ascension_3 = 149.564
+RESULT: declination_3 = 69.143
+RESULT: right_ascension_4 = 149.600
+RESULT: declination_4 = 69.165

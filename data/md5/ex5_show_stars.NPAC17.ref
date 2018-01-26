@@ -1,1 +1,9 @@
-RESULT: celestial_object = 2MASS J09580325+6850428
+RESULT: right_ascension_0 = 149.513
+RESULT: declination_0 = 68.845
+RESULT: celestial_object_0 = 2MASS J09580325+6850428
+RESULT: right_ascension_1 = 149.530
+RESULT: declination_1 = 68.847
+RESULT: celestial_object_1 = 2MASS J09580701+6850467
+RESULT: right_ascension_2 = 149.548
+RESULT: declination_2 = 68.858
+RESULT: celestial_object_2 = 2MASS J09581121+6851290

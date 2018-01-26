@@ -1,9 +1,11 @@
-peak[0]: (16, 20)
-peak[1]: (23, 96)
-peak[2]: (40, 70)
-peak[3]: (89, 50)
-candidate[0]: (16, 20), radius: 3
-candidate[1]: (23, 96), radius: 1
-candidate[2]: (40, 70), radius: 3
-candidate[3]: (89, 50), radius: 3
-RESULT: celestial_object = GPM 149.391696+69.229356
+RESULT: right_ascension_0 = 149.392
+RESULT: declination_0 = 69.230
+RESULT: celestial_object_0 = GPM 149.391696+69.229356
+RESULT: right_ascension_1 = 149.413
+RESULT: declination_1 = 69.254
+RESULT: celestial_object_1 = GPM 149.412104+69.253417
+RESULT: right_ascension_2 = 149.462
+RESULT: declination_2 = 69.221
+RESULT: celestial_object_2 = 2MASS J09575075+6913140
+RESULT: right_ascension_3 = 149.360
+RESULT: declination_3 = 69.220

@@ -1,9 +1,11 @@
-peak[0]: (14, 61)
-peak[1]: (40, 92)
-peak[2]: (44, 42)
-peak[3]: (62, 64)
-candidate[0]: (14, 61), radius: 1
-candidate[1]: (40, 92), radius: 1
-candidate[2]: (44, 42), radius: 3
-candidate[3]: (62, 64), radius: 1
-RESULT: celestial_object = 2MASS J09531137+6916049
+RESULT: right_ascension_0 = 148.299
+RESULT: declination_0 = 69.268
+RESULT: celestial_object_0 = 2MASS J09531137+6916049
+RESULT: right_ascension_1 = 148.267
+RESULT: declination_1 = 69.275
+RESULT: celestial_object_1 = 2MASS J09530360+6916301
+RESULT: right_ascension_2 = 148.233
+RESULT: declination_2 = 69.263
+RESULT: celestial_object_2 = 2MASS J09525546+6915472
+RESULT: right_ascension_3 = 148.278
+RESULT: declination_3 = 69.253
