@@ -1,5 +1,0 @@
-.. code-block:: python
-
-  RESULT: right_ascension = 149.349
-  RESULT: declination = 69.306
-

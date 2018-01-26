@@ -26,3 +26,18 @@ EN CHANTIER.
 Un utilitaire pour lancer un conteneur anaconda 2 ou 3.
 EN CHANTIER.
 
+
+---
+# Tests
+
+Pour verifier le bon fonctionnement du nouveau diff de oval,
+l'exécution de `oval d` devrait produire :
+
+```
+ERROR: oval_test_diff_dict: redefinition of var 3 in output
+ERROR: oval_test_diff_dict: redefinition of var1 in reference
+oval_test_diff_dict: unexpected var 1
+oval_test_diff_dict: for var 3, hello world ! != hello world
+oval_test_diff_dict: lacking var1
+```
+

@@ -275,6 +275,7 @@ def apply_diff(target_name):
     out_md5_matches = []
     out_log_dict = {}
     out_md5_dict = {}
+    out_log_keys = []
     for line in proc1.stdout.split('\n'):
         for fmatch in [fexp.match(line) for fexp in fexps]:
             if fmatch:
@@ -285,6 +286,8 @@ def apply_diff(target_name):
                     else:
                         out_log_dict[grps[0]] = grps[1]
                         out_md5_dict[grps[0]] = hashlib.md5(grps[1].encode('utf-8')).hexdigest()
+                        # so to memorize results ordering
+                        out_log_keys.append(grps[0])
                 else:
                     for grp in grps:
                         out_log_matches.append(grp)
@@ -295,6 +298,7 @@ def apply_diff(target_name):
                            shell=True, stdout=subprocess.PIPE, universal_newlines=True)
     out_ref_matches = []
     out_ref_dict = {}
+    out_ref_keys = []
     for line in proc2.stdout.split('\n'):
         for fmatch in [fexp.match(line) for fexp in fexps]:
             if fmatch:
@@ -304,6 +308,8 @@ def apply_diff(target_name):
                         logging.error(prefix + 'redefinition of {} in reference'.format(grps[0]))
                     else:
                         out_ref_dict[grps[0]] = grps[1]
+                        # so to mzmorize results ordering
+                        out_ref_keys.append(grps[0])
                 else:
                     for grp in grps:
                         out_ref_matches.append(grp)
@@ -331,7 +337,7 @@ def apply_diff(target_name):
                 nbdiff += 1
 
     # compare key/value matches (not implemented for md5
-    for k in out_log_dict:
+    for k in out_log_keys:
         if k in out_ref_dict:
             if out_log_dict[k] != out_ref_dict[k]:
                 logging.info(prefix + "for {}, {} != {}".format(k,out_log_dict[k],out_ref_dict[k]))
@@ -339,7 +345,7 @@ def apply_diff(target_name):
         else:
             logging.info(prefix + 'unexpected {}'.format(k))
             nbdiff += 1
-    for k in out_ref_dict:
+    for k in out_ref_keys:
         if not k in out_log_dict:
             logging.info(prefix + 'lacking {}'.format(k))
             nbdiff += 1

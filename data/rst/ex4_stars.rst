@@ -1,0 +1,6 @@
+.. code-block:: python
+
+  RESULT: right_ascension = 149.349
+  RESULT: declination = 69.306
+  RESULT: celestial_object = TYC 4383-1121-1
+

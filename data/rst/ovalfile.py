@@ -16,8 +16,8 @@ exercices = (
     "ex1_read_image",
     "ex2_background",
     "ex3_clusters",
-    "ex4_coordinates",
-    "ex5_find_stars",
+    "ex4_stars",
+    "ex5_show_stars",
 )
 
 
@@ -32,7 +32,7 @@ for exname in exercices:
 # rst targets
 
 for exnum, exname in enumerate(exercices):
-    tname = "rst{}".format(exnum)
+    tname = "rst{}".format(exnum+1)
     tcommand = "python ref_to_rst.py {}".format(exname)
     targets.append({"name": tname, "command": tcommand})
 

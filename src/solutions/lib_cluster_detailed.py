@@ -213,7 +213,7 @@ class Clustering():
         for n, peak in enumerate(peaks):
             rnum, cnum = peak[0], peak[1]
             integral, radius = self._spread_peak(image, threshold, rnum, cnum)
-            print('candidate[{}]: {}, radius: {}'.format(n, peak, radius))
+            #print('candidate[{}]: {}, radius: {}'.format(n, peak, radius))
             if radius > 0:
                 clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
@@ -250,8 +250,8 @@ class Clustering():
         ext_cp_image = self.step_extend_convolution_image(cp_image)
         peaks = clustering.step_detect_peaks(ext_cp_image, background, dispersion)
 
-        for npeak, peak in enumerate(peaks):
-            print('peak[{}]: {}'.format(npeak, peak))
+        #for npeak, peak in enumerate(peaks):
+        #    print('peak[{}]: {}'.format(npeak, peak))
 
         clusters = clustering.step_build_clusters(peaks, background, dispersion)
 
@@ -307,14 +307,14 @@ class Clustering():
         print('RESULT: convolution_image_height={:2d}'.format(cp_image.shape[1]))
         print('RESULT: convolution_image_sum={:5.0f}'.format(np.sum(cp_image)))
 
-        print('conv[4,4]:',int(cp_image[4,4]))
-        print('conv[101,4]:',int(cp_image[101,4]))
-        print('conv[44,44]:',int(cp_image[44,44]))
-        print('conv[61,44]:',int(cp_image[61,44]))
-        print('conv[44,61]:',int(cp_image[44,61]))
-        print('conv[61,61]:',int(cp_image[61,61]))
-        print('conv[4,101]:',int(cp_image[4,101]))
-        print('conv[101,101]:',int(cp_image[101,101]))
+        #print('conv[4,4]:',int(cp_image[4,4]))
+        #print('conv[101,4]:',int(cp_image[101,4]))
+        #print('conv[44,44]:',int(cp_image[44,44]))
+        #print('conv[61,44]:',int(cp_image[61,44]))
+        #print('conv[44,61]:',int(cp_image[44,61]))
+        #print('conv[61,61]:',int(cp_image[61,61]))
+        #print('conv[4,101]:',int(cp_image[4,101]))
+        #print('conv[101,101]:',int(cp_image[101,101]))
 
         # make a copy with a border of 1
         """
@@ -331,7 +331,7 @@ class Clustering():
         print('RESULT: extended_convolution_image_height={:2d}'.format(ext_cp_image.shape[1]))
         print('RESULT: extended_convolution_image_sum={:5.0f}'.format(np.sum(ext_cp_image)))
 
-        print('threshold:', int(background + 6.0 * dispersion))
+        #print('threshold:', int(background + 6.0 * dispersion))
 
         # scan the convolution image to detect peaks and build clusters
         threshold = background + factor * dispersion
@@ -345,15 +345,15 @@ class Clustering():
 
         print('RESULT: peaks_number={:2d}'.format(len(peaks)))
 
-        for npeak, peak in enumerate(peaks):
-            print('peak[{}]: {}'.format(npeak,peak))
+        #for npeak, peak in enumerate(peaks):
+            #print('peak[{}]: {}'.format(npeak,peak))
 
         # build clusters
         clusters = []
         for n, peak in enumerate(peaks):
             rnum, cnum = peak[0], peak[1]
             integral, radius = self._spread_peak(image, threshold, rnum, cnum)
-            print('candidate[{}]: {}, radius: {}'.format(npeak,peak,radius))
+            #print('candidate[{}]: {}, radius: {}'.format(npeak,peak,radius))
             if radius > 0:
                 clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 

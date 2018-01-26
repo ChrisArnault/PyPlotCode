@@ -1,4 +1,3 @@
-../fits/NPAC02.fits
 RESULT: pattern_sum =     1
 RESULT: extended_image_width = 114
 RESULT: extended_image_height = 114
@@ -10,16 +9,6 @@ RESULT: extended_convolution_image_width = 108
 RESULT: extended_convolution_image_height = 108
 RESULT: extended_convolution_image_sum = 30065132
 RESULT: peaks_number =  5
-peak[0]: (13, 27)
-peak[1]: (46, 67)
-peak[2]: (63, 32)
-peak[3]: (85, 90)
-peak[4]: (92, 50)
-candidate[0]: (13, 27), radius: 2
-candidate[1]: (46, 67), radius: 3
-candidate[2]: (63, 32), radius: 6
-candidate[3]: (85, 90), radius: 2
-candidate[4]: (92, 50), radius: 1
 RESULT: clusters_number =  5
 RESULT: cluster_max_top = 13515
 RESULT: cluster_max_integral = 1101292

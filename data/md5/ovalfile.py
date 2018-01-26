@@ -13,14 +13,14 @@ exercices = (
     "ex1_read_image",
     "ex2_background",
     "ex3_clusters",
-    "ex4_coordinates",
-    "ex5_find_stars",
+    "ex4_stars",
+    "ex5_show_stars",
 )
 
 import os, re
 exp = re.compile('^NPAC..\.fits$')
 for exercice in exercices:
-    for filename in os.listdir('../fits'):
+    for filename in sorted(os.listdir('../fits')):
         if exp.match(filename):
             token = filename[:-5]
             target = "{}.{}".format(exercice,token)
@@ -29,7 +29,7 @@ for exercice in exercices:
 
 # find_stars target
 
-for filename in os.listdir('../fits'):
+for filename in sorted(os.listdir('../fits')):
     if exp.match(filename):
         token = filename[:-5]
         target = "find_stars.{}".format(token)

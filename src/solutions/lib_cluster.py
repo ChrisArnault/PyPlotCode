@@ -165,7 +165,6 @@ class Clustering():
         ext_shape = np.array(image.shape) + 2 * margin
         ext_image = np.zeros(ext_shape)
         ext_image[margin:-margin, margin:-margin] = image
-
         return ext_image
 
     def step_build_pattern(self):
@@ -205,7 +204,7 @@ class Clustering():
         for n, peak in enumerate(peaks):
             rnum, cnum = peak[0], peak[1]
             integral, radius = self._spread_peak(image, threshold, rnum, cnum)
-            print('candidate[{}]: {}, radius: {}'.format(n, peak, radius))
+            #print('candidate[{}]: {}, radius: {}'.format(n, peak, radius))
             if radius > 0:
                 clusters.append(Cluster(rnum, cnum, image[rnum, cnum], integral))
 
@@ -243,8 +242,8 @@ class Clustering():
         ext_cp_image = self.step_extend_convolution_image(cp_image)
         peaks = self.step_detect_peaks(image, cp_image, ext_cp_image, background, dispersion)
 
-        for npeak, peak in enumerate(peaks):
-            print('peak[{}]: {}'.format(npeak, peak))
+        #for npeak, peak in enumerate(peaks):
+        #    print('peak[{}]: {}'.format(npeak, peak))
 
         clusters = self.step_build_clusters(image, peaks, background, dispersion)
 

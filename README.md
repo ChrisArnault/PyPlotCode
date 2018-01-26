@@ -2,4 +2,6 @@ Données et solutions pour le projet PyPlot.
 
 Commencez par "sourcer" le fichier "bin/env.sh".
 
-Pour régénérer les fichiers cryptés de signatures, se rendre dans data/md5.
+* Pour vérifier les fichiers de signatures communes, se rendre dans src/solutions.
+* Pour regénérer les fichiers de signatures communes, se rendre dans data/rst.
+* Pour regénérer les fichiers de signatures spécifiques, se rendre dans data/md5.

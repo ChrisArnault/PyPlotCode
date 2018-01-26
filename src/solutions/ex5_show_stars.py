@@ -15,17 +15,17 @@ def get_celestial_objects( wcs, cluster ):
     return lib_stars.get_celestial_objects(radec)
 
 def show_cluster(wcs, i, cluster):
-    print('DEBUG: {} cluster={} {} {}'.format(i, cluster.integral, cluster.column, cluster.row))
+    #print('DEBUG: {} cluster={} {} {}'.format(i, cluster.integral, cluster.column, cluster.row))
 
     pxy = lib_wcs.PixelXY(cluster.column, cluster.row)
     radec = lib_wcs.xy_to_radec(wcs, pxy)
 
-    print('RESULT: right_ascension = {:.3f}'.format(radec.ra))
-    print('RESULT: declination = {:.3f}'.format(radec.dec))
+    print('RESULT: right_ascension_{:d} = {:.3f}'.format(i,radec.ra))
+    print('RESULT: declination_{:d} = {:.3f}'.format(i,radec.dec))
 
     os, _, _ = get_celestial_objects(wcs, cluster)
-    for cobj in os.keys():
-        print('RESULT: celestial_object={}'.format(cobj))
+    for j, cobj in enumerate(sorted(os.keys())):
+        print('RESULT: celestial_object_{:d}_{:d} = {}'.format(i,j,cobj))
 
 
 class ShowRaDec():
