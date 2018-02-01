@@ -6,8 +6,23 @@ Obligatoire : avoir "sourcer" le fichier `PyPlotCode/bin/env.sh`.
 Si on veut utiliser une image docker anaconda 3 :
 * se placer dans PyPlotCode
 * lancer `anarun 3 bash`
-* sourcer `bin/env.sh`
+* resourcer `bin/env.sh`
 * revenir dans `data/md5`
+
+
+# Recettes rapides pour utilisateur pressé
+
+Vérifier que les images ne sont pas pathologiques :
+```
+oval r patho%
+oval d patho%
+```
+
+Regénérer les signatures de référence pour les images spécifiques :
+1. Tourner tous les exercices avec toutes le simages : `oval r ex%`
+1. Eventuellement, comparer les résultats avec les références : `oval d ex%`
+1. Copier les résultats en tant que nouvelles références : : `oval v ex%`
+1. Eventuellement, vérifier que la copie s'est bien faite : `oval d ex%`
 
 
 # Configuration ovalfile.py
