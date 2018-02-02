@@ -4,3 +4,5 @@ Régénération d'un nouveau jeu d'extrait rst pour les énoncés :
 1. Copier les résultats en tant que nouvelles références : : `oval v ex%`
 1. Eventuellement, vérifier que la copie s'est bien faite : `oval d ex%`
 1. Executer la moulinette de conversion des refs en rst : `oval r rst%`
+
+Les fichiers rst sont à recopier dans PyPlot:doc/source/signatures.
