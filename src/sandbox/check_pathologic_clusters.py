@@ -3,6 +3,8 @@
 
 
 import sys
+sys.path.append('../skeletons')
+sys.path.append('../solutions')
 import lib_args
 import lib_fits
 import lib_background
