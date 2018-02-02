@@ -42,11 +42,14 @@ if len(clusters) > 1 and ((clusters[0].integral - clusters[1].integral) < 10.):
     print('clusters 0 and 1 are too similar')
     nb_patho += 1
 
-# check multiple celestial objects for max cluster
+# check lacking or multiple celestial objects for max cluster
 wcs = lib_wcs.get_wcs(header)
 pxy = lib_wcs.PixelXY(clusters[0].column, clusters[0].row)
 radec = lib_wcs.xy_to_radec(wcs, pxy)
 cobjects, _, _ = lib_stars.get_celestial_objects(radec)
+if len(cobjects) < 1:
+    print('clusters 0 is associated with no celestial object')
+    nb_patho += 1
 if len(cobjects) > 1:
     print('clusters 0 is associated with multiple celestial objects')
     for icobj, cobj in enumerate(sorted(cobjects.keys())):
