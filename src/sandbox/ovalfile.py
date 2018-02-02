@@ -21,7 +21,7 @@ targets = [
 #
 #    {"name": "lib_logging", "command": "python lib_logging.py"},
 
-#    { "name" : "find_stars" , "command" : "python find_stars.py -b ../../data/fits/common.fits"  },
+    { "name" : "patho" , "command" : "python check_pathologic_clusters.py -b ../../data/fits/common.fits"  },
 
 ]
 
@@ -32,5 +32,5 @@ run_filters_out = [ {"name": "wcs", "re": "^(WARNING:|warning:|Defunct|this form
 diff_filters_in = [
     {"name": "pylint1", "re": "%rated at%", "apply": "(analyze%)|(oval%)"},
     {"name": "pylint2", "re": "[CEWIDR]:%", "apply": "(analyze%)|(oval%)"},
-    {"name": "info", "re": "^(.+)$", "apply": "%"},
+    {"name": "patho", "re": "^(.+) pathologic clusters$", "apply": "patho%"},
 ]
