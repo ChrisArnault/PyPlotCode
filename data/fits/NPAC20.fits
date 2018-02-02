@@ -1,4184 +1,3558 @@
-SIMPLE  =                    T /FITS header                                     BITPIX  =                   16 /No.Bits per pixel                               NAXIS   =                    2 /No.dimensions                                   NAXIS1  =                  106 /Length X axis                                   NAXIS2  =                  106 /Length Y axis                                   EXTEND  =                    T /                                                DATE    = '13/12/17          ' /Date of FITS file creation                      ORIGIN  = 'CASB -- STScI     ' /Origin of FITS image                            PLTLABEL= 'E685              ' /Observatory plate label                         PLATEID = '07IE              ' /GSSS Plate ID                                   REGION  = 'XE037             ' /GSSS Region Name                                DATE-OBS= '07/03/53          ' /UT date of Observation                          UT      = '06:33:00.00       ' /UT time of observation                          EPOCH   =  1.9531788330078E+03 /Epoch of plate                                  PLTRAH  =                   10 /Plate center RA                                 PLTRAM  =                   23 /                                                PLTRAS  =  3.7330600000000E+01 /                                                PLTDECSN= '+                 ' /Plate center Dec                                PLTDECD =                   71 /                                                PLTDECM =                   16 /                                                PLTDECS =  1.7961790000000E+01 /                                                EQUINOX =  2.0000000000000E+03 /Julian Reference frame equinox                  EXPOSURE=  4.0000000000000E+01 /Exposure time minutes                           BANDPASS=                    8 /GSSS Bandpass code                              PLTGRADE=                    1 /Plate grade                                     PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       SITELAT = '+33:24:24.00      ' /Latitude of Observatory                         SITELONG= '-116:51:48.00     ' /Longitude of Observatory                        TELESCOP= 'Palomar 48-inch Schmidt'/Telescope where plate taken                 CNPIX1  =                12280 /X corner  (pixels)                              CNPIX2  =                 2133 /Y corner                                        DATATYPE= 'INTEGER*2         ' /Type of Data                                    SCANIMG = 'XE037_07IE_00_00.PIM'/Name of original scan                          SCANNUM =                    0 /Identifies scan of the plate                    DCHOPPED=                    F /Image repaired for chopping effects             DSHEARED=                    F /Image repaired for shearing effects             DSCNDNUM=                    0 /Identifies descendant of plate scan image       XPIXELSZ=  2.5284450000000E+01 /X pixel size microns                            YPIXELSZ=  2.5284450000000E+01 /Y pixel size microns                            PPO1    =  0.0000000000000E+00 /Orientation Coefficients                        PPO2    =  0.0000000000000E+00 /                                                PPO3    =  1.7747471555000E+05 /                                                PPO4    =  0.0000000000000E+00 /                                                PPO5    =  0.0000000000000E+00 /                                                PPO6    =  1.7747471555000E+05 /                                                AMDX1   =  6.7234391548000E+01 /Plate solution x coefficients                   AMDX2   =  7.3345355710310E-01 /                                                AMDX3   = -2.8860399941910E+02 /                                                AMDX4   = -1.7860733229560E-05 /                                                AMDX5   = -6.1179578925430E-06 /                                                AMDX6   =  1.5385348414370E-05 /                                                AMDX7   =  0.0000000000000E+00 /                                                AMDX8   =  1.8330507091850E-06 /                                                AMDX9   = -1.6081937613770E-07 /                                                AMDX10  =  2.3814822122600E-06 /                                                AMDX11  =  1.7954228847220E-08 /                                                AMDX12  =  0.0000000000000E+00 /                                                AMDX13  =  0.0000000000000E+00 /                                                AMDX14  =  0.0000000000000E+00 /                                                AMDX15  =  0.0000000000000E+00 /                                                AMDX16  =  0.0000000000000E+00 /                                                AMDX17  =  0.0000000000000E+00 /                                                AMDX18  =  0.0000000000000E+00 /                                                AMDX19  =  0.0000000000000E+00 /                                                AMDX20  =  0.0000000000000E+00 /                                                AMDY1   =  6.7258896731320E+01 /Plate solution y coefficients                   AMDY2   = -7.3429639674420E-01 /                                                AMDY3   = -1.5425004101100E+02 /                                                AMDY4   = -3.2808977562630E-07 /                                                AMDY5   = -2.5056640070610E-05 /                                                AMDY6   =  1.3445098358330E-06 /                                                AMDY7   =  0.0000000000000E+00 /                                                AMDY8   =  1.9754681872160E-06 /                                                AMDY9   = -1.9162032322980E-07 /                                                AMDY10  =  2.2805668029490E-06 /                                                AMDY11  =  8.0186985800440E-08 /                                                AMDY12  =  0.0000000000000E+00 /                                                AMDY13  =  0.0000000000000E+00 /                                                AMDY14  =  0.0000000000000E+00 /                                                AMDY15  =  0.0000000000000E+00 /                                                AMDY16  =  0.0000000000000E+00 /                                                AMDY17  =  0.0000000000000E+00 /                                                AMDY18  =  0.0000000000000E+00 /                                                AMDY19  =  0.0000000000000E+00 /                                                AMDY20  =  0.0000000000000E+00 /                                                        Based on photographic data of the National Geographic Society -- Palomar        Observatory Sky Survey (NGS-POSS) obtained using the Oschin Telescope on        Palomar Mountain.  The NGS-POSS was funded by a grant from the National         Geographic Society to the California Institute of Technology.  The              plates were processed into the present compressed digital form with             their permission.  The Digitized Sky Survey was produced at the Space           Telescope Science Institute under US Government grant NAG W-2166.                                                                                               Investigators using these scans are requested to include the above              acknowledgements in any publications.                                                                                                                           Copyright (c) 1994, Association of Universities for Research in                 Astronomy, Inc.  All rights reserved.                                   DATAMAX =                11042 /Maximum data value                              DATAMIN =                 1946 /Minimum data value                              OBJECT  = 'dss16855          ' /Object ID                                       OBJCTRA = '09 54 37.500      ' /Object Right Ascension (J2000)                  OBJCTDEC= '+68 49 03.00      ' /Object Declination (J2000)                      OBJCTX  =             12333.86 /Object X on plate (pixels)                      OBJCTY  =              2186.19 /Object Y on plate (pixels)                      CTYPE1  = 'RA---TAN'           /R.A. in tangent plane projection                CTYPE2  = 'DEC--TAN'           /DEC. in tangent plane projection                CRPIX1  =                 53.0 /Refpix of first axis                            CRPIX2  =                 53.0 /Refpix of second axis                           CRVAL1  =  1.4865810916745E+02 /RA at Ref pix in decimal degrees                CRVAL2  =  6.8817243219288E+01 /DEC at Ref pix in decimal degrees               CROTA1  =  6.1934108519580E+00 /Rotation angle of first axis (deg)              CROTA2  =  6.1934108519580E+00 /Rotation angle of second axis (deg)                     Warning: CROTA2 is inaccurate due to considerable skew                  SKEW    =  6.2504048932643E+00,  6.1364168106517E+00 /Measure of skew           CDELT1  = -4.7240032762769E-04 /RA pixel step (deg)                             CDELT2  =  4.7261843926000E-04 /DEC pixel step (deg)                            CD1_1   = -4.6969356944249E-04 /CD matrix                                       CD1_2   = -5.1455812489803E-05 /CD matrix                                       CD2_1   = -5.0497726356005E-05 /CD matrix                                       CD2_2   =  4.6980899149502E-04 /CD matrix                                       PC001001=  9.9427020256570E-01 /PC matrix                                       PC001002=  1.0892416766137E-01 /PC matrix                                       PC002001= -1.0684671219149E-01 /PC matrix                                       PC002002=  9.9405556886571E-01 /PC matrix                                       END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             	î	î	î	îÛ	 
-5
-5
-!
-!	K
-!
-å
-å
-å
-å
-
-	õ
-r
-›
-	õ
-r	"	"	é	é
-ö
-ö
-ö
-ö	˘	˘
-d
-d	X	X	√	√	•œ	•	•	•	•
-|
-|
-F
-F
-F
-Fôô	€
-±	Ë	Ë	Ë	Ë
-â
-â	G	G
-9
-9	bå¡¡	ò	ò
-9	b˜˜˜	Õ	Õ
-§
-n
-n
-
-	Õ	Õ
-9	b
-n
-n
-n
-n	Õ	Õ	Õ
-§
-ø	Ë
-S
-S	Ë	Ë	Ë	Ë
-n	ò
- 
-÷
- 
- 	 	 
-†
-†
-å
-å	K
-!c
-å
-!
-!	0	0≈	õ
-›
-
-
-	"	"	é	é
-öp
-/	˘	˘
-d
-d	√	√
-/
-/
-|
-|
-|
-|
-
+SIMPLE  =                    T /FITS header                                     BITPIX  =                   16 /No.Bits per pixel                               NAXIS   =                    2 /No.dimensions                                   NAXIS1  =                  106 /Length X axis                                   NAXIS2  =                  106 /Length Y axis                                   EXTEND  =                    T /                                                DATE    = '02/02/18          ' /Date of FITS file creation                      ORIGIN  = 'CASB -- STScI     ' /Origin of FITS image                            PLTLABEL= 'E685              ' /Observatory plate label                         PLATEID = '07IE              ' /GSSS Plate ID                                   REGION  = 'XE037             ' /GSSS Region Name                                DATE-OBS= '07/03/53          ' /UT date of Observation                          UT      = '06:33:00.00       ' /UT time of observation                          EPOCH   =  1.9531788330078E+03 /Epoch of plate                                  PLTRAH  =                   10 /Plate center RA                                 PLTRAM  =                   23 /                                                PLTRAS  =  3.7330600000000E+01 /                                                PLTDECSN= '+                 ' /Plate center Dec                                PLTDECD =                   71 /                                                PLTDECM =                   16 /                                                PLTDECS =  1.7961790000000E+01 /                                                EQUINOX =  2.0000000000000E+03 /Julian Reference frame equinox                  EXPOSURE=  4.0000000000000E+01 /Exposure time minutes                           BANDPASS=                    8 /GSSS Bandpass code                              PLTGRADE=                    1 /Plate grade                                     PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       SITELAT = '+33:24:24.00      ' /Latitude of Observatory                         SITELONG= '-116:51:48.00     ' /Longitude of Observatory                        TELESCOP= 'Palomar 48-inch Schmidt'/Telescope where plate taken                 CNPIX1  =                12456 /X corner  (pixels)                              CNPIX2  =                 2114 /Y corner                                        DATATYPE= 'INTEGER*2         ' /Type of Data                                    SCANIMG = 'XE037_07IE_00_00.PIM'/Name of original scan                          SCANNUM =                    0 /Identifies scan of the plate                    DCHOPPED=                    F /Image repaired for chopping effects             DSHEARED=                    F /Image repaired for shearing effects             DSCNDNUM=                    0 /Identifies descendant of plate scan image       XPIXELSZ=  2.5284450000000E+01 /X pixel size microns                            YPIXELSZ=  2.5284450000000E+01 /Y pixel size microns                            PPO1    =  0.0000000000000E+00 /Orientation Coefficients                        PPO2    =  0.0000000000000E+00 /                                                PPO3    =  1.7747471555000E+05 /                                                PPO4    =  0.0000000000000E+00 /                                                PPO5    =  0.0000000000000E+00 /                                                PPO6    =  1.7747471555000E+05 /                                                AMDX1   =  6.7234391548000E+01 /Plate solution x coefficients                   AMDX2   =  7.3345355710310E-01 /                                                AMDX3   = -2.8860399941910E+02 /                                                AMDX4   = -1.7860733229560E-05 /                                                AMDX5   = -6.1179578925430E-06 /                                                AMDX6   =  1.5385348414370E-05 /                                                AMDX7   =  0.0000000000000E+00 /                                                AMDX8   =  1.8330507091850E-06 /                                                AMDX9   = -1.6081937613770E-07 /                                                AMDX10  =  2.3814822122600E-06 /                                                AMDX11  =  1.7954228847220E-08 /                                                AMDX12  =  0.0000000000000E+00 /                                                AMDX13  =  0.0000000000000E+00 /                                                AMDX14  =  0.0000000000000E+00 /                                                AMDX15  =  0.0000000000000E+00 /                                                AMDX16  =  0.0000000000000E+00 /                                                AMDX17  =  0.0000000000000E+00 /                                                AMDX18  =  0.0000000000000E+00 /                                                AMDX19  =  0.0000000000000E+00 /                                                AMDX20  =  0.0000000000000E+00 /                                                AMDY1   =  6.7258896731320E+01 /Plate solution y coefficients                   AMDY2   = -7.3429639674420E-01 /                                                AMDY3   = -1.5425004101100E+02 /                                                AMDY4   = -3.2808977562630E-07 /                                                AMDY5   = -2.5056640070610E-05 /                                                AMDY6   =  1.3445098358330E-06 /                                                AMDY7   =  0.0000000000000E+00 /                                                AMDY8   =  1.9754681872160E-06 /                                                AMDY9   = -1.9162032322980E-07 /                                                AMDY10  =  2.2805668029490E-06 /                                                AMDY11  =  8.0186985800440E-08 /                                                AMDY12  =  0.0000000000000E+00 /                                                AMDY13  =  0.0000000000000E+00 /                                                AMDY14  =  0.0000000000000E+00 /                                                AMDY15  =  0.0000000000000E+00 /                                                AMDY16  =  0.0000000000000E+00 /                                                AMDY17  =  0.0000000000000E+00 /                                                AMDY18  =  0.0000000000000E+00 /                                                AMDY19  =  0.0000000000000E+00 /                                                AMDY20  =  0.0000000000000E+00 /                                                        Based on photographic data of the National Geographic Society -- Palomar        Observatory Sky Survey (NGS-POSS) obtained using the Oschin Telescope on        Palomar Mountain.  The NGS-POSS was funded by a grant from the National         Geographic Society to the California Institute of Technology.  The              plates were processed into the present compressed digital form with             their permission.  The Digitized Sky Survey was produced at the Space           Telescope Science Institute under US Government grant NAG W-2166.                                                                                               Investigators using these scans are requested to include the above              acknowledgements in any publications.                                                                                                                           Copyright (c) 1994, Association of Universities for Research in                 Astronomy, Inc.  All rights reserved.                                   DATAMAX =                13578 /Maximum data value                              DATAMIN =                 2042 /Minimum data value                              OBJECT  = 'dss113010         ' /Object ID                                       OBJCTRA = '09 53 43.500      ' /Object Right Ascension (J2000)                  OBJCTDEC= '+68 47 58.50      ' /Object Declination (J2000)                      OBJCTX  =             12509.36 /Object X on plate (pixels)                      OBJCTY  =              2167.42 /Object Y on plate (pixels)                      CTYPE1  = 'RA---TAN'           /R.A. in tangent plane projection                CTYPE2  = 'DEC--TAN'           /DEC. in tangent plane projection                CRPIX1  =                 53.0 /Refpix of first axis                            CRPIX2  =                 53.0 /Refpix of second axis                           CRVAL1  =  1.4843249975439E+02 /RA at Ref pix in decimal degrees                CRVAL2  =  6.8799199411379E+01 /DEC at Ref pix in decimal degrees               CROTA1  =  6.4054339337345E+00 /Rotation angle of first axis (deg)              CROTA2  =  6.4054339337345E+00 /Rotation angle of second axis (deg)                     Warning: CROTA2 is inaccurate due to considerable skew                  SKEW    =  6.4618548380228E+00,  6.3490130294461E+00 /Measure of skew           CDELT1  = -4.7238269135439E-04 /RA pixel step (deg)                             CDELT2  =  4.7260456275107E-04 /DEC pixel step (deg)                            CD1_1   = -4.6948543642271E-04 /CD matrix                                       CD1_2   = -5.3187725481147E-05 /CD matrix                                       CD2_1   = -5.2238224301730E-05 /CD matrix                                       CD2_2   =  4.6960210667252E-04 /CD matrix                                       PC001001=  9.9386672080771E-01 /PC matrix                                       PC001002=  1.1259456888365E-01 /PC matrix                                       PC002001= -1.1053262794935E-01 /PC matrix                                       PC002002=  9.9364700149937E-01 /PC matrix                                       END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             			}
+S	≥	≥	G
+
++
+ñ	¿	ä	ä	ä
+a
 Á
-|
-|
+	•	•
+|R)R	€		o	o			€	€	o	o
 F
-F
-±	€	o	o	€
-±	Ë	Ë	Ë	Ë
-Ù
-Ù
-	G	Õ	Õ	b	b	ò	ò
-n
-n
-§	Õ	b	b	Õ	Õ	Õ
-§
-	,	ò	ò	b	b	Õ˜
-
-
-Ÿ
-	b	b	Õ
-§
-S	}
-S
-S	Ë	Ë	}
-S
-	,	)
- 
- 
- 	 	 
-†
-†
-å
-å	K
-!c
-å
-!
-!	0	0	õ
-r
-
-›
-
-	"	"	é	é	√
-ö
-/	˘	˘	é	é	√	√
-/
-/	•	•	•	•
-
-Á
-|
-|
-F
-F
-±	€	o	o		€	Ë	Ë	Ë	Ë
-
-
-
-Ù
-§
-§
-9
-9	ò	ò
-n
-n
-§	Õ	b	b	Õ	Õ	Õ
-§	,
-	ò	ò	b	b	Õ˜
-
-
-Ÿ
-	b	b	Õ
-§
-S	}
-S
-S	Ë	Ë	}
-S
-	,ÛÛÛ	 
- 
- 
-÷
-÷
-W
-W	Î	Î
-¬
-¬
-W-
-r	õ
-
-
-
-
-
-	X	XÌ	√	˘	˘	˘	˘
-d	é
-d	é	"	˘
-d
-d	€		o	o
-
-	•	•	o	o	o	o			o	o	ò
-n	ò	ò	Õ	Õ
-9
-9
-
-
-â
-â	≥	≥
-â
-â	}¶	}	}
-
-
-Ù
-	ò	ò
-	,	ò	ò
-
-	b	b	Õ	Õ	,
-
-Ÿ∞
-n	ò
-Ÿ
-Ÿ
-
-
-
-Ÿ	ò	òÛÛÛ	 
- 
- 
- 
- 	Ä	Ä			Î	Î
-W-
-r	õ
-
-
-
-
-
-
-/
-/	√Ì	˘	˘	˘	˘	é
-d
-d	é	˘	"	é	é	€		o	o	:	:	•	•	o	o	o	o			o	o	ò
-n
-n
-n
-§
-§
-9
-9	G
-Ù	≥	≥	≥	≥	≥`
-S	}	}	}
-
-
-	G¡¡	,
-	ò	ò
-
-	b	b	Õ	Õ	,
-
-
-Ÿ
-n	ò
-Ÿ
-Ÿ
-Ÿ
-Ÿ
-
-Ÿ	ò	òÛÛ	 	 	)
- 	)	)	Ä	Ä			Ä
-W
-¬	Î	õ	õ
-
-›
-	0
-
-	√
-ö
-ö	√	é
-d
-d	é
-d
-d	˘	˘	˘	˘	˘	"			o
-F	:	:	•	•	o	o	o	o	€	€	€	
-
-
-n
-n
-§
-§
-9
-9	G
-
-	G	≥‹
-
-Ù*
-S	}	}
-
-	G	G	,	,
-n
-n¡
-n
-Ÿ
-
-9
-9	Õ
-§
-
-
-
-
-
-
-
-
-n
-n
-n
-n
-n
-n	 	 	 	 	)
- 	)	)	Ä	Ä			Ä
-W
-¬	Î	õ	õ
-
-›
-	0	0	0Ì	√
-ö	√	é
-d
-d	é	é	é	˘	˘	˘	˘	˘	"			o
-F
-
-	•	•	o	o	o	o	€	€	€	
-
-	ò	ò	Õ	Õ
-9
-9	G
-
-	G	≥‹	G
-*
-S
-S
-S
-
-	G	G
-
-EE
-n
-n
-Ÿ
-
-§	Õ
-
-	,	,
-
-
-
-	ò	ò	ò	ò
-n
-n
-k
-k	î	î	î	î
- 
- 	∂	∂	∂ﬂ			Î	Î˙˙	—
-ß
-ß	—	e	e	˘	˘
-d	é	X
-/	√	√	˘
-œ;
-d	˘	"	"	"	o	o
-±	€
-|
-|
-
-	:	:	:	:	o	o.		ò	ò
-
-	b	Õ	Õ	≥	≥	≥	≥	}	}	}	}
-
-	≥	≥	≥	≥	G	G
-n
-n
-n
-n	ò	ò
-
-
-
-
-n
-n	Õ˜	b	b	Õ	Õ	Õ˜å	b	Õ	Õ	ò	ò
-k
-k	î	î	î	î
- 
- 	∂	∂
-å	∂					—	—˙	—
-ß	—
-<
-<
-œ
-œ
-d	é	X
-/	√	√	˘
-œ;	˘	"	˘	˘
-F
-F
-±	€
-|
-|
-
-	:	:
-
-
-F
-F		€
-n
-n
-
-
-9
-9	Õ	Õ	≥	≥	≥	≥	}	}	}	}
-
-	≥	≥	≥	≥	G	G	ò	ò	ò	ò¡¡	,	,	,	,
-n
-n	Õ
-§
-9
-9	Õ	Õ	Õ˜	b
-9	Õ	Õ	ò	ò
- 
- 
- 
- 
-k
-k
-÷
- 
-å
-å
-å	∂	Ä™		
-<
-<	e	e	e	e
-<
-<
-œ	˘	é	é	√	√	√	√;
-d¶
-œ	é
-d
-d
-d
-±
-±
 F	o
+F	€	€	•	•	:
+
+i@
+i@	'	'ºº	≠	≠	≠	≠	„	„
+N	x	Ö	Ö	Ö	Ö	Ò	Ò	Ò
+«
+¨ˇ	j	jˇˇ	÷	÷	5	5	†	†	j	j	j	j	j	j	j
+A
+A
+A	÷	÷
+&
+&	ª	ª
+&
+&	ª	ª
+
+	5	5	5	5	Ë	Ë
+S*	≥	≥	G
+
++	¿È¥¥	ä
+a
+Á
+	•	•	•
+|	•
+|	€		o	o			€	€	o	o	o	o	o
+F	€	€
+|
+|
 
 Á
-|	•	•	•
+i@
+i	ì	'	'ºº	≠	≠	≠	≠	„	„
+N	x	Ö	Ö	Ö	Ö	Ò	Ò	Ò		÷	÷	j	jˇˇ	÷	÷
+
+	†	†	j	j	j	jîîî	j	j	jˇˇ
+&
+&	ª	ª	P	P	ª	ª
+
+
+‚
+‚
+
+	Ë	Ë	Ë
+ø
+	G	G	G	ä	ä	ä	äÈÈ	U
++
+
+	•	•			€	€	:	:	:	:	:	:	•	•	•œ	•	•
 |
-|	€
-±	€
+|
+
+	€
 ±
-Ÿ
-	ò	ò	b	b	b	b	≥	≥	G
-	}	}	}	}
-â	≥	≥‹	≥
+±	€
+4
+4	»	»	ìºº	ì	B	B◊	≠	B	B	B
+
+\
+\	Ò	Ò	ª	ª	ª	ª	j
+A
+A	jˇˇˇ	÷
+‚
+‚
+w	†	j	j	jî)ˇˇˇˇˇˇˇ		Ò	ÖØ	Ö	Ö	ÖØ	†	†
+
+	†	†	Ë	Ë	Ë
+ø	Gq	G	G	ä	ä	ä	äÈÈ	U
++
+
+	•	•			€	€	:	:	:	:	:	:	•	•	•œ	•	•
+|
+|
+
+
+±à
+±	€	]	]	»	»	ìºº	ì	B	B◊	≠	B	B	B
+
+\
+\	Ò	Ò	ª	ª	ª	ªî	j
+A	jˇˇˇ	÷
+
+M
+w	j	j	jîˇ	÷ˇˇˇˇˇˇ	Ò		ÖØ	Ö	Ö	ÖØ	†	†	5	5	†	†	}¶¶¶‹‹	G
+	ˆ		ä	ä	U	U
++
++
+
+	:	:	€	€	o
+F	:	:
+	:	•	•
+
+	•	•	:
+
+|
+|
+
+
+F
+F
+±		]	]	]	]	'	'º	ì	B
+	≠	≠
+
+Ô	≠
+Ñ
+«
+«
+«	Òy	P	ª	ªˇˇ	÷	÷ˇˇ	÷	÷	†	†
+w
+w	j	j	÷ˇ
+A	j	j	jˇˇˇˇ			Ö	Ö	Ò	Ò			5	5	†	†	5	5	}¶¶¶‹‹	G
+	ˆ		ä	ä	U	U
++
++
+
+
+
+
+±
+±
+F
+
+
+	:	•	•
+
+	•	•c	:	•	•	:	:
+F
+F
+±		]	]	]	]	'	'º	ì	B
+	≠	≠
+
+Ô	≠
+Ñ	Ò	Ò	Ò	y	P	ª	ª	÷	÷	÷	÷	÷	÷	÷	÷	†	†
+w
+w	j	j
+¨	÷
+A	jîîˇˇˇˇ			Ö	Ö				
+
+	†	†	5	5	Gqq	G	}	}	}
+S	oô			•	•	•
+|
+F
+F	€
+±
+Á
+	:
+	€	€			:	:	:	:	o	o..	:	:	:	:	o
+F
+F
+F	»ÚÚÚ	'	'	'	'	„
+∫	„	„
+N	x	x	x
+\	Ö		‰‰
+&	P	P
+&	P	P
+\
+\			†	†
+
+	†	†	†	†
+\	Ö	ÖØy	P‰‰	P
+&	ª	ª	ÖØ	Ö	Ö	ª	ª
+ë
+ë	ÖØ
+	G	G
+	}	}	}
+S
+F	o			•	•	•
+|	o	o		€
+	:c	:	€	€	€	€	:	:
+
+	o	o		
+
+	:	:	o
+F
+F
+F	»ÚÚÚ	'	'	'	'	„
+∫	„	„
+N	x	x	x
+\	Ö			ª	ª	Py	P
+&	P	P
+\
+\	Ò	Ò	†	†	5	5	†	†	†	†2
+\	ÖØy	P‰‰	P
+&	ª	ª	Ö
+\
+\
+\	ª	ª	ª	ª	ÖØ
 â
+â	≥
+â	;¶	}	o	o	€	€	•	•	•
+|
+F	o	€	€	:	:œ	•	€	€	o	o	•	•
+|	•	€	€	€	€
+
+	•	•		€
+F	oÚÚÚ
+ü
+i
+i	'	'	„	„	„	„	x	x
+N
+N2	Ö	Ö	Ö	ª	ª	P	P	ª	ª
+&
+&
+«
+«
+«
+«
+w	†
+
+	5
+
+	5
+\
+\		Ò	ª	ª
+&	P	P	P”
+˝	Ò	Ò
+\	Ö
+ë
+ë	ª	ª	Ò	
 â
-â
-
-	,	,¡¡¡	ò¡	ò
-
-	Õ	Õ
-9	b	b	b	Õ	Õ
-9
-9	Õ
-§
-Ÿ
-
- 
- 
- 
- 
+â	≥‹	;¶	}	o	o	€	€	•	•	•
+|
+F	o	€	€	:	:œ	•	€	€	o	o	•	•
+|	•	€	€	€	€
+
+	•	•		€
+F	oÚÚ	»u
+i
+i	˛	˛	„	„			x	x	x	x
+\
+\	Ö	Ö	ª	ª
+&
+&	ª	ª
+&
+&
+«
+«
+«
+«	† 	5	5	5
+
+	5	Ö	Ö		Ò	ª	ª
+&	P	P	P-™
+«
+«
+\	Ö	ª	ª	ª	ª	Ò		≥	≥	G	G			}	}	:	:	•	•	o	o	€	€	•	•
+
+	o	o	o	o	:	:	•
+|	o	o	o	o	•	•	•	•	•
+|	•	•	:	:	•	•	'	'	˛
+‘	»	»
+4
+4
+
+	Bl			x
+N	ª	ª	ª
+ë	Ö	Ö
+\
+\
+&
+&	ª	ª	P	P	ª
+ë	†	†	5	5	†	†
+	5	Ö	Ö		ØØ			P	P
+ë
+ë2	2
+\	Ò	Ò	Ò	Ò	Ö	Ö‹‹	G	G			}	}	:	:	•	•ôô	€	€	•	•
+
+	o	o	o	o	:	:	•
+|	o	o	o	o	•	•	•	•	•
+|	•	•	:	:	•	•	'	'	˛
+‘	»	»
+4
+4
+
+	Bl			x
+N	ª	ª	ª
+ë	Ö	Ö
+\
+\
+&
+&	ª	ªyy	ª
+ë	†	†	5	5  	5
+	Ö	Ö		ØØ			P	P	ª	ª
+\22
+\	Ò	Ò	Ò	Ò	Ö	Ö	≥‹‹‹			Ë	Ë	•	•	:	:		
+F	o	:
+
+
+	€		o	o
+
+
+
+	€	€		œ	•	•	•	•	•
+
+
+|
+|
+
+	˛	˛
+‘	˛Ú	»	»	»
+Ñ	≠	≠◊	x	x			ª	ª	ª	ª	Ö	Ö		Ò
+ë	ª	ª	ª‰‰	P	P	5	5	5	5 	†	†	†				Ò	Ò	Ò	ÖØ
+&
+&	P	P
+\
+\	Ò	Ò	Ò	Ò
+\	Ö		
+â	≥‹‹					•	•	:	:		
+F	o	:
+
+
+	€		o	o
+
+
+
+	€	€		œ	•
+|
+|	•	•
+
+
+|
+|
+
+	˛	˛
+‘	˛Ú	»	»	»	≠
+Ñ
+Ñ	≠	x	x	„	„
+ë
+ë	ª	ª	Ö	Ö		Ò
+ë	ª	ª	ª‰‰	P	P
+
+	5	5 	†	†	†				Ò	Ò	Ò
+\	Ö	P	P
+&
+&
+\
+\	Ò	Ò
+«
+«2
+\			î	î	î	î	_	_àà	î
+k	î	î	_	_	 Û	)	)	î
 k
+÷
+ 	î
+k
+÷
+ 
+k	î	 	 	_	_	Â	Â	Â	Â	Ø	Ø	Ø	Ø
+
+
+	6	≠
+Ñ
+Ñ	≠			„	„	˛´@
+i	˛	˛	ì	ì
+
+	5	5	j	j	j	j
+ë
+ë	ª	ª	Ò	Ò	Ò	Ò	˜	˜	å	åÎ	¬
+-	V				õ	q	q	q	<	<
+}
+}	ß	ß–	ß	¬	¬	¬	¬	î	î	î	î	_	_	_	_	î
+k	î	î	_	_	 Û	)	)	î
+k
+÷
+ 	î
 k
  	)
-å
-åc
-å
-W	Ä			e	e	e	e	e	e	e	e	˘	"	é	éÌÌ
-ö
-ö;
-d
-œ	˘	é
-d	é	é	€	€
-F	o
-
-Á
-|	•	•	•RR	€
-±	€
-±
-Ÿ
-	ò	ò	b	b
-9
-9	≥	≥	G
-
-S
-S
-S
-S
-â	≥
-â	≥	≥
-â
-â
-â
-
-	,	,¡¡¡	ò¡	ò
-
-	Õ	Õ	b
-9	b	b	Õ	ÕÊ
-9	Õ
-§
-Ÿ
-
-5
-5	_	_	_
-5	0
-	õ	õ	—˙	e	e	Î	Î	Ä	Ä	Ktﬂ	∂	ﬁ	ﬁ	s
-I	=	=
-
-
-ö	√	X	XÌÌ	X
-/	Ë	Ë	Ë	Ë
-
-Ù
-
-	}¶	Ë	Ë	}	}	}
-S
-+
-+	¿	¿	ä
-a77
-ñ	¿	¿
-ñ	¿	¿	¿	¿	¿	¿
-+
-+
-+
-+	¿	¿	¿	¿	¿	¿ÈÈÈ	¿			ä	ä	¿	¿
-ñ
-ñ
-	:œ	•R
-|	•	•
-±
-±	_
-5
-5	_	_	_
-5
-	0	õ	õ	—˙	e	e	
-¬
-W
-W
-!	Kﬂ	∂	ﬁ	ﬁ	s
-I
-
-
-
-
-ö	√	X	XÌÌ	X
-/	Ë	Ë	Ë	Ë
-	G	G	G	}
-S	Ë	Ë	}	}	}
-S
-+
-+
-ñ
-ñ
-a777
-ñ	¿
-ñ	¿	¿	¿	¿	¿	¿	¿	U	U	U	U	¿	¿	¿	¿	¿	¿	¿	¿È	¿			ä	ä	¿	¿
-ñ
-ñ
-Á
-œ	•
-|	•	•	•	€	€	_	_
-5
-5Û	 	 	 
-
-	0	0	e	e	e	e	Ä
-W
-W-
-¯
-!	∂	∂	s	s	s	s“	®
-
-	√	√	√	√	X	X	√	√	Ë	Ë
-ø
-ø
-Ù	G	G
-	Ë
-ø	}	}	Ë		Ë
-ø	¿	¿	¿	¿	ˆ	ˆ
-a
-a	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	U	UÈ	¿	¿	¿
-+	U	U	UÈÈ	ä	ä			U	U
-+
-+
-
-	:	:	•	•	•	•	€	€	_	_	_	_Û	 	 	 
-
-	0	0	e	e	e	e	Ä
-W
-W-
-¯
-!	∂	∂	s	s	s	s	®
-
-
-	√	√	√	√	X	XÌÌ	Ë	Ë
-ø
-ø
-Ù	G	G
-	Ë
-ø
-S
-S	Ë			Ë	¿	¿	¿	¿	ˆ	ˆ	ä	ä	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	¿	U	UÈ	¿	¿	¿
-+	U	U	U	¿	¿	ä	ä			U	U
-+
-+
-
-	:	:	•	•	•	•
-±
-±	î
-k	î	î	 Û	 	 
-
-
-
-	—	—	—	—	∂	∂	∂
-å
-!
-!	∂ﬂ““	®	®	®
-
-	=	X
-/
-ö
-ö	X	X	√	√	G	G	G	G
-
-
-	G	≥
-â
-â
-â	Ë				ˆ	ˆ	ä	ä	¿	¿	¿	¿
-Ã	ˆ
-a
-a	ä¥¥
-a
-+
-+	U	ˆ	ˆ
-a
-a	¿	¿	U	U			ˆ	ˆ	ä
-a		ˆ
-+	U
-+
-+
-F	o	o	o
-±
-±	o	oR
-|	î
+k	î	 	 	_	_	Â	Â			Ø	Ø	Ø	Ø
+
+
+	6	≠
+Ñ
+Ñ	≠	„	„	„	„	˛	˛
+i@
+‘
+‘	ì	ì
+
+	5	5	j	j	j	j
+ë
+ë	ª	ª	Ò	Ò	Ò	Ò	˜	˜	å	åÎ	¬
+-	V	‹	‹		õ	q
+H
+H	<	<
+}
+}	ß	ß–	ß
+-
+-	¬	¬	¬	¬	î
+k
+ 	)	 	 	_	_
+k
+k	î	î	 	 	_	_	)	)
 k
 k
-k	 Û	 	 
-
-
-
-	—	—	—	—	∂	∂ﬂ	∂
-!
-!
-å	∂	®	®	®	®	®
-
-	=	X
-/	√	√	X	X	√	√
-
-	G	G
-
-
-	G	≥
-â
-â
-â
-ø	Ë			ˆ	ˆ	ä	ä
-ñ
-ñ
-ñ
-ñ
-Ã	ˆ	ä	ä	ä¥¥
-a
-+
-+	U	ˆ	ˆ
-a
-a	¿	¿	U	U	ˆ	ˆ	ˆ	ˆ	ä
-a	ˆ	
-+	U	U
-F	o	o	o	€	€	o	o	•
-|	)
 ÷
-÷
-÷
+ 	î	î	)	)
+ 
+ 
 5
-5	 	 
-	0	0
-	—
-ß
-å	∂	K	K	K	K	∂	∂	®	®	=	=	®	®	®	®	√	√Ì	√
-/	X	√	√	G
-
-
-
-
-	≥	≥	≥	≥
-
-
-ø
-ø
-S
-S
-Ã
-Ã
-a
-a
-ñ
-ñ
-ñ	¿	ˆ	ˆ
-Ã	ˆ		
-a
-amC
-+	U			ä	ä
-+
-+	U	U	ˆ	ˆ	ˆ	ˆ	ˆ	ˆ	ä	ä	¿	¿	U
-±
-±	€	€	€	€			:	:	)
-÷
-÷
-÷
-5
-5	 	 	0YY	0	—
-ß
-å	∂	K	K	K	K	∂	∂	®	®	=	=““	®	®	√	√Ì	√
-/	√	√	G
-
-
-
-
-	≥	≥	≥	≥
-
-	Ë	Ë
-S
-S
-Ã
-Ã
-a
-a	¿	¿
-ñ	¿	ˆ	ˆ
-Ã	ˆ		
-a
-a
-ñm
-+	U			ä	ä
-+
-+
-+
-+	ˆ	ˆ			ˆ	ˆ	ä	ä	¿	¿
-+
-+	€	€	€	€	€	€			:	:
+5ÛÛ	z	z	Â	Â	Ø	Ø	D
 
-Ò
-Ò
-Ò
+
+
+	6	B	B
+
+
+N%
+∫	„
+iº	ì
+i
+‘	˛	'	'	†
+w	† 
+A	j	j
+A	ª	ª	ª	ª	Ò	Ò
+\
+\
+b
+b	åµÎ	¬	¬	¬	‹						‹
+≥	ß	ß
+	<	<	<	ß	ß	¬
+ò	¬	¬	V	V
+kA
+ 	)	 	 	_	_	î	î	î	î	 	 
+5
+5
+ 
+ 
+k
+k
+ 	)	î	î	)	)
+ 
+ 
+5
+5ÛÛ
 P
-P	Â	Ó≈	õ	õ
-
-›≥ä
-<
-<
-›
-	0	0	X	X	√	√∑∑	˘	˘
-I
-I	ﬁ
-µ 
-I	s	s	}
-S
-S	}	}	}	Ë	Ë	,	,	ò
-n	Õ	Õ˜	Õ	€
-±
-±	€	•	•
-|
-|
-+
-+	U
-+	ˆ		ˆ	ˆ
-+
-+	¿	¿	ˆ		ä	ä
-|R	•	•	•	•œœ	•
-|
-
-
-	:
-|
-|
-a	ä	ä	ä	¿	¿	¿	¿	€	€
-
-Ò
-Ò
-Ò
 P
-P	Â	≈	õHH
-
-›ä`ÈÈ
-›
-	0	0	X	X	√	√∑∑	˘	˘
-I
-I	ﬁ
-µ
-I	s	s	s	}
-S
-S	}	}	}	Ë	Ë
-
-¡	ò	Õ	Õ˜	Õ	€
-±
-±	€	•	•
-|
-|
-+
-+	U
-+	ˆ				U	U	¿m	ˆ		ä	ä	•
-|	•	•	•	•	•	•	•
-|
-
-	:
-
-|
-|
-a	ä	ä	ä	¿	¿	¿	¿	€	€
+ª
+ª	Ø	Ø	D
 
-
-
-	Â	Â	Â	
-r
-r
-r
-r
-≥HH
-ß
-ß
-<≥
-	õ
-r	√	√	X	X	"	"	˘	˘
-I
-I
-I
-I
-I
-I
-I
-I	Ë	Ë
-ø	Ë	}	}	Ë
-ø
-n
-n	,
-	Õ	Õ
-9
-9	€
-±
-±	€	•	•	•	•	¿	¿	U	U	ä	ä	ä	ä	¿	¿	U
-+	ä	ä			•	•
-	:	•	•
-
-	•	•
-
-
-
-
-|	•	ˆ	ˆ	ˆ	ˆ	¿	¿	¿	¿	o	o
-
-	D	D	Â	Â	8	õ	õ	õ	õ
-
-
-r
-r	—	—
-<	e
-
-
-r	õ	√	√	X	X	˘	˘	˘	˘
-I
-I
-I
-I
-I
-I
-I
-I	Ë	Ë	Ë		}	}		ËEE
-Ÿ
-	Õ	Õ
-9
-9	€
-±
-±	€	•	•	•	•	¿	¿	U	U	ä	ä	ä	ä
-ñ
-ñ	U
-+¥¥			•	•
-	:	•	•
-
-	•	•	:	:
-
-
-|	•			ˆ	ˆ	¿	¿	¿	¿	o	o	Ø	Ø	D	D	D	D	D	D	0	0	õ	õ	õ	õ
-
-
-r
-r
-r	õ	õ
-r
-	0
-/
-/	X	X
-ö
-ö
-ö
-öˆ 	ﬁ
-µ
-
-	®
-
-ø	Ë	}	}	}	}
-S
-S
-9
-9	Õ	Õ	Õ
-§
-§
-§
-Á
-Á
-Á
-	•	•	•	•	ä	ä	ä	ä	ˆ				ˆ
-Ã
-a
-a	ä¥		
-
-
-	:
-F
-F	€	€	•	•	:	:	€
-±
-±	€	ä	ä	ä¥			ä	ä	•
-|	Ø	Ø
-
-
-
-
-
-
-
-
-r
-r	õ	õ
-
-	õ	õ
-r	õ	õ
-r
-	0
-/
-/
-/
-/	√	√
-ö
-ö 
-I		ﬁ
-
-	®
-
-ø	Ë	}	}	}	}
-S
-S	b	b	Õ	Õ
-§	Õ	Õ	Õ
-Á
-Á
-	:	•	•	•	•	ä	ä	ä	ä	ˆ					ˆ77	ä¥		
-
-
-	:
-F
-F			•	•	:	:	€
-±
-±	€
-a
-a	ä¥			ä	ä	•
-|Ÿ	Ø	D	D
-
-	Ø	Ø
-
-	õ≈≈	õ	õ	õ	õ	õ
-
-
-
-	õ	õ
-/
-/	√	√Ì	√
-/
-/
-I
-I	ﬁ	ﬁ
-
-
-
-	Ë	Ë	}
-S
-S
-S
-S
-S	b	b	Õ	Õ
-9
-9˜	Õ
-
-Á
-|œ	:
-
-|
-|	ä	ä
-a
-a	ä¥¥¥		
-a
-a			ä
-a
-
-
-|
-|
-F
-F	o	o	:	:	•	•	€	€
-F
-F	ä
-a	ä	ä		
-a	ä	•	•Ÿ	Ø	D	D	D	D	Ø	Ø	0	0	õ≈≈	õ	õ	õ
-r
-r
-
-
-
-	õ	õ
-/
-/	√	√Ì	√	X	X
-I
-I	ﬁ	ﬁ
-
-	=	=	Ë	Ë	}
-S
-S
-S
-S
-S
-9
-9	Õ	Õ
-9
-9˜	Õ
-
-Á
-|œ	:
-
-|
-|	ä	ä
-a
-a	ä¥¥¥			ä	ä			ä
-a
-
-
-|
-|
-F
-F	o	o	:	:	•	•	€	€	o	o¥	ä	ä	ä	ˆ	ˆ
-a	ä	•	•	Î	Î
-W
-W	K	K	∂	∂ææ
-k	îÛÛ	_	_	 
-†	_
-5	 	 	 	 	Ú	Ú	á∞∞	á			á	á	Ú	Ú	Ú	∞	á	ä	ä			ˆ	ˆ	ˆ	ˆ	ˆ	ˆ
-a
-a
-+	ˆ
-Ã	ä	ä	U	U
-+
-+	U
-+	¿	¿	ä	ä			ò	ò
-
-	b	b	b	b	}	}	Ë	Ë	≥‹‹	≥	ä	ä	ˆ	ˆ	U	U	¿	¿	ä
-a
-Ã	ˆ	¿	¿
-+
-+	•	•	Î	Î
-W
-W	K	K	∂	∂æææ	î	 	 	_	_Û	 	_
-5	 	 	 	 			á∞∞	á			á	á	Ú	Ú	Ú	∞	á	ä	ä			ˆ	ˆ	ˆ	ˆ	ˆ	ˆ
-a
-a
-+
-+
-+	ˆ
-Ã	ä	ä	U	U	U	U	U
-+	¿	¿	ä	ä	ˆ	ˆ	ò	ò
-
-	b	b	b	b	}	}	Ë	Ë	≥‹‹	≥	ä	ä	ˆ	ˆ	U	U	¿	¿	ä
-a£
-Ã	¿	¿
-+
-+	•	•	Î
-¬	Î	Î	K
-!	K	K	)	)	)	)
-5
-5ÛÛ	 
-†
-5
-5	 	 	_	_	á∞	á	á			Ú	Ú	Ú	Ú	Ú	Ú	Ú	Ú		Ú
-a
-a	ˆ	ˆ	ˆ
-Ã	ˆ	ˆ	ˆ	ˆ
-a	äÈ	¿
-ñ	¿	ˆ	ˆ
-a	äÈÈÈÈ	U	U
-+
-+	ä	ä
-a
-a
-
-Ÿ
-n	ò	Õ	Õ	Õ	Õ	}¶		Ë
-	G	≥	≥	ä	ä	ä	ä
-+
-+
-+	U	ä
-a7
-a	¿	¿
-+	•	•	Î
-¬	Î	Î	K
-!	K	K	)	)	)	)	_	_ÛÛ	 
-†
-5
-5	 	 
-5
-5	á∞	á	á			Ú	Ú			Ú	Ú	Ú	Ú		Ú	ä	ä			ˆ
-Ã
-Ã
-Ã	ˆ	ˆ	ä¥È	¿
-ñ	¿	ˆ	ˆ	ä
-a	¿	¿ÈÈ	U	U
-+
-+
-a
-a	ä	ä
-
-Ÿ
-n	ò	Õ	Õ	Õ	Õ	}¶		Ë
-	G	≥	≥¥¥	ä	ä
-+
-+
-+	U¥	ä
-a	ä
-ñ
-ñ
-+	•	•	Ä
-W	Ä	Ä	Î	Î	Ä	Ä	î	î	)	)	 	 	_	_	 
-†
-5
-5
+
+
+	6	B	B
+
+	x
+N	„		ì	ì	ì
+i	˛	'	'	'	†
+w	† 
+A	j	j
+A	ª	ª	ª	ª	Ò	Ò	Ö	Ö
+b
+b	åµÎ	¬	¬	¬	‹							‹	ß	ß	<e	<	<	ß	ß	¬
+ò
+ò
+ò	V	V
+ 
 ÷
-÷
-k
-k
-]
-]	á	á	á	á	Ú		Ω	Ω	Q	Q	Ú	Ú	á	á					U
-+
-+
-+	U	U	U	U
-+	¿	¿
-ñ
-ñ
-+
-+
-Ã	ˆ	ä¥ÈÈÈ	¿	ˆ	ˆ	ä	ä
-9
-9	Õ˜	b
-9	Õ	Õ	Ë				≥	≥	G	GÈÈ
-ñ
-ñ	ˆ	ˆ
-a	ä	ä	ä	ä	ä	ˆ	ˆ	ˆ	ˆ	:	:	Ä
-W	Ä	Ä			Ä	Ä	î	î	)	)	 	 	_	_	 
-†
+k	î
+kÓ
+kA	î	î	)	)	_
 5
-5
-÷
-÷
-k
-k
-]
-]
-]
-]
-]
-]	Ú	ÊÊ	Q	Q	Ú	Ú	á	á					U
-+
-+
-+	U	U	U	U
-+	¿	¿	¿	¿
-+
-+	ˆ
-Ã
-a	äÈÈÈ	¿	ˆ	ˆ	ä	ä
-9
-9	Õ˜	b
-9	Õ	Õ	Ë				≥	≥	G	G	¿	¿
-ñ
-ñ
-Ã
-Ã
-a	ä
-a
-a	ä	ä	ˆ	ˆ	ˆ	ˆ	:	:
-W	Ä
-W
-W			Î	Î	îæ	)	)	_	_	 	 
-5
-5
-5
-5
- 
- 
-k	î	á
-]
-…
-…
-]
-]
-]	á	Q	Q	Q
-(	á
-]						~	U	U
-+	¿	¿	U	U~
-+
-+	U	¿	¿	U
-+
-a
-a
-a
-a
-+	U	¿	¿			ä	ä	Õ	Õ	Õ	Õ	b
-9	Õ	Õ	}	}	Ë	Ë
-	Gq	G	¿	¿	U	U	ˆ	ˆ£
-Ã
-Ã	ˆ		
-Ã
-Ã
-a	ä	•	•	Ä™™
-W			Î	Î
-k	î	)	)	_	_	 	 
-5
-5
-5
-5
-÷
-÷
-k	î	á
-]	Ú	Ú	á	á	á∞	Q	Q
-(
-˛
-]	á	Ú	Ú				~	U	U
-+	¿	¿	U	U
-+
-+
-+	U	¿	¿	U
-+7	ä	ä7
-+	¿	¿			ä	ä	Õ	Õ	Õ	Õ	b
-9	Õ	Õ	}	}	Ë	Ë
-	G	G
-	¿	¿	U	U	ˆ	ˆ
-Ã£
-Ã	ˆ		
-Ã
-Ã
-a	ä	•	•	eè	—	—	0	0	õ	õ
- 
- 	î	î	î	î	î	î
-5
-5	 
-†
-5	_			á	á	á	á	á∞	Q	Q	Q
-(
-(
-(
-(
-(	€	€
-F	oœ	•	•
-|
-a	ä	ˆ
-Ã
-Ã	ˆ
-Ã
-Ã
-|	•	•
-|
-|	•	•
-|	ä
-a	ˆ	ˆ	ä	ä	ˆ	ˆ	Õ	Õ	b
-9
-§
-§	b	b	G	G
-
-Ù
-	G	≥
-â	€
-±
-±
-±
-Á
-Á	•
-|
-a
-a	ä	ä	ˆ	ˆ	ˆ		€	€
-<	e	—	—
-
-	õ	õ
- 
- 	î	î	î	î	î	î	_	_	 
-†
-5
-5
-5	_			á	á	á	á	á∞	Q	Q	Q
-(
-(
-(
-(
-(	€	€
-F	oœ	•	•
-|
-a	ä	ˆ
-Ã£
-Ã
-Ã
-Ã
-|	•	•
-|
-|	•œ	•	ä
-a	ˆ	ˆ	ä	ä	ˆ	ˆ	Õ	Õ
-9
-§
-§	b	b	G	G	G
-
-	G‹	≥	€
-±	€	€
-Á
-Á
-|	•
-a
-a	ä	ä	ˆ	ˆ	ˆ		€	€	e	e	—˙	õ	õ	õ	õ
- 
- 	î	î
-k	î	)	)	 Û	 	 	 	 
-5	_	Ú	Ú	á
-]
-]
-]	Ú	Ú	Q
-(
-(
-(
-(
-˛
-ì	Ω	o	o	o	oœœ	:	:		ˆ	ˆ	ˆ
-a
-a
-a
-a
-	:	:
-
-|
-|	:	:
-a7	ˆ	ˆ	ˆ	ˆ
-a
-a	Õ	Õ
-9
-9	Õ	Õ˜˜	G	G	G	G	≥	≥
-	G	o
-F
-F
-F	•
-|
-Á
-Á
-Ã
-Ã	ˆ	ˆ
-a	ä	ˆ			€
-<
-<	—˙	õ	õ	õ	õ
- 
- 	î	î
-k	î	)	)	 Û	 	 
-†
-†
-5	Ú	Ú4
-]
-]
-]	Ú	Ú	Q
-(
-(
-(
-(
-˛	ΩÊ	o	o	o	o	•	•	:	:		ˆ	ˆ	ˆ	ä	ä	ä	ä
-	:	:
-RR
-
-
-a7	ˆ	ˆ	ˆ	ˆ
-a
-a	Õ	Õ
-9
-9	Õ	Õ	Õ	Õ	G	G	G	G	≥	≥
-	Gô	o
-F
-F	•
-|
-Á
-Á
-Ã
-Ã	ˆ	ˆ
-a	ä	ˆ			€	õ	õ	0
-
-<	e	—	—	î
-k
- 
- 	 	 	 	 	_	_	 
 †
 †	 
-†
-†	Ú	Ú	Ú	Ú	Q
-(	Ω	Ω	á	á	á
-]
-(
-(	Q	Q		€
-±àRR
-	:	¿	¿	¿	¿		¥	ä	•œ	:
-
-±
-±	€	€
-+
-+	¿	¿
-+
-+	U
-+
-
-Ÿ
-n
-n
-§
-§	Õ
-§
-â	≥	G
-	Ë
-ø
-S¶	o	o	€	€	€
-±
-±
-±
-ñ
-ñ
-ñ
-ñ
-a	ä¥¥œ	•	õ	õ	0
-
-<	—	—	î
+†	 	 	 	 	_	_
+ 	)	î	î	î	î	î	î
+P
+P
+P
+P	D	D	Ø	Ø	¢
+x	¢	¢°°				„	„		˛	˛
+i
+i	ìºººˇ	÷	÷ˇ	†	†	†	†‰‰	P
+&
+&
+&	ª	ª
+-	V	V	VÎ	¬	¬	¬	<
+
+	<	ß	ß	ß	ß	ß	ß	<	<
+H	q	q
+H	˜	˜	˜	˜	å	å
+ 
+÷
+k	î	î≈A
+k	î	î	)	)à	_	 	 	 
+†	 	 	 	 	_	_
+ 	)	î	î	î	î	î	î
+P
+P
+P
+P
+
+	Ø	Ø	¢
+x	¢	¢	x	x				„
+∫	„	˛	˛
+i
+i
+i	ìººˇ	÷	÷ˇ	†	†	†	†	ª	ª	P
+&
+&
+&	ª	ª
+-	V	V	V
+ò	¬	¬	¬	<
+
+	<––	ß	ß
+}
+}
+
+
+H	q	q
+H	˜	˜	˜	˜	å	å
+kA
+k
+k	î
+k
+k
 k
  
- 	 	 	 	 	_	_Û	 	 Û
+ 
+ 	)	_	_
+5
+5
+5
+5	 Û	 	 
+†	 	îæææ	î	î	î	î	Â
+ª
+ª	Â
+	D	Ø	Ø
+
+	¢	¢	x	x	„	°	x
+N
+N
+i	ì	ì	ì
+i
+i	˛	'	j
+Aˇˇ	5	5	5	5
+ë	ª	P
+&
+&	P	P	P	V	V	V
+-	¬	¬	V	V
+
+È
+}	ß˙	ß
+
+
+
+
+	<	q	q		‹
+Œ
+Œ
+b
+b	˜	˜
+kA
+k
+k
+kA
+k
+k
+ 
+ 
+ 	)	_	_
+5
+5
+5
+5
+†	 	 	 
+†	 
+k	îææ	î	î	î	î	Â
+ª
+ª	Â
+	D	Ø	Ø
+
+	¢	¢	x	x	„	°	x
+N
+N
+i	ì	ì	ì
+i
+i	˛	'	j
+Aˇˇ	5	5	5	5
+ë	ª	P
+&
+&	P	P	P	V	V	V
+-	¬	¬
+-
+-
+Èø
+}	ß––
+
+
+
+
+	<	q	q		‹	˜	˜
+b
+b	˜	˜
+P
+P
+ª
+ª
+Ü
+Ü
+	D	)	)	î	î	)	)
+ 
+ 
+Ò
+
+Ü
+Ü	Â	Â	Â
+ª
+5
+5	 
 †
-†	Ú	Ú			Q
+ 	)	î	î	D
+
+	D	Â	Â	Â		Ω	Ω	Q{°	x	x	x	B	B	≠
+Ñ
+
+
+4
+4	˛	˛	˛	˛	P	P	P
+&
+&
+˝
+&	P		Ò
+\	Ö	ª	ª	P	P
+H	q
+H
+H
+È
+	ß	ß
+≥
+≥
+H
+H
+H	q	‹		<	<	ß	ß	<	<
+
+	å	å	å	å
+-
+-
+P
+P
+ª
+ª
+Ü
+Ü
+	D	)	)	î	î
+ 
+ 
+ 
+ 
+Ò
+
+Ü
+Ü	Â	Â	Â
+ª
+5
+5
+†	 	)Sææ	D
+
+	D	Â	Â	Â		Ω	Ω	Q{°	x	x	x	B	B	≠
+Ñ
+
+
+4
+4	˛	˛	˛	˛	P	P	P
+&
+&
+˝
+&	P		Ò
+\	Ö	ª	ª	P	P
+H	q
+H
+H
+È
+	ß	ß	‹	‹
+H
+H
+H	q	‹		<	<––	<	<
+
+
+b
+b	å	å
+-
+-	Â	Â
+P
+P	Ø
+Ü
+	D	)	)	îæ	îæ	)
+ 	Ø	Ø	Ø	Ø	z£		Â
+†
+†
+†	 	)Sææ	D	D	D	D		Â	z	z
+(
+(
+({°	x	„	„	B	B	≠
+Ñ
+4
+4
+4
+4	ì	ì	'	'‰	ª
+ë	ª	ª‰‰			Ò	‰‰‰	ª	q	q	‹	‹
+}
+}
+	<	q	q	q	q	q
+H	q	q
+
+	<	<	ß	ß	ß	ß	˜	˜
+b
+b
+-
+-			z	z	Ø
+Ü
+Ò
+	)	)
+k	î	îæ	)
+ 	Ø	Ø	Ø	Ø	z£		Â
+†
+†	 Û	)Sææ	D	D	D	D	Â
+ª	z	z
+(
+(
+({°	x
+∫
+∫	B	B	≠
+Ñ	]	]	]	]	ì	ìQQ‰	ª	ª
+ë	ª	ª‰‰			Ò	‰‰‰	ª	q	q	‹	‹
+}
+}
+	<	q	q	q	q	q
+H	q	q
+
+	<	<	ß	ß	ß	ß	˜	˜
+b
+b	V	V	z	z	z	z
+
+	D	D	î	î	î	î	 	 	_
+5	Â	Â	Â	Â	z	z		Â
+†
+†
+5	_	)	)	îæŸ	Ø	ØŸ
+
+ŸŸ	Q
+(
+(	Q	x	x
+N
+N	B	B	≠	≠	]	]ÚÚºº	'	'‰	ª
+ë
+ë
+\	Ö	Ò		ª‰
+&
+&	Ò			
+
+ÈT
+}	ß	ß––	‹`	‹		‹	‹	q	q	ß	ß	<	<	<	<
+
+	˜	!	å	å	V	V	z	z	z	z	D	D	D	D	î	î	î	î	 	 
+5
+ª
+ª	Â	Â	z	z		Â
+†
+†	_
+5	)	)æ	îŸ	Ø	ØŸ	D	DŸŸ	Q
+(
+(	Q	x	x	x	x	B	B	≠	≠
+4
+4	»	»ºº	'	'‰	ª
+ë
+ë
+\	Ö	Ò		ª‰	P
+˝
+«	Ò	Ò	Ò
+
+È
+}	ß––––	‹`
+≥	‹	‹	‹	q	q	ß	ß	<	<	<	<
+
+	˜	!	å	å	V	V	Â	Â	z	z
+	D	Ø	Ø
+k
+k	îæ	_	_	 
+†	Â	Â	z	z	z	z	z	z	_	_	_	_	)	)	)	)	D
+
+	D	D	D	D	D	Ω
+ì
+ì	Ω				„	≠	≠
+
+	»	»	»ÚQQ	'	'	P	P	P
+&	Ö
+\
+\
+\
+&	P	ª
+ë2	Ö	Ò	Ò
+
+
+}	ß	<	<	<	<	q	q	‹	‹	qõ	q	q	<	<––––	<	<J	!	!	!ÎÎ	Â	Â
+P
+P
+Ò
+	Ø	Ø	î	î	îæ	_	_Û	 	Â	Â	z	z	z	z	z	z	_	_	_	_
+ 
+ 
+ 
+ 	D
+
+	D	D	D	D	D	Ω
+ì
+ì	Ω				„	≠	≠
+
+	»	»	»Ú	'	'	'	'	P	P	P
+&	Ö
+\
+\
+\
+&	P‰	ª
+\
+\	Ò	Ò
+
+
+}	ß
+
+	<	<	q	q	‹	‹	qõ	q	q	<	<––––
+
+J	!	˜	˜ÎÎ	◊	
+C
+C
+x	¢	6	6	_	_	 	 
+k
+k
+ 
+ 	Â	Â	z	z
+
+
+	DÊÊ	Q	Q
+]
+]	Ú		Ω	Ω	Ω	Ω
+]	á	á	á	¢	¢	¢	¢	x	x		„	≠	≠
+
+	»	»	]	]	ì	ì	ìº		Ò	Ò	Ò		Ò	Ò	Ò
+\	Ö			P
+&	ª‰	ô	ô	ô	ô≤
+€
+
+
+:	d	d	d	ô√
+
+€
+	Iﬁﬁ®			¯	œ
+:
+:	d	d	*	l	l	¢À	6	6	_	_	 	 
+k
+k
+ 
+ 	Â	Â	z	z
+
+
+	DÊÊ	Q	Q	á	á	Ú		Ω	Ω	Ω	Ω
+]	á	á	á	¢	¢	¢	¢°
+N
+∫	„	≠	≠
+
+	»	»	]	]	ì	ì	ìº		Ò				Ò	Ò	Ò
+\	Ö			P
+&	ª‰	ô	ô	ô	ô
+
+€
+
+
+:	d	d	d
+p	ô
+
+€
+	Iﬁﬁ	
+U		¯	œ
+:
+:	d	d	◊	◊
+C	l	¢À`	6ÛÛ	 	 	)	)	î	î	z£	z	z	Ø
+Ü	Dm{	Q
+(
+(	á	á			Q	Q	Q	Q	Ú	Ú∞	á
+
+	6
+	x%gê
+Ñ	≠	≠	≠
+4
+4ÚÚ	'	˛	ì	ì		Ø	Ö	Ò	Ò		Ò
+\	Ö	Ö	Ö
+&	P	Py√√	ô	ô
+p
+p
+≤
+:	d	d	ô	ô	.
+	I
+	¥ﬁ		Í	Í	Í¯	œ	dç	d	d	◊	◊
+C	l	¢À`	6	 	 	 	 	)	)	î	î	z£	z	z	Ø
+Ü	Dm{	Q
+(
+(
+]
+]	Ú	Ú	Q	Q	Q	Q		∞	á
+
+
+
+„
+N
+Nê
+∫
+Ñ	≠	≠	≠
+4
+4ÚÚQ	'	ì	ì		Ø	Ö	Ò	Ò	Ò	Ø	Ö	Ö	Ö
+&	P
+&	P√√	ô	ô
+p
+p
+
+
+:	dçç	ô	ô	.
+
+
+ˆ	¥ﬁ		Í	Í	Í¯	œ
+:	d	d	d
+
+„
+x	¢	6	6
+
+
+5	_	_	_	 	 	_	_	z	z	Â	Â	z	z	8∞∞		
+(
+(	Ω	Ω	á	á	á	á	á	á	á
+]	¢	¢
+xOZ
+Ñ
+Ñ
+Ñ	≠	≠	≠
+Ñ
+üÚá	]ÚÚ	»	»	P
+&	ª	ª	ª	ª	ª	ª	P	P	ª	ª	ª	ª	ª	ªç	d	œ	œ	ô	ô	.	.	ô	ô	.X	.
+
+
+	¥	¥	¥ﬁ	I	I
+
+	ô	ô	ô	ô¯¯
+
+„
+x	¢
+
+
+
+
+5	_
+5
+5	 	 	_	_	z	z	Â	Â	z	z	8∞∞		
+(
+(	Ω	Ω	á	á	á	á	á	á∞	á	¢	¢
+xOZ
+Ñ	≠	≠	≠	≠◊	≠	»	»	]
+4	»	»ÚÚ	P
+&
+ë
+ë
+ë
+ë
+ë
+ë	P	P	ª	ª	ª	ª	ª	ª	d
+:
+•
+•	ô	ô	.	.	ô	ô
+	.	.
+
+
+	¥	¥	¥ﬁ	I	I
+
+	ô	ô√√¯¯
+
+
+
+	¢	¢
+x
+x	 	 
+5	_	_	_	 	 
+ª	Â	Â	Â	Â	Â	8					Q	Q
+ì
+ì
+]
+]
+]
+]
+]	á			6	6
+
+„
+Ô
+Ô	≠
+Ñ
+	B	≠	≠	»	»	»	»
+4
+4	]	]	P
+&
+ë
+ë	ª
+ë
+˝
+˝
+˝
+˝
+ë	ª	P
+˝	ª‰	d	d
+•	œ	ô	ô
+	.	.	.	ô	ô
+
+
+p
+p	¥ﬁ	I	I	¥	¥
+ˆ
+X	.	ô√	œ	œ
+
+
+„
+„	¢	¢	¢	¢	 	 
+5	_	_	_	 	 
+ª	Â	
+ª	Â	Â	Â		Ú	Ú			Q	Q
+ì
+ì
+]
+]
+]
+]
+]	á			6	6
+
+„
+Ô
+Ô	≠
+Ñ
+	B	≠	≠	»	»
+ü
+ü
+4
+4	]	]	P
+&	ª	ª	ª
+ë
+˝
+˝
+˝
+˝	ª‰
+&”
+ë	ª	d	d
+•	œ
+p
+p
+	.	.	.	ô	ô
+
+
+p
+p
+ã	¥	I	I	¥	¥
+ˆ
+	.
+
+p	ô	œ	œ	◊	◊
+Æ
+Æ
+C	l			_	_ÛÛ	î	î
+k
+k	 Û	_
+5
+5
+5
+5
+…	Ú	á	á
+(
 (
 ì
-ì	á	á∞	á	Q	Q	Q	Q	€
-±^è÷)
-Á
-	¿	¿
-ñ
-ñ	ˆ	ˆ	ä
-a	•œ	:
-	€	€	€	€
-+
-+	¿	¿
-+
-+	U
-+
-
-Ÿ
-n
-n
-§
-§	Õ
-§
-â	≥	G
-	Ë
-ø
-S¶	o	o	€	€		€
-±
-±
-ñ
-ñ
-ñ
-ñ
-a	ä¥¥œ	•
+ì
+C
+Æ	◊	¢	¢
+	6Ê	Ω	Ω
+ì
+∫
+∫
+∫	„	≠	≠
+	B	≠
+ÑZZ
+N	x	„	„	ª‰	ª	ª	ª	ª
+ë
+ë	Ò	Ò	Ö	Ö	ªh
+ë	ª	dç	d
+:
+:
+•	œ¯"¯¯
+:
+:	d
+:	¥ﬁ	I
+	¥	¥	¥	¥	¥
+ã
+ã	¥			◊	◊	◊	◊
+C	l	◊	◊	_	_ÛÛ	î	î
+k
+k	 Û	_	_	_	_
+…	Ú	á	á	Q	Q
+ì
+ì
+C
+Æ	◊	¢	¢
+	6Ê	Ω	Ω
+ì	„	„
+∫	„	≠	≠
+	B	≠
+Ñ
+Ñ
+Ñ%
+N
+∫
+∫
+ë	ª	ª	ª	ª	ª	ª	ª	Ò	Ò
+\
+\
+ë
+ë
+ë	ª	dçç	d
+:	d
+•	œ	œ¯¯¯	d	d	d
+:	¥ﬁ	I
+	¥	¥	¥	¥ﬁ	¥
+ã	¥		
+Æ	◊	◊	◊	◊	◊	l	l	_	_	_	_	)	)	î	î	 	 	_	_ÛÛ
+†w	á	á	á	á	ΩÊ	ΩÊ	l
+C	◊	◊	¢	¢
+	6	Q	Q	ΩÊ		„%
+N
+	B
+
+
+Ñ	≠	≠◊	„
+∫%
+N	ª	ª	ª	ª‰	ª	P	P
+\
+\22
+ë	ª	ª	ª
+•¯¯	œ
+:
+:
+:	d¯¯¯¯	d	d¯	œ
+	I	I	I	I
+	¥	¥
+	I
+ã	¥		
+Æ	◊	◊	◊	◊	◊	l	là
+5
+5
+5
+ 
+ 	î	î	 	 	_	_ÛÛ	 
+†	á	á	á	á	ΩÊ	ΩÊñ	l	◊	◊	¢	¢
+	6	Q	Q	ΩÊ6	
+N%
+Ô
+
+
+
+Ñ	≠	≠◊		„%
+N	ª	ª	ª	ª‰	ª
+&
+&
+\
+\22h
+ë
+ë
+ë
+•¯¯	œ	d	d
+:	d¯¯¯¯	d	d¯	œ
+	I	I	I
+	I	¥	¥
+	I
+ã	¥		
+
+	6	6	¢	¢	¢À	)	)æ	î
+÷
+÷	î	î
+5
+5
+†	 	_	_	_	_	Q	Q	Q
+(	Ω	Ω	ΩÊ		
+C
+C	6	6O
+x	á	á				„
+N%Z
+Ñ
+
+	„		x
+N
+Ñ
+Ñ
+Ñ
+Ñ
+&
+&	P	P			Ò
+«2
+\
+«
+«
+ë
+ëhh
+p	ô	ô	ô	œ	œ	dç	.	.	ô	ô	ô	ô
+
+	I	I	¥
+ã	¥ﬁ	¥	¥
+
+	¥	¥	¥	¥
+
+	6	6	¢	¢	¢À	)	)æ	î
+ 
+ 	î	î	_M	 	_	_	_	_	Q	Q	Q
+(
+ì
+ì
+ì	Ω		
+C
+C
+
+	¢
+x	á	á				„
+N%
+Ñ	≠
+
+	„		x
+N
+Ñ
+Ñ
+Ñ
+Ñ
+&
+&	P	P	Ò	Ò	Ò
+«	2ûû
+ë
+ë
+ë
+ë
+p	ô
+p
+p
+•
+•	dçX
+	ô	ô	ô	ô
+
+	I	I	¥
+ã	¥ﬁﬁﬁ
+
+	¥	¥	¥	¥	¢	¢	¢	¢	¢	¢	¢À	)	)	)	)
+ 	)	)
+ 	 M‚
+5	_	_	_à	Q	Q	Ω	Ω
+(
+(
+ì	Ω	l	l	◊
+Æ
+
+	6	6		Ú	Ú	Ú	„	„
+N%
+
+
+
+Ô	x	x	„	„
+
+Ô
+Ô
+Ô
+˝
+&
+ë	ª
+\	t!cåKt”
+˝	ª	ª
+
+
+p
+p
+:
+:	d	d	ô	ô	.
+
+p
+p
+
+	¥	¥	¥	¥
+
+	I	I	I	Ir	I	¥	¥	¢	¢	¢	¢
+x
+x
+x	¢
+ 
+ 
+ 
+ 
+ 	)	)
+ 	 
+†‚
+5	_	_
+5	_	Q	Q	Ω	Ω	Q	Q	Ω
+ì
+C
+C	◊
+Æ
+
+	6	6		Ú	Ú	Ú	„	„	x
+N
+
+
+Ô
+	x	x	„	„
+
+Ô∆∆”
+˝
+ë	ª2ﬂŒ’Ìj•!”
+˝
+ë
+ë
+
+	ô	ô
+:
+:
+:
+:
+p
+p
+	.	ô	ô	.	.	¥	¥	¥	¥
+
+	I	I	I	Ir	I	¥	¥	õ	õYY
+<
+ß
+ß
+ß
+ß
+<
 
-	0
-	—	—	e	e
+
+
+
+<	e	—	—
+
+
+	0	Â	Â			z
+P	Â		 	 	_	_	 	 ÛÛ	¢À
+	6
+
+	≠
+Ñ	„	„%
+N			„	„
+N
+Nêê
+N%%˚8o&*)∫#∂,Z
+Ñ
+Ñ	‹	‹	qõ	<
+
+}T
+H	‹	‹	‹				.
+
+p
+p
+:
+:	œ	œ	¥ﬁﬁ	¥	¥	¥	õ	õ	0	0
+<
+ß
+ß
+ß
+ßÈ	e
+
+
+
+
+<	e	—	—
+›
+›
+	0	Â	Â			z
+P	Â	ÛÛ	_	_	 	 ÛÛ	¢À	6
+
+
+
+Ñ	≠	„	„
+N	x			„	„
+N
+N	„	„
+N%˚“ã¬)Ñ1Â2Ú1E%ı	¥Z
+Ñ
+Ñ	‹	‹
+H	q	<
+
+}T
+H	q	‹	‹	‹			X	.	ô	ô	d	d	œ	œ	¥ﬁﬁ	¥	¥	¥	0	0
+
+	e
+<
+ß
+ß
+<
+<
+r	õ≈	õ	—	—	e
+<
+›
+›
+	0	z
+P
+P	z	Â
+ª
+P£ÛÛ	 	 ÛÛÛÛÀÀ
+
+„
+
+
+	B
+N	x	x	x	x	x		
+∫	„	„	„
+∫
+∫êgav1z4‘5
+43.V:ã1
+Ñ
+Ñ
+≥
+≥
+H	q	ß	ß
+}	ß	‹
+≥
+≥	‹	‹	‹	q	q	.	.	.
+	d	d	d	d	¥	¥	¥	¥	¥	¥	0	0
+
+	e
+<
+ß
+ß
+<	e	e
+<
+r	õ≈	õ	—	—	e
+<
+›
+›
+›
+	z
+P
+P	z		Â
+P£ÛÛ	 	 	 	 	 	 ÀÀ	6
+
+
+
+Ô
+
+N	x	x	x
+N
+N		
+∫	„	„	„	„	„
+∫êãÛ1z4‘5
+43-cã1ZZââ
+H	q	ß	ß
+}	ß	‹
+≥â
+≥	‹	‹	q	q
+
+	.
+	d	d	d	d	¥	¥	¥	¥	¥	¥	—	—	—˙	—	—	e	e	e	e˙˙	—	—
+<
+<	—˙	e
+<	õ	õ	õ	õ	Ø	Ø	Ø	Ø	D	D	D	D	)	)	)	)
+ 
+ 
+ 	)	6	6ÀÀ		„	„	„	x
+N
+∫	„
+Ñ
+Ñ
+
+
+N	x	„	„
+N
+N
+N
+Ní"e0§2.¡ ŸZ∆∆â
+≥
+H	q	ß	ß
+
+
+H
+H
+H
+H				‹
+
+	ô
+p
+:
+:	œ	œ	I
+
+
+	®	—	—
+ß	—	—	—	e	e	e	e	—	—˙˙
+<
+<	—˙	e
+<	õ	õ	õ	õ	Ø	Ø	Ø	Ø	D	D	D	D	)	)	)	)
+ 
+ 
+ 	)	6	6ÀÀ	„		„	„	x
+N
+∫	„	≠	≠
+Ô
+Ô%
+N	„	„
+N
+N
+N
+N1¥‘ ∏#›÷	,1
+Ñ
+Ô
+Ô
+≥	‹
+H	q	ß	ß
+
+
+H
+H	q	q				‹
+
+	ô
+p
+:
+:	œ	œ
+	I	I	I	®
+<
+<	—	—	e
+<	—
+ß	—	—	e	e	—	—	e	e	eè˙	—
+
+
+
+
+
+	Ø	ØŸ	Ø
+Ü
+Ü	î	î	)
+ 
 k
-k	îæ	 	 	_	_	_	_ÛÛ	_	_	_	_	á	á∞∞	Ω	Ω
-(
-(	Ú	Ú	á	á	Q	Q
-(	Q	€
-±∏C0ˇ
-Á
-Á
-ñ
-ñ
-ñ
-ñ	ˆ	ˆ	ˆ	ˆ	•	•	•	•	o	o	€	€
-+
-+	¿	¿	¿
-ñ
-ñ	¿
-
-
-
-
-§	Õ	b	b	G	G	≥
-â	Ë	Ë			o	o	€	€	€	€	€	€
-ñ
-ñ
-ñm7
-a			•	•
+k	î	î	¢	¢
+	6	x	x
+N
+N	„
+∫%
+N	≠	≠
+Ñ
+Ñ
+∫
+∫	„	„	„	„	x
+N
+Ô∆ﬁ8,®“Z	≠
+
+	‹		q	q
+
+	ß	ß
+H
+H	‹	õ	q	q	q	ô	ô	ô	ô	œ
+•	œ	œ	¥ﬁﬁﬁ			—	—	e
+<
+ß	—	—	—
+<
+<	—	—
+<
+<	eè˙	—
+
+
+
+	D	D	Ø	Ø	Ø
+Ü
+Ü
+Ü	î	î
+ 	)	î	î	î	î
+x
+x
+	6	x	x	x	x	„
+∫%
+N	≠	≠	≠	≠	„	„	„	„	„	„	x
+N
+Ô∆11“˚˚%
+Ñ
+Ñ
+
+	‹		q	q
+
+	ß	ß	q	q	‹		q
+H
+H
+H	ô	ô	ô	ô¯	œ¯¯	¥ﬁ	¥	¥		
+¯
+!	∂	∂	Îòò	Î	—
+ß
+<
+
+
+r
+r™™	Î	Î
+!
+!	∂	∂
+
+	Ø
+Ü
+Ò
+	Ø	Ø	 
+†
+†
+†
+†	 	 	 
+C
+C	l	x	x	„	„	„
+∫	„	„	„		x	x◊	≠	B
+	≠
+Ñ∆I sZZ@@
+‘	˛
+i
+i	˛	˛	‹	‹	‹	‹
+
+
+	<	ß	ß––	‹	‹
+≥
+≥					¥	¥	I	I	œ¯¯	œ√	ô
+¯
+!	∂	∂	Îòò	Î	—
+ß
+<
+
+
+r
+r™™			K	K	∂	∂
+
+
+Ü\
+Ò
+	Ø	Ø	 
+†
+†
+†
+†	 	 	 
+C	l
+C	l	x	x	„	„	„				„		x	x◊	≠	B
+
+ÑZs˝W£Z@@
+‘	˛
+i
+i	˛	˛	‹	‹	‹	‹
+
+
+	<	ß	ß	ß	ß	‹	‹	‹	‹					¥	¥	I	I	œ¯¯	œ√	ô
+å
+å	K	K	Îò-
+W	—	—	õ	õ
+r
+r	Î				∂	∂
+å
+å
+
+Ò\\
+Ü	Ø	D	D	 
+†
+†
+†
+†
+†
+Æ	◊	◊	◊	„	„	x	x	„	„	x	x	x	x
+N
+N
+Ñ
+Ñ	≠	≠	≠ZI"–íú
+Ô@
+i	˛	˛	'	˛	ì	ì
+H	q			<
+
+È	<	<
+	ß–	‹	‹	‹	‹
+U	
+U
+U
+
+	¥	¥	œ	œ	œ	œ	.
+
+å
+å
+!
+!	Î	Î
+W	Ä	—	—≈≈
+r
+r	Î		Î	Î	∂	∂
+å
+å
+
+Ò
+Ü
+Ü
+Ü	Ø	D	D	 
+†
+†
+†
+†
+†
+Æ	◊	◊	◊	„	„	x	x	„	„	x	x	x	x
+N
+N
+Ñ
+Ñ
+Ñ
+Ñ
+Ñ
+Ñ∆zhã∆
+
+i	ì	'	'	'	˛
+i
+i
+H	q			<
+
+
+
+	<	ß–	‹	‹
+≥
+≥,
+U
+U
+U
+
+	¥	¥	œ	œ	œ	œ	.
+
+!
+!
+!
+¯
+¬	Î	Î	Î	—	—
+ß	—	0	0
+
+	Ä	Ä	Î	Î
+å
+å
+!
+!
+ª
+ª
+P
+P	Ø	Ø
+Ü\
+†	 
+5
+5
+5
+5	 	 	6
+
+
+	≠	≠	≠	≠	„	„			B
+
+Ñ
+Ñ
+∫	„	„
+∫
+Ñ	≠
+∆“˚
+N
+N	ì	ì	ìº	ì	ì	ì
+i
+H
+H
+H	q	‹
+≥
+≥
+≥	‹	‹	q	q	ß	ß
+
+				Í	I	I
+
+	d	d	d	d	œ	œ	K	K	K
+!
+¬	Î	Î	Î	—	—	—˙	0	0
+
+	Ä	Ä	Î	Î
+å
+å
+¯
+¯
+ª
+ª
+P
+P	Ø	Ø
+Ü\
+†	 
+5
+5
+5
+5	 	 	6
+
+
+	≠	≠	≠	≠	„	„		
+
+ÔZZ
+∫	„	„
+∫
+Ñ	≠
+
+
+N%	x	x	ì	ì	ìº	ì	ìº	ì
+H
+H	q
+H	‹
+≥
+≥
+≥	‹	‹	q	q	ß	ß	<	<				Í	I	I
+
+	d	d	d	d	œ	œ	∂	∂	∂	∂
+¬	Î	Ä	Ä	e	e	—	—	0
+
+
+	Î	Î	Î	Î
+!
+¯•RÅ™í
+ª
+
+Ò\
+Ü	 	 	 	 
+5
+5	_	_	¢	¢	¢
+x
+
+	B	B	x	x°°
+Ñ
+Ñ
+Ô
+	x
+N	x
+N
+Ñ
+Ñ
+Ñ	≠	x	x	x	x	˛	˛	˛	'	ì	ì	ì	ì
+H	q		‹	q
+H
+≥
+≥
+H
+H	‹	‹	ß	ß	ß	ß	Í	Í	Í	Íﬁﬁ	I	I	œ	œ
+•
+•	œ
+•
+å
+å	∂	∂	Î		Ä	Ä
+<
+<	—	—
+
 ›
-›
-	0	—	—	e	e	î	î	îæÛÛ	_	_	_	_ÛÛ	_	_	_	_	á	á	á	á	Ω	Ω
-(
-(			á	á	Q	Q
-(	Q	€
-±èÉˇΩ
-
-ñ
-ñ	¿	¿	ˆ	ˆ	ˆ	ˆ
-|
-|	•	•	o	o	€	€
-+
-+	¿	¿	¿
-ñm
-ñ
-
-
-
-	Õ˜	b	b	G	G
-â`	Ë	Ë			o	o	€	€	€	€	€	€
-ñ
-ñ	¿
-ñ7
-a	ˆ	ˆ	•	•
+
+	Î	Î
+¬
+¬
+¯Œˇ`‚¬í
+
+Ò\
+Ü	 	 	 	 
+5
+5
+5
+5	¢	¢	¢
+x
+
+	B	B	x	x°°	≠	≠
+	B	x
+N	x
+N
+Ñ
+Ñ
+Ñ	x	x	x	x	˛	˛	'	˛	ì	ì	ì	ì
+H	q		‹
+H
+≥
+≥
+H
+H	‹	‹	ß	ß	ß	ß	Í	Í	Í	Í	¥	¥	I	I
+•
+•	œ	œ	œ¯
 W
-W			K
-!	∂	∂	îæ	)	)æ	î
- 
- 	î	î	î	î	î	î	î	î
-(
-(
-(
-(	Ú	Ú	Ú	Ú		Ú	Ú	Ú	Ú	Ú
-]	á	Ë	Ëïl``
-â
-â
-ø
-ø	Ë		≥	≥	≥	≥	€	€	€
-±	€	€	€	€
-
-	•	•	•
-|
-|
-|	ò	ò
-
-	ò	ò	,	,	ò
-n
-n
-n	ò	ò¡	ò	≥	≥	G
-
-â	≥	≥	≥
-9
-9	Õ	Õ
-n
-n
-	,	¿	¿	Ä	Ä		
-!	K	∂	∂	îæ	)	)æ	î
- 
- 	î	î	î	î	î	î	î	î
-(
-(
-(
-(	Ú	Ú	Ú	Ú		Ú	Ú	Ú	Ú	Ú	á
-]	Ë	Ë
-øï
-â
-â
-â
-â
-ø
-ø	Ë		≥	≥	≥	≥	€	€	€
-±	€	€
-±
-±
-
-	•	•	•
-|
-|
-|	ò	ò
-
-	ò	ò
-
-
-nE
-n
-n	ò	ò¡	ò	≥	≥	G
-
-â	≥	≥	≥
-9
-9	Õ	Õ	ò	ò
-	,	¿	¿	Ä	Ä	Î	Î	∂	∂
+W	Î	Î	K	K	∂	∂
 !
 !
- 
- 	î	î
- 
- 
-k	î	î	î	î	î	î	î
- 
- 
-ì
-ì	Ω	Ω	á	á	á	á	á	á
-]	á	Ú	Ú	á
-]
-S
-S
-S
-S
-
-
-
-
-ø
-ø
-S	}	≥
-â
-
-	o	o
-F
-F	o
-F
-F
-|	•	:	:	•	•	:	:	,
-
-n	ò
-
-
-Ÿ
-Ÿ
-Ÿ
-Ÿ
-n
-n	ò	ò	,	,	≥	≥	G	G	≥
-â
-	G
-9
-9	Õ	Õ
-
-	,	,	U	U	Ä	Ä
-¬
-¬
+!
+!
 å
 å
 !
+!	Î
+¬EòcΩ„+•.r&É
+†
+†
+
+Ò
+Ü	Ø	Ø	Ø	Ø	Ø	6	6	6
+	„	„	„	„	B	B	B
+
+4
+4	»	»	˛
+‘@
+i
+¨ÉHÓ	†	†	5^ˇˇ	j	j	÷	÷	j
+A	œ	œ	d
+:	d				Í			Í	Í	q
+H
+H
+H	ß	ß	ß	ß
+-	V	¬	¬
+-	V
+W
+W	Î	Î	K	K	∂	∂
 !
- 
- 
-k
-k
- 
- 
-k	î	î	î	î	î	î	î	)	)	Ω	ΩÊÊ	á	á	á	á	á	á	á
-]	Ú	Ú	á
-]
-S
-S
-S
-S
-
-	G	G	Ë	Ë
-S	}‹	≥	G	G
-F
-F
-F
-F	o
-F
-F	o	•
-|
-
-	•	•	:	:	,
-
-n	ò
-
-
-Ÿ
-Ÿ
-
-
-n
-n
-n
-n
-
-
-â
-â	G	G	≥
-â
-	G
-9
-9	Õ	Õ
-
-
-
-	U	U	Î	Î	Î	Î
 !
-!	∂ﬂ
- 
- 
- 
- 	î	î	î	î	î	î	)
- 	î	î	)	)	á	á∞	á	Q	Q	Ω	ΩÊÊ	Q
-(	Ú	Ú		Ú	≥	≥	≥	≥	≥
-â
-	G	}	}	Ë	‹	≥	G
-
-±
-±	€	€	o
-F	€	€	o	o	o	o	•	•œœ	b	b	Õ	Õ
-9	b
-9
-9
-9
-9
-9
-9
-
-
-
-	≥	≥	≥	≥
-S
-S	}	}	Õ	Õ
-9	b
-§
-§
-9
-9	ˆ	ˆ	Î	Î	Î	Î
 !
+!	∂	∂
+!
+!
+¬òüÚcΩê0¨4P-ú0	 	 
+
+Ò	ØŸŸŸ	Ø	Ø	6	6	6
+	„	„	„	„	B	B
+
+Ô
+
+	»	»	˛
+‘@
+i	÷
+¨ÓÓ
+w
+w
+	5ˇˇ
+A
+A	÷	÷	j
+A
+•
+•
+:
+:
+:	d			Í						q
+H
+H
+H
+}
+}	ß	ß
+-	V	¬	¬
+-	Ä	Ä
+W
+W	K
 !
 å	∂
- 
- 
-÷	)ææ	î	î	î	î	)
- 	î	îSS∞∞∞	á	Q	Q	Ω	Ω	Ω	Ω	Q
-(				Ú	≥	≥‹‹‹	≥
-	G	}	}	Ë	‹	≥
-°5à	€	€	o
-F	€	€	o	o	o	o	•	•	•	•
-9
-9	Õ	Õ
-9	b	b	b
-9
-9
-9
-9
-
-
-
-	≥	≥	≥	≥
-S
-S	}	}	Õ	Õ
-9	b	Õ	Õ
-9
-9
-Ã		Î	Î	Î	Î	∂	∂
+å
+å
+!	K	K	K
 !
 !
- 
- 
-k	î	î	î	î	î	)	)	î
-k
- 	)ææ∞	á		Ú
-(	Q	Q	Q	Ω	Ω
-(
-(			Ú	Ú	≥
-â	≥‹	G	G	G	G	}	}
-S
-S	≥	≥6geà
-F
-F
-F
-F
-F
-F	o
-F	€	€	•	•
-
-
-9
-9	b	b	b	b˜	Õ	Õ	Õ	Õ	Õ	ò	ò	ò
-n
-	G	≥	≥	}
-S
-S	}	b
-9	Õ	Õ	Õ	Õ	b
-9	ˆ						∂	∂
+W-oŒRÙ%\)k]ı
+†	 	_	_	Ø	Ø	Ø	Ø	D	D	D
+	¢	¢	6	6	x
+N
+∫	„	B	B	≠
+Ñ
+ü
+ü
+4
+4
+‘´@
+i
+A
+A
+
+‚
+‚
+	÷	÷
+¨
+¨
+A	j	j
+A
+•
+•
+:	œ	œ	œ¯				Í
+U				q	q
+H
+H	ß	ß	ß	ß	V	V
+-
+-	¬	¬	Ä	Ä	Ä	Ä	K
 !
+å	∂
+å
+å
+!	K	K	K
 !
- 
- 
-k	î	î	îææ	)	)	î
-k
- 	)ææ∞	á	Ú
-…
-(	Q	Q	Q	Ω	Ω
-(
-(			Ú	Ú	≥
-â
-â	≥	G	G	G	G	}	}
-S
-S
-â
-â6∫à
-F
-F
-F
-F
-F
-F	o
-F	€	€	•	•
-
-
-9
-9	b	b	b	b˜	Õ	Õ	Õ	Õ	Õ
-n
-n	ò
-n
-	G	≥	≥	}
-S
-S	}	b
-9	Õ	Õ	Õ	Õ	b
-9	ˆ	
-W	Ä				Î	Î	Î	_
-5	 	 	î	î	î	îŸŸ	Ø
-Ü	z	z	z	zÊÊ	Q
-(	Ú			Ú
-C	l	◊	◊	l	l
-C
-C
-S
-S
-S	}	}
-S	}	}	G	G
-â
-â
-S	}
-øï
-F	o
-F	o	o	€	€
-
-
-
-
-
-Á
-Á
-	ò	ò	,	,	b	b	b
-9
-S	}	Ë	Ë
-
-
-
-
-
-	ò
-n
-
-	ò	ò	b	b	Õ	Õ	Õ	Õ˜	Õ	¿	¿
-W	Ä				Î	Î	Î
-5	_	 	 	î	î	î	îŸŸŸ	Ø	z	z	z	z	Ω	Ω	Q
-(	Ú			Ú
-C	l	◊	◊
-C
-C
-C
-C*	}
-S	}	}
-S
-S
-S
-
-	≥	≥	}¶		Ë
-F	o	o
-F	o	o	€	€
-
-
-
-
-
-Á
-	:¡¡	,	,	b	b
-9	b	}
-S	Ë	Ë
-
-
-Ù
-Ù
-
-	ò
-n	,	,	ò	ò	b	b	Õ	Õ˜˜˜	Õ	¿	¿	Ä	Ä			Î	Î	Î
-¬	 	 	 	 	î	î
- 	)	D	D	D	D	z
-P	Â	Â	Ω	Ω	Ω
-ì
-]∞	á	á	◊	◊	◊	◊	l
-C	◊		}	}	Ë	Ë
-S***
-Ù
-	G	G¶¶			€	€	o	o	o	o	€	€
-
-	•	•
-
-	:	:	,	,¡	ò˜	Õ
-§	Õ	Ë	Ë	Ë	Ë	≥	≥
-Ù
-Ù
-Ÿ
-	ò	ò	ò	ò	ò	ò˜˜
-9
-9	b	b	Õ	Õ	¿	¿	Ä	Ä	Î	Î	Î	Î	Î
-¬	 	 	 	 	î	î
- 	)	D	D	D	D	z
-P	Â	ÂÊÊÊ	Ω	á	á	á	á	◊	◊	◊	◊	l
-C	◊		}	}	Ë	Ë
-S*
-S
-S
-Ù
-	G	G	}	}			€	€	o	o	o	o	€	€
-
-œœ	:	:	:	:
-
-
-n	ò˜	Õ	Õ˜	Ë	Ë	Ë	Ë	≥	≥
-Ù
-Ù
-Ÿ
-	ò	ò	ò	ò	ò	ò˜˜
-9
-9
-9
-9
-§˜	¿	¿	Ä	Ä	Ä	Ä	Ä	Ä	Î	Î	_	_Û	 
- 
- 	î
-k
-
-	D	D
-
-	D	DÊÊÊ	Ω		Ú	Ú		l	l
-C	l	◊	◊	l	l	G	G‹‹	Ë
-ø
-ø	Ë	}	}	}	}
-
-Ù
-	G	:	:	:	:		€	€	€	€	€	o	o	:	:	:
-
-9
-9	Õ˜	ò¡	ò¡	}	}	Ë	Ë	Ë	Ë
-ø
-ø	Õ	Õ
-9	bå	b	b	b	b	Õ	Õ	Õ
-§
-§	Õ	¿	¿	Ä	Ä	Ä	Ä	Ä	Ä			_	_Û	 
- 
- 	î
-k
-
-	D	D	D	D	D	D	Ω	ΩÊ	Ω		Ú	Ú		l	l
-C	l	◊	◊	l	l
-
-
-â
-â	Ë
-ø
-ø	Ë
-S
-S
-S
-S
-
-Ù
-	G	:	:	:	:		€			€	€	o	o	:	:	:
-	Õ˜
-n	ò	ò¡	}	}	Ë	Ë	Ë	Ë	Ë	Ë	Õ	Õ
-9
-9	b	b	b	b	b˜˜˜	Õ	Õ
-§
-ñ
-ñ	Î	Î	Î	Î	Î
-¬	Ä	Ä	 Û	 	 	î	î
-kA
-Ò
-	D
-
+!	Ä
+W
+¬
+¬
+¯Œìö”yrA
+†	 	_	_	Ø	Ø	Ø	Ø	D	D	D
+	¢	¢	6	6	x
+N	„		B	B	≠
+Ñ	»	»
+4
+4	˛
+‘
+i	ì	j
+A
+A
+
+‚
+‚
+	÷	÷
+¨
+¨
+A	j	j
+A
+•
+•
+:	œ	œ	œ¯				Í
+U				q	q	q	q	ß	ß––	V	V
+-
+-	¬	¬	∂
+å
+!	K		Î
+W
+W
+¬
+¬	Î			Î
+¬	Î	Î		Î	Î	∂c99‚‚
+5	_	 	 	Â	Â	z	z	z	z	z	z	◊	◊			B	B	B	B	„	„
+N
+N	»	»	]
+4
+4
+4
+4
+4
+
+	†	†	÷
+¨	÷	÷	†	†
+w
+w	5	5	†	†	d
+:
+:
+:
+•
+•	œ	œ	Í	Í				Í		
+H	q			q	q		‹
+-
+ò	¬	å	å	∂
+å
+!	K		Î	Ä	Ä	Î	Î	Î		Î
+¬ò
+¬	Î		Î	Î
+å
+å
+å
+å
+5
+5
+5
+5
+5	_	 	 	Â	Â
+P
+P	z	z	z	z					B	B	B	B	„	„
+N
+N	»	»	]
+4
+4
+4
+4
+4
+
+	†	†ˇ	÷	÷	÷	†	†
+w
+w	5	5	†	†
+:
+:
+:
+•
+•	œ	œ	Í	Í				Í		
+H	q			q	q		‹
+-
+ò	¬µµ	∂	∂
+!
+!	Î	Î	Ä	Ä	Î	Î	Î	Î
+W
+W
+W	Ä	Î	Î	Ä	Ä
+!
+!	K	K	 	 
+5
+5
+†
+†
+5
+ª
+ª
+ª	Â	
+ª
+P
+P			l	l	≠	≠	≠	≠	„
+∫	„	„
+4
+4
+4
+4	»	»	»	»
+w	†	†	†	j	j	j	j	†	†	†	†	5	5	†	†	œ	œ
+•
+•
+:
+:
+:
+:
+U	
+U					
+≥
+≥	q	q	‹	‹	‹	‹
+-
+-
+-	Vµµ	∂	∂
+!
+!	Î	Î	Ä	Ä	Î	Î	Î	Î	Ä	Ä
+W	Ä	Î	Î	Ä	Ä
+!
+!	K	K	 	 
+5
+5
+†
+†
+5	Â	Â
+ª	Â	Â	Â	z	z			l	l	≠	≠	≠	≠	„
+∫	„	„
+4
+4
+4
+4	»	»	»	»
+w	†	†	†	j	j	j	j	†	†	†	†	5	5	†	†	œ	œ
+•
+•
+:
+:
+:
+:
+U	
+U					
+≥
+≥
+H
+H	‹	‹	‹	‹
+-
+-
+-	Vµµ	—	—	e	e˙	—
+<
+<	Ä	Ä	>		Î	Ä	Ä	K	K	K
+!
+W	Ä	Î	Î	Â	Â	z	z
 
 	Ø	Ø
+5	_	_	_	 	 	 ÛÊÊ
+ì
+ì
+4
+4
+ü	»	]	]ÚÚ	ì	ì	˛	˛	ì
+i	ì	ì	Ò	Ò
+\
+\	ª	ª	ª	ª
+\	Ö	Ö	Ö	Ò	Ò	Ò	Òaa
+ˆ
+		
+¿	Í	d	d	œ	œ
+
+
+
+	¬	¬	¬	¬	!	!µ	å	‹	‹
+H	q		‹	—	—	e	e˙	—
+<
+<	Ä	Ä	Î	>		Ä	Ä	K	K
+!
+¯
+W	Ä	Î	Î
+ª
+ª
+P
+P
+
+	Ø	Ø
+5	_ààÛÛ	 Û	Ω	Ω
+ì
+ì
+4
+4
+ü	»	]	]ÚÚ	ì	ì	˛	˛	ì
+i@	ì	Ò	Ò
+\
+\	ª	ª	ª	ª
+\	Ö	Ö	Ö	Ò	Ò
+«tÂÂÃ
+ˆ
+U
+U
+¿	Í	d	d	œ	œ
+
+
+
+	¬	¬	¬	¬	!	!µ	å	‹	‹	qõ		‹	e
+<
+<
+<	—˙
+<
+<	Î	Î	Î	™	Ä		
+!
+!
+!
+!	Î	Î
+W
+W
+P
+P
+ª
+ª
+Ü
+Ü	D
+
+5	_ÛÛàà	_	_	Ω	Ω
 (
-(	Q	Q				Ú	l
-C
-C
-C	◊	◊
-C
-C
-
-Ù
-Ù
-Ù
-S
-S	Ë			Ë
-ø
-ø	≥
-â	≥‹	:	:	:	:	o	o		ô	o	o	o
-
-	•	•z
-§
-9
-9
-	,	ò
-n	}	}
-S	}	}	}	}	}	b	b
-9
-9	Õ	Õ	Õ	Õ	b
-9	Õ˜˜	Õ
-9
-9
-ñ	¿	Î	Î	Î	Î
-¬	Î	Ä	Ä	 ÛÛÛ	î	î	î
-k
+(	»	»	»	»	»	»	»	»	ì	ì	ì	ì	ì
+i
+i	ì	Ö
+\
+\
+\	ª
+ë
+&
+&	Ò	Ò	Ò	Ò	Ò	ÒK(…”Ã
+¿
+¿
+¿	Í	œ	œ	d	d
+
+	ô	ô	V	V	¬	¬	å	å	å	å
+H	‹		‹	‹	e
+<
+<
+<	—˙
+<
+<	Î	Î	Î	
+W	Ä			K	K	K	K	Î	Î	Ä	Ä	z	z	Â	Â	Ø	Ø	D
+
+5	 	 àà	_	_	Ω	Ω
+(
+(	»	»	»	»	»	»
+ü
+ü	ì	ì
+i
+i	ì
+i
+i	ì	Ö
+\
+\
+\
+ë	ª
+&
+&	Ò	Ò
+«
+«
+«
+«¯â)ã'ﬁP
+¿
+¿
+¿	Í	œ	œ	d	d	.	.	ô	ô	V	VÎÎ	å	å	å	å
+H	‹		‹	‹	—	—
+<
+<	—	—	e
+<	K	K	K	K	K	K	K	K	K	Kﬂ	∂
+!
+!	∂	∂	Ø	Ø	Ø	Ø
 	D
 
-Òû
-Ò	Ø	Ø
-(
-(	Q	Q	Ú	Ú		Ú	l
+
+†
+†	 	 	)	)æ	î	á
+]
+]	áÚÚ	»	»	˛	˛	ì
+i	˛	˛@
+i
+4
+4
+ü
+ü	ª	ª
+&
+&	Ò	Ò	Ò
+«
+«	Ò22
+˝
+˝òÑ.»+n(,,,
+U
+:
+:	œ¯çç	œ	œ	å	å	!	!	¬	¬	¬	¬
+
+	ß	ß	ß	ß	—	—
+<
+<	—	—	e
+<	K	K	K	K	K	K	K	K	K	K	∂
+å
+!
+!	∂	∂	Ø	Ø	Ø	Ø
+	D
+
+
+†
+†	 	 	)	)æ	î	á
+]
+]	áÚ
+ü	»	»	˛	˛	ì
+i	˛	˛
+i	ì
+4
+4
+ü
+ü	ª	ª	P	P			Ò
+«
+«	Ò
+\
+\
+&
+&üYY!m,,,
+U
+:
+:	œ¯	d	d	œ	œ	å	å	˜	˜	¬	¬ÎÎ
+
+	ß	ß	ß	ß
+<
+<	—	—	—	—	eè	K	K	∂	∂	∂	∂	K	Kt	K
+å
+å
+!	K
+!
+!	Ø	Ø	D
+
+	D	Ø
+Ü	 	 	_	_ææ	)	)	á	á
+…	Ú	»
+ü	»	»
+‘
+‘	˛	˛	˛
+‘	ì	ì	»
+ü
+ü
+ü
+ë
+ë	P	P			Ö	Ö	Ò	Ò	Ò	
+&
+˝hÎ\\
+U	Í	Í
+U		œ	œ	œ	œ
+:
+:	d	d	!	˜
+Œ	˜	¬	¬	V	V–	ß	<
+
+
+
+<
+<	—	—	—	—	eètt	∂	∂	∂	∂
+!
+!
+!	K
+å
+å
+!	K
+!
+!	Ø	Ø	D
+
+	D	Ø
+Ü	 	 
+5
+5	î	î	)	)	á	á
+…	Ú	»
+ü	»	»
+‘
+‘	˛	˛
+‘´	ì	ì	»
+ü
+ü
+ü
+ë
+ë
+&
+&	Ò	Ò	Ö	Ö	Ò	Ò	Ò		P
+&	ª
+ë,,,			
+U		œ	œ	œ	œ
+:
+:	d	d	!	˜
+Œ	˜	¬	¬	V	V–	ß	<
+
+
+
+/
+/	√	√	"	"	é	é	eè˙˙	0
+
+›
+›	—	—
+<	e	õ	õ
+
+
+]
+]		Ú	Ω
+ì
+ì	Ω	¢	¢	¢
+x	◊	◊	◊	◊	6
+
+„
+„
+X
+X	Ì	
+#
+˘	∏	∏
+©
+©
+>
+	1	ù	ù	‡	‡
+K	t
+
+
+Å	™	è	è	$	$	Z	Z	Z
+0	t	t	tû‘‘
+
+	‡	‡
+K
+K
+K	t	‡	‡	“	“	“	“
+>
+>	“¸¸¸	g
+>
+s
+s
+/
+/	√	√	"	"	é	é	eè˙˙	0
+
+›
+›	—	—
+<	e	õ	õ
+
+44	Ú		Ω
+ì
+ì	Ω	¢	¢
+x	¢	◊	◊	◊	◊	6
+
+∫/	Ç	Ì		L
+#	∏	∏
+©
+©
+>
+	1	ù	ù	‡	‡
+K	t
+
+
+Å	™	è	è	$	$	Z	Z	Z
+0	t	t	tû‘‘
+
+	‡	‡	t!
+K	t	‡	‡	“	“	“	“	g	g	“¸¸¸	g
+>
+s
+s
+/
+/
+/	"	"	"	"	eè˙˙	0
+	õ≈	e	e	e	e	õ
+r
+r
+r4
+]	Ú	Ú	Ω
+ì	Q	Q
+
+	¢	¢
+Æ
+Æ	◊	◊
+
+
+
+
+ƒ	Ì
+X
+X	L	L	L
+#
+©
+©
+>
+>
+s	ù	1	1	t	t	t	t
+
+
+	?	è	è	è	è
+õ	≈	≈
+õ	‡	‡	t	t	?	?	™	™
+∂	‡	‡	‡	‡	‡
+K
+K	“	“
+©
+©
+©	“	“	“	g	g	“
+©
+s
+s
+/
+/
+/	"	"	˘	˘	eè˙˙	0
+	õ≈	e	e	e	e	õ
+r
+r
+r
+]	á	
+…
+ì	Ω	Q	Q
+
+	¢	¢	◊	◊		
+
+	6	6
+ƒ	Ì
+X
+X	L	L	L
+#	“	“
+>
+>
+s	ù	1	1	t	t	t	t
+
+
+Ï
+ππ	è	è
+õ	≈
+õr	‡	‡	t	t	?	?	™	™
+∂	‡	‡	‡	‡	‡	t	t	“	“
+©
+©
+©	“	“	“	g	g	“
+©
+s
+s
+/
+/	X	X	X	√	√	0	0	0
+	e	e˙	—	õ	õ	õ
+r	õ	õ	õ	õ	Ú	Ú	Ú	Ú
+]	á	á	á	◊
+ÆÑ
+Æ
+
+	6	6	¢
+x
+x	¢
+ƒ		Ì	Ì
+#
+#
+é
+é
+>
+>	“	“	“	“
+>
+>	™	™	™	™
+K
+K!
+K
+0
+0
+õ	≈
+f
+f
+f	è
+
+	?	?	t
+K
+∂	‡	‡	‡	t	t	™
+Å‘‘
+
+
+
+
+>
+>	“	“	“	“	g
+>
+ﬁ
+
+/
+/	X
+/
+/	√	√
+
+	0
+	e	e	—
+ß
+r
+r	õ
+r	õ	õ	õ	õ	Ú	Ú	Ú	Ú
+]	á	á	á	◊
+Æ[1ê
+„
+
+	¢
+x
+x	¢	Ì	Ì	Ì	Ì
+#
+#
+é
+é
+>
+>	“	“	“	“
+>
+>	™	™
+Å
+Å
+K
+K!
+K
+õ	≈	è<È
+f
+
+
+
+	t
+K
+∂	‡	‡	‡	t	t	™
+Å	™	™	1	1
+
+
+>
+>	“	“	“	“	g
+>µ
+ﬁ≤‹
+/
+/
+/
+/
+/
+/
+r
+r	õ	õ
+<	e	—
+ß
+›
+›HH
+r	õ	0	0	Ú	Ú	Ú	Ú			á
+]Ñ[ ‘]©O	¢
+
+
+„
+„
+ƒ
+ƒ
+X
+X
+#
+#
+é
+é
+>
+>	“	“	“	“	“¸
+
+
+Å
+Å	‡
+∂
+∂
+∂
+0
+0	Z	˚~U	$	?
+
+
+	t	t	‡	‡	‡	‡	‡	‡
+Ï
+Ï
+Å	™	1	1
+	1	“	“	g
+>
+©
+©
+>	g
+s
+sâ≤
+/
+/
+/
+/
+/
+/
+r
+r	õ	õ
+<	e	—
+ß
+›
+›
+r
+r
+r	õ	0	0	Ú	Ú	Ú	Ú	Ú	Ú	á
+]Ñ[§!π!ÓŸ%
+x
+
+
+„
+„öö
+X
+X
+#
+#
+é
+é
+©
+©	“	“	“¸
+
+
+Å
+Å	‡
+∂
+∂
+∂
+0
+0	˚
+—	˚	$	?
+
+
+	t	t	‡	‡	‡	‡
+∂
+∂
+Ï
+Ï
+Å	™	1	1
+	1¸¸	g
+>
+©
+©
+>	g	ù	ù‹	√	√	X	X	√
+ö
+!
+!
+!
+!	Î	Î	Î
+¬
+åc	∂	∂
+W
+W			6
+
+
+
+Æ
+Æ
+Æ[8F€ Ñ
+Æ
+x	¢
+x
+x
+©
+©	“
+©	“	“
+©
+>
+>
+>	“	“	“	“	è	è
+f
+f
+0
+0	Z	Z	˚
+—®
+—	≈	≈	Z
+0
+∂	‡					™	™	™	™
+f
+f
+f
+f
+f
+f
+—	˚	L	L
+#	L	∏	∏	∏
+é
+#
+#
+#
+#	Ì	
+/	X	√	√
+/
+/	√
+ö
+!
+!
+!
+!	Î	Î	Î		∂
+å
+å
+å
+W
+W			6
+
+
+
+C
+C
+Æ
+Æ	
+Æ1ã˜ùÑ
+Æ
+x	¢	¢	¢	“
+©
+©	“	“¸¸	“
+>	g	g	“	“	“	“	è	è
+f
+f
+0
+0	Z	Z	˚
+—
+—	˚	≈	≈	Z
+0
+∂	‡					™	™	™	™
+f
+f	è	è	è	è	˚
+—
+#
+#
+˘
+#	∏	∏	∏
+é
+#
+#
+#
+#	Ì		√	√ÌÌ	X	X	√	√	K
+!
+¯
+!
+W
+W	Î	t	K
+¯
+!	Î	Î	Ä	Ä	¢
+x	¢	¢	◊	◊	◊	◊	◊	◊ÑÑÑ
+Æ
+C
+C
+x
+x	¢	¢	“
+©
+>	g	g	g¸¸	g	g	g	g	“	“	“	“	è	è	$	˚	≈	≈	Z	Z
+f
+f
+f
+f
+õÓÓÓ	‡	‡	‡			™	™	™	™	˚	˚	è	è	è	è
+f<
+˘
+#
+˘
+˘
+#	L	∏	∏	L	L	∏	∏		
+ö
+ö	√	√	X	X	√	√
+!
+¯Œ
+¯--
+¬	Î	K
+!
+¯
+!	Î	Î	Ä	Ä	¢
+x	¢	¢	◊	◊	◊	◊	◊	◊	◊	◊		◊
+C
+C
+x
+x	¢	¢	“
+©
+>	g	g	g	“	“	g	g	g	g	“	“	“	“	è	è	$	˚	≈	≈
+0
+0
+f
+f<<r	≈	≈	≈	‡	‡	‡			™	™	™	™	˚	˚	è	è	è	è
+f<
+˘
+#
+˘
+˘
+˘
+#	∏	∏	L	L··		
+ö	√
+/
+/	é
+d
+d	é
+å
+å99ŒŒŒ
+¯-
+W	Î
+¬-
+W		Î
+
+„
+x	¢	¢	¢
+
+„	l	l		ñ	l
+C
+C
+x	¢	¢	¢
+
+	ù	ù	g
+>
+>¸¸
+>
+>
+©
+©
+>
+>	è	è	$	˚	≈
+õ
+f<<	˚	˚
+f
+f	t	t	t	t	t
+K	‡
+∂
+õ	≈	≈	≈	Z	Z
+õ
+õ
+X
+X
+ƒ	Ì	∏	∏····	L	L´´
+ö	√	X	X	é
+d
+d	é
+å
+åŒŒ
+¯Œ-
+W		Î-
+W	Î
+¬
+„∫
+x	¢	¢	¢
+	6	l	l	◊	◊ñ	l
+C
+C
+x	¢	¢	¢
+
+
+s
+s	g
+>
+>	“	“
+>
+>	“	“
+>
+>	è	è	$	˚	≈
+õ
+f<<
+f	˚	˚
+f
+f	t	t
+K
+K	t
+K	‡
+∂
+õ	≈	≈	≈	Z	Z
+õ
+õ	Ç	Ç	Ì
+ƒ	∏	∏····
+#
+#	Ç	Ç	√	√	X
+/	˘	˘
+œ
+œ
+¯•ìjÊ9
+å
+å
+¬	Î	Ä
+W
+¬
+¬
+¬
+¬
+„
+„
+„
+
+x
+x	¢	¢
+C
 C
 C
 C	◊	◊
+Æ	◊
+x	¢	¢	¢
+
+
+
+
+>
+>	g
+>
+>
+>
+>	“¸	“	“	èπ	$	$
+0
+õ
+õ
+f
+f	˚	˚	è	è
+f
+f	t	t	‡	‡
+K
+K	t
+K
+0
+0	≈	≈	≈	≈
+0
+0	Ç	Ç
+X
+X	∏·	L	L	L	L	∏	∏	Ç
+X	√	√
+/	˘	˘
+œ
+œ
+¯RƒGc	∂
+¬ò
+W	Ä	Î	Î	Î	Î
+
+
+
+„
+x
+x
+x
+x
 C
 C
-
-Ù
-
-
-S
-S	Ë			Ë	Ë	Ë
-â	≥‹	≥	:	:	:	:
-F
-F		ô	o	o	o
-Á
-Á
-|
-|	Õ
-§
-9
-9
-	,	ò
-n	}	}
-S	}¶¶	}	}	b	b
-9
-9	Õ	Õ	Õ	Õ	b
-9
-§	Õ	Õ
-§
-9
-9
-ñ	¿
-$
-˚	π„	π	π	π	π	ë	ë	&	&	ë
-g	¸
-”	·	·
-∏Àõ
-
-				·
-M
-M	·	·
-g
-g
-”
-”	«	«	[	[	,	,	ò	ò
-nEÚ	ò	ò	ò
-n
-9	bå	b	b	b	Õ	Õ	Õ	Õ	b	b	≥	≥
-
-
-S	}
-S
-S
-Z
-Z	Ñ
-Z	N
-$
-êf
-´	‘	‘	‘˛˛	i	i	Ñ	Ñ	Ôú	π	π	N	N	û
-u
-u	û
-´
-´
-´
-´
-Z
-Z
-$
-˚
-ê	π„„	π	π	ë	ë	¸	¸
-g>	¸
-”	·	·
-∏eõ
-Ó	A				·
-M
-M	·	·
-g
-g
-”
-”	«	«	[	[	,	,	ò	ò	ò
-nÚ»
-n
-n	ò
-n
-9	bå	b	b	b	Õ	Õ	Õ	Õ
-9
-9	≥	≥
-
-
-S	}	}	}	Ñ	Ñ≠	Ñ	N
-$	π
-ê
-´	‘	‘	‘	‘	‘	i	i	Ñ	Ñ	Ô	Ô	π	π
-$
-$	û
-u
-u	û	‘	‘
-´
-´
-Z
-Z
-$
-$
-ê	π	N	N
-˚
-$	¸
-”
-g
-g	¸
-”	¸	¸	v
-M##ƒõ
-Ç	¨			v	v
-M
-M	·	·	¸
-”
-”
-”
-ù	«	«	«
-
-	ò	ò	ò	ò
-n
-n
-n
-n
-
-Ÿ	Õ	Õ	Õ	Õ˜˜	b	b	Õ
-§	Õ	Õ
-	G	≥
-â
-ø	Ë	}	}		≠≠	N	N	N	N˛˛˛	‘	‘˛˛˛					N
-$	π	π	û
-uK
-u
-´	‘
-´	‘
-≈	Ô
-$
-$	π
-ê
-˚
-˚
-˚
-$	¸
-”
-g
-g
-”©	¸	¸
-M#
-M
-M
-
-ÓY
-Ç			v	v
-M
-M	·	·	¸
-”
-”
-”
-ù	«	«	«
-
-	ò	ò¡¡	ò	ò
-n
-n
-
-Ÿ	Õ	Õ	Õ	Õ	Õ	Õåå˜	Õ	Õ	Õ
-	G	≥
-â
-ø	Ë	}	}	Ô	Ô	Ñ	Ñ	N	N	N	N˛˛˛	‘
-´	‘˛˛					N
-$	π	π	û
-uK
-u	‘
-´Å
-´
-≈	Ô	π	π	π	π1
-≈
-≈
-2
-2	«	«
-”©
-g
-g
-Ç
-Ç
-
-	·
-∏##	A	A	A
-
-∏	·	v
-M
-g	ë
-g
-g
-ù	«	[Ö˜	Õ	b
-9
-	,	ò	ò	ò	ò
-
-	Õ	Õ
-9	b	ò	òVVå	b	b	b
-S	}	}	}	≥	≥
-
-	π	π
-$	N	Ñ	Ñ			i
-?
-?
-?
-?	‘˛	N
-$
-$
-$
-˚
-$	N	N
-?
-?
-´	‘	‘
-´
-?	Ô	Ô	π	π	π	π	Ñ
-Z	Ô	Ô
-2
-2	«	«
-”	¸	ë	ë
-Ç
-Ç
-
-	·
-∏
-M
-M	A	A	A
-
-∏	·	v
-M
-g	ë	ë	ë	«	[Ö˜	Õ	b
-9
-	,	ò	ò	ò	ò	,	,	Õ	Õ
-9	b	ò	ò	,	,	b
-9
-9
-9
-S	}	}	}	≥	≥
-
-	π	π
-$	N	Ñ	Ñ	Ô	Ô	i
-?	i	i	i
-?	‘˛	N
-$
-$
-$
-$
-˚
-$
-$
-?
-?	‘˛	‘
-´
-?	Ô	Ô
-$	N	N	N	Ñ	Ñ	Ô	Ô	«	«
-2
-2
-”	¸
-g
-g
-Ç
-Ç
-
-
-∏
-∏	·	·	¨	¨	¨
-Ç#	v
-M
-M	&	&	¸	¸
-2	[˜˜	b
-9
-n	ò
-
-	ò	ò	ò	ò
-9
-9	b	b	ò	ò¡	ò
-9
-9
-9	b	Ë			Ë
-
-
-
-	π	π	π	π	Ñ≠
-Z
-Z
-?
-?	i	i	i	i	i	i	N
-$	N	N	N
-$	π	π	i	i˛˛	i
-?
-?
-?	Ñ	Ñ	N
-$
-$
-$
-Z
-Z
-≈
-≈	«	«
-2
-2	¸
-”
-g
-g
-Ç
-Ç
-
-	·	·	·	·	¨	¨	¨
-Ç#	v	v	v	&	&	¸	¸
-2	[	«	Õ	Õ	b
-9
-n	ò
-
-	ò	ò	ò	ò	b	b
-9
-9	ò	ò	ò
-n
-9
-9
-9	b	Ë		Ë
-ø
-
-
-Ù
-Ù
-ê
-ê
-ê
-ê
-Z	Ñ
-Z
-Z
-?
-?	i	i	i	i	i	i	N
-$	N	N	N
-$	π	π	i	i˛˛	i
-?
-?
-?	Ñ	Ñ	Ñ	Ñ
-Z
-Z
-Z
-Z	Ô	Ô	[	[	[
-2
-2
-2
-2
-M
-M
-M
-M	·	·	v†	v	v	v
-M
-Ó
-Ó
-	A
-
-
-Ç
-Ç
-Ç	¨	¨
-Ç
-
-	≥	≥
-S
-S
-S	}
-
-	ò	ò˜	Õ
-9	b	}	}	Ë	Ë
-S
-S
-ø	Ë	}	}
-S
-S
-ø
-ø
-ø
-øK¯•œ
-‡
-
-
-
-	3»	û	û	û
-
-	3
-u	û»»	3	3
-
-
-
-
-
-	3»	û	û
-u	‘	‘	‘	‘
-ê
-ê	Ñ	Ñ
-Z
-Z
-Z
-Z	Ô	Ô	[	[	[
-2
-2
-2
-2	[
-M
-M	v	v	·	·	v†	v	v	v
-M
-Ó
-Ó
-Ó
-
-
-YY
-Ç	¨	¨
-Ç	G	G	≥	≥	}	}
-S	}
-
-	ò	ò˜	Õ
-9	b	}	}	Ë	Ë
-S
-S
-ø	Ë
-S
-S**
-ø
-ø
-ø
-ø")ä
-‡
-
-	3»	û
-u
-u
-
-	3
-u	û	û	û	3	3
-
-
-
-
-
-	3»	û	û
-u	‘	‘	‘	‘
-ê
-ê	Ô	Ô	Ô	Ô	Ô	Ô	Ñ	Ñ	«	[	[	«	«	«	«	·	·	v	v	v	v	v	v	v
-M
-M
-M
-Ó
-	¨	¨’	¨
-Ó
-Ó	A	A
-
-	≥	≥	≥	≥	Ë	Ë	Ë	Ë
-
-	ò	ò	Õ
-§
-9	b	Ë	Ë			Ë	Ë	Ë	Ë
-S
-S
-øï
-S
-S	Ë
-øœä+"#òk∑
-
-	3»»	û
-u	û	û
-u	û	û	û	û	û	û
-u
-u
-u	3
-
-
-
-
-
-˛˛	‘	‘
-$
-$	Ô	Ô	Ô	Ô	Ô	Ô	Ñ	Ñ	«
-ù	[	[	«	«	«	«	·	·	v	v	v	v	v	v	v
-M
-M
-M
-Ó
-	¨	¨	¨
-Ç
-
-	A	A
-
-	≥	≥	≥	≥	Ë	Ë	Ë	Ë
-
-	ò	ò
-§z
-9	Ë	Ë	Ë	Ë	Ë	Ë	Ë	Ë	}	}	Ë
-ø
-S
-S
-ø	Ë"÷‰∫k∑
-
-	3»»»	û	û	û
-u	û	û	û	û	û	û
-u
-u
-u
-‡
-
-
-
-
-
-˛˛	‘	‘
-˚
-˚
-Z1
-≈	Ô
-Z1	Ô	Ô	¸
-”	ë	ë
-”	&	ë	ë#
-M
-M	v	¨	¨
-
-	v	v	·	·
-M
-M	·
-∏
-∏
-∏	v	v	v	v	v	v
-ø
-ø	Ë	Ë	≥	≥‹‹˜	Õ	b
-9
-9Ê
-§	Õ	}
-S
-S
-S
-â
-â	G
-	Ë	Ë
-S	}	≥
-â
-	GKœRRç
-
-
-
-	3	‘˛	i
-?	‘˛	i	i˛	‘	i	i	‘
-´
-?
-?
-u
-u
-
-	3˛˛	‘	‘	Ô	Ô
-Z1	Ô		Ñ
-Z	Ô	Ô
-”	¸	ë	ë	¸	¸	ë	ë
-M#
-M	v	¨	¨
-
-	v	v		
-M
-M	·
-∏	·	·	v	v	v	v
-M
-M
-ø
-ø	Ë	Ë	≥	≥‹‹˜	Õ
-9
-9
-9	Õ
-§
-S	}	}	}``
-
-Ùïï*
-S‹	≥
-	G	û
-uK¯
-‡
-
-
-
-	3˛	‘	i
-?	‘˛	i	i˛	‘	i	i	‘
-´
-?
-?
-u
-u
-‡
-
-	‘	‘	‘	‘	Ô	Ô	Ô	Ô	Ñ	Ñ	Ô	Ô
-Z
-Z	¸	¸	&	&	&	¸	¸	¸	·
-∏
-M
-M	A
-
-Ç
-Ç
-M	v		·	·	·	·	·	·	·			v
-M	·	·
-S	}	}¶‹‹
-	G	b
-9
-§
-§
-9
-9
-9	b	Ë	Ë	Ë	Ë
-Ù
-Ù6„Ñ Bï
-
-	G	G»»
-
-
-‡
-
-
-
-	û»	i	i	i
-?˛	‘	i
-?	‘	‘˛˛	i
-?	‘	‘
-u
-u
-
-
-
-
-?
-?
-?
-?	Ô	Ô	Ô	Ô
-Z
-Z	Ô	Ô
-Z
-Z	¸	¸	&	&	&	¸	¸	¸	·
-∏
-M
-M
-	A	¨	¨
-M	v	·
-∏	·	·	·	·	·	·		†	v	·	·
-S	}	}¶‹‹
-	G	b
-9
-§
-§
-9
-9
-9	b	Ë	Ë	Ë	Ë
-Ù
-Ù∫ª1l
-ø
-
-	G	G	û	û
-
-
-‡
-
-
-
-
-u	û	i	i	i
-?
-´	‘	i
-?	‘	‘˛˛	i
-?	‘	‘
-u
-u
-
-
-
-
-?
-?	Ô	Ô	i	i
-?
-?
-
-
-‡
-
-
-
-
-g∫∫∫∫	ë	ë
-g
-Ó
-Ó
-
-’’
-
-
-
-
-
-
-‡
-‡
-‡
-‡
-u	û
-$
-$	π	π	N	N
-$
-˚
-Ù
-Ù
-â	≥‹	≥	≥	≥	Ë	Ë
-S
-S	}	}	}	}	¿	¿
-+
-+
-ñC9&®$‡)	•
-
-Á
-
-	π
-êff
-ê	π
-ê
-ê	û»
-
-
-‡
-
-
-
-
-
-
-
-	·	·	v	v
-Ç	¨	A	A	&	&	&	¸>>
-g
-g	¨	¨
-?
-?
-?
-?
-
-
-‡	3	3	ë	ë∫∫∫	ë	ë
-g
-
-
-
-	¨	¨
-
-
-
-
-
-
-‡çÁÁ¯
-u
-$
-$	π	π	N	N
-$
-˚
-Ù
-Ù	≥‹	≥
-â	≥	≥			}	}	}	}	}	}
-ñ
-ñ
-+
-+mmﬂÌq)	•	:
-	:	:	π
-ê
-ê
-ê	π
-ê
-ê
-ê	û»	3
-
-
-
-
-
-
-
-
-
-	·	·	v	v
-Ç	¨	A	A	&	&	&	¸
-g
-g
-g
-g	¨	¨
-´	‘	‘	‘	û	û
-u
-u
-g
-g	ë	ë	¸	¸	ë	ë
-
-
-
-Ó
-
-	¨
-Ç
-u
-uçî∫g¨œff
-$	N	N	N
-ê
-ê
-
-
-	G
-
-Ù	≥	≥	}	}			}	}	}	}
-+
-ñ
-ñ
-ñ
-ñC«¨)
-	:	•	•œœ	π	π	π„	π
-ê
-˚
-$»»	û	û	û	û
-u
-u	·	·	v	v
-
-	A	A	ë	ë	¸	¸
-g
-g	¸	¸	¨	¨
-´	‘	‘	‘	û	û
-u
-u>>
-g
-g	¸	¸
-g
-g
-
-
-
-Ó
-
-	¨
-Ç
-u
-uçî"¡)uä•ff
-˚
-$
-$
-$	π	π
-
-
-	G
-
-Ù	≥	≥	}	}			}	}	}	}
-+
-ñ
-ñ
-ñ
-ñ
-ñmR
-|
-	:	•	•	•	•	π	π
-ê	π	π
-ê
-˚
-$»»	û	û	û	û
-u
-u	·	·	v	v
-
-	A	A	ë	ë	¸	¸
-g
-g	¸	¸	¨	¨
-
-	3	û	û	‘˛	‘
-´
-2
-2
-2	¸	¸	¸	¸
-Ó
-Ó
-Ç
-Ç
-M
-M
-∏	·
-u
-u∑≈rk:f	π
-$
-$
-$
-$	π	π	}	}			Ë	Ë	}	}	G	G	G	G	≥	≥	G	G	¿	¿	¿
-ñ
-a
-a	ˆ	ˆ
-F
-F	€	€
-
-
-
-	π	π	N	N
-$
-˚
-ê	π	û	û	û	û	i	i
-?
-?
-
-
-
-	·		v	v	[	[	«	«
-2	«	«
-M	v
-‡
-
-	û	û	‘˛	‘
-´
-2	[
-2
-2
-”
-”
-”
-”
-Ó
-Ó
-Ç
-Ç
-M
-M
-∏	·
-u
-u
-
-∑ç:dçff
-$
-$	N	N	π	π	}	}	Ë	Ë	Ë	Ë	}	}	G	G	G	G	≥	≥	G	G	¿	¿	¿
-ñ
-a
-a	ˆ	ˆ
-F
-F	€	€
-
-
-
-	π	π	N	N	N
-$
-êf	û	û	û	û	i	i	i	i	A	A
-
-	·		v	v	[
-ù	[
-2
-ù
-ù
-M	v
-u
-u	û»	i	i	i
-?	«	«
-2
-2
-g	ë>
-g
-Ç
-Ç
-Ç
-Ç
-∏
-∏	·	
-
-
-
-
-uK
-uKKK
-˚
-˚
-˚	N	N	N	N
-$	Ë	Ë
-S
-S	Ë	Ë	Ë		G	G	G	G	≥
-â	G	G
-+
-+	¿
-ñ
-a	ä	ä	ä
-F
-F
-F	o
-
-	•	•	N	N	N
-$	π	π
-ê
-ê	û
-u
-
-	3íí˛˛	A	A	¨	¨	·	·
-M
-M	«t	[	[	[	«
-ù
-∏	·	û	û	û
-u
-?
-?	i
-?	«	«	[	[	ë
-g>
-g	¨	¨
-Ç
-Ç	·	·	·		3	3	û
-u	û
-uKK
-˚
-˚
-$
-$	N	N
-$
-˚
-ø
-ø
-S
-S	Ë	Ë	Ë	
-
-
-
-‹	≥	G	G	U	U	¿
-ñ
-a	ä	ä	ä	o	o	oô	:	:	•	•	N	N	N
-$	π	π	π	π	û
-u
-‡
-
-íí˛˛	A	A	¨	¨	·	·	v	v	«	«
-2
-2	[	[	«
-ù
-∏	·	N	N
-$
-˚
-≈	Ô	Ñ	Ñ	[	[	&
-”
-g	ë	ë	ë	¸	¸	«	«	«		Ô
-Z
-Z
-$
-$
-˚—K
-u
-
-	3	û	û
-u
-u
-â
-â`
-â			}	}		Ë
-S	}	G	G	≥	≥	•	•	•	•	•
-|	•
-|
-ñ	¿ÈÈ	U	U	¿	¿„„	π
-ê
-$
-$	N	N	N
-$	π	π„„
-$	N	·	·			A	A	Aj				·
-M
-M
-M#
-ù	«	N	N	N
-$
-≈	Ô	Ñ	Ñ	[	[	«	«	¸	¸
-g	ë
-g
-g	¸	¸	«	«	«	Ô
-≈
-Z
-Z	N	N
-$
-˚
-u	û
-
-	3	û	û	û	û`	≥
-â	≥			}	}		Ë	}
-S
-
-
-â
-â
-|
-|	•	•	•
-|	•
-|
-ñ	¿ÈÈ	U	U
-ñ
-ñ	π	π	π
-ê	N	N	N	N	N
-$	π	π	π	π
-˚
-$	·	·			A	A	Aj				·
-M
-M
-M#
-ù	«	N	N	π	π	Ô	Ô	Ô	Ô	«	«	«	«	¸	¸
-g
-g
-g
-g	ë	ë
-2	[	«
-ù	Ñ	Ñ	Ñ	Ñ„	π	π	π	û	û	û	û	û	û
-
-
-
-
-
-
-
-
-S
-S	Ë	Ë	}	}	Ë
-ø
-â	≥	≥	≥
-
-R	•	•
-|
-
-	¿	¿	¿	¿	¿
-ñmm	π	π
-$
-$
-$	N	N	N„	π
-$
-$	N	N
-ê	π
-∏	·†	v
-
-	¨	¨	·		v	v	·
-∏
-∏
-∏	[	[
-$
-$	π	π	Ô	Ô	Ô	Ô	«	«	«	«	&	&
-g
-g
-g
-g	ë	ë
-2	[	«
-ù	Ñ	Ñ
-Z
-Z	π
-ê
-ê
-ê	û	û	û	û	û	û
-
-
-
-
-
-
-
-
-S
-S	Ë	Ë
-S
-S	Ë
-ø
-â	≥	≥	≥
-
-
-|
-|	•
-|
-
-
-ñ
-ñ	¿	¿	¿
-ñ
-ñ
-ñ
-ê
-ê
-$
-$
-$	N	N	N„	π
-$
-$	N	N	π
-ê
-∏	·	v
-M
-
-	¨	¨
-∏	·	v	v	·
-∏
-∏
-∏	[	[
-ê	π	π	π
-$
-$
-$
-$	«
-ù	«	«	ë	ë	¸	¸
-2	[
-2	[	ë	ë
-g
-g≠	Ñ
-Z
-Z	Ô	Ô	Ñ	Ñ
-?
-?
-?	i
-
-
-
-	û
-u
-â
-â
-
-
-â	≥	≥	≥
-â
-â
-
-Ù
-
-	≥
-â
-	:
-
-
-
-
-
-Á
-+È	¿
-+
-+
-+
-ê
-ê
-$
-$	Ñ	Ñ	Ô	Ô	N	N
-$
-˚	Ô	
-Z1
-Ç
-Ç
-Ç
-Ç
-Ç	¨	¨	¨
-Ç’j	A	v
-M
-M	v	&	&f
-ê	π	π
-$
-$
-$
-$	«
-ù	«	«
-g
-g
-”
-”
-2	[	[
-2
-g
-g
-g
-g
-Z	Ñ
-Z
-Z	Ô	Ô	Ñ	Ñ	i	i
-?	i
-
-
-
-	û
-u
-â
-â
-
-	≥
-â
-â
-â	≥	≥	G
-	G	G	≥
-â
-	:
-
-
-
-
-
-Á
-+	¿È
-+
-+
-+	π	π
-$
-$	Ñ	Ñ	Ô	Ô	N	N
-$
-˚	Ô		Ñ
-ZYY
-Ç
-Ç
-Ç	¨	¨	¨
-Ç’j	A	v
-M
-M	v	&	&
-ê	π	π	π
-$
-$
-$
-$
-2
-2	«	«
-g
-g>
-2
-2
-2>>
-g
-g	Ô	Ô	Ô	Ô
-Z
-Z	Ô
-≈
-´	‘	‘	‘
-‡
-
-	3	3	≥
-â
-â
-â
-
-
-â
-â	≥	≥	≥	≥	≥	≥
-
-	•	•
-
-
-|
-|
-|
-|
-ñ
-ñ	¿È	¿
-ñ	¿È	π
-ê
-$
-$			Ô	Ô„	π
-ê
-ê	Ô	Ô	Ô	Ô
-Ó
-Ó	¨	¨	A
-	¨	¨	¨’	A	A	v
-M	·	·	ë	ë	π„	π	π
-$
-$
-$
-$
-2
-2	«	«	ë	ë
-g>ﬂµÎ>
-g
-g	Ô	Ô	Ô	Ô
-Z
-Z
-≈úÅ
-´	‘	‘ç
-
-	3	3	≥
-â
-â
-â
-
-	≥	≥	≥	≥	≥	≥	≥	≥
-
-	•	•	:
-Á
-|
-|	•	•
-ñ
-ñ	¿ÈÈ	¿	¿È	π
-ê
-$
-$	Ô	Ô	Ô	Ô
-ê	π	π	π	Ô	Ô	Ô	Ô
-Ó
-Ó	¨	¨	A
-
-Ç
-Ç	¨’	A	A	v
-M	·	·	ë	ë	bå	b
-9
-9
-9	Õ
-§E	ò
-n
-n	ò	ò
-
-
-ÙÀ∫Íã≠*
-S
-
-
-
-
-9
-9	b
-9
-9
-9
-§
-§
-9	b	b	b	Ô	Ô
-Z
-Z
-ê	π	N	N»»	3	3	û	û
-
-	3	ë	ë	ë
-g	ë	ë	¸	¸	«	«	«	[	[	«	«	π	π	π
-ê
-Z1
-Z
-Z
-˚
-$	π	π		
-≈
-≈
-?
-´
-´
-´
-´	‘	‘	3	3	3	3	3	3
-
-
-
-
-
-
-9	b	b
-9
-9
-9˜	Õ
-n
-n
-n
-n	ò	ò
-
-
-
-Ù∫óíZ*
-S
-
-
-
-
-9
-9
-9	b
-9
-9zz
-9	b	b	b	Ô	Ô
-Z
-Z
-ê	π	N	N»»
-
-
-
-	û	û
-
-	3	ë	ë∫	ë	ë	ë	¸	¸	«	«	«	[	[	«	«	π	π	π
-ê
-Z1
-Z
-Z
-˚
-$	π	π			Ô	Ô	i
-?	‘	‘	‘	‘	‘	‘	3	3	3	3
-
-
-
-
-
-
-
-
-Ÿ
-Ÿ
-9
-9
-9
-9
-9
-9
-9
-Ÿ
-	,
-	ò	ò
-
-	≥
-âê∆l
-ø
-ø
-
-	ò	ò
-§
-§	Õ	Õ	b
-9
-§
-§
-9	b
-9
-9	Ñ	Ñ	Ô	Ô
-$
-$	π„»	û
-
-	3
-
-
-
-
-
-
-
-	ë∫	&	&	&	&	ë
-g
-2	[	[	[	[	[	«	«
-ê
-ê
-$
-$	Ô	Ô	Ô		π	π	N	N	Ñ	Ñ			i	i
-?
-?
-?	i	i	i	û	û	3	3
-
-
-
-	û
-u
-n
-n
-9
-9
-9
-9
-9
-Ÿ
-	,
-	ò	ò
-
-	≥
-â`6l
-ø	Ë	Ë
-Ÿ
-Ÿ	ò	ò	Õ	Õ	Õ	Õ	b
-9
-§
-§
-9	b
-9
-9	Ñ	Ñ	Ô	Ô
-$
-$	π„»	û
-‡
-
-
-
-
-
-
-
-
-
-	ë∫	&	&	&	&∫	ë
-2	[	[	[	[	[	«	«
-ê
-ê
-$
-$	Ô	Ô	Ô	„„	N	N	Ñ	Ñ			i	i
-?
-?
-?	i	i	i	û	û
-
-
-
-
-‡
-‡	û
-u
-n
-n
-9Ê
-9
-9
-9	b
-n	ò	ò	ò	,	,
-
-
-
-
-Ù
-Ù
-S
-S
-S	}
-9
-9	b	b	Õ	Õ	Õ˜	,
-
-n
-nE
-n
-	,	N	N
-$
-$	π	π	N	N
-?
-?	‘	‘	3	3
-
-
-
-	ë∫∫∫	«	«	«
-ù
-2
-2	ë	ë	&	¸
-≈
-≈
-≈	Ô
-Z	Ñ			N	N	π	π	N	N
-ê
-ê	‘	‘
-?
-?
-
-
-
-	û	û	û
-u
-‡
-
-
-´
-´	‘	‘
-
-	b
-9
-9
-9
-9
-9	b
-n	ò	ò	ò	,	,
-
-
-
-
-Ù
-Ù
-S
-S
-S	}
-9
-9
-9
-9	Õ	Õ
-§	Õ	,
-
-n
-n
-nE
-	,	N	N
-$
-$	π	π	N	N
-?
-?˛˛	3	3	3	3	ë∫	ë	ë	«	«	«	«	«
-ù
-2
-2
-g
-g	&	¸
-≈
-≈
-≈	Ô
-Z	Ñ			N	N	π	π
-$
-$
-ê
-ê	‘	‘
-?
-?
-
-
-
-	û	û	û
-u
-‡
-
-
-´
-´	‘	‘
-
-
-9
-9
-9
-9
-9
-9
-9
-Ÿ
-
-
-	ò	ò	ò	ò	≥
-â
-â
-â	Ë	Ë
-S
-S
-§
-§
-9
-9
-9
-9	ò	ò	,
-
-n
-n	,	,
-$
-$
-ê
-ê
-$
-$
-$	N	‘	‘	i	i
-
-
-
-
-
-
-
-	&	&	&	¸
-2
-2	«	«	«
-ù
-”
-”	¸	¸
-≈
-≈
-Z	Ñ	Ñ	Ñ	Ñ	Ñ	π	π
-êf
-ê	π
-$
-$	i
-?
-?
-?	û
-u
-
-
-
-
-
-
-‡KK
-´
-´
-´
-´
-
-
-9
-9	b
-9
-9
-9
-Ÿ
-
-
-	ò	ò	ò	ò	≥
-â	≥	≥	Ë	Ë
-S
-S
-§
-§
-9
-9
-9
-9	ò	ò	,
-	ò	ò
-
-
-$
-$	π	π
-$
-$
-$	N	‘	‘
-?
-?
-
-
-
-
-‡
-‡	¸	¸	¸	&	[
-2
-2
-ù	«	¸	¸	¸	¸	Ô	Ô
-Z	Ñ	Ñ	Ñ	Ñ	Ñ	π	π
-êf
-ê	π
-$
-$	i
-?
-?
-?»	û
-
-
-
-
-
-
-‡""Å	‘
-´
-´
-
-	G	Gq
-*
-S	Ë	Ë	Õ
-§	Õ	Õ
-§	Õ	Õ	Õ	b
-9
-9
-9	Õ
-§
-§
-§
-â
-â
-â
-â
-â	≥	≥	≥	G	G
-
-‹	≥
-â	≥	û
-u	û	û
-´
-´
-?
-?	N
-$
-$
-$	Ô	Ô
-Z
-Z	¨	¨
-
-	¨	¨
-ÇY
-Ç’	A
-
-M
-M	·	·
-
-
-
-
-
-
-
-
-u	û	û	û	π	π
-$
-˚
-≈	Ô	Ñ	Ñ
-
-
-
-
-
-	3	i	i	i	i	ûKç∑
-´	‘	‘	‘
-
-	G	G	G	G
-S*	Ë	Ë	Õ
-§	Õ	Õ
-§	Õ	Õ	Õ	b
-9
-9
-9˜	Õ
-§
-§
-â
-â
-â
-â
-â	≥	≥	≥
-
-
-Ù
-Ù	≥
-â
-â	≥	û
-u
-u
-u	‘	‘
-?
-?	N
-$
-$
-$	Ô	Ô	Ñ	Ñ	¨	¨
-
-	¨	¨	¨
-Ç
-Ç’	A
-
-M
-M	·	·
-
-
-
-
-
-
-
-
-u	û	û	û	π	π
-$
-˚
-≈	Ô	Ñ	Ñ
-
-
-
-
-
-	3	i	i	i	i
-u
-u∑
-‡
-´	‘	‘	‘
-
-	≥	≥	G	G	}
-S
-S	}	b	b	Õ	Õ
-§	Õ	b
-9	Õ	Õ	b	b	b	b	Õ	Õ
-
-Ù
-Ù
-Ù
-	G	G	G
-â
-â`	≥
-	G	G	G	û
-u
-
-
-
-	‘˛˛	‘	π	π
-$	N					A
-
-
-	¨	¨	A
-
-Ó
-
-
-Ó
-M	v	·	·	û	û	û	û	3	3	3	3	N	N„	π	Ñ	Ñ	Ô	Ô	3	3
-
-
-
-	‘	‘	‘
-´
-‡
-
-
-
-
-‡
-?	i
-?
-?	ò	ò
-â
-â	G	G	}
-S
-S	}	b	b	Õ	Õ
-§	Õ	b
-9	Õ	Õ	b	b	b	b˜˜	G
-
-Ù
-Ù
-Ù
-
-
-	≥	≥	≥	≥
-	G	G	G	û
-u
-
-
-
-	‘˛˛	‘
-ê
-ê
-$	N					A
-
-
-	¨	¨	A
-
-Ó
-
-
-Ó#
-M	·	·	û	û	û	û]]	3	3	N	N„	π≠≠	Ô	Ô
-
-
-
-
-
-
-
-	‘	‘
-´Å
-‡
-
-	3
-
-
-?	i
-?
-?
-n
-n
-qq	G
-S
-S	Ë		b
-9
-9
-9
-9
-9	b	b
-
-
-
-	b	b	Õ˜‹	≥
-Ù
-Ù
-ø	Ë	Ë	Ë	≥	≥	≥	≥	Ë			Ë	‘	‘
-?
-?
-
-	3	3
-
-
-Z
-Z
-Z
-Z
-$	N„	π	·
-∏
-∏
-∏	A	A	¨	¨
-M
-M	·	·	·	·	·	·	‘	‘
-´	‘	3	3
-
-	3≠	Ñ		Ô	Ñ	Ñ	Ô
-≈
-u
-u
-
-
-
-
-u
-uKK	û	û
-
-
-
-	û	û	û	û	Õ	Õ	Göq	G
-S
-S
-ø	Ë	b
-9	b	b	b	b	b	b	,	,
-
-
-9
-9	Õ˜	≥
-â
-Ù
-Ù	Ë
-ø	Ë	Ë	≥	≥	≥	≥	Ë			Ë	‘	‘
-?
-?
-
-	3	3
-
-	Ñ	Ñ
-Z
-Z
-$	N„	π	·
-∏
-∏
-∏	A	A’’	v	v					·	·	‘	‘	‘˛	3	3
-
-	3≠	Ñ		Ô	Ñ	Ñ	Ô
-≈
-u
-u
-
-
-
-
-u
-uKK	û	û
-
-
-
-	û	û	û	û	Õ	Õ	G	G		Ë	Ë	Ë˜˜	b
-9	Õ	Õ	b	b	,	,
-
-
-9
-9	b	b	≥	≥
-â	≥	Ë	Ë	Ë		≥
-â	≥	≥
-S	}	}
-S
-´
-´
-?	i	3
-
-	û	û
-Z	Ñ
-Z
-Z
-$	N	π
-ê
-M
-M
-M
-M	A
-	¨	¨	·	·
-M	v			v	v
-?
-?
-?	i	û	û	3	3		Ô		Ô
-Z
-Z	Ô		û
-u
-
-
-
-
-u
-u
-‡
-
-	û	û
-
-
-
-
-
-
-
-	3	3	b
-9                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional binary table                     NAXIS1  =                   28 / width of table in bytes                        NAXIS2  =                   16 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group (required keyword)              TFIELDS =                    4 / number of fields in each row                   TTYPE1  = 'INTEGRATED_SIGNAL'  / label for field   1                            TFORM1  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT1  = 'log10Counts'        / physical unit of field                         TTYPE2  = 'MAGNITUDE'          / label for field   2                            TFORM2  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT2  = 'E_Magnitude'        / physical unit of field                         TTYPE3  = 'UNCERTAINTY'        / label for field   3                            TFORM3  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT3  = 'E_Magnitude'        / physical unit of field                         TTYPE4  = 'NUMBER_OF_OBJECTS'  / label for field   4                            TFORM4  = '1J      '           / data format of the field: 4-byte INTEGER       TUNIT4  = 'Objects '           / physical unit of field                         EXTNAME = 'Photometric CALTABLE' / name of this binary table extension          CALCNTXT= 'POSS_E  '           /Context in which calibration is valid           CALVERSN= '10/07/1996'         /Calibration version                             THRESHLD=                  500 /Threshold above sky which signal is measured                                                                                            The lookup table in this extension may be used to infer the                     magnitude of stars on plates within the context of CALCNTXT.  The               log(Integrated Signal) is obtained for a star by summing the                    total counts above THRESHLD above the background.  For example,                 if the background for a star is measured to be 4000 and                         THRESHLD is 500, then the integrated signal is the sum of counts                above 4500. The table may then be interpolated to log10(4500) to                obtain the star's magnitude.                                                                                                                                    "Number of Objects" is the number of objects used to derive the                 calibrated magnitude in each row of the table.                          HISTORY   TASK: fselect3.3e  on FILENAME: posse_cal.fits                        HISTORY   Expression: !(MAGNITUDE==0)                                           HISTORY   fselect3.3e at 1/5/97 9:42:8.0                                        END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @ôô†   @2ff`              @33:   @0· ¿   ?ËSw       @     @/®u    ?Â∑$`      =@ÃÃ‘   @.¿†   ?·◊p      P@ôô°   @,e¶¿   ?·Œ¬`     ¨@ffn   @*y¿   ?„	˛`     *@33;   @(π@   ?‚!¥`     Ú@     @&Nø‡   ?‚k‚†     @ÃÃ’   @$ï˜Ä   ?‡–E@     '@ôô¢   @#†   ?›´≥      .@ffo   @"ÅÄ   ?Ÿ‰z¿      Æ@33<   @!Fz    ?⁄gkÄ      q@  	   @ iç    ?ŸÛ„¿      '@ÃÃ÷   @ƒÚ‡   ?›Ñ]Ä      	@ôô£   @Ä                @ffp   @Aâ@                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+C
+C	◊	◊
+Æ	◊	¢
+x	¢	¢
+
+
+
+
+>
+>
+>Î
+>
+>	“¸¸¸	èπ	$	$
+0
+õ
+õ
+f
+f	˚	˚
+f
+f
+f
+f	t	t	‡	‡
+K
+K	t
+K
+õ
+õ	≈	≈
+0
+0
+X
+X
+X
+X	∏·	L	L
+#
+#	∏	∏	Ç
+X
+µ	ﬁ
+µ
+µ	s	s
+µãoüS‹RŒ
+¯
+<
+<	—	—	e	e	¢
+x	¢
+x
+C
+C
+C
+C	¢	¢
+
+	◊	◊	◊	◊	 	 	 	 	˚	˚	è
+f	˚	˚	è
+f<
+f	˚	˚	≈ÓÉ	Z	Ì		Ç	Ç
+#
+#
+é	∏	∏	∏	∏	∏
+#
+#
+#
+#	$	$	$	$	˚	˚
+—
+—
+Ï
+Ï
+Å
+Å	™	™
+ÅW
+õ	≈	≈
+õ	≈	≈	Z	Z	˚	˚	˚	˚	≈	≈
+µ	ﬁ	ﬁ	ﬁ	s	s	ﬁ
+µoüSZâˇŒ
+¯
+<
+<
+<
+<	—	—
+<
+<	¢
+x	¢
+x
+C
+C
+C
+C	¢	¢
+
+
+Æ
+Æ	◊	◊	 	 	 	 	$	$	è
+f	˚	˚	è
+f
+f	è	˚	˚
+õ	≈	Z
+0	Ì		Ç	Ç
+#
+#
+é	∏	∏	∏	∏	∏	L	L	L	L	$	$	$	$	˚	˚	˚	˚
+
+
+Å
+Å	™	™
+ÅW
+õ	≈	≈
+õ	≈	≈	Z	Z	˚	˚	˚	˚	≈	≈
+µ	ﬁ	s	s	s	s
+µ
+µò·éÊ9c	—	—
+<
+<	—	—
+<
+<
+
+
+
+
+C	l	◊	◊	¢	¢
+x	¢	◊	◊	◊
+Æ
+†	 	_	_	$	˚	è
+f
+f
+f
+f
+f®
+—
+—
+—
+0	Z	≈
+õ
+X	Ç		Ì
+é
+é	∏	∏
+é
+é	L	L····	èπ	$	$	˚	˚	˚	˚
+Å	™
+
+Ï
+Å	™	?
+
+0	Z	Z
+0
+0
+0	Z	˚	˚	˚	˚	≈Ó
+µ	ﬁ	s	s	s	s
+µ
+µ
+¬E^ì9c	—	—
+<
+<
+ß
+ß
+<
+<
+
+
+
+	l
+C	◊	◊	¢	¢
+x	¢	◊	◊	◊
+Æ
+†	 	_	_	$	˚	è
+f
+f
+f
+f
+f®
+—
+—
+—
+0	Z	≈
+õ
+X	Ç	Ì
+ƒ
+é
+é	∏	∏
+é
+é
+#
+#	∏	∏	∏	∏	èπ	$	$	˚	˚
+—
+—W
+Å
+
+Ï
+Å	™	?
+
+0	Z	Z	Z
+0
+0
+0	Z	˚	˚	˚	˚	≈Ó
+
+
+
+
+
+
+
+c9⁄-
+¬	Î	õ	õH¢T
+ß
+<	e
+
+„
+x	¢	¢
+x
+
+	◊	◊	l	l	6	6	6
+
+ 
+ 	î	î	Z
+0
+0	Z	Z
+0›¥›
+0	˚	$π	è	L	L
+é
+é
+X
+X	Ì	Ì	L
+#	∏	∏
+#
+#
+é	∏	≈ÓÓ	≈	Z	≈	≈	t
+K
+K
+K
+Å	™	?
+	Z	Z	≈	≈	$	˚	è	è	è	è	è	è	è	è
+
+
+
+
+
+
+
+c9cc
+W
+¬	Î	õ	õ&
+ß
+<	e	6
+
+x	¢	¢
+x
+
+
+Æ
+Æ	l	l	6	6	6
+
+ 
+ 	î	î	Z
+0
+0	Z	Z
+0
+0
+0ä›
+0	˚	$π	è	L	L	∏	∏	Ç	Ç	Ì	Ì	L
+#	∏	∏
+#
+#
+é	∏	≈ÓÓ	≈
+0
+0
+õ
+õ	t
+K
+K
+K
+Å	™
+
+Ï
+0
+0	≈	≈	$	˚	è	è	è	è
+f
+f	è	è
+	=	=
+
+
+
+	®	∂
+å
+å
+å-	Î	Î
+r
+r≥≥
+ß	—	6	6	¢	¢
+x
+x
+x
+x
+C	◊	◊
+x
+x
+
+
+k	î	î	îÓ	≈	Z	Z	≈	≈	≈	≈
+0
+0
+—	˚	˚	˚···	∏	Ç
+X	Ì		L	L	L	L	∏
+é
+#
+#
+õ	≈	≈
+õ	Z
+0
+0
+0	t	t			‡
+
+
+Å	™	≈	≈	≈	≈	è	è	$	$	˚	˚
+—
+—	è	è
+	=	=
+
+
+
+	®	∂
+å
+å
+å
+W-	Î	Î
+r
+r
+›
+›
+<
+<
+ß	—
+
+	¢	¢
+x
+x
+x
+x
+C	◊	◊
+x
+x
+
+
+k	î	î	îÓ	≈	Z	Z	≈	≈	≈	≈	Z
+0
+0
+—	˚	˚	˚	∏	∏·	∏	Ç
+X
+ƒ	Ì
+#
+#
+#
+#	∏
+é
+#
+#
+õ	≈	≈
+õ
+0	Z	Z	Zûû			‡
+
+
+Å	™	≈	≈	≈	≈	è	è	˚	˚	˚	˚	˚	˚
+f
+f
+I	s	ﬁ	ﬁ
+
+
+
+
+
+
+
+
+<
+<
+!
+!
+!
+!
+!
+!
+!
+!	l
+C	◊	◊
+C
+C
+…	Ú	á	á
+]
+]	Ú	Ú	_	_	_	_	$	$	è	è	è	è	˚	˚
+Å
+Å
+Ï
+Ï
+Å
+Å
+	?	ù
+s	ù	ù
+>
+>
+>
+>	“
+©
+>
+
+
+s
+s
+õ	≈
+0
+0
+õ	≈	≈	≈‘‘	™	™
+
+	?	?	™	™	™	™	™	™
+Å
+Å
+0	Z
+õ
+õ
+0
+I	s	ﬁ	ﬁ
+
+
+
+	0	0	0
+›È
+<	K	K
+!
+!
+!
+!
+!
+!
+C	◊	◊
+C
+C	Ú
+…
+]
+]44	Ú	Ú	_	_	_	_	$	$	è	è	è	è	˚	˚
+Å
+Å
+
+
+Å
+Å
+Ï
+	ù
+s	ù	ù
+>
+>	g	g	“
+©Î
+
+
+s
+s
+õ	≈
+0
+0	≈
+õr	≈	™	™	™	™
+
+	?	?	™	™	™	™	™	™	™	™	Z
+0
+õ
+õ›		ﬁ
+I
+I
+
+
+	®	0	0	0
+›
+ß
+ß
+<
+<	∂	∂	∂
+å	∂	∂
+!	K
+C	l
+C
+C
+]4
+…
+…
+…
+…	Ú	Ú	 	 	_
+5
+f	è	è	è	˚	˚	è	è	™	™	?
+
+
+
+Å
+Å
+s
+s
+
+
+©	“	“¸	g
+>
+©
+
+	ù	ù	ZÉ	≈	≈	≈
+õ
+õ	≈
+	?
+	?	?	?	?	?	™	™	?	?	™	™
+Å	™	≈
+õrr		ﬁ
+I
+I
+
+
+	®	0	0	0	0	—	—	e	e	∂	∂	∂
+å	∂	∂
+!	K	l
+C
+C	á
+]
+…
+…	Ú	Ú		ÛÛ
+5
+f	è	è	è	˚	˚	è	è	™	™	?
+
+
+
+Å
+Å
+s
+s
+
+
+©	“
+©	“
+>	g
+©	“
+
+	ù	ùÉ	Z	≈	≈	≈
+õ	≈
+õ
+Ï
+
+	?	?	?	?	?	™	™
+
+	™	™
+Å	™
+õ	≈
+õ
+õ
+0
+0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional binary table                     NAXIS1  =                   28 / width of table in bytes                        NAXIS2  =                   16 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group (required keyword)              TFIELDS =                    4 / number of fields in each row                   TTYPE1  = 'INTEGRATED_SIGNAL'  / label for field   1                            TFORM1  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT1  = 'log10Counts'        / physical unit of field                         TTYPE2  = 'MAGNITUDE'          / label for field   2                            TFORM2  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT2  = 'E_Magnitude'        / physical unit of field                         TTYPE3  = 'UNCERTAINTY'        / label for field   3                            TFORM3  = '1D      '           / data format of the field: 8-byte DOUBLE        TUNIT3  = 'E_Magnitude'        / physical unit of field                         TTYPE4  = 'NUMBER_OF_OBJECTS'  / label for field   4                            TFORM4  = '1J      '           / data format of the field: 4-byte INTEGER       TUNIT4  = 'Objects '           / physical unit of field                         EXTNAME = 'Photometric CALTABLE' / name of this binary table extension          CALCNTXT= 'POSS_E  '           /Context in which calibration is valid           CALVERSN= '10/07/1996'         /Calibration version                             THRESHLD=                  500 /Threshold above sky which signal is measured                                                                                            The lookup table in this extension may be used to infer the                     magnitude of stars on plates within the context of CALCNTXT.  The               log(Integrated Signal) is obtained for a star by summing the                    total counts above THRESHLD above the background.  For example,                 if the background for a star is measured to be 4000 and                         THRESHLD is 500, then the integrated signal is the sum of counts                above 4500. The table may then be interpolated to log10(4500) to                obtain the star's magnitude.                                                                                                                                    "Number of Objects" is the number of objects used to derive the                 calibrated magnitude in each row of the table.                          HISTORY   TASK: fselect3.3e  on FILENAME: posse_cal.fits                        HISTORY   Expression: !(MAGNITUDE==0)                                           HISTORY   fselect3.3e at 1/5/97 9:42:8.0                                        END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @ôô†   @2ff`              @33:   @0· ¿   ?ËSw       @     @/®u    ?Â∑$`      =@ÃÃ‘   @.¿†   ?·◊p      P@ôô°   @,e¶¿   ?·Œ¬`     ¨@ffn   @*y¿   ?„	˛`     *@33;   @(π@   ?‚!¥`     Ú@     @&Nø‡   ?‚k‚†     @ÃÃ’   @$ï˜Ä   ?‡–E@     '@ôô¢   @#†   ?›´≥      .@ffo   @"ÅÄ   ?Ÿ‰z¿      Æ@33<   @!Fz    ?⁄gkÄ      q@  	   @ iç    ?ŸÛ„¿      '@ÃÃ÷   @ƒÚ‡   ?›Ñ]Ä      	@ôô£   @Ä                @ffp   @Aâ@                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
