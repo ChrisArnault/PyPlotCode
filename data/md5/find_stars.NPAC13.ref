@@ -1,28 +1,18 @@
 ----------------
 name of file: ../fits/NPAC13.fits
-cd1_1: -0.0004695351
-cd1_2: -0.0000531139
-cd2_1: -0.0000521406
-cd2_2: 0.0004696501
-background: 2671
-dispersion: 151
+cd1_1: -0.0004695847
+cd1_2: -0.0000527628
+cd2_1: -0.0000517837
+cd2_2: 0.0004696992
+background: 2811
+dispersion: 183
 ----------------
-cluster 0: 13284/296347 at 5.0, 52.0
-right ascension: 148.457
-declination: 69.027
-celestial object 0: GPM 148.454129+69.027204
+cluster 0: 13342/417402 at 87.0, 37.0
+right ascension: 148.511
+declination: 69.116
+celestial object 0: GPM 148.510154+69.115590
 ----------------
-cluster 1: 12570/155113 at 90.0, 86.0
-right ascension: 148.399
-declination: 69.065
-celestial object 0: 2MASS J09533548+6903542
-----------------
-cluster 2: 10013/127996 at 20.0, 94.0
-right ascension: 148.399
-declination: 69.032
-celestial object 0: 2MASS J09533555+6901553
-----------------
-cluster 3: 10173/60270 at 34.0, 15.0
-right ascension: 148.501
-declination: 69.043
+cluster 1: 11445/145370 at 86.0, 59.0
+right ascension: 148.483
+declination: 69.114
 ----------------

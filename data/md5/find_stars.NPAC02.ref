@@ -1,37 +1,33 @@
 ----------------
 name of file: ../fits/NPAC02.fits
-cd1_1: -0.0004698758
-cd1_2: -0.0000499196
-cd2_1: -0.0000489521
-cd2_2: 0.0004699901
-background: 2604
-dispersion: 139
+cd1_1: -0.0004698546
+cd1_2: -0.0000501004
+cd2_1: -0.0000491341
+cd2_2: 0.0004699691
+background: 2591
+dispersion: 136
 ----------------
-cluster 0: 13260/1101292 at 55.0, 51.0
+cluster 0: 13260/1101292 at 63.0, 32.0
 right ascension: 148.860
 declination: 68.856
 celestial object 0: TYC 4383-1031-1
 ----------------
-cluster 1: 13515/375692 at 38.0, 86.0
+cluster 1: 13515/375692 at 46.0, 67.0
 right ascension: 148.816
 declination: 68.846
 celestial object 0: GSC 04383-01037
 ----------------
-cluster 2: 11360/149614 at 47.0, 4.0
-right ascension: 148.922
-declination: 68.854
-celestial object 0: 2MASS J09554113+6851143
+cluster 2: 10596/128579 at 85.0, 90.0
+right ascension: 148.781
+declination: 68.863
+celestial object 0: 2MASS J09550725+6851476
 ----------------
-cluster 3: 9748/115855 at 5.0, 46.0
+cluster 3: 9748/115855 at 13.0, 27.0
 right ascension: 148.873
 declination: 68.833
 celestial object 0: 2MASS J09552920+6849559
 ----------------
-cluster 4: 6054/41484 at 84.0, 69.0
+cluster 4: 6054/41484 at 92.0, 50.0
 right ascension: 148.832
-declination: 68.869
-----------------
-cluster 5: 4995/36699 at 78.0, 12.0
-right ascension: 148.907
 declination: 68.869
 ----------------
