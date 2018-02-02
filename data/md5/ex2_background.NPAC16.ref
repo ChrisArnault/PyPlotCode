@@ -1,4 +1,4 @@
 RESULT: test_gaussian = 2.506628
 RESULT: histogram = 11236
-RESULT: background = 2579
-RESULT: dispersion = 148
+RESULT: background = 2521
+RESULT: dispersion = 141

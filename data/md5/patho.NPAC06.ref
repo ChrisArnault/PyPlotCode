@@ -1,10 +1,8 @@
 image shape is (106, 106)
-cluster 0: 13077/958288 at 86.0, 11.0
-cluster 1: 13409/378492 at 14.0, 52.0
-cluster 2: 13338/370942 at 51.0, 16.0
-cluster 3: 12222/153473 at 9.0, 10.0
-cluster 4: 9065/53056 at 20.0, 70.0
-cluster 5: 6163/42554 at 79.0, 72.0
-cluster 6: 4902/39347 at 4.0, 84.0
-cluster 6 is in the border
-1 pathologic clusters
+cluster 0: 13077/1139209 at 58.0, 89.0
+cluster 1: 13338/370942 at 23.0, 94.0
+cluster 2: 13161/332776 at 50.0, 27.0
+cluster 3: 13120/314121 at 37.0, 47.0
+cluster 4: 11408/144426 at 26.0, 57.0
+cluster 5: 8026/53572 at 79.0, 20.0
+0 pathologic clusters

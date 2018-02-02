@@ -1,0 +1,28 @@
+----------------
+name of file: ../fits/NPAC11.fits
+cd1_1: -0.0004694079
+cd1_2: -0.0000544404
+cd2_1: -0.0000534503
+cd2_2: 0.0004695220
+background: 2689
+dispersion: 154
+----------------
+cluster 0: 10571/231412 at 44.0, 42.0
+right ascension: 148.299
+declination: 69.268
+celestial object 0: 2MASS J09531137+6916049
+----------------
+cluster 1: 9617/57758 at 62.0, 64.0
+right ascension: 148.267
+declination: 69.275
+celestial object 0: 2MASS J09530360+6916301
+----------------
+cluster 2: 9054/53347 at 40.0, 92.0
+right ascension: 148.233
+declination: 69.263
+celestial object 0: 2MASS J09525546+6915472
+----------------
+cluster 3: 4181/37252 at 14.0, 61.0
+right ascension: 148.278
+declination: 69.253
+----------------

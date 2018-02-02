@@ -1,33 +1,37 @@
 ----------------
 name of file: ../fits/NPAC03.fits
-cd1_1: -0.0004702413
-cd1_2: -0.0000466890
-cd2_1: -0.0000457018
-cd2_2: 0.0004703541
-background: 2740
-dispersion: 165
+cd1_1: -0.0004703038
+cd1_2: -0.0000460784
+cd2_1: -0.0000450896
+cd2_2: 0.0004704164
+background: 2657
+dispersion: 145
 ----------------
-cluster 0: 12972/334023 at 30.0, 4.0
+cluster 0: 12972/334023 at 55.0, 62.0
 right ascension: 149.346
 declination: 68.930
 celestial object 0: GPM 149.344754+68.930084
 ----------------
-cluster 1: 12021/159901 at 74.0, 102.0
-right ascension: 149.212
-declination: 68.946
-celestial object 0: 2MASS J09565077+6856458
+cluster 1: 12515/161213 at 69.0, 18.0
+right ascension: 149.402
+declination: 68.939
 ----------------
-cluster 2: 10770/126189 at 9.0, 74.0
-right ascension: 149.257
-declination: 68.917
-celestial object 0: 2XMMi J095701.3+685500
+cluster 2: 10960/134982 at 30.0, 31.0
+right ascension: 149.390
+declination: 68.920
+celestial object 0: 2MASS J09573339+6855099
 ----------------
-cluster 3: 4694/101106 at 2.0, 25.0
-right ascension: 149.322
-declination: 68.916
-----------------
-cluster 4: 9440/59647 at 11.0, 29.0
+cluster 3: 9440/118838 at 36.0, 87.0
 right ascension: 149.316
 declination: 68.920
 celestial object 0: 2MASS J09571557+6855104
+----------------
+cluster 4: 8555/52437 at 25.0, 83.0
+right ascension: 149.322
+declination: 68.915
+celestial object 0: 2MASS J09571702+6854538
+----------------
+cluster 5: 5921/38755 at 66.0, 36.0
+right ascension: 149.378
+declination: 68.936
 ----------------

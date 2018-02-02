@@ -42,7 +42,7 @@ for filename in sorted(os.listdir('../fits')):
     if exp.match(filename):
         token = filename[:-5]
         target = "patho.{}".format(token)
-        command = "../../src/sandbox/check_pathologic_clusters.py -b ../fits/{}".format(filename)
+        command = "../../src/sandbox/check_pathologic_clusters.py ../fits/{}".format(filename)
         targets.append({"name": target, "command": command})
 
 

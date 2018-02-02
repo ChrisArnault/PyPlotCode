@@ -26,11 +26,3 @@ cluster 3: 5908/40341 at 23.0, 96.0
 right ascension: 149.360
 declination: 69.220
 ----------------
-peak[0]: (16, 20)
-peak[1]: (23, 96)
-peak[2]: (40, 70)
-peak[3]: (89, 50)
-candidate[0]: (16, 20), radius: 3
-candidate[1]: (23, 96), radius: 1
-candidate[2]: (40, 70), radius: 3
-candidate[3]: (89, 50), radius: 3

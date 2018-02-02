@@ -1,28 +1,40 @@
 ----------------
 name of file: ../fits/NPAC06.fits
-cd1_1: -0.0004703657
-cd1_2: -0.0000458995
-cd2_1: -0.0000448867
-cd2_2: 0.0004704777
-background: 2797
-dispersion: 151
+cd1_1: -0.0004702363
+cd1_2: -0.0000470556
+cd2_1: -0.0000460515
+cd2_2: 0.0004703487
+background: 2709
+dispersion: 147
 ----------------
-cluster 0: 13422/394966 at 57.0, 50.0
-right ascension: 149.392
-declination: 69.230
-celestial object 0: GPM 149.391696+69.229356
+cluster 0: 13077/1139209 at 58.0, 89.0
+right ascension: 149.189
+declination: 69.167
+celestial object 0: GSC 04383-00224
 ----------------
-cluster 1: 11183/83328 at 33.0, 1.0
-right ascension: 149.460
-declination: 69.221
-celestial object 0: 2MASS J09575075+6913140
+cluster 1: 13338/370942 at 23.0, 94.0
+right ascension: 149.187
+declination: 69.150
+celestial object 0: GSC 04383-00094
 ----------------
-cluster 2: 10075/81295 at 104.0, 30.0
-right ascension: 149.413
-declination: 69.253
-celestial object 0: GPM 149.412104+69.253417
+cluster 2: 13161/332776 at 50.0, 27.0
+right ascension: 149.272
+declination: 69.166
+celestial object 0: GSC 04383-00790
+celestial object 1: [SPB96] 1658
 ----------------
-cluster 3: 5908/40341 at 40.0, 76.0
-right ascension: 149.360
-declination: 69.220
+cluster 3: 13120/314121 at 37.0, 47.0
+right ascension: 149.247
+declination: 69.159
+celestial object 0: GSC 04383-01158
+----------------
+cluster 4: 11408/144426 at 26.0, 57.0
+right ascension: 149.236
+declination: 69.153
+celestial object 0: 2MASS J09565617+6909117
+----------------
+cluster 5: 8026/53572 at 79.0, 20.0
+right ascension: 149.278
+declination: 69.180
+celestial object 0: 2MASS J09570674+6910458
 ----------------
