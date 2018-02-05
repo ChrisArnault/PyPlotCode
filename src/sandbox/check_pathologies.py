@@ -22,10 +22,21 @@ pattern_radius = 4
 clustering = lib_cluster.Clustering(pattern_radius)
 clusters = clustering(pixels, background, dispersion)
 nb_patho = 0
+nb_symptom = 0
 
-# clusters details
+# print clusters details
 for icl, cl in enumerate(clusters):
     print('cluster {:d}: {}'.format(icl, cl))
+
+# check no cluster
+if len(clusters) == 0:
+    print('no cluster')
+    nb_patho += 1
+
+# check single cluster (too simple)
+if len(clusters) == 1:
+    print('single cluster')
+    nb_patho += 1
 
 # check clusters in border
 for icl, cl in enumerate(clusters):
@@ -54,8 +65,9 @@ if len(cobjects) > 1:
     print('clusters 0 is associated with multiple celestial objects')
     for icobj, cobj in enumerate(sorted(cobjects.keys())):
         print('celestial object {}: {}'.format(icobj, cobj))
-    nb_patho += 1
+    nb_symptom += 1
 
 # conclusion
-print('{} pathologic clusters'.format(nb_patho))
+print('{} pathologies'.format(nb_patho))
+print('{} symptoms'.format(nb_symptom))
 sys.exit(nb_patho)

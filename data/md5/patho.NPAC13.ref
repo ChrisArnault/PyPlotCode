@@ -1,4 +1,8 @@
 image shape is (106, 106)
 cluster 0: 13342/417402 at 87.0, 37.0
 cluster 1: 11445/145370 at 86.0, 59.0
-0 pathologic clusters
+clusters 0 is associated with multiple celestial objects
+celestial object 0: GPM 148.510154+69.115590
+celestial object 1: [PR95] 80052
+0 pathologies
+1 symptoms
