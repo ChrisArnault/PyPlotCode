@@ -27,20 +27,20 @@ def main():
 
     ext_image = clustering.step_extend_image(pixels)
 
-    print('RESULT: extended_image_width = {:2d}'.format(ext_image.shape[0]))
-    print('RESULT: extended_image_height = {:2d}'.format(ext_image.shape[1]))
+    print('RESULT: extended_image_width = {:2d}'.format(ext_image.shape[1]))
+    print('RESULT: extended_image_height = {:2d}'.format(ext_image.shape[0]))
     print('RESULT: extended_image_sum = {:5.0f}'.format(np.sum(ext_image)))
 
     cp_image = clustering.step_build_convolution_image(ext_image)
 
-    print('RESULT: convolution_image_width = {:2d}'.format(cp_image.shape[0]))
-    print('RESULT: convolution_image_height = {:2d}'.format(cp_image.shape[1]))
+    print('RESULT: convolution_image_width = {:2d}'.format(cp_image.shape[1]))
+    print('RESULT: convolution_image_height = {:2d}'.format(cp_image.shape[0]))
     print('RESULT: convolution_image_sum = {:5.0f}'.format(np.sum(cp_image)))
 
     ext_cp_image = clustering.step_extend_convolution_image(cp_image)
 
-    print('RESULT: extended_convolution_image_width = {:2d}'.format(ext_cp_image.shape[0]))
-    print('RESULT: extended_convolution_image_height = {:2d}'.format(ext_cp_image.shape[1]))
+    print('RESULT: extended_convolution_image_width = {:2d}'.format(ext_cp_image.shape[1]))
+    print('RESULT: extended_convolution_image_height = {:2d}'.format(ext_cp_image.shape[0]))
     print('RESULT: extended_convolution_image_sum = {:5.0f}'.format(np.sum(ext_cp_image)))
 
     peaks = clustering.step_detect_peaks(pixels, cp_image, ext_cp_image, background, dispersion)
