@@ -23,9 +23,19 @@ clustering = lib_cluster.Clustering(pattern_radius)
 clusters = clustering(pixels, background, dispersion)
 nb_patho = 0
 
-# clusters details
+# print clusters details
 for icl, cl in enumerate(clusters):
     print('cluster {:d}: {}'.format(icl, cl))
+
+# check no cluster
+if len(clusters) == 0:
+    print('no cluster')
+    nb_patho += 1
+
+# check single cluster (too simple)
+if len(clusters) == 1:
+    print('single cluster')
+    nb_patho += 1
 
 # check clusters in border
 for icl, cl in enumerate(clusters):
