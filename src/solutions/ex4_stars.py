@@ -24,8 +24,8 @@ def show_cluster(wcs, i, cluster):
     print('RESULT: declination = {:.3f}'.format(radec.dec))
 
     os, _, _ = get_celestial_objects(wcs, cluster)
-    for cobj in os.keys():
-        print('RESULT: celestial_object = {}'.format(cobj))
+    for i, cobj in enumerate(os.keys()):
+        print('RESULT: celestial_object_{} = {}'.format(i, cobj))
 
 
 def main():
