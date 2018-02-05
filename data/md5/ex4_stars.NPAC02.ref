@@ -1,3 +1,4 @@
 RESULT: right_ascension = 148.860
 RESULT: declination = 68.856
-RESULT: celestial_object = TYC 4383-1031-1
+RESULT: celestial_object_0 = TYC 4383-1031-1
+RESULT: celestial_object_1 = [PR95] 60055

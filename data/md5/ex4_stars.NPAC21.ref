@@ -1,3 +1,4 @@
 RESULT: right_ascension = 149.554
 RESULT: declination = 69.149
-RESULT: celestial_object = GSC 04383-01005
+RESULT: celestial_object_0 = GSC 04383-01005
+RESULT: celestial_object_1 = [PR95] 20040
