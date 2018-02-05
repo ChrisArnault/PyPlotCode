@@ -9,6 +9,7 @@ Utilities for SIMBAD access
 
 import sys, time
 import urllib.request, urllib.error, urllib.parse
+import collections
 import numpy as np
 
 
@@ -122,7 +123,7 @@ def get_celestial_objects(radec, radius=RADIUS):
 
     in_data = False
 
-    objects = dict()
+    raw_objects = dict()
 
     for line in out:
         line = line.strip()
@@ -136,8 +137,11 @@ def get_celestial_objects(radec, radius=RADIUS):
         data = line.split('\t')
         obj_name = data[3].strip()
         obj_type = data[2].strip()
-        if  obj_type!='Unknown' and obj_type!='HII':
-            objects[obj_name] = obj_type
+        # if  obj_type!='Unknown' and obj_type!='HII':
+        if  obj_type != 'HII':
+            raw_objects[obj_name] = obj_type
+
+    objects = collections.OrderedDict(sorted(raw_objects.items()))
 
     return objects, out, req
 
