@@ -1,20 +1,19 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""lib_args module"""
 
-
-import sys
-import os
 import argparse
+import os
+import sys
 
 
 def get_args():
-
-    # use argparse to analyse the command line arguments
+    """Analyse the command line arguments using argparse"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-b',
-        dest="batch",
-        action="store_true",
+        dest='batch',
+        action='store_true',
         default=False,
         help='batch mode, no graphics and no interaction')
     parser.add_argument('file', nargs='?', help='fits input file')
@@ -22,46 +21,47 @@ def get_args():
 
     if not args.file:
         # if no file name given on the command line
-        DEFAULT_DATA_FILE = 'common'
+        default_data_file = 'common'
         if args.batch:
-            file = DEFAULT_DATA_FILE
+            data_file = default_data_file
         else:
-            file = input('file name [%s]? ' % DEFAULT_DATA_FILE)
-            if len(file) == 0:
-                file = DEFAULT_DATA_FILE
+            data_file = input('file name [%s]? ' % default_data_file)
+            if not data_file:
+                data_file = default_data_file
     else:
-        file = args.file
+        data_file = args.file
 
-    if not file.endswith('.fits'):
+    if not data_file.endswith('.fits'):
         # we need *.fits files
-        file += '.fits'
+        data_file += '.fits'
 
-    if file.rfind('/') == -1 and file.rfind('\\') == -1:
+    if data_file.rfind('/') == -1 and data_file.rfind('\\') == -1:
         # when an explicit path is not provided, prepend the default path
         # other wise don't touch it
         # establish the default path and file values
-        DEFAULT_DATA_PATH = os.environ.get('DATAPATH')
-        if DEFAULT_DATA_PATH is None:
+        default_data_path = os.environ.get('DATAPATH')
+        if default_data_path is None:
             if os.path.exists('../../data/fits'):
-                DEFAULT_DATA_PATH = '../../data/fits'
+                default_data_path = '../../data/fits'
             elif os.path.exists('../data/fits'):
-                DEFAULT_DATA_PATH = '../data/fits'
+                default_data_path = '../data/fits'
             elif os.path.exists('../data'):
-                DEFAULT_DATA_PATH = '../data'
+                default_data_path = '../data'
             else:
-                print('No default data path found', file=sys.stderr)
+                sys.stderr.write('No default data path found!')
                 exit(1)
 
-        file = DEFAULT_DATA_PATH + '/' + file
+        data_file = default_data_path + '/' + data_file
 
-    if not os.path.exists(file):
-        raise FileNotFoundError('Image file ({}) not found'.format(file))
+    if not os.path.exists(data_file):
+        raise FileNotFoundError(
+            'Image file ({}) not found'.format(data_file))
 
     # we don't test if the file actually exists.
     # thus we expect that this test will occur at open time (perhaps using a
     # try clause)
 
-    return file, not args.batch
+    return data_file, not args.batch
 
 
 # =====
