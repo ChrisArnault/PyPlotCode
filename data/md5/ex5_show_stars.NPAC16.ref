@@ -1,5 +1,7 @@
 RESULT: right_ascension_0 = 148.463
 RESULT: declination_0 = 68.925
+RESULT: celestial_object_0_0 = [PR95] 80191
+RESULT: celestial_object_0_1 = [PR95] 90008
 RESULT: right_ascension_1 = 148.462
 RESULT: declination_1 = 68.896
 RESULT: celestial_object_1_0 = GPM 148.459500+68.895779
@@ -9,3 +11,4 @@ RESULT: right_ascension_3 = 148.424
 RESULT: declination_3 = 68.920
 RESULT: right_ascension_4 = 148.413
 RESULT: declination_4 = 68.908
+RESULT: celestial_object_4_0 = [PR95] 90014
