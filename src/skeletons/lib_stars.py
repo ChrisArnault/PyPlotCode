@@ -7,8 +7,11 @@ Utilities for SIMBAD access
 '''
 
 
-import sys, time
-import urllib.request, urllib.error, urllib.parse
+import sys
+import time
+import urllib.request
+import urllib.error
+import urllib.parse
 import collections
 import numpy as np
 
@@ -55,7 +58,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         script += ' radius='
         script += '%f' % radius       # append "a_radius" (decimal degree)
         script += 'd'                  # d,m,s
-        script += ' frame=FK5 epoch=J2000 equinox=2000' # fk5
+        script += ' frame=FK5 epoch=J2000 equinox=2000'  # fk5
         script += '\n'
 
         # "special characters" converted to "%02X" format :
@@ -97,17 +100,21 @@ def get_celestial_objects(radec, radius=RADIUS):
                         lines = text.split('<BR>\n')
                         return lines[0]
                     except Exception:
-                        print('cannot read URL {}'.format(url), file=sys.stderr)
-                    except:
+                        print(
+                            'cannot read URL {}'.format(url),
+                            file=sys.stderr)
+                    except BaseException:
                         raise
 
                 except urllib.error.HTTPError:
 
                     retry += 1
                     time.sleep(0.2)
-                except:
+                except BaseException:
                     raise
-            print('Retrying to read {} ({} attempts remaining)'.format(url,retry), file=sys.stderr)
+            print(
+                'Retrying to read {} ({} attempts remaining)'.format(
+                    url, retry), file=sys.stderr)
 
         out = send(req)
 
@@ -130,7 +137,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         if line == '':
             continue
         if not in_data:
-            if line == '::data::'+'::'*36:
+            if line == '::data::' + '::' * 36:
                 in_data = True
             continue
 
@@ -138,7 +145,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         obj_name = data[3].strip()
         obj_type = data[2].strip()
         # if  obj_type!='Unknown' and obj_type!='HII':
-        if  obj_type != 'HII':
+        if obj_type != 'HII':
             raw_objects[obj_name] = obj_type
 
     objects = collections.OrderedDict(sorted(raw_objects.items()))
@@ -159,6 +166,3 @@ if __name__ == '__main__':
     cobjects, _, _ = get_celestial_objects(radec, 0.1)
     for cobj_name in sorted(cobjects.keys()):
         print(cobj_name)
-
-
-

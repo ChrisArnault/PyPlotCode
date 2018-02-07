@@ -35,7 +35,6 @@ class PixelsSet():
         """ max value of all pixels """
         return max([pixel[2] for pixel in self.pixels])
 
-
     def get_center(self):
         """ bounding box center """
         rows, cols, values = zip(*self.pixels)
@@ -57,8 +56,10 @@ class PixelsSet():
         """" weighted centroid """
         integral = self.get_integral()
         row_mean, col_mean = self.get_centroid()
-        row_weighted = sum([pixel[2] * ((pixel[0] - row_mean) ** 2) for pixel in self.pixels])
-        col_weighted = sum([pixel[2] * ((pixel[1] - row_mean) ** 2) for pixel in self.pixels])
+        row_weighted = sum([pixel[2] * ((pixel[0] - row_mean) ** 2)
+                            for pixel in self.pixels])
+        col_weighted = sum([pixel[2] * ((pixel[1] - row_mean) ** 2)
+                            for pixel in self.pixels])
         row_weighted = math.sqrt(row_weighted) / integral + row_mean
         col_weighted = math.sqrt(col_weighted) / integral + col_mean
         return row_weighted, col_weighted
@@ -87,32 +88,29 @@ class PixelsSet():
 if __name__ == '__main__':
 
     # PixelsSet
-    
+
     ps = PixelsSet()
 
-    ## x,y
+    # x,y
     # 1,3  2,3  3,3
     # 1,2  2,2  3,2
     #      2,1  3,1
 
-    ## val
+    # val
     # 10   20   20
     # 10   20   20
     #      10   10
 
-    ps.add(2,1,10)
-    ps.add(3,1,10)
-    ps.add(1,2,10)
-    ps.add(2,2,20)
-    ps.add(3,2,20)
-    ps.add(1,3,10)
-    ps.add(2,3,20)
-    ps.add(3,3,20)
+    ps.add(2, 1, 10)
+    ps.add(3, 1, 10)
+    ps.add(1, 2, 10)
+    ps.add(2, 2, 20)
+    ps.add(3, 2, 20)
+    ps.add(1, 3, 10)
+    ps.add(2, 3, 20)
+    ps.add(3, 3, 20)
 
     print("center: {:.2f} {:.2f}".format(*ps.get_center()))
     print("centroid: {:.2f} {:.2f}".format(*ps.get_centroid()))
     print("weighted: {:.2f} {:.2f}".format(*ps.get_weighted()))
     print("peak: {:.2f} {:.2f}".format(*ps.get_peak()))
-
-
-

@@ -2,14 +2,21 @@
 # -*- coding: utf-8 -*-
 
 
-import sys, os, argparse
+import sys
+import os
+import argparse
 
 
 def get_args():
 
     # use argparse to analyse the command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', dest="batch", action="store_true", default=False, help='batch mode, no graphics and no interaction')
+    parser.add_argument(
+        '-b',
+        dest="batch",
+        action="store_true",
+        default=False,
+        help='batch mode, no graphics and no interaction')
     parser.add_argument('file', nargs='?', help='fits input file')
     args = parser.parse_args()
 
@@ -34,7 +41,7 @@ def get_args():
         # other wise don't touch it
         # establish the default path and file values
         DEFAULT_DATA_PATH = os.environ.get('DATAPATH')
-        if DEFAULT_DATA_PATH == None:
+        if DEFAULT_DATA_PATH is None:
             if os.path.exists('../../data/fits'):
                 DEFAULT_DATA_PATH = '../../data/fits'
             elif os.path.exists('../data/fits'):
@@ -51,7 +58,8 @@ def get_args():
         raise FileNotFoundError('Image file ({}) not found'.format(file))
 
     # we don't test if the file actually exists.
-    # thus we expect that this test will occur at open time (perhaps using a try clause)
+    # thus we expect that this test will occur at open time (perhaps using a
+    # try clause)
 
     return file, not args.batch
 
@@ -65,5 +73,3 @@ if __name__ == '__main__':
     print(get_args())
 
     sys.exit(0)
-
-
