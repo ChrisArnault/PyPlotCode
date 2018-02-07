@@ -13,13 +13,13 @@ import urllib.request
 import urllib.error
 import urllib.parse
 import collections
-import numpy as np
 
 
 RADIUS = 0.001
 
 
 def get_celestial_objects(radec, radius=RADIUS):
+    """Provide celestial objects."""
 
     def make_req(radec, radius):
         """
@@ -93,43 +93,32 @@ def get_celestial_objects(radec, radius=RADIUS):
                 # pylint: disable=broad-except
                 try:
                     req = urllib.request.urlopen(url)
-
                     try:
                         text = req.read()
                         text = text.decode("utf-8")
                         lines = text.split('<BR>\n')
                         return lines[0]
                     except Exception:
-                        print(
-                            'cannot read URL {}'.format(url),
-                            file=sys.stderr)
+                        sys.stderr.write('cannot read URL {}'.format(url))
                     except BaseException:
                         raise
-
                 except urllib.error.HTTPError:
-
                     retry += 1
                     time.sleep(0.2)
                 except BaseException:
                     raise
-            print(
+            sys.stderr.write(
                 'Retrying to read {} ({} attempts remaining)'.format(
-                    url, retry), file=sys.stderr)
-
+                    url, retry))
         out = send(req)
-
         return out
-
     req = make_req(radec, radius)
-
     out = wget(req)
     if out is None:
         return '', out, req
 
     out = out.split('\n')
-
     in_data = False
-
     raw_objects = dict()
 
     for line in out:
@@ -155,12 +144,18 @@ def get_celestial_objects(radec, radius=RADIUS):
 
 # =====
 # Unit tests
-#=====
+# =====
 
 if __name__ == '__main__':
 
     class RaDec:
-        pass
+        """Spatial coordinates."""
+
+        def __init__(self):
+            """ Initializing """
+            self.ra = 0.0
+            self.dec = 0.0
+
     radec = RaDec()
     radec.ra, radec.dec = 1.0, 1.0
     cobjects, _, _ = get_celestial_objects(radec, 0.1)
