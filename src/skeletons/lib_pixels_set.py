@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+"""Pixels module"""
 
 import math
 
 
-# =====
-#  Pixel set
-# =====
-
 class PixelsSet():
+    """A Pixels set class"""
 
     def __init__(self):
         """ construct an empty set """
@@ -66,13 +63,13 @@ class PixelsSet():
 
     def get_peak(self):
         """ centroid of the pixels which have the max value """
-        max = 0
+        max_value = 0
         max_pixels = []
         for pixel in self.pixels:
-            if pixel[2] > max:
-                max = pixel[2]
+            if pixel[2] > max_value:
+                max_value = pixel[2]
                 max_pixels = [pixel]
-            elif pixel[2] == max:
+            elif pixel[2] == max_value:
                 max_pixels.append(pixel)
         rows, cols, _ = zip(*max_pixels)
         nbpixels = len(max_pixels)
@@ -83,7 +80,7 @@ class PixelsSet():
 
 # =====
 # Unit tests
-#=====
+# =====
 
 if __name__ == '__main__':
 
