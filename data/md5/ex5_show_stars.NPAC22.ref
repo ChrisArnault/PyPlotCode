@@ -9,3 +9,5 @@ RESULT: declination_2 = 69.221
 RESULT: celestial_object_2_0 = 2MASS J09575075+6913140
 RESULT: right_ascension_3 = 149.360
 RESULT: declination_3 = 69.220
+RESULT: celestial_object_3_0 = [PR95] 10266
+RESULT: celestial_object_3_1 = [PR95] 20185
