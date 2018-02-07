@@ -7,16 +7,19 @@ Utilities for SIMBAD access
 '''
 
 
-import sys, time
-import urllib.request, urllib.error, urllib.parse
+import sys
+import time
+import urllib.request
+import urllib.error
+import urllib.parse
 import collections
-import numpy as np
 
 
 RADIUS = 0.001
 
 
 def get_celestial_objects(radec, radius=RADIUS):
+    """Provide celestial objects."""
 
     def make_req(radec, radius):
         """
@@ -55,7 +58,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         script += ' radius='
         script += '%f' % radius       # append "a_radius" (decimal degree)
         script += 'd'                  # d,m,s
-        script += ' frame=FK5 epoch=J2000 equinox=2000' # fk5
+        script += ' frame=FK5 epoch=J2000 equinox=2000'  # fk5
         script += '\n'
 
         # "special characters" converted to "%02X" format :
@@ -90,39 +93,32 @@ def get_celestial_objects(radec, radius=RADIUS):
                 # pylint: disable=broad-except
                 try:
                     req = urllib.request.urlopen(url)
-
                     try:
                         text = req.read()
                         text = text.decode("utf-8")
                         lines = text.split('<BR>\n')
                         return lines[0]
                     except Exception:
-                        print('cannot read URL {}'.format(url), file=sys.stderr)
-                    except:
+                        sys.stderr.write('cannot read URL {}'.format(url))
+                    except BaseException:
                         raise
-
                 except urllib.error.HTTPError:
-
                     retry += 1
                     time.sleep(0.2)
-                except:
+                except BaseException:
                     raise
-            print('Retrying to read {} ({} attempts remaining)'.format(url,retry), file=sys.stderr)
-
+            sys.stderr.write(
+                'Retrying to read {} ({} attempts remaining)'.format(
+                    url, retry))
         out = send(req)
-
         return out
-
     req = make_req(radec, radius)
-
     out = wget(req)
     if out is None:
         return '', out, req
 
     out = out.split('\n')
-
     in_data = False
-
     raw_objects = dict()
 
     for line in out:
@@ -130,7 +126,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         if line == '':
             continue
         if not in_data:
-            if line == '::data::'+'::'*36:
+            if line == '::data::' + '::' * 36:
                 in_data = True
             continue
 
@@ -138,7 +134,7 @@ def get_celestial_objects(radec, radius=RADIUS):
         obj_name = data[3].strip()
         obj_type = data[2].strip()
         # if  obj_type!='Unknown' and obj_type!='HII':
-        if  obj_type != 'HII':
+        if obj_type != 'HII':
             raw_objects[obj_name] = obj_type
 
     objects = collections.OrderedDict(sorted(raw_objects.items()))
@@ -148,17 +144,20 @@ def get_celestial_objects(radec, radius=RADIUS):
 
 # =====
 # Unit tests
-#=====
+# =====
 
 if __name__ == '__main__':
 
     class RaDec:
-        pass
+        """Spatial coordinates."""
+
+        def __init__(self):
+            """ Initializing """
+            self.ra = 0.0
+            self.dec = 0.0
+
     radec = RaDec()
     radec.ra, radec.dec = 1.0, 1.0
     cobjects, _, _ = get_celestial_objects(radec, 0.1)
     for cobj_name in sorted(cobjects.keys()):
         print(cobj_name)
-
-
-
