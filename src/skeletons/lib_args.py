@@ -7,8 +7,26 @@ import os
 import sys
 
 
+def get_default_data_path():
+    # Etablish the default path and file values
+    default_data_path = os.environ.get('DATAPATH')
+    if default_data_path is None:
+        if os.path.exists('../../data/fits'):
+            default_data_path = '../../data/fits'
+        elif os.path.exists('../data/fits'):
+            default_data_path = '../data/fits'
+        elif os.path.exists('../data'):
+            default_data_path = '../data'
+        else:
+            sys.stderr.write('No default data path found!')
+            exit(1)
+    return default_data_path
+
+
 def get_args():
+
     """Analyse the command line arguments using argparse"""
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-b',
@@ -37,21 +55,7 @@ def get_args():
 
     if data_file.rfind('/') == -1 and data_file.rfind('\\') == -1:
         # when an explicit path is not provided, prepend the default path
-        # other wise don't touch it
-        # establish the default path and file values
-        default_data_path = os.environ.get('DATAPATH')
-        if default_data_path is None:
-            if os.path.exists('../../data/fits'):
-                default_data_path = '../../data/fits'
-            elif os.path.exists('../data/fits'):
-                default_data_path = '../data/fits'
-            elif os.path.exists('../data'):
-                default_data_path = '../data'
-            else:
-                sys.stderr.write('No default data path found!')
-                exit(1)
-
-        data_file = default_data_path + '/' + data_file
+        data_file = get_default_data_path() + '/' + data_file
 
     if not os.path.exists(data_file):
         raise FileNotFoundError(
