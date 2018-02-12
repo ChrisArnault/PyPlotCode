@@ -18,110 +18,104 @@ import collections
 RADIUS = 0.001
 
 
+def make_req(radec, radius):
+    """
+    Build a request to the Simbad server
+    :param radec: floating point value of the (RA,DEC) coordinate
+    :param radius: floting value of the acceptance radius (degrees)
+    :return: request text
+    """
+
+    def crep(text, char):
+        """
+        :param text: string which must be modified
+        :param char: character to be replaced
+        :return:
+        """
+        text = text.replace(char, '%%%02X' % ord(char))
+        return text
+
+    host_simbad = 'simbad.u-strasbg.fr'
+
+    # WGET with the "request" string built as below :
+
+    script = ''
+    # output format (for what comes from SIMBAD)
+    script += 'format object f1 "'
+    script += '%COO(A)'  # hour:minute:second
+    script += '\t%COO(D)'  # degree:arcmin:arcsec
+    script += '\t%OTYPE(S)'
+    script += '\t%IDLIST(1)'
+    script += '"\n'
+
+    script += 'query coo '
+    script += '%f' % radec.ra  # append "a_ra" (decimal degree)
+    script += ' '
+    script += '%f' % radec.dec  # append "a_dec" (decimal degree)
+    script += ' radius='
+    script += '%f' % radius  # append "a_radius" (decimal degree)
+    script += 'd'  # d,m,s
+    script += ' frame=FK5 epoch=J2000 equinox=2000'  # fk5
+    script += '\n'
+
+    # "special characters" converted to "%02X" format :
+    script = crep(script, '%')
+    script = crep(script, '+')
+    script = crep(script, '=')
+    script = crep(script, ';')
+    script = crep(script, '"')
+    script = crep(script, ' ')  # same as upper line.
+
+    script = script.replace('\n', '%0D%0A')  # CR+LF
+    script = crep(script, '\t')
+
+    request = 'http://' + host_simbad + '/simbad/sim-script?'
+    request += 'script=' + script + '&'
+
+    return request
+
+
+def wget(req):
+    """
+    :param req:
+    :return:
+    """
+    retry = 0
+    result = None
+
+    while retry < 10:
+        # pylint: disable=broad-except
+        try:
+            result = urllib.request.urlopen(req)
+            break
+        except urllib.error.HTTPError:
+            retry += 1
+            time.sleep(0.2)
+        except BaseException:
+            raise
+
+        sys.stderr.write(
+            'Retrying to read {} ({} attempts remaining)'.format(
+                req, retry))
+
+    if result is None:
+        return None
+
+    try:
+        text = result.read()
+        text = text.decode("utf-8")
+        lines = text.split('<BR>\n')
+        return lines[0]
+    except Exception:
+        sys.stderr.write('cannot read URL {}'.format(req))
+    except BaseException:
+        raise
+
+
 def get_celestial_objects(object_radec, radius=RADIUS):
     """
     Provide celestial objects.
     """
-
-    def make_req(radec, radius):
-        """
-        Build a request to the Simbad server
-        :param radec: floating point value of the (RA,DEC) coordinate
-        :param radius: floting value of the acceptance radius (degrees)
-        :return: request text
-        """
-        def crep(text, char):
-            """
-            :param text: string which must be modified
-            :param char: character to be replaced
-            :return:
-            """
-            text = text.replace(char, '%%%02X' % ord(char))
-            return text
-
-        host_simbad = 'simbad.u-strasbg.fr'
-
-        # WGET with the "request" string built as below :
-
-        script = ''
-        # output format (for what comes from SIMBAD)
-        script += 'format object f1 "'
-        script += '%COO(A)'            # hour:minute:second
-        script += '\t%COO(D)'          # degree:arcmin:arcsec
-        script += '\t%OTYPE(S)'
-        script += '\t%IDLIST(1)'
-        script += '"\n'
-
-        script += 'query coo '
-        script += '%f' % radec.ra           # append "a_ra" (decimal degree)
-        script += ' '
-        script += '%f' % radec.dec          # append "a_dec" (decimal degree)
-        script += ' radius='
-        script += '%f' % radius       # append "a_radius" (decimal degree)
-        script += 'd'                  # d,m,s
-        script += ' frame=FK5 epoch=J2000 equinox=2000'  # fk5
-        script += '\n'
-
-        # "special characters" converted to "%02X" format :
-        script = crep(script, '%')
-        script = crep(script, '+')
-        script = crep(script, '=')
-        script = crep(script, ';')
-        script = crep(script, '"')
-        script = crep(script, ' ')                # same as upper line.
-
-        script = script.replace('\n', '%0D%0A')    # CR+LF
-        script = crep(script, '\t')
-
-        request = 'http://' + host_simbad + '/simbad/sim-script?'
-        request += 'script=' + script + '&'
-
-        return request
-
-    def wget(req):
-        """
-        :param req:
-        :return:
-        """
-
-        def send(req):
-            """
-            :param req:
-            :return:
-            """
-            retry = 0
-            result = None
-
-            while retry < 10:
-                # pylint: disable=broad-except
-                try:
-                    result = urllib.request.urlopen(req)
-                    break
-                except urllib.error.HTTPError:
-                    retry += 1
-                    time.sleep(0.2)
-                except BaseException:
-                    raise
-
-                sys.stderr.write(
-                    'Retrying to read {} ({} attempts remaining)'.format(
-                        req, retry))
-
-            if result is None:
-                return None
-
-            try:
-                text = result.read()
-                text = text.decode("utf-8")
-                lines = text.split('<BR>\n')
-                return lines[0]
-            except Exception:
-                sys.stderr.write('cannot read URL {}'.format(req))
-            except BaseException:
-                raise
-
-        out = send(req)
-        return out
 
     req = make_req(object_radec, radius)
     out = wget(req)
