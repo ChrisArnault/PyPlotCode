@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
-'''
+"""
 Utilities for SIMBAD access
-'''
+"""
 
 
 import sys
@@ -18,23 +18,24 @@ import collections
 RADIUS = 0.001
 
 
-def get_celestial_objects(radec, radius=RADIUS):
-    """Provide celestial objects."""
+def get_celestial_objects(object_radec, radius=RADIUS):
+    """
+    Provide celestial objects.
+    """
 
     def make_req(radec, radius):
         """
         Build a request to the Simbad server
-        :param ra: floating point value of the RA coordinate
-        :param dec: floating point value of the DEC coordinate
+        :param radec: floating point value of the (RA,DEC) coordinate
         :param radius: floting value of the acceptance radius (degrees)
         :return: request text
         """
         def crep(text, char):
-            '''
+            """
             :param text: string which must be modified
             :param char: character to be replaced
             :return:
-            '''
+            """
             text = text.replace(char, '%%%02X' % ord(char))
             return text
 
@@ -83,36 +84,46 @@ def get_celestial_objects(radec, radius=RADIUS):
         :return:
         """
 
-        def send(url):
-            '''
-            :param url:
+        def send(req):
+            """
+            :param req:
             :return:
-            '''
+            """
             retry = 0
+            result = None
+
             while retry < 10:
                 # pylint: disable=broad-except
                 try:
-                    req = urllib.request.urlopen(url)
-                    try:
-                        text = req.read()
-                        text = text.decode("utf-8")
-                        lines = text.split('<BR>\n')
-                        return lines[0]
-                    except Exception:
-                        sys.stderr.write('cannot read URL {}'.format(url))
-                    except BaseException:
-                        raise
+                    result = urllib.request.urlopen(req)
+                    break
                 except urllib.error.HTTPError:
                     retry += 1
                     time.sleep(0.2)
                 except BaseException:
                     raise
-            sys.stderr.write(
-                'Retrying to read {} ({} attempts remaining)'.format(
-                    url, retry))
+
+                sys.stderr.write(
+                    'Retrying to read {} ({} attempts remaining)'.format(
+                        req, retry))
+
+            if result is None:
+                return None
+
+            try:
+                text = result.read()
+                text = text.decode("utf-8")
+                lines = text.split('<BR>\n')
+                return lines[0]
+            except Exception:
+                sys.stderr.write('cannot read URL {}'.format(req))
+            except BaseException:
+                raise
+
         out = send(req)
         return out
-    req = make_req(radec, radius)
+
+    req = make_req(object_radec, radius)
     out = wget(req)
     if out is None:
         return '', out, req
