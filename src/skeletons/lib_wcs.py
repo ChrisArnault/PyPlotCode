@@ -5,6 +5,9 @@
 import collections
 import numpy as np
 import astropy.wcs
+import warnings
+warnings.filterwarnings('ignore', category=Warning, append=True)
+
 
 
 # =====
